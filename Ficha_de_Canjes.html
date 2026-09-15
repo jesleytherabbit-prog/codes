@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha de Canjes</title>
+<style>
+:root{
+  --ink:#141210;
+  --panel:#1d1a16;
+  --panel-2:#242019;
+  --line: #3a332a;
+  --gold:#c19a49;
+  --gold-dim:#8a713a;
+  --arcane:#7d6bab;
+  --parchment:#ece4d1;
+  --parchment-dim:#a89a82;
+  --good:#89a37c;
+  --bad:#c1604a;
+  --serif: "Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans: -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --radius: 3px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(125,107,171,0.10), transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(193,154,73,0.08), transparent 55%),
+    var(--ink);
+  color:var(--parchment);
+  font-family:var(--sans);
+  line-height:1.45;
+  min-height:100vh;
+}
+a{color:inherit;}
+
+/* ---------- top masthead ---------- */
+.masthead{
+  padding:38px 28px 22px;
+  text-align:left;
+  max-width:1180px;
+  margin:0 auto;
+  border-bottom:1px solid var(--line);
+}
+.masthead h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:2.4rem;
+  margin:0 0 4px;
+  letter-spacing:0.3px;
+  color:var(--parchment);
+}
+.masthead p{
+  margin:0;
+  color:var(--parchment-dim);
+  font-size:0.95rem;
+  max-width:560px;
+}
+
+/* ---------- ledger / summary bar ---------- */
+.ledger-wrap{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(20,18,16,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.ledger{
+  max-width:1180px;
+  margin:0 auto;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.ledger-item{display:flex;flex-direction:column;gap:2px;min-width:100px;}
+.ledger-item .lbl{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--parchment-dim);}
+.ledger-item .val{font-family:var(--serif);font-size:1.5rem;color:var(--gold);}
+.ledger-item.remain .val{color:var(--good);}
+.ledger-item.remain.negative .val{color:var(--bad);}
+.ledger-input{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--gold-dim);
+  color:var(--gold);
+  font-family:var(--serif);
+  font-size:1.5rem;
+  width:110px;
+  padding:0 2px 2px;
+}
+.ledger-input:focus{outline:none;border-bottom-color:var(--gold);}
+.mode-toggle{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:0.82rem;
+  color:var(--parchment-dim);
+}
+.switch{
+  position:relative;width:46px;height:24px;background:var(--panel-2);
+  border:1px solid var(--line);border-radius:20px;cursor:pointer;flex:none;
+}
+.switch .knob{
+  position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
+  background:var(--gold);transition:left .18s ease;
+}
+.switch.on .knob{left:24px;background:var(--arcane);}
+.mode-labels{display:flex;gap:6px;}
+.mode-labels span{opacity:0.5;}
+.mode-labels span.active{opacity:1;color:var(--parchment);}
+
+/* ---------- tabs ---------- */
+.tabs{
+  max-width:1180px;
+  margin:0 auto;
+  padding:18px 28px 0;
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  border-bottom:1px solid var(--line);
+}
+.tab-btn{
+  background:none;
+  border:none;
+  color:var(--parchment-dim);
+  font-family:var(--sans);
+  font-size:0.86rem;
+  padding:10px 14px;
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:color .15s ease,border-color .15s ease;
+}
+.tab-btn:hover{color:var(--parchment);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+.content{
+  max-width:1180px;
+  margin:0 auto;
+  padding:30px 28px 90px;
+}
+.panel{display:none;}
+.panel.active{display:block;}
+
+h2.section-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:1.5rem;
+  margin:0 0 4px;
+  color:var(--parchment);
+}
+.section-sub{
+  color:var(--parchment-dim);
+  font-size:0.86rem;
+  margin:0 0 20px;
+}
+.subtotal-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:4px 12px;
+  font-size:0.8rem;
+  color:var(--parchment-dim);
+  margin-left:10px;
+}
+.subtotal-pill b{color:var(--gold);font-weight:600;}
+
+/* ---------- grid / cards ---------- */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+@media(max-width:820px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px 16px;
+}
+.card-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.card-row + .card-row{margin-top:10px;}
+.card-name{font-size:0.92rem;color:var(--parchment);}
+.card-name small{display:block;color:var(--parchment-dim);font-size:0.72rem;margin-top:1px;}
+.card-cost{font-size:0.82rem;color:var(--gold-dim);min-width:64px;text-align:right;}
+
+select, input[type="number"]{
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  color:var(--parchment);
+  border-radius:var(--radius);
+  padding:6px 8px;
+  font-size:0.85rem;
+  font-family:var(--sans);
+}
+select:focus,input:focus{outline:1px solid var(--gold-dim);}
+
+.stat-block{grid-column:span 1;}
+.stat-block h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:1.05rem;
+  margin:0 0 10px;
+  color:var(--gold);
+  border-bottom:1px solid var(--line);
+  padding-bottom:8px;
+}
+
+/* skill category block */
+.skill-cat{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  margin-bottom:14px;
+}
+.skill-cat > .cat-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px;
+}
+.skill-cat > .cat-head h3{
+  font-family:var(--serif);font-weight:400;font-size:1.05rem;margin:0;color:var(--parchment);
+}
+.skill-cat .cat-head .stat-cost{font-size:0.78rem;color:var(--gold-dim);}
+
+/* add-row component */
+.adder{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:12px 14px;margin-bottom:14px;
+}
+.adder select{flex:1;min-width:180px;}
+.btn{
+  background:var(--gold-dim);
+  color:#141210;
+  border:none;
+  border-radius:var(--radius);
+  padding:7px 14px;
+  font-size:0.82rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+.btn:hover{background:var(--gold);}
+.btn.ghost{
+  background:none;border:1px solid var(--line);color:var(--parchment-dim);
+}
+.btn.ghost:hover{color:var(--parchment);border-color:var(--parchment-dim);}
+
+.chip-list{display:flex;flex-direction:column;gap:6px;}
+.chip{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:8px 10px;font-size:0.85rem;
+}
+.chip .chip-info{display:flex;gap:10px;align-items:center;}
+.chip .chip-cost{color:var(--gold);font-weight:600;font-size:0.82rem;}
+.chip .chip-remove{
+  background:none;border:none;color:var(--parchment-dim);cursor:pointer;
+  font-size:1rem;line-height:1;padding:2px 4px;
+}
+.chip .chip-remove:hover{color:var(--bad);}
+.empty-note{color:var(--parchment-dim);font-size:0.82rem;font-style:italic;padding:6px 2px;}
+
+/* checklist (talentos) */
+.check-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;
+}
+@media(max-width:700px){.check-grid{grid-template-columns:1fr;}}
+.check-row{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 4px;border-bottom:1px dashed var(--line);
+  font-size:0.85rem;
+}
+.check-row label{flex:1;cursor:pointer;}
+.check-row .price{color:var(--gold-dim);font-size:0.78rem;min-width:44px;text-align:right;}
+.check-row input[type=checkbox]{accent-color:var(--gold);width:15px;height:15px;}
+
+/* arcanos */
+.arc-group{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;margin-bottom:14px;
+}
+.arc-group h3{font-family:var(--serif);font-weight:400;font-size:1.05rem;margin:0 0 10px;color:var(--parchment);}
+.arc-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;}
+.arc-row label{font-size:0.85rem;color:var(--parchment);}
+.arc-row label small{display:block;color:var(--parchment-dim);font-size:0.72rem;}
+.arc-row input[type=number]{width:64px;text-align:center;}
+.warn-text{color:var(--bad);font-size:0.75rem;margin-top:4px;}
+
+/* armas */
+.weapon-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin-bottom:18px;
+}
+.weapon-card h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin:0 0 12px;color:var(--gold);}
+.weapon-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:820px){.weapon-cols{grid-template-columns:1fr;}}
+.weapon-col h4{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--parchment-dim);margin:0 0 8px;}
+.weapon-summary{
+  display:flex;gap:18px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);
+  flex-wrap:wrap;font-size:0.82rem;color:var(--parchment-dim);
+}
+.weapon-summary b{color:var(--gold);}
+.slots-bad{color:var(--bad);}
+.slots-ok{color:var(--good);}
+
+footer.note{
+  max-width:1180px;margin:0 auto;padding:0 28px 60px;color:var(--parchment-dim);font-size:0.78rem;
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <h1>Ficha de Canjes</h1>
+  <p>Calculadora de canje de grageas para personajes. Todos los costes se recalculan al instante a medida que compras estadísticas, habilidades, trasfondos, arcanos y equipo.</p>
+</div>
+
+<div class="ledger-wrap">
+  <div class="ledger">
+    <div class="ledger-item">
+      <span class="lbl">Grageas disponibles</span>
+      <input id="inpDisponibles" class="ledger-input" type="number" value="1183">
+    </div>
+    <div class="ledger-item">
+      <span class="lbl">Gastadas</span>
+      <span class="val" id="valGastadas">0</span>
+    </div>
+    <div class="ledger-item remain">
+      <span class="lbl">Restantes</span>
+      <span class="val" id="valRestantes">0</span>
+    </div>
+    <div class="mode-toggle">
+      <div class="mode-labels">
+        <span id="lblIndividual" class="active">Costes individuales</span>
+        <div class="switch" id="modeSwitch"><div class="knob"></div></div>
+        <span id="lblAcumulado">Costes acumulados</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs" id="tabBar"></div>
+
+<div class="content" id="tabContent"></div>
+
+<footer class="note">Ficha basada en tu archivo original «Ficha de Canjes». Los valores no se guardan al recargar la página.</footer>
+
+<script>
+/* =========================================================
+   DATA TABLES  (extraídas de la hoja "Referencias")
+   ========================================================= */
+const STAT_TABLE = {
+  individual:[0,250,300,400,550,750,1000,1300,1750],
+  acumulado:[0,250,550,950,1500,2250,3250,4550,6300]
+};
+const SKILL_TABLE = {
+  individual:[0,75,150,250,400,750],
+  acumulado:[0,75,225,475,875,1625]
+};
+const ESPEC_TABLE = {
+  individual:[0,150,300,450,600,750],
+  acumulado:[0,150,450,900,1500,2250]
+};
+const TRASF_GEN_TABLE = {
+  individual:[0,100,200,300,400,500],
+  acumulado:[0,100,300,600,1000,1500]
+};
+const TRASF_ESP_TABLE = {
+  individual:[0,50,100,150,200,350],
+  acumulado:[0,50,150,300,500,850]
+};
+
+const STATS = ["Vigor","Destreza","Carisma","Voluntad","Percepción","Inteligencia","Poder"];
+
+const SKILL_GROUPS = {
+  "Vigor": ["Atletismo","Pelea"],
+  "Destreza": ["Esquivar","Latrocinio","Sigilo","Volar"],
+  "Carisma": ["Coordinación","Intimidación","Oratoria","Seducir","Subterfugio"],
+  "Voluntad": ["Arte (X)","Estilo","Frialdad"],
+  "Percepción": ["Alerta","Consciencia","Empatía","Iniciativa","Investigación"],
+  "Inteligencia": ["Adivinación","Arcanismo","Callejeo","Cultura Mágica","Cultura Muggle","Herbología","Magizoología","Medicina","Política","Supervivencia"],
+  "Poder": ["Duelo","Pociones","Rituales"]
+};
+
+const TRASF_GENERALES = ["Biblioteca","Informantes","Seguidores","Influencia","Fama","Orden de Merlín","Patrón","Recursos"];
+
+const TRASF_ESPECIFICOS = ["Adivinadores y Oráculos","Alta sociedad","Arcanos","Arpías","Arqueólogos e Historiadores","Arte Muggle","Artes Oscuras","Azkaban","Bastión Woodcroft","Bestias Mágicas","Biólogos e Investigadores Médicos","Caza","Centauros","Confederación Internacional de Magos","Contrabandistas","Contrabando","Criminales","Deportes","Deportes Mágicos","Deportes Muggles","Duendes","Enfermedades Mágicas","Entornos Hostiles","Espíritus","Estafadores","Evanescedores","Experimental","Falsificadores","Fantasmas","Fauna de Hogwarts","Gente del Agua","Gigantes","Gobierno Mágico de (X) País","Griffindor","Gringotts","Herbólogos y Pocionistas","Heridas Mágicas","Historia de la Magia","Hogsmeade","Hogwarts","Hombres Lobo","Hufflepuff","La Reserva","Ladrones","Ley Mágica","Localizaciones","Magizoólogos","Medicina Muggle","Métodos Adivinatorios","Ministerio de Magia","Muggleólogos","Muggles","Mundo del Corazón","Negocios","No-Seres","Objetos Mágicos","Orientarse","Otros Planos","Personal no Docente","Plantas Naturales","Pociones","Prensa","Profecías","Profesorado","Ravenclaw","San Mungo","Sanadores Ilegales","Seres Racionales","Slytherin","Soplones","Tecnología","Vampiros"];
+
+const TALENTOS = [
+  ["Acción coordinada",100],["Aliado Común",300],["Aliado Dotado",600],["Aliado Torpe",100],
+  ["Animagia",600],["Aparecerse",200],["Asalto Cegador",500],["Ataque Agresivo",75],
+  ["Ataque Cauteloso",75],["Ataque Crítico",500],["Ataque Explosivo",250],["Ataque Múltiple",250],
+  ["Ataque Rápido",75],["Beber Poción",100],["Compañero Animal Avanzado",600],
+  ["Compañero Animal Básico",100],["Compañero Animal Doméstico",50],["Compañero Animal Intermedio",300],
+  ["Conjuración Silenciosa",250],["Conjurar sin Varita",2500],["Defensa Total",500],["Desarme",300],
+  ["Entrenador de Criatura",300],["Entrenador de Reanimados",300],["Flanquear",250],
+  ["Hechizo Inventado",600],["Hechizo Predilecto",200],["Hechizo Raudo",300],["Hechizo Virtuoso",300],
+  ["Horrocrux",1500],["Identidad Alternativa",500],["Lanzar Poción",300],["Lazo",50],
+  ["Maestría en (Animal Muggle o Bestia Mágica)",100],["Maestría en (Ser Mágico)",200],
+  ["Maestría en Antídoto",200],["Objeto Inventado",600],["Oráculo",666],["Poción Inventada",600],
+  ["Poción Predilecta",200],["Poción Rauda",300],["Poción Virtuosa",300],["Primeros Auxilios",300],
+  ["Proteger",100],["Reanimado Cámara",300],["Reanimado Común",150],["Reanimado de Combate",600],
+  ["Reanimado Torpe",50],["Ritual Inventado",600],["Ritual Predilecto",200],["Ritual Raudo",300],
+  ["Ritual Virtuoso",300],["Sometimiento",600],["Último Estertor",500],["Unión",100],
+  ["Usar Cobertura",250],["Vínculo",150]
+];
+
+const ASIGNATURAS = ["AAA","CCM","DCAO","EyT","EM","HyP","HM","MR","SyMMyM","Todas"];
+const NOTAS = ["Aceptable","Supera las Expectativas","Extraordinario"];
+function costoTitulo(tipo,nota){
+  const timos = {"Aceptable":50,"Supera las Expectativas":100,"Extraordinario":150};
+  const extasis = {"Aceptable":30,"Supera las Expectativas":60,"Extraordinario":90};
+  return tipo==="TIMOs" ? (timos[nota]||0) : (extasis[nota]||0);
+}
+
+function costoIdioma(tipo,nivel){
+  const muggle={"Bajo":50,"Medio":100,"Alto":150};
+  const magico={"Bajo":100,"Medio":200,"Alto":300};
+  return tipo==="Muggle" ? (muggle[nivel]||0) : (magico[nivel]||0);
+}
+
+const RAZAS = [["Humano",0],["Semigigante",500],["Metamorfomago",500],["Semiveela",500],["licántropo",150]];
+
+const MATERIALES = [
+  ["Tratamiento de Encantador",50,1],["Adamantino",25,2],["Emplasto de Dragón",100,2],
+  ["Reforjado por Duendes",200,2],["Acero Duendigoniza",500,3]
+];
+const RUNAS = [
+  ["Ignis Mínima",1,50],["Glacies Mínima",1,50],["Ventus Mínima",1,50],["Fulgor Mínima",1,50],
+  ["Sanguis Mínima",1,50],["Creítus Mínima",1,50],["Fixum Mínima",1,50],["Venite",1,50],
+  ["Ignis Media",2,150],["Glacies Media",2,150],["Ventus Media",2,150],["Fulgor Media",2,150],
+  ["Sanguis Media",2,150],["Fixum Media",2,150],
+  ["Ignis Máxima",3,300],["Glacies Máxima",3,300],["Ventus Máxima",3,300],["Fulgor Máxima",3,300],
+  ["Crepitus Máxima",3,300],["Fixum Máxima",3,300]
+];
+
+const ARCANO_TIERS = [
+  {key:"hechizoDom", label:"Hechizos Domésticos", price:25},
+  {key:"hechizoBas", label:"Hechizos Básicos", price:100},
+  {key:"hechizoInt", label:"Hechizos Intermedios", price:300, requiresLE:"hechizoBas"},
+  {key:"hechizoAva", label:"Hechizos Avanzados", price:300, requiresLE:"hechizoInt"}
+];
+const POCION_TIERS = [
+  {key:"pocionBas", label:"Pociones Básicas", price:100, gate:1},
+  {key:"pocionInt", label:"Pociones Intermedias", price:300, gate:2, requiresLE:"pocionBas"},
+  {key:"pocionAva", label:"Pociones Avanzadas", price:600, gate:3}
+];
+const RITUAL_TIERS = [
+  {key:"ritualBas", label:"Rituales Básicos", price:100, gate:1},
+  {key:"ritualInt", label:"Rituales Intermedios", price:300, gate:2},
+  {key:"ritualAva", label:"Rituales Avanzados", price:600, gate:3}
+];
+const OBJETO_TIERS = [
+  {key:"objBas", label:"Objetos Básicos", price:100},
+  {key:"objInt", label:"Objetos Intermedios", price:300},
+  {key:"objAva", label:"Objetos Avanzados", price:600}
+];
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+const state = {
+  disponibles: 1183,
+  modo: "individual", // "individual" | "acumulado"
+  stats: Object.fromEntries(STATS.map(s=>[s,0])),
+  skills: Object.fromEntries(Object.values(SKILL_GROUPS).flat().map(s=>[s,0])),
+  especializaciones: [], // {id,name,level}
+  trasfGen: Object.fromEntries(TRASF_GENERALES.map(t=>[t,0])),
+  trasfEsp: [], // {id,name,level}
+  titulos: [], // {id,asignatura,tipo,nota}
+  idiomas: [], // {id,tipo,nivel}
+  talentos: new Set(),
+  raza: "Humano",
+  arcanos: Object.fromEntries(
+    [...ARCANO_TIERS,...POCION_TIERS,...RITUAL_TIERS,...OBJETO_TIERS].map(t=>[t.key,0])
+  ),
+  armas: [
+    {nombre:"Arma 1", materiales:new Set(), runas:new Set()},
+    {nombre:"Arma 2", materiales:new Set(), runas:new Set()}
+  ]
+};
+let uid = 1;
+const nextId = () => uid++;
+
+/* =========================================================
+   HELPERS DE COSTE
+   ========================================================= */
+function tableCost(table, level){
+  return table[state.modo][level] || 0;
+}
+function statsCost(){
+  return STATS.reduce((sum,s)=> sum + tableCost(STAT_TABLE, state.stats[s]), 0);
+}
+function skillsCost(){
+  return Object.values(state.skills).reduce((sum,lvl)=> sum + tableCost(SKILL_TABLE, lvl), 0);
+}
+function espCost(){
+  return state.especializaciones.reduce((sum,e)=> sum + tableCost(ESPEC_TABLE, e.level), 0);
+}
+function trasfGenCost(){
+  return TRASF_GENERALES.reduce((sum,t)=> sum + tableCost(TRASF_GEN_TABLE, state.trasfGen[t]), 0);
+}
+function trasfEspCost(){
+  return state.trasfEsp.reduce((sum,t)=> sum + tableCost(TRASF_ESP_TABLE, t.level), 0);
+}
+function titulosCost(){
+  return state.titulos.reduce((sum,t)=> sum + costoTitulo(t.tipo,t.nota), 0);
+}
+function idiomasCost(){
+  return state.idiomas.reduce((sum,i)=> sum + costoIdioma(i.tipo,i.nivel), 0);
+}
+function talentosCost(){
+  let sum = 0;
+  state.talentos.forEach(name=>{
+    const t = TALENTOS.find(x=>x[0]===name);
+    if(t) sum += t[1];
+  });
+  return sum;
+}
+function razaCost(){
+  const r = RAZAS.find(x=>x[0]===state.raza);
+  return r ? r[1] : 0;
+}
+function arcanosCost(){
+  let sum = 0;
+  ARCANO_TIERS.forEach(t=> sum += state.arcanos[t.key]*t.price);
+  POCION_TIERS.forEach(t=> sum += state.arcanos[t.key]*t.price);
+  RITUAL_TIERS.forEach(t=> sum += state.arcanos[t.key]*t.price);
+  OBJETO_TIERS.forEach(t=> sum += state.arcanos[t.key]*t.price);
+  return sum;
+}
+function weaponMatCost(w){
+  let sum=0; w.materiales.forEach(n=>{const m=MATERIALES.find(x=>x[0]===n); if(m) sum+=m[1];});
+  return sum;
+}
+function weaponMatSlots(w){
+  let sum=0; w.materiales.forEach(n=>{const m=MATERIALES.find(x=>x[0]===n); if(m) sum+=m[2];});
+  return sum;
+}
+function weaponRunCost(w){
+  let sum=0; w.runas.forEach(n=>{const r=RUNAS.find(x=>x[0]===n); if(r) sum+=r[2];});
+  return sum;
+}
+function weaponRunSlots(w){
+  let sum=0; w.runas.forEach(n=>{const r=RUNAS.find(x=>x[0]===n); if(r) sum+=r[1];});
+  return sum;
+}
+function weaponCost(w){ return weaponMatCost(w) + weaponRunCost(w); }
+function armasCost(){ return state.armas.reduce((s,w)=> s+weaponCost(w), 0); }
+
+function pociencesLevel(){ return state.skills["Pociones"] || 0; }
+function ritualesLevel(){ return state.skills["Rituales"] || 0; }
+
+function totalGastado(){
+  return statsCost()+skillsCost()+espCost()+trasfGenCost()+trasfEspCost()+
+         titulosCost()+idiomasCost()+talentosCost()+razaCost()+arcanosCost()+armasCost();
+}
+
+/* =========================================================
+   LEDGER
+   ========================================================= */
+function renderLedger(){
+  const gastadas = totalGastado();
+  const restantes = state.disponibles - gastadas;
+  document.getElementById("valGastadas").textContent = gastadas.toLocaleString("es-ES");
+  const restEl = document.getElementById("valRestantes");
+  restEl.textContent = restantes.toLocaleString("es-ES");
+  restEl.parentElement.classList.toggle("negative", restantes < 0);
+}
+
+document.getElementById("inpDisponibles").addEventListener("input", e=>{
+  state.disponibles = Number(e.target.value)||0;
+  renderLedger();
+});
+document.getElementById("modeSwitch").addEventListener("click", ()=>{
+  const sw = document.getElementById("modeSwitch");
+  const isOn = sw.classList.toggle("on");
+  state.modo = isOn ? "acumulado" : "individual";
+  document.getElementById("lblIndividual").classList.toggle("active", !isOn);
+  document.getElementById("lblAcumulado").classList.toggle("active", isOn);
+  renderAll();
+});
+
+/* =========================================================
+   TABS
+   ========================================================= */
+const TABS = [
+  {id:"stats", label:"Estadísticas"},
+  {id:"skills", label:"Habilidades"},
+  {id:"especial", label:"Especializaciones"},
+  {id:"trasfondos", label:"Trasfondos"},
+  {id:"formacion", label:"Formación e Idiomas"},
+  {id:"talentos", label:"Talentos"},
+  {id:"arcanos", label:"Arcanos"},
+  {id:"armas", label:"Armas"},
+  {id:"personaje", label:"Personaje"}
+];
+const RENDERERS = {};
+
+function buildTabs(){
+  const bar = document.getElementById("tabBar");
+  const content = document.getElementById("tabContent");
+  TABS.forEach((t,i)=>{
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (i===0?" active":"");
+    btn.textContent = t.label;
+    btn.dataset.tab = t.id;
+    btn.addEventListener("click", ()=>{
+      document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+      document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById("panel-"+t.id).classList.add("active");
+    });
+    bar.appendChild(btn);
+
+    const panel = document.createElement("div");
+    panel.className = "panel" + (i===0?" active":"");
+    panel.id = "panel-"+t.id;
+    content.appendChild(panel);
+  });
+}
+
+function renderAll(){
+  Object.values(RENDERERS).forEach(fn=>fn());
+  renderLedger();
+}
+
+/* ---------- ESTADÍSTICAS ---------- */
+RENDERERS.stats = function(){
+  const panel = document.getElementById("panel-stats");
+  panel.innerHTML = "";
+  const head = document.createElement("div");
+  head.innerHTML = `<h2 class="section-title">Estadísticas
+    <span class="subtotal-pill">Subtotal: <b>${statsCost()}</b> grageas</span></h2>
+    <p class="section-sub">Nivel de 0 a 8 para cada estadística base.</p>`;
+  panel.appendChild(head);
+
+  const grid = document.createElement("div");
+  grid.className = "grid-3";
+  STATS.forEach(s=>{
+    const card = document.createElement("div");
+    card.className = "card";
+    const cost = tableCost(STAT_TABLE, state.stats[s]);
+    card.innerHTML = `
+      <div class="card-row">
+        <span class="card-name">${s}</span>
+        <span class="card-cost">${cost} gr</span>
+      </div>
+      <div class="card-row">
+        <select data-stat="${s}">
+          ${[0,1,2,3,4,5,6,7,8].map(l=>`<option value="${l}" ${state.stats[s]===l?"selected":""}>Nivel ${l}</option>`).join("")}
+        </select>
+      </div>`;
+    grid.appendChild(card);
+  });
+  panel.appendChild(grid);
+
+  grid.querySelectorAll("select[data-stat]").forEach(sel=>{
+    sel.addEventListener("change", e=>{
+      state.stats[e.target.dataset.stat] = Number(e.target.value);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- HABILIDADES ---------- */
+RENDERERS.skills = function(){
+  const panel = document.getElementById("panel-skills");
+  panel.innerHTML = "";
+  const head = document.createElement("div");
+  head.innerHTML = `<h2 class="section-title">Habilidades
+    <span class="subtotal-pill">Subtotal: <b>${skillsCost()}</b> grageas</span></h2>
+    <p class="section-sub">Agrupadas por la estadística que gobierna cada una. Nivel de 0 a 5.</p>`;
+  panel.appendChild(head);
+
+  Object.entries(SKILL_GROUPS).forEach(([stat, skills])=>{
+    const catCost = skills.reduce((s,name)=> s + tableCost(SKILL_TABLE, state.skills[name]), 0);
+    const cat = document.createElement("div");
+    cat.className = "skill-cat";
+    cat.innerHTML = `<div class="cat-head"><h3>${stat}</h3><span class="stat-cost">${catCost} gr</span></div>`;
+    const grid = document.createElement("div");
+    grid.className = "grid-3";
+    skills.forEach(name=>{
+      const cost = tableCost(SKILL_TABLE, state.skills[name]);
+      const row = document.createElement("div");
+      row.className = "card";
+      row.innerHTML = `
+        <div class="card-row">
+          <span class="card-name">${name}</span>
+          <span class="card-cost">${cost} gr</span>
+        </div>
+        <div class="card-row">
+          <select data-skill="${name}">
+            ${[0,1,2,3,4,5].map(l=>`<option value="${l}" ${state.skills[name]===l?"selected":""}>Nivel ${l}</option>`).join("")}
+          </select>
+        </div>`;
+      grid.appendChild(row);
+    });
+    cat.appendChild(grid);
+    panel.appendChild(cat);
+  });
+
+  panel.querySelectorAll("select[data-skill]").forEach(sel=>{
+    sel.addEventListener("change", e=>{
+      state.skills[e.target.dataset.skill] = Number(e.target.value);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- ESPECIALIZACIONES ---------- */
+RENDERERS.especial = function(){
+  const panel = document.getElementById("panel-especial");
+  panel.innerHTML = "";
+  panel.innerHTML = `<h2 class="section-title">Especializaciones
+    <span class="subtotal-pill">Subtotal: <b>${espCost()}</b> grageas</span></h2>
+    <p class="section-sub">Añade tantas especializaciones como necesites, cada una con su propio nivel.</p>`;
+
+  const adder = document.createElement("div");
+  adder.className = "adder";
+  adder.innerHTML = `
+    <input type="text" id="espName" placeholder="Nombre de la especialización" style="flex:2;min-width:200px;background:var(--panel-2);border:1px solid var(--line);color:var(--parchment);border-radius:3px;padding:6px 8px;">
+    <select id="espLevel">${[1,2,3,4,5].map(l=>`<option value="${l}">Nivel ${l}</option>`).join("")}</select>
+    <button class="btn" id="espAdd">Añadir</button>`;
+  panel.appendChild(adder);
+
+  const list = document.createElement("div");
+  list.className = "chip-list";
+  if(state.especializaciones.length===0){
+    list.innerHTML = `<div class="empty-note">Aún no has añadido ninguna especialización.</div>`;
+  }
+  state.especializaciones.forEach(e=>{
+    const cost = tableCost(ESPEC_TABLE, e.level);
+    const chip = document.createElement("div");
+    chip.className = "chip";
+    chip.innerHTML = `<div class="chip-info"><span>${e.name}</span><span style="color:var(--parchment-dim)">Nivel ${e.level}</span></div>
+      <div class="chip-info"><span class="chip-cost">${cost} gr</span><button class="chip-remove" data-id="${e.id}">✕</button></div>`;
+    list.appendChild(chip);
+  });
+  panel.appendChild(list);
+
+  panel.querySelector("#espAdd").addEventListener("click", ()=>{
+    const name = panel.querySelector("#espName").value.trim();
+    const level = Number(panel.querySelector("#espLevel").value);
+    if(!name) return;
+    state.especializaciones.push({id:nextId(), name, level});
+    renderAll();
+  });
+  panel.querySelectorAll(".chip-remove").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      const id = Number(e.target.dataset.id);
+      state.especializaciones = state.especializaciones.filter(x=>x.id!==id);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- TRASFONDOS ---------- */
+RENDERERS.trasfondos = function(){
+  const panel = document.getElementById("panel-trasfondos");
+  panel.innerHTML = "";
+  const totalGen = trasfGenCost(), totalEsp = trasfEspCost();
+  panel.innerHTML = `<h2 class="section-title">Trasfondos
+    <span class="subtotal-pill">Subtotal: <b>${totalGen+totalEsp}</b> grageas</span></h2>
+    <p class="section-sub">Los trasfondos generales son fijos; los específicos se añaden libremente.</p>`;
+
+  const genWrap = document.createElement("div");
+  genWrap.innerHTML = `<h3 style="font-family:var(--serif);font-weight:400;color:var(--gold);margin:18px 0 10px;">Generales <span style="color:var(--parchment-dim);font-size:0.8rem;">— ${totalGen} gr</span></h3>`;
+  const genGrid = document.createElement("div");
+  genGrid.className = "grid-3";
+  TRASF_GENERALES.forEach(name=>{
+    const cost = tableCost(TRASF_GEN_TABLE, state.trasfGen[name]);
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-row"><span class="card-name">${name}</span><span class="card-cost">${cost} gr</span></div>
+      <div class="card-row">
+        <select data-trasfgen="${name}">
+          ${[0,1,2,3,4,5].map(l=>`<option value="${l}" ${state.trasfGen[name]===l?"selected":""}>Nivel ${l}</option>`).join("")}
+        </select>
+      </div>`;
+    genGrid.appendChild(card);
+  });
+  genWrap.appendChild(genGrid);
+  panel.appendChild(genWrap);
+
+  const espWrap = document.createElement("div");
+  espWrap.innerHTML = `<h3 style="font-family:var(--serif);font-weight:400;color:var(--gold);margin:24px 0 10px;">Específicos <span style="color:var(--parchment-dim);font-size:0.8rem;">— ${totalEsp} gr</span></h3>`;
+  panel.appendChild(espWrap);
+
+  const adder = document.createElement("div");
+  adder.className = "adder";
+  adder.innerHTML = `
+    <select id="trasfEspName">${TRASF_ESPECIFICOS.map(n=>`<option value="${n}">${n}</option>`).join("")}</select>
+    <select id="trasfEspLevel">${[1,2,3,4,5].map(l=>`<option value="${l}">Nivel ${l}</option>`).join("")}</select>
+    <button class="btn" id="trasfEspAdd">Añadir</button>`;
+  panel.appendChild(adder);
+
+  const list = document.createElement("div");
+  list.className = "chip-list";
+  if(state.trasfEsp.length===0){
+    list.innerHTML = `<div class="empty-note">Aún no has añadido ningún trasfondo específico.</div>`;
+  }
+  state.trasfEsp.forEach(t=>{
+    const cost = tableCost(TRASF_ESP_TABLE, t.level);
+    const chip = document.createElement("div");
+    chip.className = "chip";
+    chip.innerHTML = `<div class="chip-info"><span>${t.name}</span><span style="color:var(--parchment-dim)">Nivel ${t.level}</span></div>
+      <div class="chip-info"><span class="chip-cost">${cost} gr</span><button class="chip-remove" data-id="${t.id}">✕</button></div>`;
+    list.appendChild(chip);
+  });
+  panel.appendChild(list);
+
+  panel.querySelectorAll("select[data-trasfgen]").forEach(sel=>{
+    sel.addEventListener("change", e=>{
+      state.trasfGen[e.target.dataset.trasfgen] = Number(e.target.value);
+      renderAll();
+    });
+  });
+  panel.querySelector("#trasfEspAdd").addEventListener("click", ()=>{
+    const name = panel.querySelector("#trasfEspName").value;
+    const level = Number(panel.querySelector("#trasfEspLevel").value);
+    state.trasfEsp.push({id:nextId(), name, level});
+    renderAll();
+  });
+  panel.querySelectorAll(".chip-remove").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      const id = Number(e.target.dataset.id);
+      state.trasfEsp = state.trasfEsp.filter(x=>x.id!==id);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- FORMACIÓN (Títulos) E IDIOMAS ---------- */
+RENDERERS.formacion = function(){
+  const panel = document.getElementById("panel-formacion");
+  panel.innerHTML = "";
+  const tCost = titulosCost(), iCost = idiomasCost();
+  panel.innerHTML = `<h2 class="section-title">Formación e Idiomas
+    <span class="subtotal-pill">Subtotal: <b>${tCost+iCost}</b> grageas</span></h2>
+    <p class="section-sub">Títulos académicos (TIMOs/EXTASIS) e idiomas conocidos.</p>`;
+
+  const titWrap = document.createElement("div");
+  titWrap.innerHTML = `<h3 style="font-family:var(--serif);font-weight:400;color:var(--gold);margin:18px 0 10px;">Títulos académicos <span style="color:var(--parchment-dim);font-size:0.8rem;">— ${tCost} gr</span></h3>`;
+  panel.appendChild(titWrap);
+
+  const titAdder = document.createElement("div");
+  titAdder.className = "adder";
+  titAdder.innerHTML = `
+    <select id="titAsig">${ASIGNATURAS.map(a=>`<option value="${a}">${a}</option>`).join("")}</select>
+    <select id="titTipo"><option value="TIMOs">TIMOs</option><option value="EXTASIS">EXTASIS</option></select>
+    <select id="titNota">${NOTAS.map(n=>`<option value="${n}">${n}</option>`).join("")}</select>
+    <button class="btn" id="titAdd">Añadir</button>`;
+  panel.appendChild(titAdder);
+
+  const titList = document.createElement("div");
+  titList.className = "chip-list";
+  if(state.titulos.length===0){
+    titList.innerHTML = `<div class="empty-note">Sin títulos académicos registrados.</div>`;
+  }
+  state.titulos.forEach(t=>{
+    const cost = costoTitulo(t.tipo,t.nota);
+    const chip = document.createElement("div");
+    chip.className = "chip";
+    chip.innerHTML = `<div class="chip-info"><span>${t.asignatura}</span><span style="color:var(--parchment-dim)">${t.tipo} · ${t.nota}</span></div>
+      <div class="chip-info"><span class="chip-cost">${cost} gr</span><button class="chip-remove" data-titid="${t.id}">✕</button></div>`;
+    titList.appendChild(chip);
+  });
+  panel.appendChild(titList);
+
+  const idWrap = document.createElement("div");
+  idWrap.innerHTML = `<h3 style="font-family:var(--serif);font-weight:400;color:var(--gold);margin:24px 0 10px;">Idiomas <span style="color:var(--parchment-dim);font-size:0.8rem;">— ${iCost} gr</span></h3>`;
+  panel.appendChild(idWrap);
+
+  const idAdder = document.createElement("div");
+  idAdder.className = "adder";
+  idAdder.innerHTML = `
+    <select id="idTipo"><option value="Muggle">Muggle</option><option value="Mágico">Mágico</option></select>
+    <select id="idNivel"><option value="Bajo">Bajo</option><option value="Medio">Medio</option><option value="Alto">Alto</option></select>
+    <button class="btn" id="idAdd">Añadir</button>`;
+  panel.appendChild(idAdder);
+
+  const idList = document.createElement("div");
+  idList.className = "chip-list";
+  if(state.idiomas.length===0){
+    idList.innerHTML = `<div class="empty-note">Sin idiomas adicionales registrados.</div>`;
+  }
+  state.idiomas.forEach(i=>{
+    const cost = costoIdioma(i.tipo,i.nivel);
+    const chip = document.createElement("div");
+    chip.className = "chip";
+    chip.innerHTML = `<div class="chip-info"><span>${i.tipo}</span><span style="color:var(--parchment-dim)">${i.nivel}</span></div>
+      <div class="chip-info"><span class="chip-cost">${cost} gr</span><button class="chip-remove" data-idid="${i.id}">✕</button></div>`;
+    idList.appendChild(chip);
+  });
+  panel.appendChild(idList);
+
+  panel.querySelector("#titAdd").addEventListener("click", ()=>{
+    state.titulos.push({
+      id:nextId(),
+      asignatura: panel.querySelector("#titAsig").value,
+      tipo: panel.querySelector("#titTipo").value,
+      nota: panel.querySelector("#titNota").value
+    });
+    renderAll();
+  });
+  panel.querySelectorAll(".chip-remove[data-titid]").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      const id = Number(e.target.dataset.titid);
+      state.titulos = state.titulos.filter(x=>x.id!==id);
+      renderAll();
+    });
+  });
+  panel.querySelector("#idAdd").addEventListener("click", ()=>{
+    state.idiomas.push({
+      id:nextId(),
+      tipo: panel.querySelector("#idTipo").value,
+      nivel: panel.querySelector("#idNivel").value
+    });
+    renderAll();
+  });
+  panel.querySelectorAll(".chip-remove[data-idid]").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      const id = Number(e.target.dataset.idid);
+      state.idiomas = state.idiomas.filter(x=>x.id!==id);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- TALENTOS ---------- */
+RENDERERS.talentos = function(){
+  const panel = document.getElementById("panel-talentos");
+  panel.innerHTML = "";
+  panel.innerHTML = `<h2 class="section-title">Talentos
+    <span class="subtotal-pill">Subtotal: <b>${talentosCost()}</b> grageas</span></h2>
+    <p class="section-sub">Marca los talentos que tiene tu personaje.</p>`;
+
+  const grid = document.createElement("div");
+  grid.className = "check-grid";
+  TALENTOS.forEach(([name,price])=>{
+    const row = document.createElement("div");
+    row.className = "check-row";
+    const checked = state.talentos.has(name);
+    row.innerHTML = `<input type="checkbox" id="tal-${name}" data-talent="${name}" ${checked?"checked":""}>
+      <label for="tal-${name}">${name}</label><span class="price">${price} gr</span>`;
+    grid.appendChild(row);
+  });
+  panel.appendChild(grid);
+
+  panel.querySelectorAll("input[data-talent]").forEach(chk=>{
+    chk.addEventListener("change", e=>{
+      const name = e.target.dataset.talent;
+      if(e.target.checked) state.talentos.add(name); else state.talentos.delete(name);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- ARCANOS ---------- */
+function renderArcanoGroup(title, tiers){
+  const wrap = document.createElement("div");
+  wrap.className = "arc-group";
+  let warn = "";
+  const gr = state.arcanos;
+  tiers.forEach(t=>{
+    if(t.requiresLE && gr[t.key] > gr[t.requiresLE]){
+      warn += `Faltan ${title.toLowerCase()} del nivel anterior para sostener "${t.label}". `;
+    }
+    if(t.gate!==undefined){
+      const lvl = title==="Pociones" ? pociencesLevel() : ritualesLevel();
+      if(gr[t.key] > 0 && lvl < t.gate){
+        warn += `"${t.label}" requiere ${title} nivel ${t.gate} o superior (actual: ${lvl}). `;
+      }
+    }
+  });
+  const cost = tiers.reduce((s,t)=> s + gr[t.key]*t.price, 0);
+  wrap.innerHTML = `<h3>${title} <span style="color:var(--gold-dim);font-size:0.8rem;float:right;">${cost} gr</span></h3>`;
+  tiers.forEach(t=>{
+    const row = document.createElement("div");
+    row.className = "arc-row";
+    row.innerHTML = `<label>${t.label}<small>${t.price} gr / unidad</small></label>
+      <input type="number" min="0" data-arc="${t.key}" value="${gr[t.key]}">`;
+    wrap.appendChild(row);
+  });
+  if(warn) {
+    const w = document.createElement("div");
+    w.className = "warn-text";
+    w.textContent = warn.trim();
+    wrap.appendChild(w);
+  }
+  return wrap;
+}
+
+RENDERERS.arcanos = function(){
+  const panel = document.getElementById("panel-arcanos");
+  panel.innerHTML = "";
+  panel.innerHTML = `<h2 class="section-title">Arcanos
+    <span class="subtotal-pill">Subtotal: <b>${arcanosCost()}</b> grageas</span></h2>
+    <p class="section-sub">Las pociones y rituales requieren nivel suficiente en la habilidad correspondiente (Pociones: nivel ${pociencesLevel()}, Rituales: nivel ${ritualesLevel()}).</p>`;
+
+  const grid = document.createElement("div");
+  grid.className = "grid-2";
+  grid.appendChild(renderArcanoGroup("Hechizos", ARCANO_TIERS));
+  grid.appendChild(renderArcanoGroup("Pociones", POCION_TIERS));
+  grid.appendChild(renderArcanoGroup("Rituales", RITUAL_TIERS));
+  grid.appendChild(renderArcanoGroup("Objetos", OBJETO_TIERS));
+  panel.appendChild(grid);
+
+  panel.querySelectorAll("input[data-arc]").forEach(inp=>{
+    inp.addEventListener("input", e=>{
+      state.arcanos[e.target.dataset.arc] = Math.max(0, Number(e.target.value)||0);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- ARMAS ---------- */
+RENDERERS.armas = function(){
+  const panel = document.getElementById("panel-armas");
+  panel.innerHTML = "";
+  panel.innerHTML = `<h2 class="section-title">Armas
+    <span class="subtotal-pill">Subtotal: <b>${armasCost()}</b> grageas</span></h2>
+    <p class="section-sub">Cada material añade huecos de rúnica; cada runa consume huecos según su nivel.</p>`;
+
+  state.armas.forEach((w, idx)=>{
+    const card = document.createElement("div");
+    card.className = "weapon-card";
+    const matCost = weaponMatCost(w), runCost = weaponRunCost(w);
+    const slotsAvail = weaponMatSlots(w), slotsNeed = weaponRunSlots(w);
+    card.innerHTML = `<h3>${w.nombre} <span style="color:var(--gold-dim);font-size:0.85rem;">— ${matCost+runCost} gr</span></h3>`;
+
+    const cols = document.createElement("div");
+    cols.className = "weapon-cols";
+
+    const matCol = document.createElement("div");
+    matCol.className = "weapon-col";
+    matCol.innerHTML = `<h4>Materiales — ${matCost} gr</h4>`;
+    MATERIALES.forEach(([name,price,slots])=>{
+      const checked = w.materiales.has(name);
+      const row = document.createElement("div");
+      row.className = "check-row";
+      row.innerHTML = `<input type="checkbox" id="mat-${idx}-${name}" data-weapon="${idx}" data-mat="${name}" ${checked?"checked":""}>
+        <label for="mat-${idx}-${name}">${name}</label><span class="price">${price} gr</span>`;
+      matCol.appendChild(row);
+    });
+    cols.appendChild(matCol);
+
+    const runCol = document.createElement("div");
+    runCol.className = "weapon-col";
+    runCol.innerHTML = `<h4>Runas — ${runCost} gr</h4>`;
+    RUNAS.forEach(([name,slots,price])=>{
+      const checked = w.runas.has(name);
+      const row = document.createElement("div");
+      row.className = "check-row";
+      row.innerHTML = `<input type="checkbox" id="run-${idx}-${name}" data-weapon="${idx}" data-run="${name}" ${checked?"checked":""}>
+        <label for="run-${idx}-${name}">${name}</label><span class="price">${price} gr</span>`;
+      runCol.appendChild(row);
+    });
+    cols.appendChild(runCol);
+
+    card.appendChild(cols);
+
+    const summary = document.createElement("div");
+    summary.className = "weapon-summary";
+    const slotsClass = slotsNeed > slotsAvail ? "slots-bad" : "slots-ok";
+    summary.innerHTML = `<span>Huecos disponibles: <b>${slotsAvail}</b></span>
+      <span>Huecos necesarios: <b class="${slotsClass}">${slotsNeed}</b></span>
+      ${slotsNeed>slotsAvail ? `<span class="warn-text">Faltan huecos de rúnica para esta arma.</span>`:""}`;
+    card.appendChild(summary);
+
+    panel.appendChild(card);
+  });
+
+  panel.querySelectorAll("input[data-mat]").forEach(chk=>{
+    chk.addEventListener("change", e=>{
+      const w = state.armas[Number(e.target.dataset.weapon)];
+      const name = e.target.dataset.mat;
+      if(e.target.checked) w.materiales.add(name); else w.materiales.delete(name);
+      renderAll();
+    });
+  });
+  panel.querySelectorAll("input[data-run]").forEach(chk=>{
+    chk.addEventListener("change", e=>{
+      const w = state.armas[Number(e.target.dataset.weapon)];
+      const name = e.target.dataset.run;
+      if(e.target.checked) w.runas.add(name); else w.runas.delete(name);
+      renderAll();
+    });
+  });
+};
+
+/* ---------- PERSONAJE (Raza) ---------- */
+RENDERERS.personaje = function(){
+  const panel = document.getElementById("panel-personaje");
+  panel.innerHTML = "";
+  panel.innerHTML = `<h2 class="section-title">Personaje
+    <span class="subtotal-pill">Subtotal: <b>${razaCost()}</b> grageas</span></h2>
+    <p class="section-sub">Raza del personaje y resumen general de la ficha.</p>`;
+
+  const raceCard = document.createElement("div");
+  raceCard.className = "card";
+  raceCard.style.maxWidth = "360px";
+  raceCard.innerHTML = `
+    <div class="card-row"><span class="card-name">Raza</span><span class="card-cost">${razaCost()} gr</span></div>
+    <div class="card-row">
+      <select id="razaSelect">
+        ${RAZAS.map(([n,p])=>`<option value="${n}" ${state.raza===n?"selected":""}>${n} (${p} gr)</option>`).join("")}
+      </select>
+    </div>`;
+  panel.appendChild(raceCard);
+
+  const summary = document.createElement("div");
+  summary.style.marginTop = "26px";
+  summary.innerHTML = `<h3 style="font-family:var(--serif);font-weight:400;color:var(--gold);margin-bottom:12px;">Resumen de gasto</h3>`;
+  const rows = [
+    ["Estadísticas", statsCost()],
+    ["Habilidades", skillsCost()],
+    ["Especializaciones", espCost()],
+    ["Trasfondos generales", trasfGenCost()],
+    ["Trasfondos específicos", trasfEspCost()],
+    ["Títulos académicos", titulosCost()],
+    ["Idiomas", idiomasCost()],
+    ["Talentos", talentosCost()],
+    ["Raza", razaCost()],
+    ["Arcanos", arcanosCost()],
+    ["Armas", armasCost()]
+  ];
+  const sumCard = document.createElement("div");
+  sumCard.className = "card";
+  sumCard.style.maxWidth = "420px";
+  rows.forEach(([label,val])=>{
+    const r = document.createElement("div");
+    r.className = "card-row";
+    r.innerHTML = `<span class="card-name">${label}</span><span class="card-cost">${val} gr</span>`;
+    sumCard.appendChild(r);
+  });
+  const totalRow = document.createElement("div");
+  totalRow.className = "card-row";
+  totalRow.style.borderTop = "1px solid var(--line)";
+  totalRow.style.marginTop = "8px";
+  totalRow.style.paddingTop = "8px";
+  totalRow.innerHTML = `<span class="card-name" style="color:var(--gold);font-weight:600;">Total gastado</span><span class="card-cost" style="color:var(--gold);font-weight:600;">${totalGastado()} gr</span>`;
+  sumCard.appendChild(totalRow);
+  summary.appendChild(sumCard);
+  panel.appendChild(summary);
+
+  panel.querySelector("#razaSelect").addEventListener("change", e=>{
+    state.raza = e.target.value;
+    renderAll();
+  });
+};
+
+/* =========================================================
+   INIT
+   ========================================================= */
+buildTabs();
+renderAll();
+</script>
+</body>
+</html>
