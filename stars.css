@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=EB+Garamond:ital@0;1&display=swap');
+
+#Stars-bg-00 {
+  margin: 20px auto;
+  color: var(--Stars-tx);
+  font-family: 'EB Garamond', Georgia, serif;
+}
+
+#Stars-bg-00 .Stars-ctn-01 {
+  width: 100%;
+  text-align: center;
+}
+
+#Stars-bg-00 icon {
+  display: block;
+  font-size: 26px;
+  color: var(--Stars-cl1);
+  margin-bottom: 4px;
+}
+
+#Stars-bg-00 h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 50px;
+  letter-spacing: 1px;
+  color: var(--Stars-cl1);
+  text-shadow: 2px 2px 0px var(--Stars-cl2);
+  margin: 0;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+#Stars-bg-00 qt {
+  display: block;
+  background-color: var(--Stars-cl2);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  margin-top: -14px;
+  position: relative;
+  z-index: 2;
+}
+
+#Stars-bg-00 section {
+  display: block;
+  text-align: justify;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-top: 24px;
+}
+
+#Stars-bg-00 section::first-letter {
+  float: left;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 0.8;
+  color: var(--Stars-cl1);
+  padding-right: 8px;
+  padding-top: 6px;
+}
+
+#Stars-bg-00 cit {
+  font-style: italic;
+  color: var(--Stars-cl1);
+}
+
+#Stars-bg-00 ln {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background-color: var(--Stars-cl1);
+  margin: 20px auto;
+}
+
+#Stars-bg-00 footer {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #999999;
+  margin-top: 10px;
+}
