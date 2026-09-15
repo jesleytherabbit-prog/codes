@@ -1,6 +1,7 @@
 /* =========================================================
    PAQUETE DE ENTREGA — Danish Pastel x Pixel
-   Hover: caja cerrada -> se "abre" mostrando imagen + link
+   Hover: caja cerrada -> se "abre" mostrando lista scrolleable
+   de imagenes + su [code] para copiar
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
@@ -14,8 +15,8 @@
   --gh-terracota: #bb8266;
   --gh-texto: #5c4d3f;
 
-  width: 280px;
-  height: 300px;
+  width: 460px;
+  height: 420px;
   margin: 15px auto;
   position: relative;
   font-family: 'VT323', monospace;
@@ -55,12 +56,12 @@
 }
 .gh-paquete-frente::before {
   top: 0; bottom: 0; left: 50%;
-  width: 22px;
+  width: 26px;
   transform: translateX(-50%);
 }
 .gh-paquete-frente::after {
   left: 0; right: 0; top: 50%;
-  height: 22px;
+  height: 26px;
   transform: translateY(-50%);
 }
 
@@ -68,25 +69,25 @@
   position: relative;
   z-index: 3;
   font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
+  font-size: 13px;
   background: var(--gh-terracota);
   color: var(--gh-crema);
   border: 3px solid var(--gh-marron);
   box-shadow: 3px 3px 0 var(--gh-marron);
-  padding: 10px 14px;
-  line-height: 1.8;
+  padding: 12px 16px;
+  line-height: 1.9;
 }
 
 .gh-paquete-hint {
   position: relative;
   z-index: 3;
-  font-size: 14px;
-  margin-top: 12px;
+  font-size: 15px;
+  margin-top: 14px;
   color: var(--gh-marron);
   opacity: 0.7;
 }
 
-/* ---- Lado TRASERO (imagen + código, oculto hasta hover) ---- */
+/* ---- Lado TRASERO (contenedor general, oculto hasta hover) ---- */
 .gh-paquete-dorso {
   position: absolute;
   inset: 0;
@@ -94,18 +95,58 @@
   visibility: hidden;
   transition: opacity 0.35s ease;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
   background: var(--gh-crema);
-  padding: 10px;
   box-sizing: border-box;
+  padding: 12px;
+}
+
+.gh-paquete-dorso-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--gh-marron);
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+/* ---- Lista scrolleable de items ---- */
+.gh-paquete-lista {
+  height: calc(100% - 26px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Scrollbar estilo pastel/pixel */
+.gh-paquete-lista::-webkit-scrollbar {
+  width: 10px;
+}
+.gh-paquete-lista::-webkit-scrollbar-track {
+  background: var(--gh-beige);
+  border: 2px solid var(--gh-marron);
+}
+.gh-paquete-lista::-webkit-scrollbar-thumb {
+  background: var(--gh-terracota);
+  border: 2px solid var(--gh-marron);
+}
+
+/* ---- Cada item individual (imagen + su código) ---- */
+.gh-item {
+  border: 3px solid var(--gh-marron);
+  background: var(--gh-beige);
+  margin-bottom: 10px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.gh-item:last-child {
+  margin-bottom: 0;
 }
 
 .gh-paquete-marco {
   width: 100%;
-  height: 210px;
+  height: 180px;
   border: 3px solid var(--gh-marron);
-  background: var(--gh-beige);
+  background: var(--gh-crema);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +154,7 @@
   box-sizing: border-box;
 }
 
-.gh-paquete-dorso img {
+.gh-paquete-marco img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -124,7 +165,7 @@
 
 .gh-paquete-codigo {
   margin-top: 8px;
-  background: var(--gh-beige);
+  background: var(--gh-crema);
   border: 2px dashed var(--gh-marron);
   padding: 6px;
   font-size: 12px;
