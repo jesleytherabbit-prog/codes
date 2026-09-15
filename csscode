@@ -1,0 +1,133 @@
+/* =========================================================
+FICHA HANA NO COPIAR SIN PERMISO
+   ========================================================= */
+
+/* ---- Variables de color (fácil de ajustar todo desde acá) ---- */
+:root {
+  --fa-bg-1: #2b2438;
+  --fa-bg-2: #3a2f4d;
+  --fa-bg-3: #2f2a42;
+  --fa-border: #a89bc4;
+  --fa-titulo: #e8c9de;
+  --fa-subtitulo: #c9a8d4;
+  --fa-dorado: #f0d9c8;
+  --fa-texto: #c9bfd4;
+  --fa-acento: #b8a4d9;
+  --fa-sombra: rgba(168, 155, 196, 0.25);
+}
+
+/* ---- Caja principal de la ficha ---- */
+.fa-ficha-box {
+  border: 1px solid var(--fa-border);
+  border-radius: 18px;
+  padding: 25px 20px;
+  margin: 15px 0;
+  background: linear-gradient(135deg, var(--fa-bg-1) 0%, var(--fa-bg-2) 50%, var(--fa-bg-3) 100%);
+  box-shadow: 0 4px 20px var(--fa-sombra);
+  text-align: center;
+  font-family: 'Georgia', serif;
+}
+
+/* ---- Título principal ---- */
+.fa-ficha-titulo {
+  color: var(--fa-titulo);
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.fa-sparkle {
+  color: var(--fa-border);
+  font-size: 10px;
+  display: block;
+  margin: 4px 0;
+}
+
+/* ---- Subtítulo / enlace ---- */
+.fa-ficha-subtitulo {
+  font-size: 11px;
+}
+
+.fa-ficha-subtitulo a {
+  color: var(--fa-subtitulo);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--fa-subtitulo);
+  transition: opacity 0.2s ease;
+}
+
+.fa-ficha-subtitulo a:hover {
+  opacity: 0.7;
+}
+
+/* ---- Separador punteado ---- */
+.fa-divider {
+  border-top: 1px dashed var(--fa-border);
+  width: 60%;
+  margin: 15px auto;
+  opacity: 0.6;
+}
+
+/* ---- Caja interna (spoiler / secciones desplegables) ---- */
+.fa-inner-box {
+  background: linear-gradient(135deg, #362c47 0%, #2c2438 100%);
+  border: 1px solid #4a3d5c;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.fa-inner-titulo {
+  color: var(--fa-dorado);
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.fa-inner-subtitulo {
+  color: var(--fa-titulo);
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 6px;
+}
+
+/* ---- Filas de habilidades / stats ---- */
+.fa-skill-name {
+  color: var(--fa-texto);
+}
+
+.fa-skill-nivel {
+  color: var(--fa-acento);
+  font-weight: bold;
+}
+
+/* ---- Utilidades extra (para futuros usos) ---- */
+.fa-badge {
+  display: inline-block;
+  background: var(--fa-bg-2);
+  border: 1px solid var(--fa-border);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 11px;
+  color: var(--fa-titulo);
+  margin: 2px;
+}
+
+.fa-boton {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--fa-acento) 0%, var(--fa-subtitulo) 100%);
+  color: #2b2438;
+  font-weight: bold;
+  padding: 6px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.fa-boton:hover {
+  transform: scale(1.05);
+}
