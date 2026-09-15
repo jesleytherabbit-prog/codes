@@ -1,0 +1,183 @@
+/* =========================================================
+   EL ECO DEL IMPERIO — Tablilla de misión
+   Estepa mongola / imperio caído / runas / oro apagado
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&display=swap');
+
+.imp-tablilla {
+  --imp-oro: #c9a24b;
+  --imp-oro-op: #ddc07a;
+  --imp-rojo: #8a3324;
+  --imp-texto: #e7dcc4;
+  --imp-texto2: #b3a689;
+  --imp-linea: #6b5a3a;
+  --imp-fondo1: #100d09;
+  --imp-fondo2: #241d13;
+  --imp-img: url('');
+
+  max-width: 560px;
+  margin: 20px auto;
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--imp-texto);
+  background:
+    linear-gradient(180deg, rgba(8,6,4,0.88) 0%, rgba(8,6,4,0.94) 100%),
+    var(--imp-img) center / cover no-repeat,
+    var(--imp-fondo1);
+  border: 1px solid var(--imp-linea);
+  box-shadow:
+    0 0 0 6px var(--imp-fondo2),
+    0 0 0 7px var(--imp-linea),
+    0 10px 30px rgba(0,0,0,0.5);
+  padding: 34px 36px 30px;
+  box-sizing: border-box;
+}
+
+/* Esquinas ornamentales tipo sello grabado */
+.imp-tablilla::before,
+.imp-tablilla::after {
+  content: "❖";
+  position: absolute;
+  color: var(--imp-oro);
+  font-size: 14px;
+  opacity: 0.8;
+}
+.imp-tablilla::before { top: 10px; left: 12px; }
+.imp-tablilla::after  { bottom: 10px; right: 12px; }
+
+/* ---- Encabezado ---- */
+.imp-subtitulo {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--imp-texto2);
+  margin-bottom: 6px;
+}
+
+.imp-titulo {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 27px;
+  letter-spacing: 1px;
+  color: var(--imp-oro-op);
+  text-shadow: 0 0 12px rgba(201, 162, 75, 0.35);
+  margin: 4px 0 18px;
+}
+
+/* ---- Separador con simbolo runico central ---- */
+.imp-separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0;
+}
+.imp-separador .imp-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--imp-linea) 40%, var(--imp-linea) 60%, transparent);
+}
+.imp-separador .imp-icono {
+  margin: 0 14px;
+  color: var(--imp-oro);
+  font-size: 15px;
+  transform: rotate(0deg);
+}
+
+/* ---- Cita destacada (Cantares de Karakórum) ---- */
+.imp-cita {
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--imp-texto);
+  padding: 0 10px;
+}
+
+.imp-cita-autor {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--imp-oro);
+  opacity: 0.85;
+}
+
+/* ---- Cuerpo narrativo ---- */
+.imp-texto {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--imp-texto);
+  text-align: justify;
+}
+.imp-texto p {
+  margin: 0 0 16px;
+}
+.imp-texto p:last-child {
+  margin-bottom: 0;
+}
+
+/* Capitular decorativa en el primer parrafo */
+.imp-texto p.imp-inicio::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 46px;
+  color: var(--imp-oro-op);
+  float: left;
+  line-height: 0.8;
+  padding: 6px 8px 0 0;
+  text-shadow: 0 0 10px rgba(201, 162, 75, 0.3);
+}
+
+.imp-texto b,
+.imp-texto strong {
+  color: var(--imp-oro-op);
+  font-weight: 600;
+}
+
+/* ---- Pie / datos de la mision ---- */
+.imp-datos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin-top: 6px;
+}
+
+.imp-dato {
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--imp-texto2);
+  border: 1px solid var(--imp-linea);
+  padding: 5px 12px;
+}
+
+.imp-dato b {
+  color: var(--imp-oro);
+}
+
+/* ---- Firma ---- */
+.imp-firma {
+  text-align: center;
+  margin-top: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--imp-texto2);
+}
+.imp-firma a {
+  color: var(--imp-oro);
+  text-decoration: none;
+  border-bottom: 1px solid var(--imp-linea);
+}
+.imp-firma a:hover {
+  color: var(--imp-oro-op);
+}
