@@ -1,0 +1,126 @@
+/* =========================================================
+   CORRESPONDENCIA DE HANA — Sobre con hover (crossfade)
+   Clases: .carta1 (wrapper) / .sobr1 (sobre) / .nombr12 (nombre)
+   .lett2 (carta) / .textcart (texto) / .creditcart (sello/credito)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+.carta1 {
+  position: relative;
+  width: 300px;
+  height: 230px;
+  margin: 20px auto;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* ---- SOBRE (capa visible por defecto) ---- */
+.sobr1 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(160deg, #f3c9d4 0%, #e3a8b8 100%);
+  border: 2px solid #d9a893;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(139, 106, 92, 0.28);
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Sellito decorativo arriba del nombre */
+.sobr1::before {
+  content: "❀";
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e8899e, #c65b73 75%);
+  color: #ffe8ee;
+  font-size: 14px;
+  box-shadow: 0 3px 6px rgba(139, 106, 92, 0.35);
+}
+
+.sobr1 small {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.nombr12 {
+  font-family: 'Satisfy', cursive;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* ---- CARTA (capa oculta hasta el hover) ---- */
+.lett2 {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  background:
+    repeating-linear-gradient(
+      #fdf6ea 0px, #fdf6ea 27px,
+      #e8d9d0 28px
+    );
+  border: 1px solid #e8d9d0;
+  border-radius: 8px;
+  box-shadow: 0 5px 14px rgba(139, 106, 92, 0.22);
+  padding: 18px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.textcart {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b5b57;
+}
+
+.textcart .firma {
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+  font-family: 'Satisfy', cursive;
+  font-size: 24px;
+  color: #c65b73;
+}
+
+/* ---- Hover: crossfade sin mover nada ---- */
+.carta1:hover .sobr1 {
+  opacity: 0;
+  visibility: hidden;
+}
+.carta1:hover .lett2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---- Credito / sello pequeño debajo (opcional, decorativo) ---- */
+.creditcart {
+  width: 40px;
+  height: 12px;
+  margin: 6px auto 0;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 9px;
+  color: #b98a72;
+  letter-spacing: 1px;
+}
