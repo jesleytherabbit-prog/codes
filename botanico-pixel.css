@@ -1,0 +1,194 @@
+/* =========================================================
+   BOTÁNICO PIXEL PASTEL
+   Ficha + Spoiler a juego — verde salvia, rosa, flores pixel
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --bp-crema: #f6f3e7;
+  --bp-salvia: #b7c9a8;
+  --bp-verde: #7e9c6c;
+  --bp-verde-osc: #566b46;
+  --bp-rosa: #eac4c9;
+  --bp-amarillo: #f0dfa1;
+  --bp-marron: #5b4636;
+  --bp-texto: #4f4438;
+}
+
+/* =================== FICHA PRINCIPAL =================== */
+.bp-ficha-box {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: var(--bp-texto);
+  background: var(--bp-crema);
+  padding: 30px 22px 24px;
+  margin: 15px 0;
+  text-align: center;
+  position: relative;
+  border: 4px solid var(--bp-marron);
+  box-shadow:
+    0 0 0 4px var(--bp-crema),
+    0 0 0 8px var(--bp-marron),
+    6px 6px 0 8px rgba(91, 70, 54, 0.22);
+}
+
+/* Franja de "hojitas" pixel arriba (bloques alternados) */
+.bp-ficha-box::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bp-verde) 0px, var(--bp-verde) 10px,
+    var(--bp-rosa) 10px, var(--bp-rosa) 20px,
+    var(--bp-amarillo) 20px, var(--bp-amarillo) 30px,
+    var(--bp-salvia) 30px, var(--bp-salvia) 40px
+  );
+}
+
+.bp-ficha-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 15px;
+  color: var(--bp-verde-osc);
+  letter-spacing: 1px;
+  line-height: 1.7;
+  margin: 8px 0;
+  text-shadow: 2px 2px 0 var(--bp-rosa);
+}
+
+.bp-hoja {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--bp-verde);
+  font-size: 10px;
+  display: block;
+  margin: 6px 0;
+}
+
+.bp-ficha-subtitulo {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+}
+
+.bp-ficha-subtitulo a {
+  color: var(--bp-verde-osc);
+  text-decoration: none;
+  border-bottom: 2px dotted var(--bp-verde);
+  padding-bottom: 1px;
+}
+
+.bp-ficha-subtitulo a:hover {
+  background: var(--bp-salvia);
+  color: var(--bp-crema);
+}
+
+/* Separador tipo enredadera (guiones + hojita) */
+.bp-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin: 16px auto;
+  color: var(--bp-verde);
+  font-size: 13px;
+}
+.bp-divider::before,
+.bp-divider::after {
+  content: "";
+  flex: 1;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bp-marron) 0px, var(--bp-marron) 4px,
+    transparent 4px, transparent 8px
+  );
+  margin: 0 8px;
+  opacity: 0.5;
+}
+
+/* =================== SPOILER A JUEGO =================== */
+.bp-spoiler {
+  width: 95%;
+  margin: 14px auto 0;
+  font-family: 'VT323', monospace;
+  color: var(--bp-texto);
+  background: var(--bp-crema);
+  border: 3px solid var(--bp-marron);
+  box-shadow: 4px 4px 0 var(--bp-salvia);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bp-spoiler summary {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: var(--bp-verde-osc);
+  background: var(--bp-rosa);
+  min-height: 34px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+  letter-spacing: 1px;
+  user-select: none;
+  border-bottom: 3px solid var(--bp-marron);
+  transition: background 0.2s ease;
+}
+
+.bp-spoiler summary::-webkit-details-marker { display: none; }
+.bp-spoiler summary::marker { content: ""; }
+
+.bp-spoiler summary::before { content: "🌿 "; }
+.bp-spoiler summary::after  { content: " 🌿"; }
+
+.bp-spoiler summary:hover {
+  background: var(--bp-salvia);
+  color: var(--bp-crema);
+}
+
+.bp-spoiler-content {
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  background: var(--bp-amarillo);
+}
+
+.bp-inner-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  color: var(--bp-verde-osc);
+  display: block;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 0 var(--bp-crema);
+}
+
+.bp-inner-subtitulo {
+  font-family: 'VT323', monospace;
+  color: var(--bp-marron);
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.bp-skill-name {
+  color: var(--bp-texto);
+}
+
+.bp-skill-nivel {
+  color: var(--bp-crema);
+  background: var(--bp-verde);
+  font-weight: bold;
+  padding: 2px 8px;
+  margin-left: 4px;
+  border: 2px solid var(--bp-marron);
+  box-shadow: 2px 2px 0 var(--bp-marron);
+}
