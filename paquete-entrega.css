@@ -1,0 +1,143 @@
+/* =========================================================
+   PAQUETE DE ENTREGA — Danish Pastel x Pixel
+   Hover: caja cerrada -> se "abre" mostrando imagen + link
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+.gh-paquete {
+  --gh-crema: #f5ecd9;
+  --gh-beige: #e8d8c0;
+  --gh-rosa: #dcb8ac;
+  --gh-salvia: #b6c4a8;
+  --gh-marron: #6b5544;
+  --gh-terracota: #bb8266;
+  --gh-texto: #5c4d3f;
+
+  width: 260px;
+  height: 260px;
+  margin: 15px auto;
+  position: relative;
+  font-family: 'VT323', monospace;
+  color: var(--gh-texto);
+  border: 4px solid var(--gh-marron);
+  box-shadow:
+    0 0 0 4px var(--gh-crema),
+    0 0 0 8px var(--gh-marron),
+    6px 6px 0 8px rgba(107, 85, 68, 0.25);
+  overflow: hidden;
+  background: var(--gh-crema);
+}
+
+/* ---- Lado FRONTAL (caja cerrada) ---- */
+.gh-paquete-frente {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--gh-beige);
+  transition: opacity 0.35s ease;
+  z-index: 2;
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Cinta de la caja (cruz tipo paquete de correo) */
+.gh-paquete-frente::before,
+.gh-paquete-frente::after {
+  content: "";
+  position: absolute;
+  background: var(--gh-rosa);
+  opacity: 0.8;
+}
+.gh-paquete-frente::before {
+  top: 0; bottom: 0; left: 50%;
+  width: 22px;
+  transform: translateX(-50%);
+}
+.gh-paquete-frente::after {
+  left: 0; right: 0; top: 50%;
+  height: 22px;
+  transform: translateY(-50%);
+}
+
+.gh-paquete-sello {
+  position: relative;
+  z-index: 3;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  background: var(--gh-terracota);
+  color: var(--gh-crema);
+  border: 3px solid var(--gh-marron);
+  box-shadow: 3px 3px 0 var(--gh-marron);
+  padding: 10px 14px;
+  line-height: 1.8;
+}
+
+.gh-paquete-hint {
+  position: relative;
+  z-index: 3;
+  font-size: 14px;
+  margin-top: 12px;
+  color: var(--gh-marron);
+  opacity: 0.7;
+}
+
+/* ---- Lado TRASERO (imagen + código, oculto hasta hover) ---- */
+.gh-paquete-dorso {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--gh-crema);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.gh-paquete-dorso img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border: 3px solid var(--gh-marron);
+  image-rendering: pixelated;
+}
+
+.gh-paquete-codigo {
+  margin-top: 8px;
+  background: var(--gh-beige);
+  border: 2px dashed var(--gh-marron);
+  padding: 6px;
+  font-size: 13px;
+  flex: 1;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.gh-paquete-codigo code,
+.gh-paquete-codigo pre {
+  font-family: 'VT323', monospace !important;
+  font-size: 13px !important;
+  color: var(--gh-texto) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  white-space: pre-wrap !important;
+}
+
+/* ---- Hover: crossfade entre frente y dorso ---- */
+.gh-paquete:hover .gh-paquete-frente {
+  opacity: 0;
+}
+
+.gh-paquete:hover .gh-paquete-dorso {
+  opacity: 1;
+  visibility: visible;
+}
