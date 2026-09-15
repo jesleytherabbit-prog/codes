@@ -1,0 +1,92 @@
+/* =========================================================
+   SPOILERS CUTE — Danish Pastel x Pixel
+   Estiliza el <details>/<summary> nativo de ForoActivo
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --sp-crema: #f5ecd9;
+  --sp-beige: #e8d8c0;
+  --sp-rosa: #dcb8ac;
+  --sp-marron: #6b5544;
+  --sp-terracota: #bb8266;
+  --sp-texto: #5c4d3f;
+}
+
+/* ---- Contenedor completo del spoiler ---- */
+details {
+  font-family: 'VT323', monospace;
+  color: var(--sp-texto);
+  background: var(--sp-crema);
+  border: 3px solid var(--sp-marron);
+  box-shadow: 4px 4px 0 var(--sp-terracota);
+  margin: 12px 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ---- La pestaña clickeable ---- */
+details summary {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: var(--sp-crema);
+  background: var(--sp-terracota);
+  padding: 10px 14px;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  letter-spacing: 1px;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+/* Quitar la flechita nativa del navegador */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary::marker {
+  content: "";
+}
+
+/* ---- Ícono decorativo + flechita propia ---- */
+details summary::before {
+  content: "✧ ";
+}
+
+details summary::after {
+  content: "▾";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.25s ease;
+}
+
+details[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+details summary:hover {
+  background: var(--sp-rosa);
+  color: var(--sp-marron);
+}
+
+/* ---- Contenido interno cuando se abre ---- */
+details[open] summary {
+  border-bottom: 3px solid var(--sp-marron);
+}
+
+details > *:not(summary) {
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+/* Si el contenido trae su propio texto suelto (sin wrapper), le damos aire */
+details p {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+details p:last-child {
+  margin-bottom: 0;
+}
