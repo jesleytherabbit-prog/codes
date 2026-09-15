@@ -19,31 +19,31 @@
 /* =================== FICHA PRINCIPAL =================== */
 .bp-ficha-box {
   font-family: 'VT323', monospace;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--bp-texto);
   background: var(--bp-crema);
-  padding: 10px 16px 8px;
-  margin: 8px 0;
+  padding: 8px 14px 6px;
+  margin: 6px 0;
   max-width: 340px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   position: relative;
-  border: 3px solid var(--bp-marron);
+  border: 2px solid var(--bp-marron);
   box-shadow:
-    0 0 0 3px var(--bp-crema),
-    0 0 0 6px var(--bp-marron),
-    5px 5px 0 6px rgba(91, 70, 54, 0.2);
+    0 0 0 2px var(--bp-crema),
+    0 0 0 4px var(--bp-marron),
+    3px 3px 0 4px rgba(91, 70, 54, 0.2);
 }
 
 /* Franja de "hojitas" pixel arriba (bloques alternados, más fina) */
 .bp-ficha-box::before {
   content: "";
   position: absolute;
-  top: -9px;
+  top: -6px;
   left: 0;
   width: 100%;
-  height: 5px;
+  height: 4px;
   background: repeating-linear-gradient(
     90deg,
     var(--bp-verde) 0px, var(--bp-verde) 8px,
@@ -55,12 +55,12 @@
 
 .bp-ficha-titulo {
   font-family: 'Press Start 2P', monospace;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--bp-verde-osc);
   letter-spacing: 1px;
-  line-height: 1.3;
-  margin: 2px 0;
-  text-shadow: 2px 2px 0 var(--bp-rosa);
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 1px 1px 0 var(--bp-rosa);
 }
 
 /* ---- Hojita/flor con balanceo tierno (whimsy) ---- */
@@ -79,7 +79,8 @@
 
 .bp-ficha-subtitulo {
   font-family: 'VT323', monospace;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.2;
 }
 
 .bp-ficha-subtitulo a {
@@ -97,33 +98,34 @@
 /* Separador ondulado tipo enredadera (mas whimsy que lineas rectas) */
 .bp-divider {
   text-align: center;
-  margin: 4px auto 6px;
+  margin: 2px auto 4px;
   color: var(--bp-verde);
-  font-size: 13px;
-  letter-spacing: 4px;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 3px;
 }
 
 /* =================== SPOILER A JUEGO =================== */
 .bp-spoiler {
   width: 100%;
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   font-family: 'VT323', monospace;
   color: var(--bp-texto);
   background: var(--bp-crema);
   border: 2px solid var(--bp-marron);
-  border-radius: 10px 10px 4px 4px;
-  box-shadow: 3px 3px 0 var(--bp-salvia);
+  border-radius: 8px 8px 3px 3px;
+  box-shadow: 2px 2px 0 var(--bp-salvia);
   overflow: hidden;
   cursor: pointer;
 }
 
 .bp-spoiler summary {
   font-family: 'Press Start 2P', monospace;
-  font-size: 9px;
+  font-size: 8px;
   color: var(--bp-verde-osc);
   background: var(--bp-rosa);
-  min-height: 20px;
-  padding: 4px 10px;
+  min-height: 16px;
+  padding: 3px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
