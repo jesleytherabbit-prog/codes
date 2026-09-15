@@ -1,133 +1,188 @@
 /* =========================================================
-FICHA HANA NO COPIAR SIN PERMISO
+   FICHA DE HANA NO COPIAR SIN PERMISO
    ========================================================= */
 
-/* ---- Variables de color (fácil de ajustar todo desde acá) ---- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Mochiy+Pop+One&display=swap');
+
 :root {
-  --fa-bg-1: #2b2438;
-  --fa-bg-2: #3a2f4d;
-  --fa-bg-3: #2f2a42;
-  --fa-border: #a89bc4;
-  --fa-titulo: #e8c9de;
-  --fa-subtitulo: #c9a8d4;
-  --fa-dorado: #f0d9c8;
-  --fa-texto: #c9bfd4;
-  --fa-acento: #b8a4d9;
-  --fa-sombra: rgba(168, 155, 196, 0.25);
+  --fa-p1: #ffd6ec;   /* rosa pastel */
+  --fa-p2: #d6c9ff;   /* lila pastel */
+  --fa-p3: #c9f0ff;   /* celeste pastel */
+  --fa-p4: #fff3c4;   /* amarillo pastel */
+  --fa-borde: #f5b8e0;
+  --fa-titulo: #b23a8c;
+  --fa-subtitulo: #8a6fc9;
+  --fa-texto: #6b5b73;
+  --fa-acento: #d68fc9;
+  --fa-sombra: rgba(214, 143, 201, 0.35);
 }
 
-/* ---- Caja principal de la ficha ---- */
-.fa-ficha-box {
-  border: 1px solid var(--fa-border);
-  border-radius: 18px;
-  padding: 25px 20px;
-  margin: 15px 0;
-  background: linear-gradient(135deg, var(--fa-bg-1) 0%, var(--fa-bg-2) 50%, var(--fa-bg-3) 100%);
-  box-shadow: 0 4px 20px var(--fa-sombra);
-  text-align: center;
-  font-family: 'Georgia', serif;
+/* ---- Fondo animado en degradé pastel ---- */
+@keyframes fa-gradient-move {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+.fa-ficha-box {
+  font-family: 'Quicksand', sans-serif;
+  border: 2px solid var(--fa-borde);
+  border-radius: 25px;
+  padding: 28px 22px;
+  margin: 15px 0;
+  background: linear-gradient(120deg, var(--fa-p1), var(--fa-p3), var(--fa-p2), var(--fa-p4));
+  background-size: 300% 300%;
+  animation: fa-gradient-move 10s ease infinite;
+  box-shadow: 0 6px 25px var(--fa-sombra);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Brillito decorativo flotante ---- */
+@keyframes fa-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+  50% { transform: translateY(-6px) rotate(10deg); opacity: 1; }
+}
+
+.fa-ficha-box::before,
+.fa-ficha-box::after {
+  content: "✧";
+  position: absolute;
+  font-size: 22px;
+  color: #ffffffaa;
+  animation: fa-float 3s ease-in-out infinite;
+}
+.fa-ficha-box::before { top: 10px; left: 16px; }
+.fa-ficha-box::after { bottom: 10px; right: 16px; animation-delay: 1.5s; }
 
 /* ---- Título principal ---- */
 .fa-ficha-titulo {
+  font-family: 'Mochiy Pop One', sans-serif;
   color: var(--fa-titulo);
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 22px;
   letter-spacing: 1px;
-  margin: 5px 0;
+  margin: 6px 0;
+  text-shadow: 0 1px 0 #ffffffcc;
 }
 
 .fa-sparkle {
-  color: var(--fa-border);
-  font-size: 10px;
+  color: var(--fa-acento);
+  font-size: 12px;
   display: block;
   margin: 4px 0;
 }
 
 /* ---- Subtítulo / enlace ---- */
 .fa-ficha-subtitulo {
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .fa-ficha-subtitulo a {
   color: var(--fa-subtitulo);
   text-decoration: none;
-  border-bottom: 1px dotted var(--fa-subtitulo);
-  transition: opacity 0.2s ease;
+  border-bottom: 2px dotted var(--fa-subtitulo);
+  transition: all 0.25s ease;
 }
 
 .fa-ficha-subtitulo a:hover {
-  opacity: 0.7;
+  color: var(--fa-titulo);
+  border-color: var(--fa-titulo);
 }
 
-/* ---- Separador punteado ---- */
+/* ---- Separador tierno (corazoncito en el medio) ---- */
 .fa-divider {
-  border-top: 1px dashed var(--fa-border);
-  width: 60%;
-  margin: 15px auto;
-  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin: 16px auto;
+  color: var(--fa-acento);
+  font-size: 12px;
+}
+.fa-divider::before,
+.fa-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--fa-borde);
+  margin: 0 8px;
 }
 
-/* ---- Caja interna (spoiler / secciones desplegables) ---- */
+/* ---- Caja interna (spoiler / secciones) ---- */
 .fa-inner-box {
-  background: linear-gradient(135deg, #362c47 0%, #2c2438 100%);
-  border: 1px solid #4a3d5c;
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 8px;
+  font-family: 'Quicksand', sans-serif;
+  background: #fffaf3cc;
+  border: 2px dashed var(--fa-borde);
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 10px;
   text-align: center;
 }
 
 .fa-inner-titulo {
-  color: var(--fa-dorado);
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-family: 'Mochiy Pop One', sans-serif;
+  color: var(--fa-titulo);
+  font-size: 15px;
+  margin-bottom: 10px;
   display: block;
 }
 
 .fa-inner-subtitulo {
-  color: var(--fa-titulo);
+  color: var(--fa-subtitulo);
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   display: block;
-  margin: 10px 0 6px;
+  margin: 12px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ---- Filas de habilidades / stats ---- */
 .fa-skill-name {
   color: var(--fa-texto);
+  font-weight: 600;
 }
 
 .fa-skill-nivel {
   color: var(--fa-acento);
-  font-weight: bold;
+  font-weight: 700;
+  background: #ffffff88;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
 }
 
-/* ---- Utilidades extra (para futuros usos) ---- */
+/* ---- Badges / etiquetas ---- */
 .fa-badge {
   display: inline-block;
-  background: var(--fa-bg-2);
-  border: 1px solid var(--fa-border);
+  background: #ffffffaa;
+  border: 1.5px solid var(--fa-borde);
   border-radius: 20px;
-  padding: 3px 12px;
+  padding: 4px 14px;
   font-size: 11px;
+  font-weight: 600;
   color: var(--fa-titulo);
-  margin: 2px;
+  margin: 3px;
+  font-family: 'Quicksand', sans-serif;
 }
 
+/* ---- Botón tierno ---- */
 .fa-boton {
   display: inline-block;
-  background: linear-gradient(135deg, var(--fa-acento) 0%, var(--fa-subtitulo) 100%);
-  color: #2b2438;
-  font-weight: bold;
-  padding: 6px 18px;
-  border-radius: 20px;
+  background: linear-gradient(120deg, var(--fa-acento), var(--fa-subtitulo));
+  color: #ffffff;
+  font-weight: 700;
+  font-family: 'Quicksand', sans-serif;
+  padding: 8px 20px;
+  border-radius: 25px;
   text-decoration: none;
   font-size: 12px;
+  box-shadow: 0 3px 10px var(--fa-sombra);
   transition: transform 0.2s ease;
 }
 
 .fa-boton:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(-1deg);
 }
