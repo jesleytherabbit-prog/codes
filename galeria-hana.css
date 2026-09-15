@@ -1,0 +1,150 @@
+/* =========================================================
+   GALERÍA HANA — Danish Pastel x Pixel Shop Edition
+   Estética: vidriera/tienda cozy con bordes pixel
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+#gh-shop {
+  --gh-crema: #f5ecd9;
+  --gh-beige: #e8d8c0;
+  --gh-rosa: #dcb8ac;
+  --gh-salvia: #b6c4a8;
+  --gh-marron: #6b5544;
+  --gh-terracota: #bb8266;
+  --gh-texto: #5c4d3f;
+  --gh-toldo1: #dcb8ac;
+  --gh-toldo2: #f5ecd9;
+
+  width: var(--gh-width, 480px);
+  margin: 20px auto;
+  font-family: 'VT323', monospace;
+  color: var(--gh-texto);
+  background: var(--gh-crema);
+  border: 4px solid var(--gh-marron);
+  box-shadow:
+    0 0 0 4px var(--gh-crema),
+    0 0 0 8px var(--gh-marron),
+    6px 6px 0 8px rgba(107, 85, 68, 0.25);
+  position: relative;
+}
+
+/* ---- Toldo de tienda (franja rayada arriba, como un awning) ---- */
+#gh-shop .gh-toldo {
+  height: 22px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gh-toldo1) 0px, var(--gh-toldo1) 20px,
+    var(--gh-toldo2) 20px, var(--gh-toldo2) 40px
+  );
+  border-bottom: 4px solid var(--gh-marron);
+  position: relative;
+}
+
+/* ---- Borde festoneado del toldo (dientes pixelados) ---- */
+#gh-shop .gh-toldo::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background:
+    linear-gradient(-45deg, var(--gh-marron) 4px, transparent 0),
+    linear-gradient(45deg, var(--gh-marron) 4px, transparent 0);
+  background-size: 16px 8px;
+  background-repeat: repeat-x;
+}
+
+/* ---- Cartel colgante con el nombre de la tienda ---- */
+#gh-shop .gh-sign {
+  text-align: center;
+  padding: 22px 15px 10px;
+}
+
+#gh-shop .gh-sign-icon {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  color: var(--gh-terracota);
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+#gh-shop .gh-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 15px;
+  color: var(--gh-marron);
+  line-height: 1.8;
+  text-shadow: 2px 2px 0 var(--gh-rosa);
+  margin-bottom: 10px;
+}
+
+/* ---- Cartelito de estado (tipo "abierto/cerrado") ---- */
+#gh-shop .gh-estado {
+  display: inline-block;
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  background: var(--gh-salvia);
+  color: var(--gh-crema);
+  border: 2px solid var(--gh-marron);
+  box-shadow: 3px 3px 0 var(--gh-marron);
+  padding: 4px 14px;
+  margin: 6px 0 14px;
+  letter-spacing: 1px;
+}
+
+/* ---- Separador tipo cerca / valla de madera pixel ---- */
+#gh-shop .gh-divider {
+  height: 8px;
+  margin: 4px 0 14px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gh-marron) 0px, var(--gh-marron) 6px,
+    transparent 6px, transparent 14px
+  );
+  opacity: 0.5;
+}
+
+/* ---- Vidriera / contenido interior ---- */
+#gh-shop .gh-vidriera {
+  background: var(--gh-beige);
+  border: 3px solid var(--gh-marron);
+  box-shadow: inset 0 0 0 3px var(--gh-crema);
+  margin: 0 18px 20px;
+  padding: 18px;
+  font-size: 17px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+#gh-shop .gh-vidriera p {
+  margin: 0 0 10px;
+}
+
+#gh-shop .gh-vidriera p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Etiqueta de precio / detalle (para usar en items de galería) ---- */
+#gh-shop .gh-tag {
+  display: inline-block;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  background: var(--gh-rosa);
+  border: 2px solid var(--gh-marron);
+  box-shadow: 2px 2px 0 var(--gh-marron);
+  padding: 3px 10px;
+  color: var(--gh-marron);
+  margin: 3px;
+}
+
+/* ---- Pie de tienda ---- */
+#gh-shop .gh-footer {
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--gh-terracota);
+  padding-bottom: 16px;
+  letter-spacing: 1px;
+}
