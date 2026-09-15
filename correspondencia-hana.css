@@ -1,0 +1,177 @@
+/* =========================================================
+   CORRESPONDENCIA DE HANA — Sobre + Carta (hover)
+   Estilo: stationery dulce, soft pastel
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Caveat:wght@600;700&display=swap');
+
+.hp-sobre-wrap {
+  --hp-crema: #fffaf3;
+  --hp-papel: #fdf6ea;
+  --hp-rosa: #f3c9d4;
+  --hp-rosa-osc: #e3a8b8;
+  --hp-terra: #d9a893;
+  --hp-marron: #8a6a5c;
+  --hp-texto: #6b5b57;
+  --hp-linea: #e8d9d0;
+
+  width: 320px;
+  height: 260px;
+  margin: 40px auto 60px;
+  position: relative;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* ---- Bolsillo del sobre (parte de abajo, fija) ---- */
+.hp-bolsillo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(180deg, var(--hp-rosa) 0%, var(--hp-rosa-osc) 100%);
+  border-radius: 4px 4px 14px 14px;
+  z-index: 3;
+  box-shadow: 0 6px 16px rgba(139, 106, 92, 0.25);
+}
+
+/* Lados del sobre (pliegues triangulares laterales, look de sobre real) */
+.hp-bolsillo::before,
+.hp-bolsillo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 150px solid transparent;
+  opacity: 0.15;
+}
+.hp-bolsillo::before {
+  left: 0;
+  border-left: 160px solid #ffffff;
+}
+.hp-bolsillo::after {
+  right: 0;
+  border-right: 160px solid #ffffff;
+}
+
+/* ---- Etiqueta "Para:" en el bolsillo ---- */
+.hp-para {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 4;
+  font-size: 15px;
+  color: var(--hp-marron);
+}
+.hp-para b {
+  font-weight: 700;
+  color: #ffffff;
+}
+.hp-para span {
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+/* ---- Solapa del sobre (triangulo superior) ---- */
+.hp-solapa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 95px solid var(--hp-rosa-osc);
+  z-index: 5;
+  filter: drop-shadow(0 3px 4px rgba(139, 106, 92, 0.2));
+}
+
+/* ---- Sello de cera sobre la solapa ---- */
+.hp-sello {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 42px;
+  background: radial-gradient(circle at 35% 30%, #e8899e, #c65b73 75%);
+  border-radius: 50%;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #ffe8ee;
+  box-shadow: 0 3px 6px rgba(139, 106, 92, 0.35);
+}
+
+/* ---- La carta (detrás, sale al hacer hover) ---- */
+.hp-carta {
+  position: absolute;
+  top: 6px;
+  left: 20px;
+  width: 280px;
+  min-height: 190px;
+  background:
+    repeating-linear-gradient(
+      var(--hp-papel) 0px, var(--hp-papel) 27px,
+      var(--hp-linea) 28px
+    );
+  border: 1px solid var(--hp-linea);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(139, 106, 92, 0.25);
+  z-index: 2;
+  padding: 18px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transform: translateY(55px);
+  transition: transform 0.5s cubic-bezier(.34,1.4,.64,1);
+}
+
+.hp-carta-cuerpo {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--hp-texto);
+  text-align: left;
+}
+
+.hp-carta-firma {
+  margin-top: 10px;
+  text-align: right;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--hp-rosa-osc);
+}
+
+.hp-carta-firma small {
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  color: var(--hp-marron);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ---- Hint debajo del sobre ---- */
+.hp-hint {
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: var(--hp-marron);
+  opacity: 0.6;
+  z-index: 3;
+}
+
+/* ---- Hover: la carta sube y se asoma ---- */
+.hp-sobre-wrap:hover .hp-carta {
+  transform: translateY(-130px);
+}
