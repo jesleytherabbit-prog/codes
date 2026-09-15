@@ -1,0 +1,179 @@
+/* =========================================================
+HANA PARK 
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --fa-crema: #f3ead9;      /* fondo crema */
+  --fa-beige: #e4d6c3;      /* beige cálido */
+  --fa-rosa: #d9b8a9;       /* rosa polvo */
+  --fa-salvia: #b9c4a9;     /* verde salvia */
+  --fa-marron: #6b5544;     /* marrón oscuro (texto/bordes) */
+  --fa-azul: #a9b7bd;       /* azul grisáceo */
+  --fa-texto: #5c4d3f;
+  --fa-acento: #b98a72;     /* terracota suave */
+}
+
+/* ---- Caja principal ---- */
+.fa-ficha-box {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--fa-texto);
+  background: var(--fa-crema);
+  padding: 26px 20px;
+  margin: 15px 0;
+  text-align: center;
+  position: relative;
+  border: 4px solid var(--fa-marron);
+  /* Borde escalonado tipo pixel usando box-shadow en capas */
+  box-shadow:
+    0 0 0 4px var(--fa-crema),
+    0 0 0 8px var(--fa-marron),
+    6px 6px 0 8px rgba(107, 85, 68, 0.25);
+  image-rendering: pixelated;
+}
+
+/* ---- Franja decorativa pixelada arriba ---- */
+.fa-ficha-box::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--fa-rosa) 0px, var(--fa-rosa) 10px,
+    var(--fa-salvia) 10px, var(--fa-salvia) 20px,
+    var(--fa-azul) 20px, var(--fa-azul) 30px,
+    var(--fa-beige) 30px, var(--fa-beige) 40px
+  );
+}
+
+/* ---- Título principal (fuente pixel real) ---- */
+.fa-ficha-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: var(--fa-marron);
+  letter-spacing: 1px;
+  margin: 10px 0;
+  line-height: 1.6;
+  text-shadow: 2px 2px 0 var(--fa-rosa);
+}
+
+.fa-sparkle {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--fa-acento);
+  font-size: 10px;
+  display: block;
+  margin: 6px 0;
+}
+
+/* ---- Subtítulo / enlace ---- */
+.fa-ficha-subtitulo {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+}
+
+.fa-ficha-subtitulo a {
+  color: var(--fa-acento);
+  text-decoration: none;
+  border-bottom: 3px solid var(--fa-salvia);
+  padding-bottom: 1px;
+}
+
+.fa-ficha-subtitulo a:hover {
+  background: var(--fa-salvia);
+  color: var(--fa-crema);
+}
+
+/* ---- Separador pixelado (bloques tipo "dithering") ---- */
+.fa-divider {
+  width: 70%;
+  height: 6px;
+  margin: 16px auto;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--fa-marron) 0px, var(--fa-marron) 4px,
+    transparent 4px, transparent 8px
+  );
+}
+
+/* ---- Caja interna (spoiler / secciones) ---- */
+.fa-inner-box {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  background: var(--fa-beige);
+  border: 3px solid var(--fa-marron);
+  box-shadow: 4px 4px 0 var(--fa-acento);
+  padding: 16px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.fa-inner-titulo {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--fa-marron);
+  font-size: 12px;
+  margin-bottom: 12px;
+  display: block;
+  line-height: 1.5;
+}
+
+.fa-inner-subtitulo {
+  color: var(--fa-acento);
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+  margin: 12px 0 6px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- Filas de habilidades / stats ---- */
+.fa-skill-name {
+  color: var(--fa-texto);
+}
+
+.fa-skill-nivel {
+  color: var(--fa-crema);
+  background: var(--fa-salvia);
+  font-weight: bold;
+  padding: 2px 8px;
+  margin-left: 4px;
+  border: 2px solid var(--fa-marron);
+  box-shadow: 2px 2px 0 var(--fa-marron);
+}
+
+/* ---- Badges pixel ---- */
+.fa-badge {
+  display: inline-block;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  background: var(--fa-rosa);
+  border: 2px solid var(--fa-marron);
+  box-shadow: 2px 2px 0 var(--fa-marron);
+  padding: 3px 12px;
+  color: var(--fa-marron);
+  margin: 4px;
+}
+
+/* ---- Botón pixel ---- */
+.fa-boton {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  background: var(--fa-acento);
+  color: var(--fa-crema);
+  padding: 10px 16px;
+  text-decoration: none;
+  border: 3px solid var(--fa-marron);
+  box-shadow: 4px 4px 0 var(--fa-marron);
+  transition: all 0.1s ease;
+}
+
+.fa-boton:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--fa-marron);
+}
