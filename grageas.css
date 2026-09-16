@@ -12,31 +12,26 @@
 
   display: block;
   width: fit-content;
-  max-width: 300px;
+  max-width: 260px;
   margin: 8px auto;
-  padding: 8px 16px;
+  padding: 6px 14px;
   font-family: 'Quicksand', sans-serif;
   color: var(--gr-marron);
   background: transparent;
   border: 2px dotted var(--gr-oro);
-  border-radius: 10px;
-  position: relative;
+  border-radius: 8px;
+  text-align: center;
   box-sizing: border-box;
 }
 
-/* ---- Encabezado con icono ---- */
 .gr-vault-titulo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--gr-marron);
-  margin-bottom: 6px;
-  white-space: nowrap;
+  margin-bottom: 3px;
+  text-align: center;
 }
 
 .gr-vault-icono {
@@ -49,24 +44,22 @@
   92% { transform: rotateY(180deg); }
 }
 
-/* ---- Grilla de datos (2 columnas, compacta) ---- */
-.gr-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px 16px;
-  margin-bottom: 4px;
-}
-
+/* ---- Datos: 2 por linea, centrados, con espacio garantizado por CSS ---- */
 .gr-fila {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-  font-size: 11px;
-  white-space: nowrap;
+  display: inline-block;
+  width: 46%;
+  margin: 1px 1%;
+  font-size: 10px;
+  text-align: center;
+  vertical-align: top;
 }
 
 .gr-label {
   color: var(--gr-label);
+  margin-right: 3px;
+}
+.gr-label::after {
+  content: ":";
 }
 
 .gr-valor {
@@ -82,9 +75,9 @@
 .gr-enlaces {
   text-align: center;
   margin-top: 4px;
-  padding-top: 4px;
-  border-top: 1px dashed rgba(227, 184, 115, 0.4);
-  font-size: 10.5px;
+  padding-top: 3px;
+  border-top: 1px dashed rgba(227, 184, 115, 0.5);
+  font-size: 9.5px;
 }
 
 .gr-enlaces a {
@@ -98,21 +91,5 @@
 
 .gr-enlaces .gr-sep {
   color: var(--gr-oro);
-  margin: 0 5px;
+  margin: 0 4px;
 }
-
-/* ---- Brillitos que titilan ---- */
-@keyframes gr-twinkle {
-  0%, 100% { opacity: 0.15; transform: scale(0.7); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-.gr-sparkle {
-  position: absolute;
-  color: var(--gr-oro);
-  font-size: 10px;
-  pointer-events: none;
-  animation: gr-twinkle 2.2s ease-in-out infinite;
-}
-.gr-sparkle:nth-child(1) { top: 5px;    left: 8px;   animation-delay: 0s; }
-.gr-sparkle:nth-child(2) { top: 6px;    right: 10px; animation-delay: 0.7s; font-size: 8px; }
