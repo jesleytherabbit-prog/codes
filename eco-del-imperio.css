@@ -42,9 +42,51 @@
   color: var(--imp-oro);
   font-size: 14px;
   opacity: 0.8;
+  z-index: 2;
 }
 .imp-tablilla::before { top: 10px; left: 12px; }
 .imp-tablilla::after  { bottom: 10px; right: 12px; }
+
+/* ---- Cielo animado: resplandor de amanecer en loop ---- */
+.imp-cielo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.imp-cielo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 105%, rgba(255, 190, 140, 0.55) 0%, rgba(255, 140, 120, 0.22) 35%, transparent 62%),
+    linear-gradient(180deg, rgba(255, 180, 150, 0.10) 0%, transparent 55%);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: imp-amanecer 26s ease-in-out infinite;
+}
+
+@keyframes imp-amanecer {
+  0%, 65%   { opacity: 0;   transform: translateY(14px); }
+  82%       { opacity: 1;   transform: translateY(0);     }
+  92%       { opacity: 1;   transform: translateY(-3px);  }
+  100%      { opacity: 0;   transform: translateY(14px);  }
+}
+
+/* Estrellitas fijas, titilando de a poco */
+.imp-estrella {
+  position: absolute;
+  color: var(--imp-oro-op);
+  font-size: 7px;
+  opacity: 0.5;
+  animation: imp-titilar 3.5s ease-in-out infinite;
+}
+@keyframes imp-titilar {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.9;  }
+}
 
 /* ---- Encabezado ---- */
 .imp-subtitulo {
@@ -91,7 +133,7 @@
 .imp-cita {
   text-align: center;
   font-style: italic;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--imp-texto);
   padding: 0 10px;
@@ -111,8 +153,8 @@
 
 /* ---- Cuerpo narrativo ---- */
 .imp-texto {
-  font-size: 17px;
-  line-height: 1.85;
+  font-size: 13px;
+  line-height: 1.75;
   color: var(--imp-texto);
   text-align: justify;
 }
@@ -121,17 +163,6 @@
 }
 .imp-texto p:last-child {
   margin-bottom: 0;
-}
-
-/* Capitular decorativa en el primer parrafo */
-.imp-texto p.imp-inicio::first-letter {
-  font-family: 'Cinzel', serif;
-  font-size: 46px;
-  color: var(--imp-oro-op);
-  float: left;
-  line-height: 0.8;
-  padding: 6px 8px 0 0;
-  text-shadow: 0 0 10px rgba(201, 162, 75, 0.3);
 }
 
 .imp-texto b,
