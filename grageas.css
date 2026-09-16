@@ -1,0 +1,22 @@
+@keyframes gragea-sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(20deg); }
+}
+.gragea-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #FBF3D5, #F3E3D3);
+  border: 1px solid #D6A99D;
+  box-shadow: 0 2px 8px rgba(214,169,157,0.35);
+}
+.gragea-box .sparkle {
+  position: absolute;
+  color: #D6A99D;
+  font-size: 12px;
+  animation: gragea-sparkle 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.gragea-box .label { color: #D6A99D; }
+.gragea-box .valor { color: #3a2c28; }
