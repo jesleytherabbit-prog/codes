@@ -1,12 +1,5 @@
 /* ==================================================================
    PLANTILLA "LA LUNA CANTARÁ" — estilo.css
-   Sube este archivo a tu repo de GitHub y sírvelo con GitHub Pages
-   (Settings > Pages), luego enlázalo en el <head> o antes del bloque
-   HTML con:
-     <link rel="stylesheet" href="https://TU-USUARIO.github.io/TU-REPO/estilo.css">
-   (usa el link de Pages, no el "raw.githubusercontent.com": ese último
-   a veces no manda el Content-Type correcto y el navegador ignora
-   el CSS).
 ================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&display=swap');
