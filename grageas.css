@@ -1,36 +1,117 @@
-<style>
-@keyframes gragea-sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1); }
-}
-.gragea-mini {
-  display: inline-block;
-  max-width: 300px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #FBF3D5, #F3E3D3);
-  border: 1px solid #D6A99D;
-  position: relative;
-  font-size: 11px !important;
-  line-height: 1.6 !important;
-}
-.gragea-mini .sparkle {
-  position: absolute;
-  font-size: 8px;
-  color: #D6A99D;
-  animation: gragea-sparkle 2.4s ease-in-out infinite;
-  pointer-events: none;
-}
-.gragea-mini .label { color: #D6A99D; font-weight: bold; }
-.gragea-mini .valor { color: #3a2c28; }
-</style>
+/* =========================================================
+   BÓVEDA DE GRAGEAS — Cajita propia, chica y cute
+   100% independiente del skin del foro (sin scaja-*)
+   ========================================================= */
 
-<div class="gragea-mini">
-  <span class="sparkle" style="top:2px; left:6px;">✦</span>
-  <span class="sparkle" style="bottom:2px; right:6px; animation-delay:1.2s;">✧</span>
-  <div><span class="label">Grageas iniciales»</span> <span class="valor">805</span></div>
-  <div><span class="label">Grageas que se añaden/quitan»</span> <span class="valor">+4000</span></div>
-  <div><span class="label">Grageas actuales»</span> <span class="valor">4805</span></div>
-  <div><span class="label">Grageas totales»</span> <span class="valor">26219</span></div>
-  <div><span class="label">Enlaces»</span> <b><a href="https://hp-avada-kedavra.foroactivo.com/t192p585-registro-de-cambio-de-etapa#733109" style="color:#9CAFAA;">Petición</a> || <a href="https://hp-avada-kedavra.foroactivo.com/t192p585-registro-de-cambio-de-etapa#733138" style="color:#9CAFAA;">Aceptación</a></b></div>
-</div>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+.gr-vault {
+  --gr-crema: #fdf6ea;
+  --gr-oro: #e3b873;
+  --gr-oro-op: #f0d9a8;
+  --gr-marron: #8a6a4c;
+  --gr-rosa: #e7b8ac;
+  --gr-label: #c99a7c;
+  --gr-valor: #6b5238;
+
+  display: inline-block;
+  max-width: 280px;
+  margin: 8px 0;
+  padding: 12px 16px 10px;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--gr-marron);
+  background: linear-gradient(135deg, var(--gr-crema) 0%, #fbf0da 100%);
+  border: 1px solid var(--gr-oro);
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(138, 106, 76, 0.15);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ---- Encabezado con icono ---- */
+.gr-vault-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gr-marron);
+  margin-bottom: 8px;
+}
+
+.gr-vault-icono {
+  display: inline-block;
+  animation: gr-spin 5s linear infinite;
+}
+
+@keyframes gr-spin {
+  0%, 85%, 100% { transform: rotateY(0deg); }
+  92% { transform: rotateY(180deg); }
+}
+
+/* ---- Filas de datos ---- */
+.gr-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(227, 184, 115, 0.4);
+}
+.gr-fila:last-of-type {
+  border-bottom: none;
+}
+
+.gr-label {
+  color: var(--gr-label);
+}
+
+.gr-valor {
+  font-weight: 700;
+  color: var(--gr-valor);
+}
+
+.gr-valor.gr-plus {
+  color: #8fae7c;
+}
+
+/* ---- Enlaces al pie ---- */
+.gr-enlaces {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.gr-enlaces a {
+  color: #7a9490;
+  text-decoration: none;
+  border-bottom: 1px dotted #7a9490;
+}
+.gr-enlaces a:hover {
+  color: var(--gr-marron);
+}
+
+.gr-enlaces .gr-sep {
+  color: var(--gr-oro);
+  margin: 0 5px;
+}
+
+/* ---- Brillitos que titilan ---- */
+@keyframes gr-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.gr-sparkle {
+  position: absolute;
+  color: var(--gr-oro);
+  font-size: 10px;
+  pointer-events: none;
+  animation: gr-twinkle 2.2s ease-in-out infinite;
+}
+.gr-sparkle:nth-child(1) { top: 5px;    left: 8px;   animation-delay: 0s; }
+.gr-sparkle:nth-child(2) { top: 6px;    right: 10px; animation-delay: 0.7s; font-size: 8px; }
