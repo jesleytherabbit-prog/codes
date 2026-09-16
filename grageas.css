@@ -1,22 +1,36 @@
+<style>
 @keyframes gragea-sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
-  50% { opacity: 1; transform: scale(1.1) rotate(20deg); }
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
 }
-.gragea-box {
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-  padding: 14px 18px;
+.gragea-mini {
+  display: inline-block;
+  max-width: 300px;
+  padding: 8px 12px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #FBF3D5, #F3E3D3);
   border: 1px solid #D6A99D;
-  box-shadow: 0 2px 8px rgba(214,169,157,0.35);
+  position: relative;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
 }
-.gragea-box .sparkle {
+.gragea-mini .sparkle {
   position: absolute;
+  font-size: 8px;
   color: #D6A99D;
-  font-size: 12px;
-  animation: gragea-sparkle 2.6s ease-in-out infinite;
+  animation: gragea-sparkle 2.4s ease-in-out infinite;
   pointer-events: none;
 }
-.gragea-box .label { color: #D6A99D; }
-.gragea-box .valor { color: #3a2c28; }
+.gragea-mini .label { color: #D6A99D; font-weight: bold; }
+.gragea-mini .valor { color: #3a2c28; }
+</style>
+
+<div class="gragea-mini">
+  <span class="sparkle" style="top:2px; left:6px;">✦</span>
+  <span class="sparkle" style="bottom:2px; right:6px; animation-delay:1.2s;">✧</span>
+  <div><span class="label">Grageas iniciales»</span> <span class="valor">805</span></div>
+  <div><span class="label">Grageas que se añaden/quitan»</span> <span class="valor">+4000</span></div>
+  <div><span class="label">Grageas actuales»</span> <span class="valor">4805</span></div>
+  <div><span class="label">Grageas totales»</span> <span class="valor">26219</span></div>
+  <div><span class="label">Enlaces»</span> <b><a href="https://hp-avada-kedavra.foroactivo.com/t192p585-registro-de-cambio-de-etapa#733109" style="color:#9CAFAA;">Petición</a> || <a href="https://hp-avada-kedavra.foroactivo.com/t192p585-registro-de-cambio-de-etapa#733138" style="color:#9CAFAA;">Aceptación</a></b></div>
+</div>
