@@ -13,10 +13,11 @@
   --gr-label: #c99a7c;
   --gr-valor: #6b5238;
 
-  display: inline-block;
-  max-width: 280px;
-  margin: 8px 0;
-  padding: 12px 16px 10px;
+  display: block;
+  width: fit-content;
+  max-width: 300px;
+  margin: 8px auto;
+  padding: 9px 16px 8px;
   font-family: 'Quicksand', sans-serif;
   color: var(--gr-marron);
   background: linear-gradient(135deg, var(--gr-crema) 0%, #fbf0da 100%);
@@ -34,12 +35,13 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--gr-marron);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .gr-vault-icono {
@@ -52,17 +54,20 @@
   92% { transform: rotateY(180deg); }
 }
 
-/* ---- Filas de datos ---- */
+/* ---- Grilla de datos (2 columnas, compacta) ---- */
+.gr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 16px;
+  margin-bottom: 4px;
+}
+
 .gr-fila {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  font-size: 12px;
-  padding: 3px 0;
-  border-bottom: 1px dashed rgba(227, 184, 115, 0.4);
-}
-.gr-fila:last-of-type {
-  border-bottom: none;
+  gap: 6px;
+  font-size: 11px;
+  white-space: nowrap;
 }
 
 .gr-label {
@@ -81,8 +86,10 @@
 /* ---- Enlaces al pie ---- */
 .gr-enlaces {
   text-align: center;
-  margin-top: 8px;
-  font-size: 11px;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dashed rgba(227, 184, 115, 0.4);
+  font-size: 10.5px;
 }
 
 .gr-enlaces a {
