@@ -1,0 +1,229 @@
+/* ==================================================================
+   TABLILLA DE CRONOLOGÍA — "Cottage Botánico Pixel"
+   estilo-cronologia.css
+
+   Sube este archivo a tu repo de GitHub (con GitHub Pages activado)
+   y enlázalo desde el <link> del HTML.
+
+   Paleta:
+     --sage    : verde salvia (botánico)
+     --sage-d  : verde salvia oscuro (bordes)
+     --pink    : rosa empolvado
+     --cream   : crema (fondo)
+     --brown   : tinta café (texto)
+     --butter  : amarillo mantequilla (acento)
+================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+#TlmSof {
+  /* -- variables de tema: cambia estos valores para retocar la paleta -- */
+  --sage: #9CAF88;
+  --sage-d: #6F8F5D;
+  --pink: #E8AFA4;
+  --pink-d: #C98A82;
+  --cream: #FBF3E7;
+  --brown: #5B4636;
+  --butter: #F3E3B3;
+
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  margin: 24px auto;
+  padding: 22px 20px 20px;
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+  color: var(--brown);
+  background-color: var(--cream);
+
+  /* textura de puntitos tipo pixel/grano, muy sutil */
+  background-image:
+    radial-gradient(var(--sage) 1px, transparent 1px),
+    radial-gradient(var(--pink) 1px, transparent 1px);
+  background-size: 18px 18px, 18px 18px;
+  background-position: 0 0, 9px 9px;
+  background-blend-mode: normal;
+  background-repeat: repeat;
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(rgba(156,175,136,0.18) 1px, transparent 1px),
+    radial-gradient(rgba(232,175,164,0.16) 1px, transparent 1px);
+
+  /* marco tipo "ventana de RPG": borde sólido + doble anillo escalonado */
+  border: 4px solid var(--sage-d);
+  box-shadow:
+    0 0 0 4px var(--cream),
+    0 0 0 8px var(--pink-d),
+    0 6px 0 8px rgba(91, 70, 54, 0.25);
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+
+/* tabs/notches pixelados en las 4 esquinas, como ventanas 8-bit */
+#TlmSof::before,
+#TlmSof::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--sage-d);
+  z-index: 3;
+}
+#TlmSof::before { top: -10px; left: -10px; box-shadow: 440px 0 0 var(--sage-d); }
+#TlmSof::after  { bottom: -10px; left: -10px; box-shadow: 440px 0 0 var(--sage-d); }
+
+/* decoraciones flotantes (hongos/hojas) */
+.Tml_deco {
+  position: absolute;
+  font-size: 16px;
+  opacity: 0.85;
+  animation: float 3.2s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+.Tml_deco.d1 { top: 8px;    left: 10px;  animation-delay: 0s; }
+.Tml_deco.d2 { top: 10px;   right: 10px; animation-delay: .8s; }
+.Tml_deco.d3 { bottom: 10px; left: 14px; animation-delay: 1.6s; }
+.Tml_deco.d4 { bottom: 12px; right: 12px; animation-delay: 2.3s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ---------- CABECERA: Tml_IK ---------- */
+.Tml_IK {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 3px dashed var(--sage-d);
+}
+
+/* línea decorativa "🌿 Datos 🌿 Datos 🌿" (primer div hijo) */
+.Tml_IK > div:nth-of-type(1) {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--pink-d);
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* título "Don't Cry" (segundo div hijo) */
+.Tml_IK > div:nth-of-type(2) {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 15px;
+  color: var(--sage-d);
+  text-align: center;
+  text-shadow: 2px 2px 0 var(--cream), 3px 3px 0 var(--pink);
+  letter-spacing: 1px;
+  padding: 4px 0 2px;
+}
+
+/* avatar cuadrado pixel-frame */
+.Tml_IK .img {
+  width: 84px;
+  height: 84px;
+  margin-top: 6px;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+  border: 3px solid var(--brown);
+  box-shadow:
+    0 0 0 3px var(--cream),
+    0 0 0 6px var(--sage-d);
+}
+
+/* ---------- CUERPO: Tml_IW / Tml_Act ---------- */
+.Tml_IW {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Tml_Act {
+  background: rgba(255,255,255,0.55);
+  border: 2px solid var(--sage-d);
+  box-shadow: 3px 3px 0 var(--pink-d);
+  padding: 10px 12px 12px;
+}
+
+.Tml_Act:nth-of-type(1) { background: rgba(156,175,136,0.16); } /* Activos: verde */
+.Tml_Act:nth-of-type(2) { background: rgba(243,227,179,0.35); } /* Terminados: mantequilla */
+.Tml_Act:nth-of-type(3) { background: rgba(232,175,164,0.18); } /* Inactivos: rosa */
+
+.Tml_Act span {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: var(--cream);
+  background: var(--sage-d);
+  padding: 5px 8px;
+  margin-bottom: 8px;
+  box-shadow: 2px 2px 0 var(--brown);
+}
+
+.Tml_Act span::before {
+  content: "🌿 ";
+}
+
+.Tml_Act p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--brown);
+}
+
+.Tml_Act p a {
+  color: var(--pink-d);
+  text-decoration: none;
+  border-bottom: 2px dotted var(--pink-d);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.Tml_Act p a:hover {
+  color: var(--sage-d);
+  border-color: var(--sage-d);
+}
+
+/* ---------- FIRMA / BOTÓN: a.C ---------- */
+.C {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 16px;
+  padding: 9px 0;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--brown);
+  background: linear-gradient(180deg, var(--butter) 0%, var(--pink) 100%);
+  border: 2px solid var(--brown);
+  box-shadow: 3px 3px 0 var(--sage-d);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.C:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--sage-d);
+  color: var(--sage-d);
+}
+
+.C:active {
+  transform: translate(0, 0);
+  box-shadow: 1px 1px 0 var(--sage-d);
+}
+
+/* scrollbar pixelada opcional para listas largas */
+.Tml_Act p::-webkit-scrollbar { width: 6px; }
+.Tml_Act p::-webkit-scrollbar-thumb { background: var(--sage-d); }
