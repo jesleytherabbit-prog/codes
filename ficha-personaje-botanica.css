@@ -1,0 +1,262 @@
+/* =========================================================
+   FICHA DE PERSONAJE — Botánica Cute Pixel Pastel / Cottagecore
+   Mantiene la mecánica de pestañas por radio-input (CSS puro)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@400;600;700&display=swap');
+
+.fp-ficha {
+  --fp-crema: #faf3e6;
+  --fp-crema2: #f4ead6;
+  --fp-verde: #a9bd91;
+  --fp-verde-osc: #6f8a56;
+  --fp-rosa: #e7bcc0;
+  --fp-rosa-osc: #c98a92;
+  --fp-mostaza: #dcb35c;
+  --fp-marron: #7c623e;
+  --fp-texto: #5b4a36;
+
+  max-width: 560px;
+  margin: 20px auto;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--fp-texto);
+  background: var(--fp-crema);
+  border: 3px solid var(--fp-marron);
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(124, 98, 62, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Franja de flores pixel arriba de todo */
+.fp-ficha::before {
+  content: "";
+  display: block;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--fp-verde) 0px, var(--fp-verde) 14px,
+    var(--fp-rosa) 14px, var(--fp-rosa) 28px,
+    var(--fp-mostaza) 28px, var(--fp-mostaza) 42px,
+    var(--fp-crema2) 42px, var(--fp-crema2) 56px
+  );
+}
+
+/* ---- Encabezado ---- */
+.fp-header {
+  text-align: center;
+  padding: 14px 20px 6px;
+}
+
+@keyframes fp-sway {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.fp-flor {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--fp-rosa-osc);
+  animation: fp-sway 2.8s ease-in-out infinite;
+}
+
+.fp-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: var(--fp-verde-osc);
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 var(--fp-rosa);
+  margin: 6px 0 2px;
+}
+
+/* ---- Banner + retrato ---- */
+.fp-top {
+  text-align: center;
+  padding-bottom: 6px;
+}
+
+.fp-banner {
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(120deg, var(--fp-verde) 0%, var(--fp-crema2) 45%, var(--fp-rosa) 100%);
+  background-size: cover;
+  background-position: center;
+  border-top: 3px solid var(--fp-marron);
+  border-bottom: 3px solid var(--fp-marron);
+  box-sizing: border-box;
+}
+
+.fp-avatar {
+  width: 140px;
+  height: 160px;
+  margin: -60px auto 0;
+  position: relative;
+  z-index: 2;
+  background-color: var(--fp-crema2);
+  background-size: cover;
+  background-position: center;
+  border: 4px solid var(--fp-crema);
+  outline: 3px solid var(--fp-marron);
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(91, 74, 54, 0.3);
+}
+
+/* ---- Pestañas (misma mecánica radio-input del foro) ---- */
+.fp-tabs-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  padding: 16px 18px 18px;
+  box-sizing: border-box;
+}
+
+.fp-tab {
+  float: left;
+}
+
+.fp-tab input {
+  display: none;
+}
+
+.fp-tab label {
+  display: block;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--fp-marron);
+  background: var(--fp-crema2);
+  border: 2px solid var(--fp-marron);
+  border-bottom: none;
+  padding: 9px 11px;
+  margin-right: 4px;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  text-align: center;
+}
+
+.fp-tab input:checked ~ label {
+  background: var(--fp-rosa-osc);
+  color: #ffffff;
+  z-index: 3;
+}
+
+.fp-contenido {
+  position: absolute;
+  top: 55px;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  box-sizing: border-box;
+  background: var(--fp-crema2);
+  border: 2px solid var(--fp-marron);
+  border-radius: 0 12px 12px 12px;
+  padding: 16px 18px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 12.5px;
+  line-height: 1.75;
+  text-align: left;
+  z-index: 1;
+}
+
+.fp-tab input:checked ~ label ~ .fp-contenido {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Scrollbar suave */
+.fp-contenido::-webkit-scrollbar { width: 8px; }
+.fp-contenido::-webkit-scrollbar-track { background: var(--fp-crema); }
+.fp-contenido::-webkit-scrollbar-thumb { background: var(--fp-rosa-osc); border-radius: 6px; }
+
+/* ---- Contenido interno ---- */
+.fp-grupo {
+  margin-bottom: 12px;
+}
+.fp-grupo:last-child {
+  margin-bottom: 0;
+}
+
+.fp-linea {
+  display: block;
+  margin: 2px 0;
+}
+
+.fp-label {
+  color: var(--fp-marron);
+  font-weight: 700;
+}
+
+.fp-sub {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--fp-verde-osc);
+  letter-spacing: 0.5px;
+  margin: 10px 0 6px;
+  display: block;
+}
+.fp-sub:first-child {
+  margin-top: 0;
+}
+
+/* ---- Spoilers internos (habilidades, magia, otros) ---- */
+.fp-spoiler {
+  margin: 6px 0;
+  border: 2px solid var(--fp-marron);
+  border-radius: 8px;
+  background: var(--fp-crema);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.fp-spoiler summary {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  color: var(--fp-verde-osc);
+  background: var(--fp-rosa);
+  padding: 6px 10px;
+  list-style: none;
+  user-select: none;
+}
+.fp-spoiler summary::-webkit-details-marker { display: none; }
+.fp-spoiler summary::marker { content: ""; }
+.fp-spoiler summary::before { content: "❀ "; }
+.fp-spoiler summary:hover {
+  background: var(--fp-verde);
+  color: #ffffff;
+}
+
+.fp-spoiler-content {
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Filas de habilidad con puntitos de nivel */
+.fp-skill {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 3px 0;
+  font-size: 12px;
+}
+.fp-skill-nombre {
+  color: var(--fp-marron);
+}
+.fp-skill-valor {
+  color: var(--fp-verde-osc);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Clearfix para el contenedor de pestañas */
+.fp-tabs-wrap::after {
+  content: "";
+  display: table;
+  clear: both;
+}
