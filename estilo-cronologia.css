@@ -1,17 +1,5 @@
 /* ==================================================================
    TABLILLA DE CRONOLOGÍA — "Cottage Botánico Pixel"
-   estilo-cronologia.css
-
-   Sube este archivo a tu repo de GitHub (con GitHub Pages activado)
-   y enlázalo desde el <link> del HTML.
-
-   Paleta:
-     --sage    : verde salvia (botánico)
-     --sage-d  : verde salvia oscuro (bordes)
-     --pink    : rosa empolvado
-     --cream   : crema (fondo)
-     --brown   : tinta café (texto)
-     --butter  : amarillo mantequilla (acento)
 ================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
@@ -33,6 +21,7 @@
   padding: 22px 20px 20px;
   box-sizing: border-box;
   font-family: 'VT323', monospace;
+  font-size: 12px;
   color: var(--brown);
   background-color: var(--cream);
 
@@ -107,17 +96,17 @@
 /* línea decorativa "🌿 Datos 🌿 Datos 🌿" (primer div hijo) */
 .Tml_IK > div:nth-of-type(1) {
   font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
+  font-size: 7px;
   letter-spacing: 1px;
   color: var(--pink-d);
   text-align: center;
   line-height: 1.8;
 }
 
-/* título "Don't Cry" (segundo div hijo) */
+/* título "Don't Cry" (segundo div hijo) — único elemento a 18px, es el título */
 .Tml_IK > div:nth-of-type(2) {
   font-family: 'Press Start 2P', monospace;
-  font-size: 15px;
+  font-size: 18px;
   color: var(--sage-d);
   text-align: center;
   text-shadow: 2px 2px 0 var(--cream), 3px 3px 0 var(--pink);
@@ -162,7 +151,7 @@
 .Tml_Act span {
   display: inline-block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 0.5px;
   color: var(--cream);
   background: var(--sage-d);
@@ -172,14 +161,18 @@
 }
 
 .Tml_Act span::before {
-  content: "🌿 ";
+  content: "\2766  "; /* ❦ unicode floral, no emoji */
 }
 
+/* lista de temas con scroll propio para que quepan muchos sin agrandar la caja */
 .Tml_Act p {
   margin: 0;
-  font-size: 19px;
-  line-height: 1.55;
+  font-size: 12px;
+  line-height: 1.6;
   color: var(--brown);
+  max-height: 92px;
+  overflow-y: auto;
+  padding-right: 6px;
 }
 
 .Tml_Act p a {
