@@ -107,7 +107,7 @@ cronologia.css
   line-height: 1.8;
 }
 #TlmSof .Tml_IK > div:nth-of-type(1)::before {
-  content: "\1F33F Datos \1F33F Datos \1F33F Datos \1F33F";
+  content: "♥";
 }
 
 /* título (segundo div hijo) — único elemento a 18px, es el título */
