@@ -108,7 +108,7 @@
 /* título (segundo div hijo) — único elemento a 18px, es el título */
 #TlmSof .Tml_IK > div:nth-of-type(2) {
   font-family: 'Press Start 2P', monospace;
-  font-size: 18px !important;
+  font-size: 14px !important;
   color: var(--sage-d);
   text-align: center;
   text-shadow: 2px 2px 0 var(--cream), 3px 3px 0 var(--pink);
