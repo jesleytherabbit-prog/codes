@@ -1,0 +1,171 @@
+/* =========================================================
+   RELACIONES DE HANA — Cute Pastel Pixel Cottagecore
+   Mantiene la mecánica de hover original (#THERIN:hover)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+  --hp-crema: #faf3e6;
+  --hp-crema2: #f4ead6;
+  --hp-verde: #b7c9a8;
+  --hp-verde-osc: #6f8a56;
+  --hp-rosa: #e7bcc0;
+  --hp-rosa-osc: #c98a92;
+  --hp-mostaza: #dcb35c;
+  --hp-marron: #7c623e;
+  --hp-texto: #5b4a36;
+}
+
+/* ---- Grilla contenedora ---- */
+#SLY {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 560px;
+  margin: 20px auto 0;
+  padding: 22px 18px 16px;
+  background: var(--hp-crema);
+  border: 3px solid var(--hp-marron);
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Florcitas decorativas en las esquinas del cartel */
+#SLY::before,
+#SLY::after {
+  content: "✿";
+  position: absolute;
+  top: 8px;
+  color: var(--hp-rosa-osc);
+  font-size: 13px;
+}
+#SLY::before { left: 14px; }
+#SLY::after  { right: 14px; }
+
+/* ---- Cada tarjeta ---- */
+.SLY {
+  width: 128px;
+  height: 128px;
+  padding: 6px;
+  margin: 0;
+  box-sizing: border-box;
+  background: var(--hp-crema2);
+  border: 2px solid var(--hp-marron);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 rgba(124, 98, 62, 0.15);
+}
+
+/* Variedad pastel tipo "colcha de retazos" cada 4 tarjetas */
+.SLY:nth-child(4n+1) { background: #faf3e6; }
+.SLY:nth-child(4n+2) { background: #f7e3e0; }
+.SLY:nth-child(4n+3) { background: #eaf1e2; }
+.SLY:nth-child(4n)   { background: #faf0da; }
+
+/* ---- Marco de la imagen ---- */
+#THERIN {
+  width: 116px;
+  height: 116px;
+  border-radius: 9px;
+  border: 2px dashed var(--hp-marron);
+  transition: 1.1s all ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Burbuja que aparece al hover ---- */
+#THERIN .THERIN {
+  background: rgba(124, 98, 62, 0.86);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--hp-crema);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 1.1s all ease-in-out;
+}
+
+#THERIN:hover .THERIN {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#THERIN .THERIN lol {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+
+#THERIN .THERIN sol {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  font-style: italic;
+  text-transform: lowercase;
+  color: var(--hp-crema2);
+  display: block;
+  margin-top: 4px;
+}
+
+/* ---- Cartel del título (queda pegado debajo de la grilla) ---- */
+#SALAZAR {
+  max-width: 560px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: var(--hp-verde);
+  border: 3px solid var(--hp-marron);
+  border-top: none;
+  border-radius: 0 0 18px 18px;
+  padding: 14px 20px 16px;
+  text-align: center;
+  color: var(--hp-crema);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  text-shadow: 2px 2px 0 var(--hp-rosa-osc);
+}
+
+#SALAZAR lil {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: none;
+  color: var(--hp-crema2);
+  display: block;
+  margin-top: 8px;
+}
+
+/* ---- Créditos ---- */
+#code a {
+  display: block;
+  margin: 8px auto 0;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--hp-marron);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--hp-marron);
+  width: fit-content;
+}
+#code a:hover {
+  color: var(--hp-rosa-osc);
+  border-color: var(--hp-rosa-osc);
+}
