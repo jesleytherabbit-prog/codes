@@ -57,7 +57,7 @@
    lo agrega este ::before, así el editor del foro no lo puede filtrar */
 #TlmSof .Tml_deco {
   position: absolute;
-  font-size: 16px;
+  font-size: 13px;
   opacity: 0.85;
   animation: float 3.2s ease-in-out infinite;
   z-index: 2;
@@ -175,7 +175,17 @@
 #TlmSof .Tml_Act:nth-of-type(3) p a::before { content: "\1F343 "; } /* Inactivos: hoja */
 
 /* lista de temas: letra chica + scroll propio, con !important porque
-   el foro suele traer su propio tamaño de letra para <p> y <a> */
+   el foro suele traer su propio tamaño de letra para <p> y <a>.
+   Además el selector repite #TlmSof varias veces (truco de
+   especificidad): es CSS válido, no cambia a qué elemento apunta,
+   pero hace que ESTA regla pese más que cualquier !important que
+   traiga el foro con selectores más largos que el nuestro. */
+#TlmSof#TlmSof#TlmSof .Tml_Act p,
+#TlmSof#TlmSof#TlmSof .Tml_Act p * {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
 #TlmSof .Tml_Act p {
   margin: 0 !important;
   font-size: 12px !important;
@@ -188,9 +198,19 @@
   padding-right: 6px !important;
 }
 
+#TlmSof#TlmSof#TlmSof .Tml_Act p,
+#TlmSof#TlmSof#TlmSof .Tml_Act p {
+  max-height: 90px !important;
+  overflow-y: scroll !important;
+  display: block !important;
+}
+
 #TlmSof .Tml_Act p a,
 #TlmSof .Tml_Act p a:link,
-#TlmSof .Tml_Act p a:visited {
+#TlmSof .Tml_Act p a:visited,
+#TlmSof#TlmSof#TlmSof .Tml_Act p a,
+#TlmSof#TlmSof#TlmSof .Tml_Act p a:link,
+#TlmSof#TlmSof#TlmSof .Tml_Act p a:visited {
   font-size: 12px !important;
   line-height: 1.5 !important;
   color: var(--pink-d) !important;
