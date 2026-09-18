@@ -96,8 +96,7 @@ cronologia.css
   border-bottom: 3px dashed var(--sage-d);
 }
 
-/* línea decorativa "Datos" repetida — el texto Y los emojis salen
-   enteros del CSS; el div en el HTML queda vacío */
+
 #TlmSof .Tml_IK > div:nth-of-type(1) {
   font-family: 'Press Start 2P', monospace;
   font-size: 7px !important;
@@ -269,13 +268,3 @@ cronologia.css
 /* Firefox */
 #TlmSof .Tml_Act p { scrollbar-width: thin; scrollbar-color: var(--sage-d) var(--cream); }
 
-/* ==================================================================
-   SI DESPUÉS DE SUBIR ESTE ARCHIVO SIGUE VIÉNDOSE GIGANTE:
-   no es un problema de estas reglas, es que el navegador (o GitHub
-   Pages) todavía te está sirviendo el CSS VIEJO desde la caché.
-   Para comprobarlo: abrí la URL del propio archivo .css directamente
-   en una pestaña nueva y buscá (Ctrl+F) "height: 90px". Si no aparece,
-   el archivo que se está sirviendo NO es este. Solución: subí el
-   reemplazo a GitHub, esperá 1-2 min, y en el <link> del HTML cambiá
-   a estilo-cronologia.css?v=4 (subí el número cada vez que edites).
-================================================================== */
