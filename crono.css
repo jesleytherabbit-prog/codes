@@ -1,0 +1,269 @@
+/* ==================================================================
+   TABLILLA DE CRONOLOGÍA — "Cottage Botánico Pixel"
+cronologia.css
+================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+#TlmSof {
+  /* -- variables de tema: cambia estos valores para retocar la paleta -- */
+  --sage: #9CAF88;
+  --sage-d: #6F8F5D;
+  --pink: #E8AFA4;
+  --pink-d: #C98A82;
+  --cream: #FBF3E7;
+  --brown: #5B4636;
+  --butter: #F3E3B3;
+
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  margin: 24px auto;
+  padding: 22px 20px 20px;
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+  font-size: 12px !important;
+  color: var(--brown);
+  background-color: var(--cream);
+
+  /* textura de puntitos tipo pixel/grano, muy sutil */
+  background-image:
+    radial-gradient(rgba(156,175,136,0.18) 1px, transparent 1px),
+    radial-gradient(rgba(232,175,164,0.16) 1px, transparent 1px);
+  background-size: 18px 18px, 18px 18px;
+  background-position: 0 0, 9px 9px;
+  background-repeat: repeat;
+
+  /* marco tipo "ventana de RPG": borde sólido + doble anillo escalonado */
+  border: 4px solid var(--sage-d);
+  box-shadow:
+    0 0 0 4px var(--cream),
+    0 0 0 8px var(--pink-d),
+    0 6px 0 8px rgba(91, 70, 54, 0.25);
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+
+/* tabs/notches pixelados en las 4 esquinas, como ventanas 8-bit */
+#TlmSof::before,
+#TlmSof::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--sage-d);
+  z-index: 3;
+}
+#TlmSof::before { top: -10px; left: -10px; box-shadow: 440px 0 0 var(--sage-d); }
+#TlmSof::after  { bottom: -10px; left: -10px; box-shadow: 440px 0 0 var(--sage-d); }
+
+/* ---------- DECORACIONES (emojis puestos ACÁ, no en el HTML) ---------- */
+/* los <span class="Tml_deco dX"> quedan vacíos en el HTML; el emoji
+   lo agrega este ::before, así el editor del foro no lo puede filtrar */
+#TlmSof .Tml_deco {
+  position: absolute;
+  font-size: 16px;
+  opacity: 0.85;
+  animation: float 3.2s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+#TlmSof .Tml_deco.d1 { top: 8px;     left: 10px;  animation-delay: 0s; }
+#TlmSof .Tml_deco.d2 { top: 10px;    right: 10px; animation-delay: .8s; }
+#TlmSof .Tml_deco.d3 { bottom: 10px; left: 14px;  animation-delay: 1.6s; }
+#TlmSof .Tml_deco.d4 { bottom: 12px; right: 12px; animation-delay: 2.3s; }
+
+#TlmSof .Tml_deco.d1::before { content: "\1F344"; } /* 🍄 hongo */
+#TlmSof .Tml_deco.d2::before { content: "\1F338"; } /* 🌸 flor de cerezo */
+#TlmSof .Tml_deco.d3::before { content: "\1F343"; } /* 🍃 hoja */
+#TlmSof .Tml_deco.d4::before { content: "\1F33E"; } /* 🌾 espiga */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ---------- CABECERA: Tml_IK ---------- */
+#TlmSof .Tml_IK {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 3px dashed var(--sage-d);
+}
+
+
+#TlmSof .Tml_IK > div:nth-of-type(1) {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px !important;
+  letter-spacing: 1px;
+  color: var(--pink-d);
+  text-align: center;
+  line-height: 1.8;
+}
+#TlmSof .Tml_IK > div:nth-of-type(1)::before {
+  content: "♥";
+}
+
+/* título (segundo div hijo) — único elemento a 18px, es el título */
+#TlmSof .Tml_IK > div:nth-of-type(2) {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px !important;
+  color: var(--sage-d);
+  text-align: center;
+  text-shadow: 2px 2px 0 var(--cream), 3px 3px 0 var(--pink);
+  letter-spacing: 1px;
+  padding: 4px 0 2px;
+}
+
+/* avatar cuadrado pixel-frame */
+#TlmSof .Tml_IK .img {
+  width: 84px;
+  height: 84px;
+  margin-top: 6px;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+  border: 3px solid var(--brown);
+  box-shadow:
+    0 0 0 3px var(--cream),
+    0 0 0 6px var(--sage-d);
+}
+
+/* ---------- CUERPO: Tml_IW / Tml_Act ---------- */
+#TlmSof .Tml_IW {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#TlmSof .Tml_Act {
+  background: rgba(255,255,255,0.55);
+  border: 2px solid var(--sage-d);
+  box-shadow: 3px 3px 0 var(--pink-d);
+  padding: 10px 12px 12px;
+}
+
+#TlmSof .Tml_Act:nth-of-type(1) { background: rgba(156,175,136,0.16); } /* Activos: verde */
+#TlmSof .Tml_Act:nth-of-type(2) { background: rgba(243,227,179,0.35); } /* Terminados: mantequilla */
+#TlmSof .Tml_Act:nth-of-type(3) { background: rgba(232,175,164,0.18); } /* Inactivos: rosa */
+
+#TlmSof .Tml_Act span {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px !important;
+  letter-spacing: 0.5px;
+  color: var(--cream);
+  background: var(--sage-d);
+  padding: 5px 8px;
+  margin-bottom: 8px;
+  box-shadow: 2px 2px 0 var(--brown);
+}
+
+/* emoji distinto según la sección, generado desde el CSS */
+#TlmSof .Tml_Act:nth-of-type(1) span::before { content: "\1F33F  "; } /* Activos: hierba */
+#TlmSof .Tml_Act:nth-of-type(2) span::before { content: "\2728  "; }  /* Terminados: brillo */
+#TlmSof .Tml_Act:nth-of-type(3) span::before { content: "\1F343  "; } /* Inactivos: hoja */
+
+/* mismo emoji, pero como viñeta antes de CADA link de tema (nace del
+   CSS, así el editor del foro no lo puede filtrar). Usa el mismo
+   ícono que su categoría para que quede prolijo */
+#TlmSof .Tml_Act:nth-of-type(1) p a::before { content: "\1F33F "; } /* Activos: hierba */
+#TlmSof .Tml_Act:nth-of-type(2) p a::before { content: "\2728 "; }  /* Terminados: brillo */
+#TlmSof .Tml_Act:nth-of-type(3) p a::before { content: "\1F343 "; } /* Inactivos: hoja */
+
+/* lista de temas: letra chica + scroll propio, con !important porque
+   el foro suele traer su propio tamaño de letra para <p> y <a>.
+   Además el selector repite #TlmSof varias veces (truco de
+   especificidad): es CSS válido, no cambia a qué elemento apunta,
+   pero hace que ESTA regla pese más que cualquier !important que
+   traiga el foro con selectores más largos que el nuestro. */
+/* TOPE DURO de 13px para TODO lo que esté adentro de la lista de temas
+   (el <p>, el <a>, y cualquier <span>/<font> que el editor del foro
+   meta ahí adentro al pegar texto). El selector repite #TlmSof 5
+   veces: es CSS válido, sigue apuntando al mismo elemento, pero le da
+   tanta especificidad que gana contra CUALQUIER regla del foro,
+   tenga o no !important. Si con esto sigue viéndose grande, no es un
+   tema de CSS sino de caché (ver nota al final del archivo). */
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p,
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p a,
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p * {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  font-family: 'VT323', monospace !important;
+}
+
+/* la CAJA de la lista: altura fija de siempre, nunca crece.
+   Si el texto no entra, aparece la scrollbar acá adentro. */
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p {
+  display: block !important;
+  box-sizing: border-box !important;
+  height: 90px !important;      /* alto FIJO (no "max-height"): así jamás se agranda la tablilla */
+  max-height: 90px !important;
+  overflow-y: scroll !important;   /* "scroll" en vez de "auto": la barra
+                                       queda siempre visible, aunque el
+                                       contenido no la necesite todavía */
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding-right: 6px !important;
+  color: var(--brown) !important;
+}
+
+#TlmSof .Tml_Act p a,
+#TlmSof .Tml_Act p a:link,
+#TlmSof .Tml_Act p a:visited {
+  color: var(--pink-d) !important;
+  text-decoration: none !important;
+  border-bottom: 2px dotted var(--pink-d);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+#TlmSof .Tml_Act p a:hover {
+  color: var(--sage-d) !important;
+  border-color: var(--sage-d);
+}
+
+/* ---------- FIRMA / BOTÓN: a.C ---------- */
+#TlmSof .C {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 16px;
+  padding: 9px 0;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px !important;
+  letter-spacing: 1px;
+  text-decoration: none !important;
+  color: var(--brown);
+  background: linear-gradient(180deg, var(--butter) 0%, var(--pink) 100%);
+  border: 2px solid var(--brown);
+  box-shadow: 3px 3px 0 var(--sage-d);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#TlmSof .C:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--sage-d);
+  color: var(--sage-d) !important;
+}
+
+#TlmSof .C:active {
+  transform: translate(0, 0);
+  box-shadow: 1px 1px 0 var(--sage-d);
+}
+
+/* scrollbar pixelada, visible siempre (webkit: Chrome/Edge/Safari) */
+#TlmSof .Tml_Act p::-webkit-scrollbar { width: 8px; }
+#TlmSof .Tml_Act p::-webkit-scrollbar-track { background: var(--cream); border-left: 1px solid var(--sage-d); }
+#TlmSof .Tml_Act p::-webkit-scrollbar-thumb { background: var(--sage-d); border-radius: 2px; }
+#TlmSof .Tml_Act p::-webkit-scrollbar-thumb:hover { background: var(--pink-d); }
+
+/* Firefox */
+#TlmSof .Tml_Act p { scrollbar-width: thin; scrollbar-color: var(--sage-d) var(--cream); }
