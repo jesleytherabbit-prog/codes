@@ -1,3 +1,8 @@
+/* ==================================================================
+   TABLILLA DE CRONOLOGÍA — "Cottage Botánico Pixel"
+   estilo-cronologia.css
+================================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 #TlmSof {
@@ -57,7 +62,7 @@
    lo agrega este ::before, así el editor del foro no lo puede filtrar */
 #TlmSof .Tml_deco {
   position: absolute;
-  font-size: 13px;
+  font-size: 16px;
   opacity: 0.85;
   animation: float 3.2s ease-in-out infinite;
   z-index: 2;
@@ -108,7 +113,7 @@
 /* título (segundo div hijo) — único elemento a 18px, es el título */
 #TlmSof .Tml_IK > div:nth-of-type(2) {
   font-family: 'Press Start 2P', monospace;
-  font-size: 14px !important;
+  font-size: 18px !important;
   color: var(--sage-d);
   text-align: center;
   text-shadow: 2px 2px 0 var(--cream), 3px 3px 0 var(--pink);
@@ -180,39 +185,40 @@
    especificidad): es CSS válido, no cambia a qué elemento apunta,
    pero hace que ESTA regla pese más que cualquier !important que
    traiga el foro con selectores más largos que el nuestro. */
-#TlmSof#TlmSof#TlmSof .Tml_Act p,
-#TlmSof#TlmSof#TlmSof .Tml_Act p * {
-  font-size: 12px !important;
-  line-height: 1.5 !important;
+/* TOPE DURO de 13px para TODO lo que esté adentro de la lista de temas
+   (el <p>, el <a>, y cualquier <span>/<font> que el editor del foro
+   meta ahí adentro al pegar texto). El selector repite #TlmSof 5
+   veces: es CSS válido, sigue apuntando al mismo elemento, pero le da
+   tanta especificidad que gana contra CUALQUIER regla del foro,
+   tenga o no !important. Si con esto sigue viéndose grande, no es un
+   tema de CSS sino de caché (ver nota al final del archivo). */
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p,
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p a,
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p * {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  font-family: 'VT323', monospace !important;
 }
 
-#TlmSof .Tml_Act p {
-  margin: 0 !important;
-  font-size: 12px !important;
-  line-height: 1.5 !important;
-  color: var(--brown) !important;
+/* la CAJA de la lista: altura fija de siempre, nunca crece.
+   Si el texto no entra, aparece la scrollbar acá adentro. */
+#TlmSof#TlmSof#TlmSof#TlmSof#TlmSof .Tml_Act p {
+  display: block !important;
+  box-sizing: border-box !important;
+  height: 90px !important;      /* alto FIJO (no "max-height"): así jamás se agranda la tablilla */
   max-height: 90px !important;
   overflow-y: scroll !important;   /* "scroll" en vez de "auto": la barra
                                        queda siempre visible, aunque el
                                        contenido no la necesite todavía */
+  overflow-x: hidden !important;
+  margin: 0 !important;
   padding-right: 6px !important;
-}
-
-#TlmSof#TlmSof#TlmSof .Tml_Act p,
-#TlmSof#TlmSof#TlmSof .Tml_Act p {
-  max-height: 90px !important;
-  overflow-y: scroll !important;
-  display: block !important;
+  color: var(--brown) !important;
 }
 
 #TlmSof .Tml_Act p a,
 #TlmSof .Tml_Act p a:link,
-#TlmSof .Tml_Act p a:visited,
-#TlmSof#TlmSof#TlmSof .Tml_Act p a,
-#TlmSof#TlmSof#TlmSof .Tml_Act p a:link,
-#TlmSof#TlmSof#TlmSof .Tml_Act p a:visited {
-  font-size: 12px !important;
-  line-height: 1.5 !important;
+#TlmSof .Tml_Act p a:visited {
   color: var(--pink-d) !important;
   text-decoration: none !important;
   border-bottom: 2px dotted var(--pink-d);
