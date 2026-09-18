@@ -1,7 +1,3 @@
-/* ==================================================================
-   TABLILLA DE CRONOLOGÍA — "Cottage Botánico Pixel"
-================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 #TlmSof {
@@ -21,22 +17,17 @@
   padding: 22px 20px 20px;
   box-sizing: border-box;
   font-family: 'VT323', monospace;
-  font-size: 12px;
+  font-size: 12px !important;
   color: var(--brown);
   background-color: var(--cream);
 
   /* textura de puntitos tipo pixel/grano, muy sutil */
   background-image:
-    radial-gradient(var(--sage) 1px, transparent 1px),
-    radial-gradient(var(--pink) 1px, transparent 1px);
-  background-size: 18px 18px, 18px 18px;
-  background-position: 0 0, 9px 9px;
-  background-blend-mode: normal;
-  background-repeat: repeat;
-  background-color: var(--cream);
-  background-image:
     radial-gradient(rgba(156,175,136,0.18) 1px, transparent 1px),
     radial-gradient(rgba(232,175,164,0.16) 1px, transparent 1px);
+  background-size: 18px 18px, 18px 18px;
+  background-position: 0 0, 9px 9px;
+  background-repeat: repeat;
 
   /* marco tipo "ventana de RPG": borde sólido + doble anillo escalonado */
   border: 4px solid var(--sage-d);
@@ -61,8 +52,10 @@
 #TlmSof::before { top: -10px; left: -10px; box-shadow: 440px 0 0 var(--sage-d); }
 #TlmSof::after  { bottom: -10px; left: -10px; box-shadow: 440px 0 0 var(--sage-d); }
 
-/* decoraciones flotantes (hongos/hojas) */
-.Tml_deco {
+/* ---------- DECORACIONES (emojis puestos ACÁ, no en el HTML) ---------- */
+/* los <span class="Tml_deco dX"> quedan vacíos en el HTML; el emoji
+   lo agrega este ::before, así el editor del foro no lo puede filtrar */
+#TlmSof .Tml_deco {
   position: absolute;
   font-size: 16px;
   opacity: 0.85;
@@ -70,10 +63,15 @@
   z-index: 2;
   pointer-events: none;
 }
-.Tml_deco.d1 { top: 8px;    left: 10px;  animation-delay: 0s; }
-.Tml_deco.d2 { top: 10px;   right: 10px; animation-delay: .8s; }
-.Tml_deco.d3 { bottom: 10px; left: 14px; animation-delay: 1.6s; }
-.Tml_deco.d4 { bottom: 12px; right: 12px; animation-delay: 2.3s; }
+#TlmSof .Tml_deco.d1 { top: 8px;     left: 10px;  animation-delay: 0s; }
+#TlmSof .Tml_deco.d2 { top: 10px;    right: 10px; animation-delay: .8s; }
+#TlmSof .Tml_deco.d3 { bottom: 10px; left: 14px;  animation-delay: 1.6s; }
+#TlmSof .Tml_deco.d4 { bottom: 12px; right: 12px; animation-delay: 2.3s; }
+
+#TlmSof .Tml_deco.d1::before { content: "\1F344"; } /* 🍄 hongo */
+#TlmSof .Tml_deco.d2::before { content: "\1F338"; } /* 🌸 flor de cerezo */
+#TlmSof .Tml_deco.d3::before { content: "\1F343"; } /* 🍃 hoja */
+#TlmSof .Tml_deco.d4::before { content: "\1F33E"; } /* 🌾 espiga */
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
@@ -81,7 +79,7 @@
 }
 
 /* ---------- CABECERA: Tml_IK ---------- */
-.Tml_IK {
+#TlmSof .Tml_IK {
   position: relative;
   z-index: 2;
   display: flex;
@@ -93,20 +91,24 @@
   border-bottom: 3px dashed var(--sage-d);
 }
 
-/* línea decorativa "🌿 Datos 🌿 Datos 🌿" (primer div hijo) */
-.Tml_IK > div:nth-of-type(1) {
+/* línea decorativa "Datos" repetida — el texto Y los emojis salen
+   enteros del CSS; el div en el HTML queda vacío */
+#TlmSof .Tml_IK > div:nth-of-type(1) {
   font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
+  font-size: 7px !important;
   letter-spacing: 1px;
   color: var(--pink-d);
   text-align: center;
   line-height: 1.8;
 }
+#TlmSof .Tml_IK > div:nth-of-type(1)::before {
+  content: "\1F33F Datos \1F33F Datos \1F33F Datos \1F33F";
+}
 
-/* título "Don't Cry" (segundo div hijo) — único elemento a 18px, es el título */
-.Tml_IK > div:nth-of-type(2) {
+/* título (segundo div hijo) — único elemento a 18px, es el título */
+#TlmSof .Tml_IK > div:nth-of-type(2) {
   font-family: 'Press Start 2P', monospace;
-  font-size: 18px;
+  font-size: 18px !important;
   color: var(--sage-d);
   text-align: center;
   text-shadow: 2px 2px 0 var(--cream), 3px 3px 0 var(--pink);
@@ -115,7 +117,7 @@
 }
 
 /* avatar cuadrado pixel-frame */
-.Tml_IK .img {
+#TlmSof .Tml_IK .img {
   width: 84px;
   height: 84px;
   margin-top: 6px;
@@ -129,7 +131,7 @@
 }
 
 /* ---------- CUERPO: Tml_IW / Tml_Act ---------- */
-.Tml_IW {
+#TlmSof .Tml_IW {
   position: relative;
   z-index: 2;
   display: flex;
@@ -137,21 +139,21 @@
   gap: 12px;
 }
 
-.Tml_Act {
+#TlmSof .Tml_Act {
   background: rgba(255,255,255,0.55);
   border: 2px solid var(--sage-d);
   box-shadow: 3px 3px 0 var(--pink-d);
   padding: 10px 12px 12px;
 }
 
-.Tml_Act:nth-of-type(1) { background: rgba(156,175,136,0.16); } /* Activos: verde */
-.Tml_Act:nth-of-type(2) { background: rgba(243,227,179,0.35); } /* Terminados: mantequilla */
-.Tml_Act:nth-of-type(3) { background: rgba(232,175,164,0.18); } /* Inactivos: rosa */
+#TlmSof .Tml_Act:nth-of-type(1) { background: rgba(156,175,136,0.16); } /* Activos: verde */
+#TlmSof .Tml_Act:nth-of-type(2) { background: rgba(243,227,179,0.35); } /* Terminados: mantequilla */
+#TlmSof .Tml_Act:nth-of-type(3) { background: rgba(232,175,164,0.18); } /* Inactivos: rosa */
 
-.Tml_Act span {
+#TlmSof .Tml_Act span {
   display: inline-block;
   font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
+  font-size: 8px !important;
   letter-spacing: 0.5px;
   color: var(--cream);
   background: var(--sage-d);
@@ -160,35 +162,50 @@
   box-shadow: 2px 2px 0 var(--brown);
 }
 
-.Tml_Act span::before {
-  content: "\2766  "; /* ❦ unicode floral, no emoji */
+/* emoji distinto según la sección, generado desde el CSS */
+#TlmSof .Tml_Act:nth-of-type(1) span::before { content: "\1F33F  "; } /* Activos: hierba */
+#TlmSof .Tml_Act:nth-of-type(2) span::before { content: "\2728  "; }  /* Terminados: brillo */
+#TlmSof .Tml_Act:nth-of-type(3) span::before { content: "\1F343  "; } /* Inactivos: hoja */
+
+/* mismo emoji, pero como viñeta antes de CADA link de tema (nace del
+   CSS, así el editor del foro no lo puede filtrar). Usa el mismo
+   ícono que su categoría para que quede prolijo */
+#TlmSof .Tml_Act:nth-of-type(1) p a::before { content: "\1F33F "; } /* Activos: hierba */
+#TlmSof .Tml_Act:nth-of-type(2) p a::before { content: "\2728 "; }  /* Terminados: brillo */
+#TlmSof .Tml_Act:nth-of-type(3) p a::before { content: "\1F343 "; } /* Inactivos: hoja */
+
+/* lista de temas: letra chica + scroll propio, con !important porque
+   el foro suele traer su propio tamaño de letra para <p> y <a> */
+#TlmSof .Tml_Act p {
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: var(--brown) !important;
+  max-height: 90px !important;
+  overflow-y: scroll !important;   /* "scroll" en vez de "auto": la barra
+                                       queda siempre visible, aunque el
+                                       contenido no la necesite todavía */
+  padding-right: 6px !important;
 }
 
-/* lista de temas con scroll propio para que quepan muchos sin agrandar la caja */
-.Tml_Act p {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--brown);
-  max-height: 92px;
-  overflow-y: auto;
-  padding-right: 6px;
-}
-
-.Tml_Act p a {
-  color: var(--pink-d);
-  text-decoration: none;
+#TlmSof .Tml_Act p a,
+#TlmSof .Tml_Act p a:link,
+#TlmSof .Tml_Act p a:visited {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: var(--pink-d) !important;
+  text-decoration: none !important;
   border-bottom: 2px dotted var(--pink-d);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.Tml_Act p a:hover {
-  color: var(--sage-d);
+#TlmSof .Tml_Act p a:hover {
+  color: var(--sage-d) !important;
   border-color: var(--sage-d);
 }
 
 /* ---------- FIRMA / BOTÓN: a.C ---------- */
-.C {
+#TlmSof .C {
   position: relative;
   z-index: 2;
   display: block;
@@ -196,9 +213,9 @@
   padding: 9px 0;
   text-align: center;
   font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-size: 10px !important;
   letter-spacing: 1px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--brown);
   background: linear-gradient(180deg, var(--butter) 0%, var(--pink) 100%);
   border: 2px solid var(--brown);
@@ -206,17 +223,22 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.C:hover {
+#TlmSof .C:hover {
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 var(--sage-d);
-  color: var(--sage-d);
+  color: var(--sage-d) !important;
 }
 
-.C:active {
+#TlmSof .C:active {
   transform: translate(0, 0);
   box-shadow: 1px 1px 0 var(--sage-d);
 }
 
-/* scrollbar pixelada opcional para listas largas */
-.Tml_Act p::-webkit-scrollbar { width: 6px; }
-.Tml_Act p::-webkit-scrollbar-thumb { background: var(--sage-d); }
+/* scrollbar pixelada, visible siempre (webkit: Chrome/Edge/Safari) */
+#TlmSof .Tml_Act p::-webkit-scrollbar { width: 8px; }
+#TlmSof .Tml_Act p::-webkit-scrollbar-track { background: var(--cream); border-left: 1px solid var(--sage-d); }
+#TlmSof .Tml_Act p::-webkit-scrollbar-thumb { background: var(--sage-d); border-radius: 2px; }
+#TlmSof .Tml_Act p::-webkit-scrollbar-thumb:hover { background: var(--pink-d); }
+
+/* Firefox */
+#TlmSof .Tml_Act p { scrollbar-width: thin; scrollbar-color: var(--sage-d) var(--cream); }
