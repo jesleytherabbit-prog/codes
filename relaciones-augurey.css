@@ -1,5 +1,7 @@
 /* =========================================================
-   EL CLUB DEL AUGUREY
+   EL CLUB DEL AUGUREY · Plantilla de relaciones (solo CSS)
+   Sube este archivo a tu repo de GitHub y enlázalo desde el HTML con jsDelivr.
+   Las líneas @import deben quedar al PRINCIPIO del archivo.
    ========================================================= */
 @import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
 @import url('https://cdn.jsdelivr.net/npm/@fontsource/libre-baskerville@5.3.0/700-italic.css');
@@ -29,6 +31,12 @@
 .aug-rel *::before,
 .aug-rel *::after {
   box-sizing: border-box;
+}
+
+/* El foro convierte cada salto de línea del HTML en un <br>, y eso descuadra la rejilla.
+   Aquí se ocultan todos. */
+.aug-rel br {
+  display: none !important;
 }
 
 /* ---------- Marco y rejilla ---------- */
@@ -74,13 +82,15 @@
 }
 
 .aug-rel .aug-card__avatar {
-  display: block;
-  width: 136px;
-  height: 136px;
-  margin: 0;
-  padding: 0;
+  display: block !important;
+  float: none !important;
+  width: 136px !important;
+  height: 136px !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
   border: 1px solid #000;
-  border-radius: 50%;
+  border-radius: 50% !important;
   object-fit: cover;
   filter: grayscale(1) brightness(.78);
   transition: filter .35s ease, border-color .35s ease;
@@ -100,9 +110,15 @@
   font-style: italic;
   font-weight: 700;
   line-height: 1.15;
-  color: var(--aug-crema);
+  color: var(--aug-crema) !important;
   text-decoration: none;
   overflow-wrap: anywhere;
+}
+
+.aug-rel a.aug-card__pj:link,
+.aug-rel a.aug-card__pj:visited,
+.aug-rel a.aug-card__pj:hover {
+  color: var(--aug-crema) !important;
 }
 
 .aug-rel a.aug-card__pj:hover {
