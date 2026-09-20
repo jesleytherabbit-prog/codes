@@ -1,0 +1,98 @@
+/* =========================================================
+   STATS RÁPIDOS — Firma, cute pastel pixel, minimal
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@600;700&display=swap');
+
+.hp-stats {
+  --st-crema: #faf3e6;
+  --st-crema2: #f4ead6;
+  --st-verde: #6f8a56;
+  --st-rosa: #c98a92;
+  --st-marron: #7c623e;
+  --st-texto: #5b4a36;
+
+  display: block;
+  width: fit-content;
+  max-width: 400px;
+  margin: 4px auto;
+  padding: 4px 8px 5px;
+  font-family: 'Quicksand', sans-serif;
+  background: transparent;
+  border: 2px dotted var(--st-marron);
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.hp-stats-titulo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6.5px;
+  color: var(--st-verde);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.hp-stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+}
+
+.hp-chip {
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 600;
+  color: var(--st-texto);
+  background: var(--st-crema2);
+  border: 1px solid var(--st-marron);
+  border-radius: 5px;
+  padding: 1px 4px;
+  cursor: default;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.hp-chip b {
+  color: var(--st-rosa);
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+/* ---- Overlay sobre la imagen de firma (aparece con hover) ---- */
+.hp-firma-hover {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.hp-firma-hover img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.hp-firma-hover .hp-stats {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 243, 230, 0.94);
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+}
+
+.hp-firma-hover:hover .hp-stats {
+  opacity: 1;
+  visibility: visible;
+}
