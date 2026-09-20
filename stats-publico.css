@@ -1,9 +1,5 @@
 /* =========================================================
-   STATS DE ATRIBUTOS — Widget neutral para cualquier firma
-   Clases genéricas (rp-), fuente de sistema, colores neutros.
-   Los colores se pueden personalizar sin tocar este archivo:
-   agregar style="--rp-borde:#color; --rp-fondo:#color;" etc.
-   directamente en el <div class="rp-stats"> del HTML.
+   STATS DE ATRIBUTOS
    ========================================================= */
 
 .rp-stats {
