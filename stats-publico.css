@@ -1,0 +1,70 @@
+/* =========================================================
+   STATS DE ATRIBUTOS — Widget neutral para cualquier firma
+   Clases genéricas (rp-), fuente de sistema, colores neutros.
+   Los colores se pueden personalizar sin tocar este archivo:
+   agregar style="--rp-borde:#color; --rp-fondo:#color;" etc.
+   directamente en el <div class="rp-stats"> del HTML.
+   ========================================================= */
+
+.rp-stats {
+  --rp-borde: #999999;
+  --rp-fondo: #f5f5f5;
+  --rp-chip-fondo: #ffffff;
+  --rp-chip-borde: #cccccc;
+  --rp-texto: #333333;
+  --rp-valor: #000000;
+
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  max-width: 320px;
+  padding: 5px 10px 6px;
+  border: 1px solid var(--rp-borde);
+  border-radius: 6px;
+  background: var(--rp-fondo);
+  color: var(--rp-texto);
+  font-size: 11px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rp-stats-titulo {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 10px;
+  color: var(--rp-texto);
+  margin-bottom: 4px;
+}
+
+.rp-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.rp-chip {
+  background: var(--rp-chip-fondo);
+  border: 1px solid var(--rp-chip-borde);
+  border-radius: 4px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+.rp-chip b {
+  color: var(--rp-valor);
+}
+
+/* Recuadro opcional para quien todavía no tenga imagen */
+.rp-img-placeholder {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border: 1px dashed var(--rp-borde);
+  border-radius: 6px;
+  background: var(--rp-fondo);
+  color: #888888;
+  font-size: 10px;
+  line-height: 150px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 4px;
+}
