@@ -1,0 +1,135 @@
+/* =========================================================
+   TABLILLA DE MIEMBROS — CLUB DEL AUGUREY
+   Paleta: verdes-negros, turquesa petróleo, acentos cian
+   ========================================================= */
+
+.augurey-tablilla {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 14px;
+  background: #1A2E28;
+  border: 2px solid #2E6B5E;
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(79, 224, 224, 0.15);
+  font-family: Georgia, 'Times New Roman', serif;
+  box-sizing: border-box;
+}
+
+.augurey-tablilla * {
+  box-sizing: border-box;
+}
+
+.augurey-titulo {
+  text-align: center;
+  color: #C9C2AE;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #5C7A8A;
+  text-shadow: 0 0 6px rgba(63, 167, 154, 0.6);
+}
+
+.augurey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.augurey-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #5C7A8A;
+  background: #0F1F1C;
+  cursor: pointer;
+}
+
+.augurey-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%) brightness(0.85);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.augurey-card:hover img {
+  filter: grayscale(0%) brightness(0.55) blur(1px);
+  transform: scale(1.05);
+}
+
+.augurey-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 31, 28, 0) 0%,
+    rgba(26, 46, 40, 0.85) 55%,
+    rgba(15, 31, 28, 0.97) 100%
+  );
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.augurey-card:hover .augurey-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.augurey-nombre {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4FE0E0;
+  text-shadow: 0 0 6px rgba(79, 224, 224, 0.7);
+}
+
+.augurey-cargo {
+  margin: 0 0 4px 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8C6B3E;
+}
+
+.augurey-info {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #C9C2AE;
+}
+
+/* Nombre siempre visible en una franja inferior, incluso sin hover */
+.augurey-nombre-fijo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px 8px;
+  background: rgba(15, 31, 28, 0.85);
+  color: #8A9BA0;
+  font-size: 11px;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.augurey-card:hover .augurey-nombre-fijo {
+  opacity: 0;
+}
+
+/* Responsive: en pantallas muy chicas, una sola columna */
+@media (max-width: 340px) {
+  .augurey-grid {
+    grid-template-columns: 1fr;
+  }
+}
