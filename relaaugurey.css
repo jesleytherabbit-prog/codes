@@ -1,0 +1,168 @@
+/* =========================================================
+   TABLILLA DE MIEMBROS — CLUB DEL AUGUREY
+   ========================================================= */
+
+.cda-tablilla {
+  max-width: 500px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 14px !important;
+  background: #1A2E28 !important;
+  border: 2px solid #2E6B5E !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 18px rgba(79, 224, 224, 0.15) !important;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.cda-tablilla * {
+  box-sizing: border-box !important;
+}
+
+.cda-titulo {
+  display: block !important;
+  text-align: center !important;
+  color: #C9C2AE !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  margin: 0 0 14px 0 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid #5C7A8A !important;
+  text-shadow: 0 0 6px rgba(63, 167, 154, 0.6) !important;
+  float: none !important;
+}
+
+.cda-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+  float: none !important;
+}
+
+.cda-card {
+  position: relative !important;
+  display: block !important;
+  float: none !important;
+  /* Ancho fijo (no %): con % el flex-item no encogía por debajo
+     del tamaño natural de la imagen y por eso se rompía la fila. */
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  flex: 0 0 150px !important;
+  aspect-ratio: 3 / 4;
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  border: 1px solid #5C7A8A !important;
+  background: #0F1F1C !important;
+  cursor: pointer !important;
+}
+
+/* Fallback por si el navegador/skin no soporta aspect-ratio */
+.cda-card::before {
+  content: "";
+  display: block;
+  padding-top: 133%; /* 3:4 */
+}
+
+.cda-card > .cda-imgwrap {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cda-card img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  float: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+  filter: grayscale(20%) brightness(0.85);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.cda-card:hover img {
+  filter: grayscale(0%) brightness(0.55) blur(1px);
+  transform: scale(1.05);
+}
+
+.cda-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 10px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 31, 28, 0) 0%,
+    rgba(26, 46, 40, 0.85) 55%,
+    rgba(15, 31, 28, 0.97) 100%
+  ) !important;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.cda-card:hover .cda-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cda-nombre {
+  margin: 0 0 2px 0 !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: #4FE0E0 !important;
+  text-shadow: 0 0 6px rgba(79, 224, 224, 0.7);
+}
+
+.cda-cargo {
+  margin: 0 0 4px 0 !important;
+  font-size: 10px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #8C6B3E !important;
+}
+
+.cda-info {
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  color: #C9C2AE !important;
+}
+
+.cda-nombre-fijo {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 5px 8px !important;
+  background: rgba(15, 31, 28, 0.85) !important;
+  color: #8A9BA0 !important;
+  font-size: 11px !important;
+  text-align: center !important;
+  transition: opacity 0.3s ease;
+}
+
+.cda-card:hover .cda-nombre-fijo {
+  opacity: 0;
+}
+
+@media (max-width: 340px) {
+  .cda-card {
+    width: 100% !important;
+  }
+}
