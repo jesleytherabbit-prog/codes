@@ -37,7 +37,7 @@
 .cda-grid {
   display: flex !important;
   flex-wrap: wrap !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   align-items: stretch !important;
   gap: 10px !important;
   width: 100% !important;
@@ -48,8 +48,12 @@
   position: relative !important;
   display: block !important;
   float: none !important;
-  /* 2 columnas: 50% menos la mitad del gap */
-  width: calc(50% - 5px) !important;
+  /* Ancho fijo (no %): con % el flex-item no encogía por debajo
+     del tamaño natural de la imagen y por eso se rompía la fila. */
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  flex: 0 0 150px !important;
   aspect-ratio: 3 / 4;
   overflow: hidden !important;
   border-radius: 6px !important;
