@@ -1,202 +1,164 @@
 /* =========================================================
-   EL CLUB DEL AUGUREY · Plantilla de relaciones (solo CSS)
+   TABLILLA DE MIEMBROS — CLUB DEL AUGUREY
    ========================================================= */
-@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/libre-baskerville@5.3.0/700-italic.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/jost@5.3.0/400.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/jost@5.3.0/500.css');
 
-/* ---------- Paleta del augurey (edita aquí los colores) ---------- */
-.aug-rel {
-  --aug-fondo: #1d1c17;      /* marco exterior, pardo casi negro */
-  --aug-carta: #2a2922;      /* fondo de cada tarjeta */
-  --aug-borde: #3a392f;      /* pardo oscuro de las alas */
-  --aug-banda: #187f66;      /* esmeralda de la cola (banda del nombre) */
-  --aug-azul: #2a6fb8;       /* azul pavo real (barra lateral) */
-  --aug-hoja: #5fc48a;       /* verde hoja (iconos, detalles) */
-  --aug-crema: #f4efe4;      /* plumón de la cabeza (nombre) */
-  --aug-menta: #dceadf;      /* texto pequeño sobre la banda */
-  --aug-arena: #9a8b76;      /* gris arena (textos secundarios) */
-
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 880px;
-  margin: 0 auto;
-  font-family: 'Jost', 'Trebuchet MS', sans-serif;
+.cda-tablilla {
+  max-width: 500px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 14px !important;
+  background: #1A2E28 !important;
+  border: 2px solid #2E6B5E !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 18px rgba(79, 224, 224, 0.15) !important;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
-.aug-rel *,
-.aug-rel *::before,
-.aug-rel *::after {
-  box-sizing: border-box;
+.cda-tablilla * {
+  box-sizing: border-box !important;
 }
 
-/* El foro convierte cada salto de línea del HTML en un <br>, y eso descuadra la rejilla.
-   Aquí se ocultan todos. */
-.aug-rel br {
-  display: none !important;
+.cda-titulo {
+  display: block !important;
+  text-align: center !important;
+  color: #C9C2AE !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  margin: 0 0 14px 0 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid #5C7A8A !important;
+  text-shadow: 0 0 6px rgba(63, 167, 154, 0.6) !important;
+  float: none !important;
 }
 
-/* ---------- Marco y rejilla ---------- */
-.aug-rel .aug-rel__marco {
-  padding: 28px;
-  background: var(--aug-fondo);
-  border: 1px solid var(--aug-borde);
+.cda-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+  float: none !important;
 }
 
-.aug-rel .aug-rel__rejilla {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-/* ---------- Tarjeta ---------- */
-.aug-rel .aug-card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  background: var(--aug-carta);
-  border: 1px solid var(--aug-borde);
-}
-
-/* Zona de la foto + barra azul lateral */
-.aug-rel .aug-card__foto {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 190px;
-}
-
-.aug-rel .aug-card__foto::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--aug-azul);
-  transition: background-color .3s ease;
-}
-
-.aug-rel .aug-card__avatar {
+.cda-card {
+  position: relative !important;
   display: block !important;
   float: none !important;
-  width: 136px !important;
-  height: 136px !important;
-  max-width: none !important;
+  /* 2 columnas: 50% menos la mitad del gap */
+  width: calc(50% - 5px) !important;
+  aspect-ratio: 3 / 4;
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  border: 1px solid #5C7A8A !important;
+  background: #0F1F1C !important;
+  cursor: pointer !important;
+}
+
+/* Fallback por si el navegador/skin no soporta aspect-ratio */
+.cda-card::before {
+  content: "";
+  display: block;
+  padding-top: 133%; /* 3:4 */
+}
+
+.cda-card > .cda-imgwrap {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cda-card img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  float: none !important;
   margin: 0 !important;
-  padding: 0 !important;
-  border: 1px solid #000;
-  border-radius: 50% !important;
-  object-fit: cover;
-  filter: grayscale(1) brightness(.78);
-  transition: filter .35s ease, border-color .35s ease;
+  border: 0 !important;
+  filter: grayscale(20%) brightness(0.85);
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Banda del nombre */
-.aug-rel .aug-card__nombre {
-  padding: 11px 8px 9px;
-  text-align: center;
-  background: var(--aug-banda);
+.cda-card:hover img {
+  filter: grayscale(0%) brightness(0.55) blur(1px);
+  transform: scale(1.05);
 }
 
-.aug-rel .aug-card__pj {
-  display: block;
-  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--aug-crema) !important;
-  text-decoration: none;
-  overflow-wrap: anywhere;
+.cda-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 10px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 31, 28, 0) 0%,
+    rgba(26, 46, 40, 0.85) 55%,
+    rgba(15, 31, 28, 0.97) 100%
+  ) !important;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.aug-rel a.aug-card__pj:link,
-.aug-rel a.aug-card__pj:visited,
-.aug-rel a.aug-card__pj:hover {
-  color: var(--aug-crema) !important;
+.cda-card:hover .cda-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.aug-rel a.aug-card__pj:hover {
-  text-decoration: underline;
+.cda-nombre {
+  margin: 0 0 2px 0 !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: #4FE0E0 !important;
+  text-shadow: 0 0 6px rgba(79, 224, 224, 0.7);
 }
 
-.aug-rel .aug-card__rol {
-  display: block;
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--aug-menta);
+.cda-cargo {
+  margin: 0 0 4px 0 !important;
+  font-size: 10px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #8C6B3E !important;
 }
 
-/* Fila del icono */
-.aug-rel .aug-card__icono {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 54px;
-  font-size: 22px;
-  color: var(--aug-hoja);
+.cda-info {
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  color: #C9C2AE !important;
 }
 
-/* ---------- Al pasar el cursor: el augurey recupera su color ---------- */
-.aug-rel .aug-card:hover .aug-card__avatar,
-.aug-rel .aug-card:focus-within .aug-card__avatar {
-  filter: none;
-  border-color: var(--aug-hoja);
+.cda-nombre-fijo {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 5px 8px !important;
+  background: rgba(15, 31, 28, 0.85) !important;
+  color: #8A9BA0 !important;
+  font-size: 11px !important;
+  text-align: center !important;
+  transition: opacity 0.3s ease;
 }
 
-.aug-rel .aug-card:hover .aug-card__foto::after,
-.aug-rel .aug-card:focus-within .aug-card__foto::after {
-  background: var(--aug-hoja);
+.cda-card:hover .cda-nombre-fijo {
+  opacity: 0;
 }
 
-.aug-rel .aug-card__pj:focus-visible {
-  outline: 2px solid var(--aug-crema);
-  outline-offset: 3px;
-}
-
-/* ---------- Pie ---------- */
-.aug-rel .aug-rel__pie {
-  margin-top: 10px;
-  padding: 9px 12px;
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: .38em;
-  text-transform: uppercase;
-  color: var(--aug-arena);
-  background: var(--aug-fondo);
-  border: 1px solid var(--aug-borde);
-}
-
-.aug-rel .aug-rel__pie span {
-  margin: 0 8px;
-}
-
-.aug-rel .aug-rel__pie b {
-  font-weight: 500;
-  letter-spacing: .24em;
-  color: var(--aug-hoja);
-}
-
-/* ---------- Adaptación a pantallas pequeñas ---------- */
-@media (max-width: 760px) {
-  .aug-rel .aug-rel__marco { padding: 16px; }
-  .aug-rel .aug-rel__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 480px) {
-  .aug-rel .aug-rel__rejilla { grid-template-columns: minmax(0, 1fr); }
-  .aug-rel .aug-rel__pie { letter-spacing: .2em; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aug-rel .aug-card__avatar,
-  .aug-rel .aug-card__foto::after {
-    transition: none;
+@media (max-width: 340px) {
+  .cda-card {
+    width: 100% !important;
   }
 }
