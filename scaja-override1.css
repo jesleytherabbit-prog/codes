@@ -1,27 +1,23 @@
 /* ===================================================
    OVERRIDE .scaja-content — Soft Pastel Cottagecore
-   Repo: jesleytherabbit-prog/codes — archivo: scaja-override.css
-   Pegar el <link> a este archivo en tu FIRMA para que se
-   aplique en cada post (incluidas las respuestas automáticas
-   del sistema de grageas).
    =================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
 
 .scaja-content {
   display: block !important;
   font-family: 'Quicksand', sans-serif !important;
-  background: linear-gradient(180deg, #fdf3e7 0%, #fff8ef 100%) !important;
+  background: linear-gradient(180deg, #e9dac7 0%, #ddc9ae 100%) !important;
   border: 3px dashed #dfa0b4 !important;
   border-radius: 14px !important;
   padding: 18px 20px !important;
   margin: 14px 0 !important;
-  color: #5c4a42 !important;
+  color: #4a3a30 !important;
   line-height: 2 !important;
-  box-shadow: 3px 3px 0 rgba(138,111,82,.25) !important;
+  box-shadow: 3px 3px 0 rgba(90,65,45,.3) !important;
 }
 
 .scaja-content::before {
-  content: "🪙  registro de grageas  🪙";
+  content: "🪙  actualización de bóveda  🪙";
   display: block;
   text-align: center;
   font-family: 'Press Start 2P', cursive;
@@ -41,7 +37,7 @@
 /* Valores numéricos — el foro los pinta con color inline #FBF3D5 */
 .scaja-content span[style*="FBF3D5"],
 .scaja-content span[style*="fbf3d5"] {
-  color: #8a6f52 !important;
+  color: #5f4632 !important;
   font-weight: 700 !important;
 }
 
