@@ -1,0 +1,57 @@
+/* ===================================================
+   OVERRIDE .scaja-content — Soft Pastel Cottagecore
+   Repo: jesleytherabbit-prog/codes — archivo: scaja-override.css
+   Pegar el <link> a este archivo en tu FIRMA para que se
+   aplique en cada post (incluidas las respuestas automáticas
+   del sistema de grageas).
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
+
+.scaja-content {
+  display: block !important;
+  font-family: 'Quicksand', sans-serif !important;
+  background: linear-gradient(180deg, #fdf3e7 0%, #fff8ef 100%) !important;
+  border: 3px dashed #dfa0b4 !important;
+  border-radius: 14px !important;
+  padding: 18px 20px !important;
+  margin: 14px 0 !important;
+  color: #5c4a42 !important;
+  line-height: 2 !important;
+  box-shadow: 3px 3px 0 rgba(138,111,82,.25) !important;
+}
+
+.scaja-content::before {
+  content: "🪙  registro de grageas  🪙";
+  display: block;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #dfa0b4;
+  margin-bottom: 12px;
+}
+
+/* Etiquetas ({Grageas iniciales», {Enlaces», etc.) */
+.scaja-content .scaja-form,
+.scaja-content .scaja-form * {
+  color: #c98aa0 !important;
+  font-weight: 700 !important;
+}
+
+/* Valores numéricos — el foro los pinta con color inline #FBF3D5 */
+.scaja-content span[style*="FBF3D5"],
+.scaja-content span[style*="fbf3d5"] {
+  color: #8a6f52 !important;
+  font-weight: 700 !important;
+}
+
+/* Enlaces (color inline #9CAFAA en el ejemplo) */
+.scaja-content span[style*="9CAFAA"],
+.scaja-content span[style*="9cafaa"] {
+  color: #7fae7c !important;
+}
+.scaja-content a {
+  color: #c25150 !important;
+  text-decoration: underline;
+}
+.scaja-content b, .scaja-content strong { color: #c25150 !important; }
