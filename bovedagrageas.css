@@ -1,0 +1,167 @@
+/* ===================================================
+   BÓVEDA DE HANA — Soft Pastel Pixel Cottagecore
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Quicksand:wght@500;700&display=swap');
+
+.bvh-sheet, .bvh-sheet * { box-sizing: border-box; }
+
+.bvh-sheet {
+  --cream: #fdf3e7;
+  --pink: #f3d3de;
+  --pink-deep: #dfa0b4;
+  --mint: #d3e6d0;
+  --lavender: #e3d6ef;
+  --brown: #8a6f52;
+  --text: #5c4a42;
+
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  border: 4px solid var(--brown);
+  box-shadow:
+    0 0 0 4px var(--cream),
+    0 0 0 8px var(--pink-deep),
+    6px 6px 0 8px rgba(138,111,82,0.25);
+}
+
+/* --- Encabezado --- */
+.bvh-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 14px 8px;
+  background: linear-gradient(180deg, var(--pink) 0%, var(--cream) 100%);
+  border-bottom: 4px dashed var(--pink-deep);
+}
+.bvh-header::before {
+  content: "🪙 ✨ 🪙 ✨ 🪙";
+  display: block;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+  opacity: .8;
+}
+.bvh-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.bvh-photo-frame {
+  flex-shrink: 0;
+  width: 200px;
+  height: 225px;
+  overflow: hidden;
+  border: 4px solid var(--brown);
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px var(--cream), 3px 3px 0 3px var(--pink-deep);
+}
+.bvh-photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bvh-header-text { flex: 1; text-align: center; }
+.bvh-name {
+  font-family: 'Fleur De Leah', cursive;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--pink-deep);
+  text-shadow: 2px 2px 0 #fff;
+}
+.bvh-sub {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brown);
+}
+.bvh-sub::before { content: "🧺 "; }
+
+/* --- Pestañas (tabs) --- */
+.bvh-tabs { position: relative; padding: 4px 14px 14px; }
+.bvh-tabs input[type="radio"],
+.bvh-sheet input[type="radio"] {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.bvh-tabnav { display: flex; gap: 4px; margin: 0 0 8px; flex-wrap: wrap; }
+.bvh-tabnav label {
+  flex: 1;
+  text-align: center;
+  padding: 7px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--lavender);
+  border: 2px solid var(--brown);
+  border-radius: 6px;
+  color: var(--text);
+  transition: transform .15s ease;
+}
+.bvh-tabnav label:hover { transform: translateY(-2px); }
+.bvh-tabnav label:nth-child(1)::before { content: "🪙 "; }
+.bvh-tabnav label:nth-child(2)::before { content: "🎒 "; }
+.bvh-tabnav label:nth-child(3)::before { content: "🏆 "; }
+
+#bvh-t1:checked ~ .bvh-tabnav label[for="bvh-t1"],
+#bvh-t2:checked ~ .bvh-tabnav label[for="bvh-t2"],
+#bvh-t3:checked ~ .bvh-tabnav label[for="bvh-t3"] {
+  background: var(--pink-deep);
+  color: #fff;
+  box-shadow: 2px 2px 0 var(--brown);
+}
+
+/* Los paneles se superponen todos en el mismo lugar (position: absolute)
+   y solo cambia cuál queda arriba (opacidad/z-index). Nunca empujan
+   contenido hacia abajo, pase lo que pase con los radios. */
+.bvh-panels { position: relative; height: 260px; }
+.bvh-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 14px;
+  background: #fffaf3;
+  border: 3px solid var(--mint);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+#bvh-t1:checked ~ .bvh-panels #bvh-p1,
+#bvh-t2:checked ~ .bvh-panels #bvh-p2,
+#bvh-t3:checked ~ .bvh-panels #bvh-p3 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+
+/* --- Detalles internos --- */
+.bvh-panel b, .bvh-panel strong { color: var(--pink-deep); }
+.bvh-panel::-webkit-scrollbar { width: 8px; }
+.bvh-panel::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 4px; }
+.bvh-panel::-webkit-scrollbar-track { background: var(--mint); }
+
+/* --- Pie --- */
+.bvh-footer {
+  text-align: center;
+  padding: 8px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--brown);
+  background: var(--mint);
+  border-top: 4px dashed var(--pink-deep);
+}
+.bvh-footer::before { content: "☆ "; }
+.bvh-footer::after { content: " ☆"; }
