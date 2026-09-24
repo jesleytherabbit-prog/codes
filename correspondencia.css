@@ -1,0 +1,107 @@
+/* ===================================================
+   CORRESPONDENCIA DE HANA — Soft Pastel Pixel Cottagecore
+   Repo: jesleytherabbit-prog/codes — archivo: correspondencia.css
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;700&display=swap');
+
+.crh-sheet, .crh-sheet * { box-sizing: border-box; }
+
+.crh-sheet {
+  --cream: #fdf3e7;
+  --pink: #f3d3de;
+  --pink-deep: #dfa0b4;
+  --mint: #d3e6d0;
+  --brown: #8a6f52;
+  --text: #5c4a42;
+
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  border: 4px solid var(--brown);
+  box-shadow:
+    0 0 0 4px var(--cream),
+    0 0 0 8px var(--pink-deep),
+    6px 6px 0 8px rgba(138,111,82,0.25);
+}
+
+/* --- Encabezado --- */
+.crh-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 14px 8px;
+  background: linear-gradient(180deg, var(--pink) 0%, var(--cream) 100%);
+  border-bottom: 4px dashed var(--pink-deep);
+}
+.crh-header::before {
+  content: "🕊 🪶 🦉 🪶 🕊";
+  display: block;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+  opacity: .8;
+}
+.crh-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.crh-photo-frame {
+  flex-shrink: 0;
+  width: 200px;
+  height: 225px;
+  overflow: hidden;
+  border: 4px solid var(--brown);
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px var(--cream), 3px 3px 0 3px var(--pink-deep);
+}
+.crh-photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.crh-header-text { flex: 1; text-align: center; }
+.crh-name {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  color: var(--pink-deep);
+  text-shadow: 2px 2px 0 #fff;
+}
+.crh-sub {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brown);
+}
+.crh-sub::before { content: "✉ "; }
+
+/* --- Cuerpo --- */
+.crh-body { padding: 14px; }
+.crh-panel {
+  padding: 14px;
+  background: #fffaf3;
+  border: 3px solid var(--mint);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: justify;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.crh-panel + .crh-panel { margin-top: 10px; }
+.crh-panel b, .crh-panel strong { color: var(--pink-deep); }
+.crh-panel::-webkit-scrollbar { width: 8px; }
+.crh-panel::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 4px; }
+.crh-panel::-webkit-scrollbar-track { background: var(--mint); }
+
+/* --- Pie --- */
+.crh-footer {
+  text-align: center;
+  padding: 8px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--brown);
+  background: var(--mint);
+  border-top: 4px dashed var(--pink-deep);
+}
+.crh-footer::before { content: "☆ "; }
+.crh-footer::after { content: " ☆"; }
