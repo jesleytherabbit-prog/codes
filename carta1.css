@@ -108,7 +108,7 @@
   grid-template-rows: 0fr;
   transition: grid-template-rows .5s ease;
 }
-.hlt-letter-inner { overflow: hidden; }
+.hlt-letter-inner { overflow: hidden; min-height: 0; }
 
 .hlt-letter {
   margin-top: 14px;
