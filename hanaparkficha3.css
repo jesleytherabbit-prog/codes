@@ -76,7 +76,18 @@
 
 /* --- Pestañas (tabs) --- */
 .hana-tabs { position: relative; padding: 4px 14px 14px; }
-.hana-tabs input[type="radio"] { display: none; }
+.hana-tabs input[type="radio"],
+.hana-sheet input[type="radio"] {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
 
 .hana-tabnav { display: flex; gap: 4px; margin: 0 0 8px; flex-wrap: wrap; }
 .hana-tabnav label {
