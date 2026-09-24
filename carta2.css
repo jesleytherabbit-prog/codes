@@ -1,6 +1,5 @@
 /* ===================================================
-   CARTA DE HANA — Sobre interactivo, soft pastel cottagecore
-   Repo: jesleytherabbit-prog/codes — archivo: carta.css
+   CARTA DE HANA
    =================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Quicksand:wght@500;700&display=swap');
 
@@ -101,14 +100,13 @@
 #hlt-open:checked ~ .hlt-click .hlt-seal { opacity: 0; }
 #hlt-open:checked ~ .hlt-click .hlt-hint { opacity: 0; }
 
-/* --- Carta: se despliega como acordeón (ocupa espacio real,
-     nunca se superpone con lo que venga después en el post) --- */
+/* --- Carta: se despliega como acordeón clásico (max-height),
+     método compatible con cualquier navegador --- */
 .hlt-letter-wrap {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows .5s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .6s ease;
 }
-.hlt-letter-inner { overflow: hidden; min-height: 0; }
 
 .hlt-letter {
   margin-top: 14px;
@@ -129,4 +127,4 @@
 }
 .hlt-letter:focus { outline: 2px dashed var(--pink-deep); outline-offset: 3px; }
 
-#hlt-open:checked ~ .hlt-letter-wrap { grid-template-rows: 1fr; }
+#hlt-open:checked ~ .hlt-letter-wrap { max-height: 2000px; }
