@@ -1,0 +1,223 @@
+/* ===================================================
+   ALAIN DIONYSOS BALSAN — Ficha estilo Old Money
+   Ecuestre Francés / Gótico Oscuro
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+.alain-sheet, .alain-sheet * { box-sizing: border-box; }
+
+.alain-sheet {
+  --noir: #14100d;
+  --noir-deep: #0a0807;
+  --wine: #5c1620;
+  --wine-deep: #3d0e15;
+  --gold: #b9975b;
+  --gold-light: #d9c08c;
+  --hunter: #29352a;
+  --parchment: #e7dcc3;
+  --text: #ddd0b0;
+
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--noir);
+  border: 4px solid var(--gold);
+  box-shadow:
+    0 0 0 4px var(--noir),
+    0 0 0 8px var(--wine-deep),
+    6px 6px 0 8px rgba(0,0,0,0.5);
+}
+
+/* --- Encabezado --- */
+.alain-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 14px 8px;
+  background: linear-gradient(180deg, var(--wine-deep) 0%, var(--noir) 100%);
+  border-bottom: 4px double var(--gold);
+}
+.alain-header::before {
+  content: "⚜ 🐎 ⚜ 🐎 ⚜";
+  display: block;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+  color: var(--gold);
+  opacity: .85;
+}
+.alain-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.alain-photo-frame {
+  flex-shrink: 0;
+  width: 200px;
+  height: 225px;
+  overflow: hidden;
+  border: 4px solid var(--gold);
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px var(--noir), 3px 3px 0 3px var(--wine-deep);
+  filter: sepia(15%) saturate(85%);
+}
+.alain-photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.alain-header-text { flex: 1; text-align: center; }
+.alain-name {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 26px;
+  color: var(--gold-light);
+  text-shadow: 2px 2px 0 #000, 0 0 8px rgba(185,151,91,0.35);
+  line-height: 1.15;
+}
+.alain-sub {
+  margin-top: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* --- Pestañas (tabs) --- */
+.alain-tabs { position: relative; padding: 4px 14px 14px; }
+.alain-tabs input[type="radio"],
+.alain-sheet input[type="radio"] {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.alain-tabnav { display: flex; gap: 4px; margin: 0 0 8px; flex-wrap: wrap; }
+.alain-tabnav label {
+  flex: 1;
+  text-align: center;
+  padding: 7px 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: var(--hunter);
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  color: var(--parchment);
+  transition: transform .15s ease;
+}
+.alain-tabnav label:hover { transform: translateY(-2px); }
+
+#abn-t1:checked ~ .alain-tabnav label[for="abn-t1"],
+#abn-t2:checked ~ .alain-tabnav label[for="abn-t2"],
+#abn-t3:checked ~ .alain-tabnav label[for="abn-t3"],
+#abn-t4:checked ~ .alain-tabnav label[for="abn-t4"],
+#abn-t5:checked ~ .alain-tabnav label[for="abn-t5"] {
+  background: var(--wine);
+  color: var(--gold-light);
+  box-shadow: 2px 2px 0 var(--noir-deep);
+}
+
+/* Los paneles se superponen todos en el mismo lugar (position: absolute)
+   y solo cambia cuál queda arriba (z-index/opacity). */
+.alain-panels { position: relative; height: 400px; }
+.alain-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 14px;
+  background: #1c1712;
+  border: 3px solid var(--wine-deep);
+  border-radius: 2px;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: justify;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+#abn-t1:checked ~ .alain-panels #abn-p1,
+#abn-t2:checked ~ .alain-panels #abn-p2,
+#abn-t3:checked ~ .alain-panels #abn-p3,
+#abn-t4:checked ~ .alain-panels #abn-p4,
+#abn-t5:checked ~ .alain-panels #abn-p5 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+
+/* --- Detalles internos --- */
+.alain-panel b, .alain-panel strong { color: var(--gold-light); }
+.alain-panel a { color: var(--gold-light) !important; }
+.alain-panel::-webkit-scrollbar { width: 8px; }
+.alain-panel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+.alain-panel::-webkit-scrollbar-track { background: var(--noir-deep); }
+
+/* --- Spoilers (detalles/resumen) ---
+   Se sobreescribe el fondo por defecto del foro con !important */
+.alain-panel details {
+  margin: 8px 0;
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #1c1712 !important;
+}
+.alain-panel details + details { margin-top: 8px; }
+.alain-panel details details { margin: 8px 6px; }
+
+.alain-panel summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 6px 12px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--parchment) !important;
+  background: var(--hunter) !important;
+}
+.alain-panel summary::-webkit-details-marker { display: none; }
+.alain-panel summary::before { content: "🐎 "; }
+.alain-panel details[open] > summary::before { content: "⚜ "; }
+
+/* Colores por categoría (equivalentes oscuros al mapeo original) */
+.alain-panel summary.v  { background: #24361f !important; color: #cfe0bd !important; }
+.alain-panel summary.r  { background: #4a1420 !important; color: #edcdd2 !important; }
+.alain-panel summary.a  { background: #4a3712 !important; color: #ecdcae !important; }
+.alain-panel summary.az { background: #16293b !important; color: #bcd4e8 !important; }
+.alain-panel summary.l  { background: #2e2038 !important; color: #ddc9ec !important; }
+.alain-panel summary.p  { background: #401826 !important; color: #eec6d3 !important; }
+.alain-panel summary.nl { background: #33241f !important; color: var(--parchment) !important; }
+.alain-panel summary.np { background: #241d16 !important; color: var(--parchment) !important; }
+
+.alain-divider {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+/* --- Pie --- */
+.alain-footer {
+  text-align: center;
+  padding: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  background: var(--hunter);
+  border-top: 4px double var(--gold);
+}
