@@ -205,12 +205,8 @@
 }
 
 /* =========================================================
-   PESTAÑAS POR JUGADOR — Eco del Imperio
+   PESTAÑAS POR JUGADOR — Eco del Imperio (versión :target)
    ========================================================= */
-
-.imp-tablilla input[name="imp-jugador"] {
-  display: none;
-}
 
 .imp-tabs-nav {
   display: flex;
@@ -229,24 +225,14 @@
   border: 1px solid var(--imp-linea);
   padding: 6px 12px;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
   transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  background: transparent;
 }
 
 .imp-tab-label:hover {
   color: var(--imp-oro-op);
   border-color: var(--imp-oro);
-}
-
-#imp-j1:checked ~ .imp-tabs-nav label[for="imp-j1"],
-#imp-j2:checked ~ .imp-tabs-nav label[for="imp-j2"],
-#imp-j3:checked ~ .imp-tabs-nav label[for="imp-j3"],
-#imp-j4:checked ~ .imp-tabs-nav label[for="imp-j4"],
-#imp-j5:checked ~ .imp-tabs-nav label[for="imp-j5"],
-#imp-j6:checked ~ .imp-tabs-nav label[for="imp-j6"] {
-  color: var(--imp-oro);
-  border-color: var(--imp-oro);
-  background: rgba(201, 162, 75, 0.08);
 }
 
 .imp-tabs-content {
@@ -259,7 +245,7 @@
   line-height: 1.75;
   color: var(--imp-texto);
   text-align: justify;
-  animation: imp-fade 0.4s ease;
+  scroll-margin-top: 40px;
 }
 
 .imp-tab-panel p {
@@ -269,16 +255,20 @@
   margin-bottom: 0;
 }
 
-@keyframes imp-fade {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Jugador 1 es la pestaña por defecto (por eso va último en el HTML) */
+#imp-j1 {
+  display: block;
 }
 
-#imp-j1:checked ~ .imp-tabs-content #imp-panel1,
-#imp-j2:checked ~ .imp-tabs-content #imp-panel2,
-#imp-j3:checked ~ .imp-tabs-content #imp-panel3,
-#imp-j4:checked ~ .imp-tabs-content #imp-panel4,
-#imp-j5:checked ~ .imp-tabs-content #imp-panel5,
-#imp-j6:checked ~ .imp-tabs-content #imp-panel6 {
+.imp-tab-panel:target {
   display: block;
+}
+
+/* Al activar cualquier otra pestaña, se oculta la de por defecto */
+#imp-j2:target ~ #imp-j1,
+#imp-j3:target ~ #imp-j1,
+#imp-j4:target ~ #imp-j1,
+#imp-j5:target ~ #imp-j1,
+#imp-j6:target ~ #imp-j1 {
+  display: none;
 }
