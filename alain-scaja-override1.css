@@ -1,14 +1,14 @@
 /* ===================================================
-   ALAIN DIONYSOS BALSAN
+   ALAIN DIONYSOS BALSAN — Override .scaja (Recordadora)
    =================================================== */
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=UnifrakturCook:wght@700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
 
 .scaja {
   display: block !important;
   width: 100% !important;
-  max-width: 480px !important;
+  max-width: 340px !important;
   margin: 12px auto !important;
-  padding: 22px 26px 18px !important;
+  padding: 16px 20px 14px !important;
   background: #090909 !important;
   background-image: none !important;
   border: 1px solid #454348 !important;
@@ -35,31 +35,34 @@
   letter-spacing: 1px !important;
 }
 
-.scaja-subtitle {
+.scaja .scaja-subtitle,
+.scaja > .scaja-subtitle {
   display: block !important;
   background: none !important;
   border: none !important;
   border-top: 1px solid #454348 !important;
-  padding: 10px 0 4px !important;
-  margin: 10px 0 0 !important;
+  padding: 6px 0 2px !important;
+  margin: 8px 0 0 !important;
   font-family: 'UnifrakturCook', 'Times New Roman', serif !important;
-  font-size: 15px !important;
+  font-size: 13px !important;
   font-weight: normal !important;
   color: #8E3A42 !important;
   letter-spacing: .5px !important;
+  line-height: 1.2 !important;
 }
 
-.scaja-content {
+.scaja .scaja-content,
+.scaja > .scaja-content {
   display: block !important;
   background: #1a1a1c !important;
   border: none !important;
   border-left: 3px solid #721F2B !important;
   border-radius: 0 !important;
-  padding: 12px 14px !important;
-  margin: 6px 0 0 !important;
+  padding: 8px 10px !important;
+  margin: 4px 0 0 !important;
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 13px !important;
-  line-height: 1.75 !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
   color: #C0B29E !important;
   box-shadow: none !important;
 }
