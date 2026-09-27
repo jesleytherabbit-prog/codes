@@ -1,0 +1,161 @@
+/* ===================================================
+   ALAIN DIONYSOS BALSAN — Cartel de Actualización
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+.alain-update, .alain-update * { box-sizing: border-box; }
+
+.alain-update {
+  --noir: #090909;
+  --charcoal: #222124;
+  --graphite: #454348;
+  --oxblood: #721F2B;
+  --wine: #8E3A42;
+  --beige: #C0B29E;
+
+  width: 480px;
+  margin: 0 auto;
+  padding: 26px 30px 22px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--beige);
+  background: var(--noir);
+  border: 1px solid var(--graphite);
+  border-top: 2px solid var(--oxblood);
+  border-bottom: 2px solid var(--oxblood);
+  text-align: center;
+}
+
+.au-title {
+  font-family: 'UnifrakturCook', 'Times New Roman', serif;
+  font-size: 26px;
+  color: var(--beige);
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.au-subtitle {
+  margin-top: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.au-subtitle a {
+  color: var(--wine) !important;
+  text-decoration: none;
+  border-bottom: 1px solid var(--oxblood);
+  padding-bottom: 1px;
+}
+
+.au-divider {
+  margin: 16px auto;
+  width: 60px;
+  border-top: 1px solid var(--graphite);
+  position: relative;
+}
+.au-divider::before {
+  content: "✠";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--noir);
+  padding: 0 8px;
+  color: var(--oxblood);
+  font-size: 11px;
+}
+
+/* --- Spoiler minimalista --- */
+.alain-update details.au-spoiler {
+  text-align: left;
+  border: none;
+  background: none;
+  margin: 0;
+}
+.alain-update summary {
+  cursor: pointer;
+  list-style: none;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--beige);
+  padding: 8px 0;
+  border-top: 1px solid var(--graphite);
+  border-bottom: 1px solid var(--graphite);
+}
+.alain-update summary::-webkit-details-marker { display: none; }
+.alain-update summary::before { content: "† "; color: var(--oxblood); }
+.alain-update details[open] > summary::before { content: "✠ "; color: var(--wine); }
+
+.au-spoiler-content { padding-top: 16px; }
+
+.au-sep {
+  border: none;
+  border-top: 1px solid var(--graphite);
+  margin: 18px 0;
+}
+
+.au-canje-cat {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--wine);
+  text-align: center;
+}
+.au-canje-sub {
+  margin-top: 6px;
+  text-align: center;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--beige);
+  line-height: 1.4;
+}
+.au-texto-largo {
+  margin-top: 10px;
+  text-align: justify;
+  line-height: 1.65;
+  color: #a89a86;
+  font-size: 13px;
+}
+.au-total {
+  margin-top: 10px;
+  text-align: right;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--wine);
+}
+
+.au-gran-total {
+  margin-top: 22px;
+  padding: 14px 0;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--beige);
+  border-top: 1px solid var(--oxblood);
+  border-bottom: 1px solid var(--oxblood);
+  text-align: center;
+  line-height: 1.8;
+}
+.au-gran-total b { color: var(--wine); }
+
+.au-footer-link {
+  display: block;
+  margin-top: 18px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+.au-footer-link a {
+  color: var(--graphite) !important;
+  text-decoration: none;
+  border-bottom: 1px solid var(--graphite);
+}
