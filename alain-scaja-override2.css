@@ -21,10 +21,13 @@
   text-align: center !important;
 }
 
-.scaja-title {
+.scaja .scaja-title,
+.scaja > .scaja-title {
   display: block !important;
   background: none !important;
   border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   padding: 0 0 6px !important;
   margin: 0 0 4px !important;
   font-family: 'UnifrakturMaguntia', 'Times New Roman', serif !important;
@@ -67,13 +70,25 @@
   box-shadow: none !important;
 }
 
-.scaja-credit {
+.scaja .scaja-credit,
+.scaja > .scaja-credit {
   display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
   margin: 16px 0 0 !important;
   padding: 10px 0 0 !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
   border: none !important;
   border-top: 1px solid #721F2B !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
   font-family: 'UnifrakturCook', 'Times New Roman', serif !important;
   font-size: 11px !important;
+  line-height: 1.4 !important;
   color: #454348 !important;
+  text-align: center !important;
 }
