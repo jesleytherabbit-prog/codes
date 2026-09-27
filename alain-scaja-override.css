@@ -1,0 +1,76 @@
+/* ===================================================
+   ALAIN DIONYSOS BALSAN
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=UnifrakturCook:wght@700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+.scaja {
+  display: block !important;
+  width: 100% !important;
+  max-width: 480px !important;
+  margin: 12px auto !important;
+  padding: 22px 26px 18px !important;
+  background: #090909 !important;
+  background-image: none !important;
+  border: 1px solid #454348 !important;
+  border-top: 2px solid #721F2B !important;
+  border-bottom: 2px solid #721F2B !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #C0B29E !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  text-align: center !important;
+}
+
+.scaja-title {
+  display: block !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 0 6px !important;
+  margin: 0 0 4px !important;
+  font-family: 'UnifrakturMaguntia', 'Times New Roman', serif !important;
+  font-size: 26px !important;
+  font-weight: normal !important;
+  color: #C0B29E !important;
+  text-shadow: 1px 1px 0 #000 !important;
+  letter-spacing: 1px !important;
+}
+
+.scaja-subtitle {
+  display: block !important;
+  background: none !important;
+  border: none !important;
+  border-top: 1px solid #454348 !important;
+  padding: 10px 0 4px !important;
+  margin: 10px 0 0 !important;
+  font-family: 'UnifrakturCook', 'Times New Roman', serif !important;
+  font-size: 15px !important;
+  font-weight: normal !important;
+  color: #8E3A42 !important;
+  letter-spacing: .5px !important;
+}
+
+.scaja-content {
+  display: block !important;
+  background: #1a1a1c !important;
+  border: none !important;
+  border-left: 3px solid #721F2B !important;
+  border-radius: 0 !important;
+  padding: 12px 14px !important;
+  margin: 6px 0 0 !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 13px !important;
+  line-height: 1.75 !important;
+  color: #C0B29E !important;
+  box-shadow: none !important;
+}
+
+.scaja-credit {
+  display: block !important;
+  margin: 16px 0 0 !important;
+  padding: 10px 0 0 !important;
+  border: none !important;
+  border-top: 1px solid #721F2B !important;
+  font-family: 'UnifrakturCook', 'Times New Roman', serif !important;
+  font-size: 11px !important;
+  color: #454348 !important;
+}
