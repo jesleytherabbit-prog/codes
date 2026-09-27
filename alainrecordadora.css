@@ -1,0 +1,63 @@
+/* ===================================================
+   ALAIN DIONYSOS BALSAN — Recordadora
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=UnifrakturCook:wght@700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+.alain-record, .alain-record * { box-sizing: border-box; }
+
+.alain-record {
+  width: 340px;
+  margin: 12px auto;
+  padding: 18px 20px 14px;
+  background: #090909;
+  border: 1px solid #454348;
+  border-top: 2px solid #721F2B;
+  border-bottom: 2px solid #721F2B;
+  color: #C0B29E;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+}
+
+.ar-title {
+  display: block;
+  font-family: 'UnifrakturMaguntia', 'Times New Roman', serif;
+  font-size: 26px;
+  color: #C0B29E;
+  text-shadow: 1px 1px 0 #000;
+  letter-spacing: 1px;
+  margin: 0 0 4px;
+}
+
+.ar-subtitle {
+  display: block;
+  font-family: 'UnifrakturCook', 'Times New Roman', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8E3A42;
+  letter-spacing: .5px;
+  line-height: 1.2;
+  margin: 14px 0 6px;
+  padding-top: 8px;
+  border-top: 1px solid #454348;
+}
+.alain-record .ar-subtitle:first-of-type { border-top: none; margin-top: 6px; padding-top: 0; }
+
+.ar-content {
+  background: #1a1a1c;
+  border-left: 3px solid #721F2B;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #C0B29E;
+  text-align: center;
+}
+.ar-content b, .ar-content strong { font-weight: 700; }
+
+.ar-credit {
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: 1px solid #721F2B;
+  font-family: 'UnifrakturCook', 'Times New Roman', serif;
+  font-size: 11px;
+  color: #454348;
+}
