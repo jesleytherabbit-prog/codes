@@ -1,0 +1,227 @@
+/* ===================================================
+   MAXIMILIAN JACKSON — Ficha "Wildfire Boy"
+   =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Crimson+Text:wght@400;600;700&display=swap');
+
+.mj-sheet, .mj-sheet * { box-sizing: border-box; }
+
+.mj-sheet {
+  --midnight: #202B3A;
+  --wildfire: #8E3835;
+  --moss: #4B5741;
+  --brown: #65483A;
+  --cream: #D8C7A9;
+  --gold: #B18A4A;
+
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Crimson Text', serif;
+  font-size: 15px;
+  color: var(--cream);
+  background: var(--midnight);
+  border: 4px solid var(--brown);
+  box-shadow:
+    0 0 0 4px var(--midnight),
+    0 0 0 8px var(--wildfire),
+    6px 6px 0 8px rgba(0,0,0,0.5);
+}
+
+/* --- Encabezado --- */
+.mj-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px 8px;
+  background: linear-gradient(180deg, #4a1c19 0%, var(--midnight) 70%);
+  border-bottom: 4px solid var(--gold);
+}
+.mj-header::before {
+  content: "★ ── 🔥 ── ★";
+  display: block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  color: var(--gold);
+  opacity: .85;
+}
+.mj-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.mj-photo-frame {
+  flex-shrink: 0;
+  width: 200px;
+  height: 225px;
+  overflow: hidden;
+  border: 4px solid var(--brown);
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px var(--midnight), 0 0 0 5px var(--gold), 3px 3px 0 5px rgba(0,0,0,0.45);
+}
+.mj-photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mj-header-text { flex: 1; text-align: center; }
+.mj-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: var(--cream);
+  text-shadow: 2px 2px 0 #000, 0 0 10px rgba(142,56,53,0.55);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.mj-tagline {
+  margin-top: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--wildfire);
+}
+.mj-sub {
+  margin-top: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--moss);
+}
+
+/* --- Pestañas (tabs) --- */
+.mj-tabs { position: relative; padding: 4px 14px 14px; }
+.mj-tabs input[type="radio"],
+.mj-sheet input[type="radio"] {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.mj-tabnav { display: flex; gap: 4px; margin: 0 0 8px; flex-wrap: wrap; }
+.mj-tabnav label {
+  flex: 1;
+  text-align: center;
+  padding: 7px 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: var(--moss);
+  border: 2px solid var(--brown);
+  border-radius: 2px;
+  color: var(--cream);
+  transition: transform .15s ease;
+}
+.mj-tabnav label:hover { transform: translateY(-2px); }
+
+#mj-t1:checked ~ .mj-tabnav label[for="mj-t1"],
+#mj-t2:checked ~ .mj-tabnav label[for="mj-t2"],
+#mj-t3:checked ~ .mj-tabnav label[for="mj-t3"],
+#mj-t4:checked ~ .mj-tabnav label[for="mj-t4"],
+#mj-t5:checked ~ .mj-tabnav label[for="mj-t5"] {
+  background: var(--wildfire);
+  color: var(--cream);
+  border-color: var(--gold);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.mj-panels { position: relative; height: 400px; }
+.mj-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 14px;
+  background: #1a222d;
+  border: 3px solid var(--brown);
+  border-radius: 2px;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: justify;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+#mj-t1:checked ~ .mj-panels #mj-p1,
+#mj-t2:checked ~ .mj-panels #mj-p2,
+#mj-t3:checked ~ .mj-panels #mj-p3,
+#mj-t4:checked ~ .mj-panels #mj-p4,
+#mj-t5:checked ~ .mj-panels #mj-p5 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+
+/* --- Detalles internos --- */
+.mj-panel b, .mj-panel strong { color: var(--gold); }
+.mj-panel a { color: var(--wildfire) !important; }
+.mj-panel::-webkit-scrollbar { width: 8px; }
+.mj-panel::-webkit-scrollbar-thumb { background: var(--wildfire); border-radius: 4px; }
+.mj-panel::-webkit-scrollbar-track { background: var(--midnight); }
+
+/* --- Spoilers (detalles/resumen) --- */
+.mj-panel details {
+  margin: 8px 0;
+  border: 2px solid var(--brown);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #1a222d !important;
+}
+.mj-panel details + details { margin-top: 8px; }
+.mj-panel details details { margin: 8px 6px; }
+
+.mj-panel summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 6px 12px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cream) !important;
+  background: var(--moss) !important;
+}
+.mj-panel summary::-webkit-details-marker { display: none; }
+.mj-panel summary::before { content: "🔥 "; }
+.mj-panel details[open] > summary::before { content: "★ "; }
+
+/* Colores por categoría, sobre la paleta Wildfire Boy */
+.mj-panel summary.v  { background: #38402f !important; }
+.mj-panel summary.r  { background: #4a201d !important; }
+.mj-panel summary.a  { background: #4a3a20 !important; }
+.mj-panel summary.az { background: #202c3a !important; }
+.mj-panel summary.l  { background: #3a2f28 !important; }
+.mj-panel summary.p  { background: #452420 !important; }
+.mj-panel summary.nl { background: var(--brown) !important; }
+.mj-panel summary.np { background: #1e2733 !important; }
+
+.mj-divider {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+/* --- Pie --- */
+.mj-footer {
+  text-align: center;
+  padding: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--brown);
+  border-top: 4px solid var(--wildfire);
+}
