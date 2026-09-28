@@ -1,0 +1,198 @@
+/* ===== FIRMA 500 x 200 — "TEAM" de cada casa de Hogwarts al pasar el mouse ===== */
+/* En reposo: 4 franjas con la inicial de cada casa. Con el mouse sobre una franja, se
+   abre y muestra "TEAM + CASA" con sus colores, brillo, destellos y animación. */
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.firma-casas {
+  position: relative;
+  display: flex;
+  width: 500px;
+  height: 200px;
+  max-width: 100%;
+  overflow: hidden;
+  background: #0b0d10;
+  font-family: "Press Start 2P", "Courier New", monospace;
+}
+
+/* ---------- COLORES DE CADA CASA ---------- */
+/* --c1 fondo oscuro | --c2 fondo medio | --c3 color de acento (letras, brillos) */
+.firma-casas .gryffindor { --c1: #3d0000; --c2: #740001; --c3: #f0c75e; }
+.firma-casas .slytherin  { --c1: #06180d; --c2: #1a472a; --c3: #c9d1d3; }
+.firma-casas .ravenclaw  { --c1: #070d24; --c2: #222f5b; --c3: #c7975a; }
+.firma-casas .hufflepuff { --c1: #1c1710; --c2: #b98a12; --c3: #ffe27a; }
+
+/* ---------- PANEL DE CASA ---------- */
+.firma-casas .casa {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(160deg, var(--c1) 0%, var(--c2) 60%, var(--c1) 100%);
+  background-size: 200% 200%;
+  border-right: 2px solid rgba(0, 0, 0, .55);
+  box-shadow: inset 0 -4px 0 var(--c3);
+  transition: flex-grow .6s cubic-bezier(.3, .8, .3, 1), filter .4s ease;
+  filter: brightness(.8) saturate(.85);
+}
+.firma-casas .casa:last-child { border-right: 0; }
+
+.firma-casas .casa:hover {
+  flex-grow: 4;
+  filter: brightness(1.05) saturate(1.1);
+  animation: casa-fondo 5s ease-in-out infinite;
+}
+@keyframes casa-fondo {
+  0%, 100% { background-position: 0% 0%; }
+  50%      { background-position: 100% 100%; }
+}
+
+/* Barrido de luz que cruza el panel al abrirse */
+.firma-casas .casa::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .28), transparent);
+  transform: skewX(-20deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.firma-casas .casa:hover::before {
+  animation: casa-barrido 1.1s ease-out .15s 1 forwards;
+}
+@keyframes casa-barrido {
+  0%   { left: -60%;  opacity: 1; }
+  100% { left: 130%;  opacity: 0; }
+}
+
+/* ---------- INICIAL (reposo) ---------- */
+.firma-casas .inicial {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+  text-align: center;
+  font-size: 34px;
+  line-height: 40px;
+  color: var(--c3);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, .55), 0 0 12px var(--c3);
+  opacity: .85;
+  animation: inicial-flotar 3s ease-in-out infinite;
+  transition: opacity .25s ease, transform .4s ease;
+  pointer-events: none;
+}
+.firma-casas .gryffindor .inicial { animation-delay: 0s;   }
+.firma-casas .slytherin  .inicial { animation-delay: .6s;  }
+.firma-casas .ravenclaw  .inicial { animation-delay: 1.2s; }
+.firma-casas .hufflepuff .inicial { animation-delay: 1.8s; }
+@keyframes inicial-flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.firma-casas .casa:hover .inicial {
+  opacity: 0;
+  transform: scale(.4);
+  animation: none;
+}
+
+/* ---------- TEXTO "TEAM + CASA" (hover) ---------- */
+.firma-casas .texto {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+.firma-casas .casa:hover .texto {
+  opacity: 1;
+  transition: opacity .5s steps(5) .35s;
+}
+.firma-casas .team {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  letter-spacing: 6px;
+  text-indent: 6px;          /* compensa el espacio final del letter-spacing */
+  text-transform: uppercase;
+  color: var(--c3);
+  opacity: .9;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, .6);
+}
+.firma-casas .nombre {
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, .65), 0 0 10px var(--c3), 0 0 24px var(--c3);
+}
+.firma-casas .casa:hover .nombre {
+  animation: nombre-brillo 2.2s steps(2) .9s infinite;
+}
+@keyframes nombre-brillo {
+  0%, 100% { text-shadow: 3px 3px 0 rgba(0, 0, 0, .65), 0 0 10px var(--c3), 0 0 24px var(--c3); }
+  50%      { text-shadow: 3px 3px 0 rgba(0, 0, 0, .65), 0 0 18px var(--c3), 0 0 38px var(--c3); }
+}
+
+/* Línea decorativa bajo el nombre */
+.firma-casas .nombre::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  margin: 10px auto 0;
+  background: var(--c3);
+  box-shadow: 0 0 8px var(--c3);
+  transition: width .2s ease;
+}
+.firma-casas .casa:hover .nombre::after {
+  width: 70%;
+  transition: width .6s steps(8) .7s;
+}
+
+/* ---------- DESTELLOS ---------- */
+.firma-casas .chispa {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--c3);
+  clip-path: polygon(40% 0, 60% 0, 60% 40%, 100% 40%, 100% 60%, 60% 60%,
+                     60% 100%, 40% 100%, 40% 60%, 0 60%, 0 40%, 40% 40%);
+  opacity: 0;
+  pointer-events: none;
+}
+.firma-casas .casa:hover .chispa {
+  animation: chispa 2.2s steps(6) infinite;
+}
+@keyframes chispa {
+  0%, 100% { opacity: 0; transform: scale(.3); }
+  40%, 60% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.5) rotate(45deg); }
+}
+.firma-casas .chispa.c1 { top: 14%; left: 12%; animation-delay: .5s; }
+.firma-casas .chispa.c2 { top: 22%; left: 82%; animation-delay: 1.1s; width: 8px;  height: 8px; }
+.firma-casas .chispa.c3 { top: 74%; left: 18%; animation-delay: 1.6s; width: 7px;  height: 7px; background: #fff; }
+.firma-casas .chispa.c4 { top: 70%; left: 86%; animation-delay: .8s;  width: 12px; height: 12px; }
+.firma-casas .chispa.c5 { top: 45%; left: 4%;  animation-delay: 1.9s; width: 6px;  height: 6px; background: #fff; }
+.firma-casas .chispa.c6 { top: 48%; left: 94%; animation-delay: 1.3s; width: 6px;  height: 6px; background: #fff; }
+
+/* Sin movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .firma-casas .casa,
+  .firma-casas .casa:hover,
+  .firma-casas .inicial,
+  .firma-casas .casa:hover .nombre,
+  .firma-casas .casa:hover .chispa,
+  .firma-casas .casa:hover::before { animation: none; transition: none; }
+  .firma-casas .casa:hover .chispa { opacity: .8; }
+}
