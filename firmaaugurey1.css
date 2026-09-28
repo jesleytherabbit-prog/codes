@@ -1,3 +1,5 @@
+/* ===== FIRMA 500 x 200 — el Augurey sube al hacer hover y aparece "CLUB DEL AUGUREY" ===== */
+
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 .firma-augurey {
@@ -5,8 +7,8 @@
   --c-claro: #d9fff6;
   --c-medio: #5ee8d0;
   --c-oscuro: #0f4f4a;
-  --sube: 1.6s;        /* cuánto tarda el ave en subir y desaparecer */
-  --espera: 1.3s;      /* cuándo empieza a aparecer el título */
+  --sube: 2.2s;        /* cuánto dura el vuelo del ave (aparece, sube y desaparece) */
+  --espera: 1.8s;      /* cuándo empieza a aparecer el título */
 
   position: relative;
   display: block;
@@ -53,15 +55,20 @@
   height: 105px;
   margin: -52px 0 0 -62px;
   background: var(--ave-url) center / 100% 100% no-repeat;
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  transition: transform var(--sube) cubic-bezier(.5, 0, .9, .4),
-              opacity .5s ease var(--sube);
+  /* En reposo el ave NO se ve: espera abajo, invisible */
+  transform: translateY(90px) scale(.85);
+  opacity: 0;
   pointer-events: none;
 }
+/* Con el mouse encima: aparece, sube y desaparece por arriba */
 .firma-augurey:hover .fa-ave {
-  transform: translateY(-300px) scale(.7);
-  opacity: 0;
+  animation: fa-vuelo var(--sube) cubic-bezier(.4, 0, .7, 1) forwards;
+}
+@keyframes fa-vuelo {
+  0%   { opacity: 0; transform: translateY(90px)   scale(.85); }
+  18%  { opacity: 1; transform: translateY(40px)   scale(1);   }
+  80%  { opacity: 1; transform: translateY(-190px) scale(.8);  }
+  100% { opacity: 0; transform: translateY(-300px) scale(.7);  }
 }
 
 /* ---------- TÍTULO PIXEL ---------- */
@@ -118,16 +125,16 @@
   40%, 60% { opacity: 1; transform: scale(1); }
   50%      { opacity: 1; transform: scale(1.4) rotate(45deg); }
 }
-.firma-augurey .fa-chispa.c1 { top: 30%; left: 12%; animation-delay: 1.5s; }
-.firma-augurey .fa-chispa.c2 { top: 68%; left: 22%; animation-delay: 2.1s; width: 8px;  height: 8px; }
-.firma-augurey .fa-chispa.c3 { top: 24%; left: 40%; animation-delay: 2.6s; width: 9px;  height: 9px; background: var(--c-medio); }
-.firma-augurey .fa-chispa.c4 { top: 72%; left: 60%; animation-delay: 1.8s; width: 10px; height: 10px; }
-.firma-augurey .fa-chispa.c5 { top: 28%; left: 78%; animation-delay: 2.3s; width: 9px;  height: 9px; background: var(--c-medio); }
-.firma-augurey .fa-chispa.c6 { top: 60%; left: 88%; animation-delay: 1.6s; }
+.firma-augurey .fa-chispa.c1 { top: 30%; left: 12%; animation-delay: 2.0s; }
+.firma-augurey .fa-chispa.c2 { top: 68%; left: 22%; animation-delay: 2.6s; width: 8px;  height: 8px; }
+.firma-augurey .fa-chispa.c3 { top: 24%; left: 40%; animation-delay: 3.1s; width: 9px;  height: 9px; background: var(--c-medio); }
+.firma-augurey .fa-chispa.c4 { top: 72%; left: 60%; animation-delay: 2.3s; width: 10px; height: 10px; }
+.firma-augurey .fa-chispa.c5 { top: 28%; left: 78%; animation-delay: 2.8s; width: 9px;  height: 9px; background: var(--c-medio); }
+.firma-augurey .fa-chispa.c6 { top: 60%; left: 88%; animation-delay: 2.1s; }
 
 /* Sin movimiento: muestra el título directamente */
 @media (prefers-reduced-motion: reduce) {
-  .firma-augurey .fa-ave { transition: none; }
+  .firma-augurey:hover .fa-ave { animation: none; }
   .firma-augurey:hover .fa-titulo { transition: none; animation: none; }
   .firma-augurey:hover .fa-chispa { animation: none; opacity: .8; }
 }
