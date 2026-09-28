@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.firma-augurey {
+  --ave-url:   url("https://i.imgur.com/Byvs1FZ.gif");    /* GIF del augurey aleteando */
+  --c-claro: #d9fff6;
+  --c-medio: #5ee8d0;
+  --c-oscuro: #0f4f4a;
+  --sube: 1.6s;        /* cuánto tarda el ave en subir y desaparecer */
+  --espera: 1.3s;      /* cuándo empieza a aparecer el título */
+
+  position: relative;
+  display: block;
+  width: 500px;
+  height: 200px;
+  max-width: 100%;
+  overflow: hidden;
+  background: #0b0d10;
+  cursor: pointer;
+}
+
+/* Imagen de fondo: se pone en el HTML con <img class="fa-fondo" src="..."> */
+.firma-augurey .fa-fondo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Velo oscuro que se activa en hover para que el título se lea bien */
+.firma-augurey::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(5, 12, 14, .78) 0%, rgba(5, 12, 14, .55) 70%);
+  opacity: 0;
+  transition: opacity .9s ease .5s;
+  z-index: 1;
+  pointer-events: none;
+}
+.firma-augurey:hover::before { opacity: 1; }
+
+/* ---------- AVE ---------- */
+.firma-augurey .fa-ave {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 124px;
+  height: 105px;
+  margin: -52px 0 0 -62px;
+  background: var(--ave-url) center / 100% 100% no-repeat;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition: transform var(--sube) cubic-bezier(.5, 0, .9, .4),
+              opacity .5s ease var(--sube);
+  pointer-events: none;
+}
+.firma-augurey:hover .fa-ave {
+  transform: translateY(-300px) scale(.7);
+  opacity: 0;
+}
+
+/* ---------- TÍTULO PIXEL ---------- */
+.firma-augurey .fa-titulo {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: -16px;
+  text-align: center;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--c-claro);
+  text-shadow: 3px 3px 0 var(--c-oscuro), 0 0 10px var(--c-medio), 0 0 22px rgba(94, 232, 208, .6);
+  opacity: 0;
+  transform: translateY(14px);
+  /* al salir del hover se oculta rápido, sin esperas */
+  transition: opacity .3s ease, transform .3s ease;
+  pointer-events: none;
+}
+.firma-augurey:hover .fa-titulo {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s steps(6) var(--espera), transform 1s steps(6) var(--espera);
+  animation: fa-brillo 2.4s steps(2) calc(var(--espera) + 1s) infinite;
+}
+@keyframes fa-brillo {
+  0%, 100% { text-shadow: 3px 3px 0 var(--c-oscuro), 0 0 10px var(--c-medio), 0 0 22px rgba(94, 232, 208, .6); }
+  50%      { text-shadow: 3px 3px 0 var(--c-oscuro), 0 0 16px var(--c-claro), 0 0 34px rgba(94, 232, 208, .9); }
+}
+
+/* ---------- DESTELLOS ---------- */
+.firma-augurey .fa-chispa {
+  position: absolute;
+  z-index: 2;
+  width: 12px;
+  height: 12px;
+  background: var(--c-claro);
+  clip-path: polygon(40% 0, 60% 0, 60% 40%, 100% 40%, 100% 60%, 60% 60%,
+                     60% 100%, 40% 100%, 40% 60%, 0 60%, 0 40%, 40% 40%);
+  opacity: 0;
+  pointer-events: none;
+}
+.firma-augurey:hover .fa-chispa {
+  animation: fa-chispa 2.2s steps(6) infinite;
+}
+@keyframes fa-chispa {
+  0%, 100% { opacity: 0; transform: scale(.3); }
+  40%, 60% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.4) rotate(45deg); }
+}
+.firma-augurey .fa-chispa.c1 { top: 30%; left: 12%; animation-delay: 1.5s; }
+.firma-augurey .fa-chispa.c2 { top: 68%; left: 22%; animation-delay: 2.1s; width: 8px;  height: 8px; }
+.firma-augurey .fa-chispa.c3 { top: 24%; left: 40%; animation-delay: 2.6s; width: 9px;  height: 9px; background: var(--c-medio); }
+.firma-augurey .fa-chispa.c4 { top: 72%; left: 60%; animation-delay: 1.8s; width: 10px; height: 10px; }
+.firma-augurey .fa-chispa.c5 { top: 28%; left: 78%; animation-delay: 2.3s; width: 9px;  height: 9px; background: var(--c-medio); }
+.firma-augurey .fa-chispa.c6 { top: 60%; left: 88%; animation-delay: 1.6s; }
+
+/* Sin movimiento: muestra el título directamente */
+@media (prefers-reduced-motion: reduce) {
+  .firma-augurey .fa-ave { transition: none; }
+  .firma-augurey:hover .fa-titulo { transition: none; animation: none; }
+  .firma-augurey:hover .fa-chispa { animation: none; opacity: .8; }
+}
