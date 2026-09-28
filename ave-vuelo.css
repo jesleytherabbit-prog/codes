@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.club-augurey {
+  --sprite-url: url("URL_DE_ave-sprite.png");
+  --aleteo: 1.8s;          /* más alto = más lento */
+  --flotar: 5s;
+  --c-claro: #d9fff6;
+  --c-medio: #5ee8d0;
+  --c-oscuro: #0f4f4a;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 10px 0 6px;
+  text-align: center;
+}
+
+/* ---------- AVE ---------- */
+.club-augurey .ave-vuelo {
+  width: 207px;
+  height: 176px;
+  margin: 0 auto;
+  background-image: var(--sprite-url);
+  background-repeat: no-repeat;
+  background-size: 2070px 176px;
+  background-position: 0 0;
+  animation:
+    ave-aleteo var(--aleteo) steps(10) infinite,
+    ave-flotar var(--flotar) ease-in-out infinite;
+  will-change: background-position, transform;
+}
+@keyframes ave-aleteo {
+  from { background-position: 0 0; }
+  to   { background-position: -2070px 0; }
+}
+@keyframes ave-flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ---------- TÍTULO PIXEL ---------- */
+.club-augurey .club-titulo {
+  position: relative;
+  display: inline-block;
+  margin: 14px auto 0;
+  padding: 0 6px;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: linear-gradient(90deg,
+    var(--c-medio) 0%, var(--c-claro) 25%, var(--c-medio) 50%,
+    var(--c-claro) 75%, var(--c-medio) 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+  /* sombra dura estilo pixel + resplandor */
+  filter: drop-shadow(2px 2px 0 var(--c-oscuro)) drop-shadow(0 0 6px rgba(94, 232, 208, .55));
+  animation: club-brillo 4s steps(16) infinite;
+}
+@keyframes club-brillo {
+  from { background-position: 0 0; }
+  to   { background-position: -300% 0; }
+}
+
+/* ---------- DESTELLOS (estrellitas pixel) ---------- */
+.club-augurey .chispa {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--c-claro);
+  clip-path: polygon(40% 0, 60% 0, 60% 40%, 100% 40%, 100% 60%, 60% 60%,
+                     60% 100%, 40% 100%, 40% 60%, 0 60%, 0 40%, 40% 40%);
+  opacity: 0;
+  pointer-events: none;
+  animation: chispa 2.6s steps(6) infinite;
+}
+@keyframes chispa {
+  0%, 100% { opacity: 0; transform: scale(.3); }
+  40%, 60% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.4) rotate(45deg); }
+}
+/* posiciones alrededor del título y del ave */
+.club-augurey .chispa.c1 { top: 44%;  left: 6%;   animation-delay: 0s;    }
+.club-augurey .chispa.c2 { top: 62%;  left: 24%;  animation-delay: .7s;  width: 8px; height: 8px; }
+.club-augurey .chispa.c3 { top: 88%;  left: 42%;  animation-delay: 1.3s; width: 10px; height: 10px; }
+.club-augurey .chispa.c4 { top: 70%;  right: 20%; animation-delay: .3s;  width: 8px; height: 8px; }
+.club-augurey .chispa.c5 { top: 50%;  right: 5%;  animation-delay: 1.9s; }
+.club-augurey .chispa.c6 { top: 14%;  left: 18%;  animation-delay: 1.0s; width: 9px; height: 9px; background: var(--c-medio); }
+.club-augurey .chispa.c7 { top: 10%;  right: 16%; animation-delay: 2.2s; width: 9px; height: 9px; background: var(--c-medio); }
+
+/* Respeta a quien prefiere sin movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .club-augurey .ave-vuelo,
+  .club-augurey .club-titulo,
+  .club-augurey .chispa { animation: none; }
+  .club-augurey .chispa { opacity: .8; }
+}
