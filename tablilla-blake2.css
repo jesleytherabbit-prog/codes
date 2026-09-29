@@ -1,5 +1,5 @@
 /* =========================================================
-   TABLILLA DE MISIÓN 
+   TABLILLA DE MISIÓN
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+Double+Pica:ital@0;1&display=swap');
@@ -274,12 +274,12 @@
 }
 
 /* Pestaña activa (por defecto, la del Jugador 1) */
-.imp-tablilla .imp-texto:not(:has(#imp-j2:target, #imp-j3:target, #imp-j4:target, #imp-j5:target, #imp-j6:target)) a.imp-tab-label[href="#imp-j1"],
-.imp-tablilla .imp-texto:has(#imp-j2:target) a.imp-tab-label[href="#imp-j2"],
-.imp-tablilla .imp-texto:has(#imp-j3:target) a.imp-tab-label[href="#imp-j3"],
-.imp-tablilla .imp-texto:has(#imp-j4:target) a.imp-tab-label[href="#imp-j4"],
-.imp-tablilla .imp-texto:has(#imp-j5:target) a.imp-tab-label[href="#imp-j5"],
-.imp-tablilla .imp-texto:has(#imp-j6:target) a.imp-tab-label[href="#imp-j6"] {
+.imp-tablilla .imp-texto:not(:has([id^="imp-j2-"]:target, [id^="imp-j3-"]:target, [id^="imp-j4-"]:target, [id^="imp-j5-"]:target, [id^="imp-j6-"]:target)) a.imp-tab-label[href^="#imp-j1-"],
+.imp-tablilla .imp-texto:has([id^="imp-j2-"]:target) a.imp-tab-label[href^="#imp-j2-"],
+.imp-tablilla .imp-texto:has([id^="imp-j3-"]:target) a.imp-tab-label[href^="#imp-j3-"],
+.imp-tablilla .imp-texto:has([id^="imp-j4-"]:target) a.imp-tab-label[href^="#imp-j4-"],
+.imp-tablilla .imp-texto:has([id^="imp-j5-"]:target) a.imp-tab-label[href^="#imp-j5-"],
+.imp-tablilla .imp-texto:has([id^="imp-j6-"]:target) a.imp-tab-label[href^="#imp-j6-"] {
   color: var(--imp-marfil) !important;
   background: var(--imp-oxido-sangre);
   border-color: var(--imp-coagulado);
@@ -317,17 +317,17 @@
 /* Jugador 1 se ve por defecto; al activar otra pestaña se oculta */
 .imp-tablilla .imp-p1 { display: block; }
 
-.imp-tablilla #imp-j2:target ~ .imp-p1,
-.imp-tablilla #imp-j3:target ~ .imp-p1,
-.imp-tablilla #imp-j4:target ~ .imp-p1,
-.imp-tablilla #imp-j5:target ~ .imp-p1,
-.imp-tablilla #imp-j6:target ~ .imp-p1 { display: none; }
+.imp-tablilla [id^="imp-j2-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j3-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j4-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j5-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j6-"]:target ~ .imp-p1 { display: none; }
 
-.imp-tablilla #imp-j2:target ~ .imp-p2,
-.imp-tablilla #imp-j3:target ~ .imp-p3,
-.imp-tablilla #imp-j4:target ~ .imp-p4,
-.imp-tablilla #imp-j5:target ~ .imp-p5,
-.imp-tablilla #imp-j6:target ~ .imp-p6 { display: block; }
+.imp-tablilla [id^="imp-j2-"]:target ~ .imp-p2,
+.imp-tablilla [id^="imp-j3-"]:target ~ .imp-p3,
+.imp-tablilla [id^="imp-j4-"]:target ~ .imp-p4,
+.imp-tablilla [id^="imp-j5-"]:target ~ .imp-p5,
+.imp-tablilla [id^="imp-j6-"]:target ~ .imp-p6 { display: block; }
 
 /* Se fuerzan tipografía y márgenes porque el foro pisa los estilos de <p> */
 .imp-tablilla .imp-tab-panel p {
@@ -362,11 +362,11 @@
 
 /* El texto "enfoca" al abrirse la pestaña */
 .imp-tablilla .imp-p1,
-.imp-tablilla #imp-j2:target ~ .imp-p2,
-.imp-tablilla #imp-j3:target ~ .imp-p3,
-.imp-tablilla #imp-j4:target ~ .imp-p4,
-.imp-tablilla #imp-j5:target ~ .imp-p5,
-.imp-tablilla #imp-j6:target ~ .imp-p6 {
+.imp-tablilla [id^="imp-j2-"]:target ~ .imp-p2,
+.imp-tablilla [id^="imp-j3-"]:target ~ .imp-p3,
+.imp-tablilla [id^="imp-j4-"]:target ~ .imp-p4,
+.imp-tablilla [id^="imp-j5-"]:target ~ .imp-p5,
+.imp-tablilla [id^="imp-j6-"]:target ~ .imp-p6 {
   animation: imp-enfocar 0.5s ease-out;
 }
 @keyframes imp-enfocar {
