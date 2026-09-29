@@ -1,0 +1,472 @@
+/* =========================================================
+   TABLILLA DE MISIÓN — Gótico victoriano decadente
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+Double+Pica:ital@0;1&display=swap');
+
+.imp-tablilla {
+  --imp-carbon: #171719;
+  --imp-hollin: #242326;
+  --imp-ceniza: #454348;
+  --imp-ceniza-clara: #B5B0AA;
+  --imp-marfil: #D2CDC3;
+  --imp-oxido-sangre: #71383A;
+  --imp-oxido: #8A5147;
+  --imp-cobre: #6B5147;
+  --imp-verde: #58615C;
+  --imp-hematoma: #3C424B;
+  --imp-coagulado: #8E3A42;
+  --imp-img: url('');
+
+  max-width: 560px;
+  margin: 24px auto;
+  position: relative;
+  box-sizing: border-box;
+  padding: 50px 34px 46px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  color: var(--imp-ceniza-clara);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(88, 97, 92, 0.20), transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(113, 56, 58, 0.18), transparent 55%),
+    /* Ceniza cayendo: 6 capas de copos con distinto tamaño y velocidad */
+    radial-gradient(circle at 22px 18px, rgba(210, 205, 195, 0.30) 0 1.4px, transparent 2.4px) 0 0 / 97px 131px,
+    radial-gradient(ellipse 3px 2px at 90px 60px, rgba(181, 176, 170, 0.26) 0 50%, transparent 100%) 0 0 / 131px 173px,
+    radial-gradient(circle at 40px 100px, rgba(210, 205, 195, 0.20) 0 2.2px, transparent 3.6px) 0 0 / 173px 211px,
+    radial-gradient(circle at 12px 30px, rgba(181, 176, 170, 0.22) 0 1px, transparent 1.8px) 0 0 / 71px 97px,
+    radial-gradient(ellipse 4px 2.5px at 150px 120px, rgba(210, 205, 195, 0.16) 0 50%, transparent 100%) 0 0 / 211px 257px,
+    radial-gradient(circle at 30px 50px, rgba(210, 205, 195, 0.28) 0 0.9px, transparent 1.6px) 0 0 / 53px 83px,
+    linear-gradient(180deg, rgba(23, 23, 25, 0.90), rgba(23, 23, 25, 0.97)),
+    var(--imp-img) center / cover no-repeat,
+    var(--imp-carbon);
+  border: 1px solid var(--imp-ceniza);
+  box-shadow:
+    inset 0 0 70px rgba(0, 0, 0, 0.75),
+    0 0 0 5px var(--imp-hollin),
+    0 0 0 6px var(--imp-cobre),
+    0 0 0 9px var(--imp-carbon),
+    0 0 0 10px var(--imp-ceniza),
+    0 20px 44px rgba(0, 0, 0, 0.65);
+  animation: imp-ceniza 60s linear infinite;
+}
+
+/* Cada capa avanza un número entero de "baldosas": el bucle no se nota */
+@keyframes imp-ceniza {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, center;
+  }
+  to {
+    background-position: 0 0, 0 0,
+      97px 655px, -131px 692px, 0 844px, 71px 582px, 211px 1028px, -53px 498px,
+      0 0, center;
+  }
+}
+
+/* Reja de hierro: barrotes con remate, corroídos hacia el interior */
+.imp-tablilla::before,
+.imp-tablilla::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.imp-tablilla::before {
+  top: 0;
+  background:
+    linear-gradient(var(--imp-cobre), var(--imp-cobre)) 0 6px / 100% 2px no-repeat,
+    linear-gradient(var(--imp-cobre), var(--imp-cobre)) 0 20px / 100% 2px no-repeat,
+    radial-gradient(circle at 10px 4px, var(--imp-oxido) 0 2.6px, transparent 3.2px) 0 0 / 20px 28px repeat-x,
+    repeating-linear-gradient(90deg, transparent 0 9px, var(--imp-oxido) 9px 11px, transparent 11px 20px);
+  -webkit-mask-image: linear-gradient(180deg, #000 35%, transparent);
+  mask-image: linear-gradient(180deg, #000 35%, transparent);
+}
+
+.imp-tablilla::after {
+  bottom: 0;
+  background:
+    linear-gradient(var(--imp-cobre), var(--imp-cobre)) 0 6px / 100% 2px no-repeat,
+    linear-gradient(var(--imp-cobre), var(--imp-cobre)) 0 20px / 100% 2px no-repeat,
+    radial-gradient(circle at 10px 24px, var(--imp-oxido) 0 2.6px, transparent 3.2px) 0 0 / 20px 28px repeat-x,
+    repeating-linear-gradient(90deg, transparent 0 9px, var(--imp-oxido) 9px 11px, transparent 11px 20px);
+  -webkit-mask-image: linear-gradient(0deg, #000 35%, transparent);
+  mask-image: linear-gradient(0deg, #000 35%, transparent);
+}
+
+/* Elementos heredados de la versión anterior: ya no se usan */
+.imp-cielo,
+.imp-estrella {
+  display: none;
+}
+
+/* ---------- Cabecera ---------- */
+
+.imp-subtitulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--imp-ceniza-clara);
+}
+.imp-subtitulo::before,
+.imp-subtitulo::after {
+  content: "";
+  flex: 1;
+  height: 3px;
+  border-top: 1px solid var(--imp-cobre);
+  border-bottom: 1px solid var(--imp-ceniza);
+}
+
+.imp-titulo {
+  text-align: center;
+  margin: 10px 0 22px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  color: var(--imp-marfil);
+  /* Doble impresión desalineada: el título se ve "corrido", como una percepción inestable */
+  text-shadow:
+    2px 1px 0 rgba(113, 56, 58, 0.75),
+    -1px 0 0 rgba(88, 97, 92, 0.55),
+    0 0 18px rgba(142, 58, 66, 0.25);
+}
+
+.imp-cita {
+  text-align: center;
+  padding: 0 8px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--imp-ceniza-clara);
+}
+
+.imp-cita-autor {
+  display: block;
+  margin-top: 10px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--imp-ceniza-clara);
+  opacity: 0.7;
+}
+
+/* ---------- Separadores ---------- */
+
+.imp-separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.imp-separador .imp-line {
+  flex: 1;
+  height: 3px;
+  background: none;
+  border-top: 1px solid var(--imp-cobre);
+  border-bottom: 1px solid var(--imp-ceniza);
+}
+.imp-separador .imp-line:first-child {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000);
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+.imp-separador .imp-line:last-child {
+  -webkit-mask-image: linear-gradient(270deg, transparent, #000);
+  mask-image: linear-gradient(270deg, transparent, #000);
+}
+
+/* La runa del HTML se sustituye por una cruz de hospital */
+.imp-separador .imp-icono {
+  margin: 0 14px;
+  font-size: 0;
+  line-height: 1;
+}
+.imp-separador .imp-icono::before {
+  content: "\271A";
+  font-size: 13px;
+  color: var(--imp-oxido);
+}
+
+/* ---------- Limpieza: el foro convierte los saltos de línea del HTML en <br> ---------- */
+
+.imp-tablilla > br,
+.imp-cita > br,
+.imp-separador > br,
+.imp-texto > br,
+.imp-tabs-nav > br,
+.imp-tabs-content > br,
+.imp-tab-panel > br,
+.imp-datos > br {
+  display: none;
+}
+
+/* ---------- Folio oscuro (contenido) ---------- */
+
+.imp-texto {
+  position: relative;
+  padding: 22px 24px 26px 32px;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(60, 66, 75, 0.45), transparent 32%),
+    radial-gradient(circle at 92% 88%, rgba(88, 97, 92, 0.20), transparent 32%),
+    radial-gradient(circle at 75% 6%, rgba(113, 56, 58, 0.14), transparent 24%),
+    linear-gradient(180deg, #242326, #1c1b1e);
+  border: 1px solid var(--imp-ceniza);
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.55),
+    0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Margen de archivo, como línea de tinta roja */
+.imp-texto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 14px;
+  width: 1px;
+  background: rgba(142, 58, 66, 0.55);
+  pointer-events: none;
+}
+
+/* ---------- Texto directo (sin pestañas, para prólogos) ---------- */
+/* Se aplica sólo a párrafos que sean hijos directos de .imp-texto;
+   si hay pestañas, los párrafos están dentro de .imp-tab-panel y no los toca. */
+
+.imp-texto > p {
+  margin: 0 0 16px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--imp-ceniza-clara);
+  text-align: justify;
+  hyphens: auto;
+}
+.imp-texto > p:last-child {
+  margin-bottom: 0;
+}
+
+.imp-texto > p b,
+.imp-texto > p strong {
+  font-weight: 400;
+  color: var(--imp-marfil);
+  border-bottom: 1px solid var(--imp-coagulado);
+}
+
+.imp-texto > p:first-child::first-letter {
+  float: left;
+  padding: 3px 8px 0 0;
+  font-family: 'IM Fell Double Pica', Georgia, serif;
+  font-size: 3.1em;
+  line-height: 0.82;
+  color: var(--imp-marfil);
+  text-shadow: 2px 1px 0 var(--imp-oxido-sangre);
+}
+
+/* ---------- Pestañas por jugador ---------- */
+
+.imp-tablilla .imp-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(107, 81, 71, 0.6);
+}
+
+.imp-tablilla .imp-tabs-nav a.imp-tab-label {
+  display: inline-block;
+  padding: 4px 11px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 1.2px;
+  color: var(--imp-ceniza-clara) !important;
+  background: rgba(69, 67, 72, 0.25);
+  border: 1px solid var(--imp-cobre);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.imp-tablilla .imp-tabs-nav a.imp-tab-label:hover {
+  color: var(--imp-marfil) !important;
+  background: rgba(113, 56, 58, 0.25);
+  border-color: var(--imp-oxido);
+}
+
+.imp-tablilla .imp-tabs-nav a.imp-tab-label:focus-visible {
+  outline: 2px solid var(--imp-verde);
+  outline-offset: 2px;
+}
+
+/* Pestaña activa (por defecto, la del Jugador 1) */
+.imp-tablilla .imp-texto:not(:has([id^="imp-j2-"]:target, [id^="imp-j3-"]:target, [id^="imp-j4-"]:target, [id^="imp-j5-"]:target, [id^="imp-j6-"]:target)) a.imp-tab-label[href^="#imp-j1-"],
+.imp-tablilla .imp-texto:has([id^="imp-j2-"]:target) a.imp-tab-label[href^="#imp-j2-"],
+.imp-tablilla .imp-texto:has([id^="imp-j3-"]:target) a.imp-tab-label[href^="#imp-j3-"],
+.imp-tablilla .imp-texto:has([id^="imp-j4-"]:target) a.imp-tab-label[href^="#imp-j4-"],
+.imp-tablilla .imp-texto:has([id^="imp-j5-"]:target) a.imp-tab-label[href^="#imp-j5-"],
+.imp-tablilla .imp-texto:has([id^="imp-j6-"]:target) a.imp-tab-label[href^="#imp-j6-"] {
+  color: var(--imp-marfil) !important;
+  background: var(--imp-oxido-sangre);
+  border-color: var(--imp-coagulado);
+  box-shadow: 2px 2px 0 var(--imp-carbon);
+}
+
+/* ---------- Paneles ---------- */
+
+/* Anclas invisibles y fijas: al clickear una pestaña el navegador no desplaza la página */
+.imp-tablilla .imp-ancla {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.imp-tablilla .imp-tabs-content {
+  position: relative;
+}
+
+.imp-tablilla .imp-tab-panel {
+  display: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--imp-ceniza-clara);
+  text-align: justify;
+}
+
+/* Jugador 1 se ve por defecto; al activar otra pestaña se oculta */
+.imp-tablilla .imp-p1 { display: block; }
+
+.imp-tablilla [id^="imp-j2-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j3-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j4-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j5-"]:target ~ .imp-p1,
+.imp-tablilla [id^="imp-j6-"]:target ~ .imp-p1 { display: none; }
+
+.imp-tablilla [id^="imp-j2-"]:target ~ .imp-p2,
+.imp-tablilla [id^="imp-j3-"]:target ~ .imp-p3,
+.imp-tablilla [id^="imp-j4-"]:target ~ .imp-p4,
+.imp-tablilla [id^="imp-j5-"]:target ~ .imp-p5,
+.imp-tablilla [id^="imp-j6-"]:target ~ .imp-p6 { display: block; }
+
+/* Se fuerzan tipografía y márgenes porque el foro pisa los estilos de <p> */
+.imp-tablilla .imp-tab-panel p {
+  margin: 0 0 14px !important;
+  font-family: 'IM Fell DW Pica', Georgia, serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: var(--imp-ceniza-clara) !important;
+  text-align: justify !important;
+}
+.imp-tablilla .imp-tab-panel p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.imp-tablilla .imp-tab-panel b,
+.imp-tablilla .imp-tab-panel strong {
+  font-weight: 400;
+  color: var(--imp-marfil);
+  border-bottom: 1px solid var(--imp-coagulado);
+}
+
+/* Capitular editorial en el primer párrafo de cada pestaña */
+.imp-tablilla .imp-tab-panel p:first-child::first-letter {
+  float: left;
+  padding: 3px 8px 0 0;
+  font-family: 'IM Fell Double Pica', Georgia, serif;
+  font-size: 3.1em;
+  line-height: 0.82;
+  color: var(--imp-marfil);
+  text-shadow: 2px 1px 0 var(--imp-oxido-sangre);
+}
+
+/* El texto "enfoca" al abrirse la pestaña */
+.imp-tablilla .imp-p1,
+.imp-tablilla [id^="imp-j2-"]:target ~ .imp-p2,
+.imp-tablilla [id^="imp-j3-"]:target ~ .imp-p3,
+.imp-tablilla [id^="imp-j4-"]:target ~ .imp-p4,
+.imp-tablilla [id^="imp-j5-"]:target ~ .imp-p5,
+.imp-tablilla [id^="imp-j6-"]:target ~ .imp-p6 {
+  animation: imp-enfocar 0.5s ease-out;
+}
+@keyframes imp-enfocar {
+  from { opacity: 0; filter: blur(3px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+/* ---------- Datos ---------- */
+
+.imp-datos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  margin-top: 4px;
+}
+
+.imp-dato {
+  padding: 5px 12px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 1.2px;
+  color: var(--imp-ceniza-clara);
+  background: var(--imp-hollin);
+  border: 1px solid var(--imp-ceniza);
+  border-left: 3px solid var(--imp-verde);
+}
+
+.imp-dato b {
+  font-weight: 400;
+  color: var(--imp-marfil);
+}
+
+/* ---------- Firma ---------- */
+
+.imp-firma {
+  margin-top: 4px;
+  text-align: center;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--imp-ceniza-clara);
+  opacity: 0.85;
+}
+.imp-firma a {
+  color: var(--imp-marfil);
+  text-decoration: none;
+  border-bottom: 1px solid var(--imp-oxido);
+}
+.imp-firma a:hover {
+  border-bottom-color: var(--imp-coagulado);
+}
+
+/* ---------- Móvil y accesibilidad ---------- */
+
+@media (max-width: 520px) {
+  .imp-tablilla {
+    margin: 24px 14px;
+    padding: 46px 20px 42px;
+  }
+  .imp-titulo { font-size: 24px; }
+  .imp-texto { padding: 18px 16px 22px 26px; }
+  .imp-texto::before { left: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imp-tablilla { animation: none; }
+  .imp-tablilla .imp-tab-panel { animation: none !important; }
+  .imp-tablilla .imp-tabs-nav a.imp-tab-label { transition: none; }
+}
