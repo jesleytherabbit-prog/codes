@@ -330,15 +330,12 @@
 .hcs-pie::before,
 .hcs-pie::after { content: "\2727"; margin: 0 8px; color: #D9B8CB; }
 
-/* ---------- IMÁGENES DE LA GALERÍA ----------
-   Cambiá cada URL_IMAGEN_N por el link de tu imagen.
-   Van acá en el CSS porque el foro puede borrar <img> del HTML. */
-.hcs-img.i1 { background: url("URL_IMAGEN_1") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
-.hcs-img.i2 { background: url("URL_IMAGEN_2") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
-.hcs-img.i3 { background: url("URL_IMAGEN_3") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
-.hcs-img.i4 { background: url("URL_IMAGEN_4") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
-.hcs-img.i5 { background: url("URL_IMAGEN_5") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
-.hcs-img.i6 { background: url("URL_IMAGEN_6") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i1 { background: url("https://2img.net/i.imgur.com/VTaUT1g.png") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i2 { background: url("https://2img.net/i.imgur.com/KuiMSto.png") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i3 { background: url("https://2img.net/i.imgur.com/fIZQZaI.png") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i4 { background: url("https://2img.net/i.imgur.com/PKUGE9L.gif") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i5 { background: url("https://2img.net/i.imgur.com/rbQWF8w.png") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i6 { background: url("https://2img.net/i.imgur.com/BvqqotR.png") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 640px) {
