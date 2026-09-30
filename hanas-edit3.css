@@ -179,3 +179,56 @@
 @media (prefers-reduced-motion: reduce) {
   .hce, .hce::before, .hce::after, .hce-cab::before, .hce-cab::after { animation: none; }
 }
+
+/* ==========================================================
+   VARIANTE SOLO TEXTO  →  <div class="hce hce-texto">
+   Para listas, avisos, pendientes, etc. escritos en BBCode.
+   ========================================================== */
+
+.hce.hce-texto {
+  max-width: 520px;
+  padding: 22px 26px;
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* Acá SÍ queremos respetar los saltos de línea del BBCode */
+.hce.hce-texto br { display: inline !important; }
+
+.hce-cont { position: relative; z-index: 2; }
+
+/* Listas [list][*] con ✦ en lugar de viñeta */
+.hce-texto ul {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding: 0;
+}
+.hce-texto li {
+  position: relative;
+  margin: 0 0 4px;
+  padding-left: 22px;
+  text-decoration-color: #F0A8C4;
+}
+.hce-texto li::before {
+  content: "\2726";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  color: #F2D9A0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, .8), 0 0 10px rgba(242, 217, 160, .8);
+}
+.hce-texto li:nth-child(even)::before { content: "\2727"; color: #F5BBD8; }
+
+/* Tachado con tono rosa suave */
+.hce-texto strike,
+.hce-texto s,
+.hce-texto del { text-decoration-color: #F0A8C4; text-decoration-thickness: 1px; opacity: .85; }
+
+/* Negritas con un halo sutil */
+.hce-texto b,
+.hce-texto strong { text-shadow: 0 0 8px rgba(243, 201, 222, .55); }
+
+/* Links en el mismo tono */
+.hce-texto a { color: #CDBBF0; text-decoration: none; border-bottom: 1px dotted #CDBBF0; }
+.hce-texto a:hover { color: #FFE3F0; text-shadow: 0 0 8px rgba(255, 214, 234, .9); }
