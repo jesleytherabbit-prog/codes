@@ -11,7 +11,7 @@
   box-sizing: border-box;
   max-width: 760px;
   margin: 0 auto;
-  padding: 34px 28px 26px;
+  padding: 22px 28px 26px;
   border-radius: 26px;
   border: 3px solid rgba(255, 255, 255, .85);
   background:
@@ -32,6 +32,9 @@
 .hcs *::after { box-sizing: border-box; }
 
 .hcs > * { position: relative; z-index: 2; }
+
+/* El foro convierte los saltos de línea del HTML en <br>: los anulamos */
+.hcs br { display: none !important; }
 
 /* ---------- GLITTER DE FONDO (delicado) ---------- */
 /* Capa 1: polvo fino que cae muy despacio */
@@ -90,7 +93,7 @@
 
 /* ---------- CABECERA ---------- */
 .hcs-head {
-  padding: 4px 0 8px;
+  padding: 0 0 6px;
 }
 
 .hcs-spark {
@@ -101,6 +104,10 @@
   animation: hcs-brillo 3.6s ease-in-out infinite;
   pointer-events: none;
 }
+.hcs-spark::before { content: "\2726"; }
+.hcs-spark.s2::before,
+.hcs-spark.s4::before,
+.hcs-spark.s5::before { content: "\2727"; }
 .hcs-spark.s1 { top: 6px;   left: 8%;  font-size: 20px; animation-delay: 0s; }
 .hcs-spark.s2 { top: 42px;  left: 20%; font-size: 12px; animation-delay: 1.1s; }
 .hcs-spark.s3 { top: 14px;  right: 10%; font-size: 24px; animation-delay: .6s; }
@@ -118,7 +125,7 @@
   position: relative;
   width: 46px;
   height: 46px;
-  margin: 0 auto 8px;
+  margin: 0 auto 6px;
   border-radius: 50%;
   border: 3px solid #E3CFA0;
   background:
@@ -158,6 +165,8 @@
   color: #A68BB5;
   margin-bottom: 4px;
 }
+.hcs-sup::before,
+.hcs-sup::after { content: "\2726"; margin: 0 8px; color: #D9B8CB; }
 
 .hcs-titulo {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -191,6 +200,7 @@
 }
 
 /* ---------- DIVISOR ---------- */
+.hcs-linea span::before { content: "\2661"; }
 .hcs-linea {
   display: flex;
   align-items: center;
@@ -316,6 +326,19 @@
   text-transform: uppercase;
   color: #A68BB5;
 }
+
+.hcs-pie::before,
+.hcs-pie::after { content: "\2727"; margin: 0 8px; color: #D9B8CB; }
+
+/* ---------- IMÁGENES DE LA GALERÍA ----------
+   Cambiá cada URL_IMAGEN_N por el link de tu imagen.
+   Van acá en el CSS porque el foro puede borrar <img> del HTML. */
+.hcs-img.i1 { background: url("URL_IMAGEN_1") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i2 { background: url("URL_IMAGEN_2") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i3 { background: url("URL_IMAGEN_3") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i4 { background: url("URL_IMAGEN_4") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i5 { background: url("URL_IMAGEN_5") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
+.hcs-img.i6 { background: url("URL_IMAGEN_6") center / cover no-repeat, linear-gradient(150deg, #EBD3E0, #D9D2EC 55%, #CFDDEC); }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 640px) {
