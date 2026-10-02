@@ -1,0 +1,473 @@
+/* =========================================================
+   TABLILLA DE MISIÓN — Hogwarts Nocturno
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+Double+Pica:ital@0;1&family=Mrs+Saint+Delafield&display=swap');
+
+.hn-tablilla {
+  --hn-noche: #0C1020;
+  --hn-noche2: #141B32;
+  --hn-piedra: #3A3F4B;
+  --hn-piedra-clara: #8890A0;
+  --hn-oro: #C9A227;
+  --hn-oro-suave: #E8C468;
+  --hn-pergamino: #E8DCC0;
+  --hn-pergamino-sombra: #D2C29C;
+  --hn-tinta: #4A3524;
+  --hn-tinta-fuerte: #2E2013;
+  --hn-img: url('');
+
+  max-width: 560px;
+  margin: 24px auto;
+  position: relative;
+  box-sizing: border-box;
+  padding: 56px 34px 46px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  color: var(--hn-oro-suave);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.10), transparent 55%),
+    radial-gradient(ellipse at 20% 85%, rgba(58, 63, 75, 0.35), transparent 60%),
+    linear-gradient(180deg, rgba(12, 16, 32, 0.93), rgba(12, 16, 32, 0.97)),
+    var(--hn-img) center / cover no-repeat,
+    linear-gradient(180deg, var(--hn-noche2), var(--hn-noche));
+  border: 1px solid var(--hn-piedra);
+  border-radius: 50% 50% 6px 6px / 90px 90px 6px 6px;
+  box-shadow:
+    inset 0 0 70px rgba(0, 0, 0, 0.75),
+    0 0 0 5px var(--hn-noche2),
+    0 0 0 6px var(--hn-oro),
+    0 0 0 9px var(--hn-noche),
+    0 0 0 10px var(--hn-piedra),
+    0 20px 44px rgba(0, 0, 0, 0.65);
+}
+
+/* Luces titilando: dos capas independientes (oro cálido + estrellas frías) */
+.hn-tablilla::before,
+.hn-tablilla::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.hn-tablilla::before {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(232, 196, 104, 0.9) 0 1.3px, transparent 2.2px),
+    radial-gradient(circle at 42% 22%, rgba(232, 196, 104, 0.8) 0 1.1px, transparent 2px),
+    radial-gradient(circle at 70% 8%, rgba(232, 196, 104, 0.85) 0 1.4px, transparent 2.4px),
+    radial-gradient(circle at 85% 28%, rgba(232, 196, 104, 0.7) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 10% 45%, rgba(232, 196, 104, 0.75) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 60% 55%, rgba(232, 196, 104, 0.8) 0 1.3px, transparent 2.2px),
+    radial-gradient(circle at 90% 70%, rgba(232, 196, 104, 0.7) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 30% 85%, rgba(232, 196, 104, 0.75) 0 1.1px, transparent 2px),
+    radial-gradient(circle at 75% 92%, rgba(232, 196, 104, 0.8) 0 1.3px, transparent 2.2px);
+  animation: hn-titilar-oro 4.5s ease-in-out infinite;
+}
+
+.hn-tablilla::after {
+  background:
+    radial-gradient(circle at 25% 15%, rgba(225, 230, 245, 0.9) 0 0.9px, transparent 1.6px),
+    radial-gradient(circle at 55% 6%, rgba(225, 230, 245, 0.8) 0 0.8px, transparent 1.5px),
+    radial-gradient(circle at 80% 18%, rgba(225, 230, 245, 0.85) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 5% 60%, rgba(225, 230, 245, 0.7) 0 0.8px, transparent 1.5px),
+    radial-gradient(circle at 48% 70%, rgba(225, 230, 245, 0.8) 0 0.9px, transparent 1.6px),
+    radial-gradient(circle at 93% 50%, rgba(225, 230, 245, 0.75) 0 0.8px, transparent 1.5px),
+    radial-gradient(circle at 20% 95%, rgba(225, 230, 245, 0.7) 0 0.9px, transparent 1.6px),
+    radial-gradient(circle at 65% 40%, rgba(225, 230, 245, 0.8) 0 1px, transparent 1.8px);
+  animation: hn-titilar-estrella 6s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes hn-titilar-oro {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+@keyframes hn-titilar-estrella {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.85; }
+}
+
+/* ---------- Cabecera ---------- */
+
+.hn-subtitulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--hn-piedra-clara);
+}
+.hn-subtitulo::before,
+.hn-subtitulo::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hn-oro), transparent);
+  opacity: 0.6;
+}
+
+.hn-titulo-wrap {
+  position: relative;
+  margin: 10px 0 34px;
+}
+
+.hn-titulo {
+  text-align: center;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  color: var(--hn-oro-suave);
+  text-shadow: 0 0 16px rgba(232, 196, 104, 0.35), 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Huellas del Mapa del Merodeador: aparecen al pasar el mouse por el título */
+.hn-pasos {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 230px;
+  height: 40px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.hn-paso {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+  background: var(--hn-tinta);
+  box-shadow: 0 0 3px rgba(74, 53, 36, 0.5);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.hn-paso:nth-child(1) { left: 6px;   top: 26px; transform: rotate(-12deg); transition-delay: 0.05s; }
+.hn-paso:nth-child(2) { left: 36px;  top: 14px; transform: rotate(10deg);  transition-delay: 0.18s; }
+.hn-paso:nth-child(3) { left: 68px;  top: 24px; transform: rotate(-8deg);  transition-delay: 0.31s; }
+.hn-paso:nth-child(4) { left: 100px; top: 12px; transform: rotate(10deg);  transition-delay: 0.44s; }
+.hn-paso:nth-child(5) { left: 132px; top: 22px; transform: rotate(-10deg); transition-delay: 0.57s; }
+
+.hn-usuario {
+  position: absolute;
+  left: 150px;
+  top: -4px;
+  font-family: 'Mrs Saint Delafield', cursive;
+  font-size: 19px;
+  color: var(--hn-tinta);
+  white-space: nowrap;
+  transform: rotate(-4deg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  transition-delay: 0.7s;
+}
+
+.hn-titulo-wrap:hover .hn-paso,
+.hn-titulo-wrap:focus-within .hn-paso {
+  opacity: 0.85;
+}
+.hn-titulo-wrap:hover .hn-usuario,
+.hn-titulo-wrap:focus-within .hn-usuario {
+  opacity: 1;
+}
+
+.hn-cita {
+  text-align: center;
+  padding: 0 8px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--hn-piedra-clara);
+}
+
+.hn-cita-autor {
+  display: block;
+  margin-top: 10px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--hn-oro-suave);
+  opacity: 0.75;
+}
+
+/* ---------- Separadores ---------- */
+
+.hn-separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.hn-separador .hn-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hn-oro), transparent);
+  opacity: 0.6;
+}
+
+.hn-separador .hn-icono {
+  margin: 0 14px;
+  font-size: 15px;
+  color: var(--hn-oro);
+  text-shadow: 0 0 6px rgba(201, 162, 39, 0.5);
+}
+.hn-separador .hn-icono::before {
+  content: "\263E"; /* ☾ luna creciente */
+}
+
+/* ---------- Limpieza: el foro convierte los saltos de línea del HTML en <br> ---------- */
+
+.hn-tablilla > br,
+.hn-cita > br,
+.hn-separador > br,
+.hn-texto > br,
+.hn-tabs-nav > br,
+.hn-tabs-content > br,
+.hn-tab-panel > br,
+.hn-datos > br {
+  display: none;
+}
+
+/* ---------- Folio de pergamino (contenido) ---------- */
+
+.hn-texto {
+  position: relative;
+  padding: 22px 24px 26px 24px;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(74, 53, 36, 0.10), transparent 30%),
+    radial-gradient(circle at 90% 85%, rgba(74, 53, 36, 0.12), transparent 32%),
+    linear-gradient(180deg, var(--hn-pergamino), var(--hn-pergamino-sombra));
+  border: 1px solid var(--hn-oro);
+  box-shadow:
+    inset 0 0 30px rgba(74, 53, 36, 0.25),
+    0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.hn-texto > p {
+  margin: 0 0 16px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--hn-tinta);
+  text-align: justify;
+  hyphens: auto;
+}
+.hn-texto > p:last-child { margin-bottom: 0; }
+
+.hn-texto > p b,
+.hn-texto > p strong {
+  font-weight: 400;
+  color: var(--hn-tinta-fuerte);
+  border-bottom: 1px solid var(--hn-oro);
+}
+
+.hn-texto > p:first-child::first-letter {
+  float: left;
+  padding: 3px 8px 0 0;
+  font-family: 'IM Fell Double Pica', Georgia, serif;
+  font-size: 3.1em;
+  line-height: 0.82;
+  color: var(--hn-tinta-fuerte);
+}
+
+/* ---------- Pestañas por jugador ---------- */
+
+.hn-tablilla .hn-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.35);
+}
+
+.hn-tablilla .hn-tabs-nav a.hn-tab-label {
+  display: inline-block;
+  padding: 4px 11px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 1.2px;
+  color: var(--hn-oro-suave) !important;
+  background: rgba(201, 162, 39, 0.08);
+  border: 1px solid var(--hn-oro);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.hn-tablilla .hn-tabs-nav a.hn-tab-label:hover {
+  color: var(--hn-noche) !important;
+  background: var(--hn-oro-suave);
+}
+
+.hn-tablilla .hn-tabs-nav a.hn-tab-label:focus-visible {
+  outline: 2px solid var(--hn-oro-suave);
+  outline-offset: 2px;
+}
+
+/* Pestaña activa (por defecto, la del Jugador 1) */
+.hn-tablilla .hn-texto:not(:has([id^="hn-j2-"]:target, [id^="hn-j3-"]:target, [id^="hn-j4-"]:target, [id^="hn-j5-"]:target, [id^="hn-j6-"]:target)) a.hn-tab-label[href^="#hn-j1-"],
+.hn-tablilla .hn-texto:has([id^="hn-j2-"]:target) a.hn-tab-label[href^="#hn-j2-"],
+.hn-tablilla .hn-texto:has([id^="hn-j3-"]:target) a.hn-tab-label[href^="#hn-j3-"],
+.hn-tablilla .hn-texto:has([id^="hn-j4-"]:target) a.hn-tab-label[href^="#hn-j4-"],
+.hn-tablilla .hn-texto:has([id^="hn-j5-"]:target) a.hn-tab-label[href^="#hn-j5-"],
+.hn-tablilla .hn-texto:has([id^="hn-j6-"]:target) a.hn-tab-label[href^="#hn-j6-"] {
+  color: var(--hn-tinta-fuerte) !important;
+  background: var(--hn-oro);
+  border-color: var(--hn-oro-suave);
+  box-shadow: 2px 2px 0 var(--hn-noche2);
+}
+
+/* ---------- Paneles ---------- */
+
+.hn-tablilla .hn-ancla {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hn-tablilla .hn-tabs-content {
+  position: relative;
+}
+
+.hn-tablilla .hn-tab-panel {
+  display: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--hn-tinta);
+  text-align: justify;
+}
+
+.hn-tablilla .hn-p1 { display: block; }
+
+.hn-tablilla [id^="hn-j2-"]:target ~ .hn-p1,
+.hn-tablilla [id^="hn-j3-"]:target ~ .hn-p1,
+.hn-tablilla [id^="hn-j4-"]:target ~ .hn-p1,
+.hn-tablilla [id^="hn-j5-"]:target ~ .hn-p1,
+.hn-tablilla [id^="hn-j6-"]:target ~ .hn-p1 { display: none; }
+
+.hn-tablilla [id^="hn-j2-"]:target ~ .hn-p2,
+.hn-tablilla [id^="hn-j3-"]:target ~ .hn-p3,
+.hn-tablilla [id^="hn-j4-"]:target ~ .hn-p4,
+.hn-tablilla [id^="hn-j5-"]:target ~ .hn-p5,
+.hn-tablilla [id^="hn-j6-"]:target ~ .hn-p6 { display: block; }
+
+.hn-tablilla .hn-tab-panel p {
+  margin: 0 0 14px !important;
+  font-family: 'IM Fell DW Pica', Georgia, serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: var(--hn-tinta) !important;
+  text-align: justify !important;
+}
+.hn-tablilla .hn-tab-panel p:last-child { margin-bottom: 0 !important; }
+
+.hn-tablilla .hn-tab-panel b,
+.hn-tablilla .hn-tab-panel strong {
+  font-weight: 400;
+  color: var(--hn-tinta-fuerte);
+  border-bottom: 1px solid var(--hn-oro);
+}
+
+.hn-tablilla .hn-tab-panel p:first-child::first-letter {
+  float: left;
+  padding: 3px 8px 0 0;
+  font-family: 'IM Fell Double Pica', Georgia, serif;
+  font-size: 3.1em;
+  line-height: 0.82;
+  color: var(--hn-tinta-fuerte);
+}
+
+.hn-tablilla .hn-p1,
+.hn-tablilla [id^="hn-j2-"]:target ~ .hn-p2,
+.hn-tablilla [id^="hn-j3-"]:target ~ .hn-p3,
+.hn-tablilla [id^="hn-j4-"]:target ~ .hn-p4,
+.hn-tablilla [id^="hn-j5-"]:target ~ .hn-p5,
+.hn-tablilla [id^="hn-j6-"]:target ~ .hn-p6 {
+  animation: hn-enfocar 0.5s ease-out;
+}
+@keyframes hn-enfocar {
+  from { opacity: 0; filter: blur(3px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+/* ---------- Datos ---------- */
+
+.hn-datos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  margin-top: 4px;
+}
+
+.hn-dato {
+  padding: 5px 12px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 1.2px;
+  color: var(--hn-oro-suave);
+  background: var(--hn-noche2);
+  border: 1px solid var(--hn-piedra);
+  border-left: 3px solid var(--hn-oro);
+}
+
+.hn-dato b {
+  font-weight: 400;
+  color: var(--hn-oro-suave);
+}
+
+/* ---------- Firma ---------- */
+
+.hn-firma {
+  margin-top: 4px;
+  text-align: center;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--hn-piedra-clara);
+  opacity: 0.9;
+}
+.hn-firma a {
+  color: var(--hn-oro-suave);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hn-oro);
+}
+.hn-firma a:hover {
+  border-bottom-color: var(--hn-oro-suave);
+}
+
+/* ---------- Móvil y accesibilidad ---------- */
+
+@media (max-width: 520px) {
+  .hn-tablilla {
+    margin: 24px 14px;
+    padding: 50px 20px 42px;
+    border-radius: 50% 50% 6px 6px / 56px 56px 6px 6px;
+  }
+  .hn-titulo { font-size: 24px; }
+  .hn-texto { padding: 18px 16px 22px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hn-tablilla::before,
+  .hn-tablilla::after { animation: none; opacity: 0.6; }
+  .hn-tablilla .hn-tab-panel { animation: none !important; }
+  .hn-tablilla .hn-tabs-nav a.hn-tab-label { transition: none; }
+  .hn-paso, .hn-usuario { transition: none; }
+}
