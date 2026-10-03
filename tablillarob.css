@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+body{margin:0;padding:24px 12px;background:#0d0f14;}
+
+.tablilla{
+  --fondo:#171a23; --panel:#1e222d; --linea:#3a3524; --oro:#c2a461;
+  --texto:#e4dfd0; --suave:#9b9684; --pj:#3f9e8a; --pnj:#b8443f; --vacio:#2a2e3a;
+  max-width:760px; margin:0 auto; background:var(--fondo); color:var(--texto);
+  font-family:'Lora',Georgia,serif; border:1px solid var(--linea); border-radius:6px; overflow:hidden;
+}
+
+/* ---------- CABECERA ---------- */
+.cabecera{padding:18px 24px 14px; border-bottom:1px solid var(--linea);}
+.cabecera h2{margin:0; font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; color:var(--oro); letter-spacing:.5px;}
+.cabecera p{margin:4px 0 0; font-size:13px; color:var(--suave); font-style:italic;}
+
+/* ---------- POST ---------- */
+.post{padding:22px 24px; font-size:15px; line-height:1.7;}
+.post p{margin:0 0 12px;}
+.post p:last-child{margin-bottom:0;}
+
+/* ---------- BARRA DE COMBATE ---------- */
+.combate{display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; padding:18px 24px 22px; background:var(--panel); border-top:1px solid var(--linea);}
+.bando{display:flex; flex-direction:column; gap:14px;}
+.vs{font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; color:var(--oro); font-weight:700;}
+
+.luchador .nombre{display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;}
+.luchador .nombre span:last-child{color:var(--suave);}
+
+/* Valores editables: SOLO se cambia --pa y --max en el HTML */
+.barra{
+  position:relative;
+  counter-reset:actual var(--pa) tope var(--max);
+}
+.pista{height:20px; background:var(--vacio); border:1px solid var(--linea); border-radius:3px; overflow:hidden; position:relative;}
+.relleno{
+  height:100%;
+  width:max(0%, min(100%, calc(var(--pa) / var(--max) * 100%)));
+  background:var(--pj);
+  transition:width .5s ease;
+}
+.pnj .relleno{background:var(--pnj);}
+.cifras{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:#fff; text-shadow:0 1px 2px #000;}
+.cifras::after{content:counter(actual) " / " counter(tope);}
+
+/* Tooltip en hover (solo PJs) */
+.tip{
+  position:absolute; left:50%; bottom:calc(100% + 8px); transform:translateX(-50%);
+  background:#0d0f14; color:var(--oro); border:1px solid var(--oro); border-radius:3px;
+  padding:5px 10px; font-size:12px; font-weight:600; white-space:nowrap;
+  opacity:0; pointer-events:none; transition:opacity .15s ease; z-index:5;
+}
+.pj .barra:hover .tip{opacity:1;}
+
+@media (max-width:620px){
+  .combate{grid-template-columns:1fr;}
+  .vs{text-align:center;}
+}
