@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Parisienne&family=Quicksand:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@600;700&family=Parisienne&family=Quicksand:wght@500;600&display=swap');
 
-/* ============ CRONOLOGÍA · MAGICAL GIRL ============ */
+/* ============ CRONOLOGÍA · MAGICAL GIRL (v2) ============ */
 .mg-wrap{
   --lila:#60507B; --violeta:#6B62AE; --lavanda:#AD9CBC; --rosa-polvo:#C59FB3;
   --rosa:#D6A6B9; --melocoton:#E0B9A6; --perla:#EDE4EB; --champagne:#E7D0A8;
   --oro:#C2A27A; --azul:#8D9BCB; --ciruela:#5A445E; --carbon:#36291B;
-  position:relative; max-width:720px; margin:20px auto; padding:34px 26px 30px;
+  position:relative; max-width:720px; margin:20px auto; padding:34px 24px 26px;
   background:linear-gradient(165deg,#60507B 0%,#5A445E 55%,#6B62AE 100%);
   border:2px solid var(--oro); border-radius:26px; overflow:hidden;
   box-shadow:0 0 0 5px rgba(231,208,168,.18), inset 0 0 0 6px rgba(90,68,94,.9), inset 0 0 0 7px rgba(231,208,168,.45), 0 12px 34px rgba(54,41,27,.45);
   font-family:'Quicksand',sans-serif; color:var(--perla); box-sizing:border-box;
+  overflow-anchor:none;
 }
-.mg-wrap *{box-sizing:border-box}
+.mg-wrap *{box-sizing:border-box; overflow-anchor:none}
 
 /* destellos de fondo */
 .mg-wrap::before{
@@ -28,28 +29,31 @@
 @keyframes mg-twinkle{from{opacity:.2}to{opacity:.75}}
 
 /* anclas invisibles (no mueven la página) */
-.mg-anchor{position:fixed; top:0; left:0; width:1px; height:1px; visibility:hidden; pointer-events:none}
+.mg-wrap > .mg-anchor{position:fixed; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none}
 
 /* cabecera */
-.mg-top{text-align:center; padding:0 0 10px}
+.mg-top{text-align:center; padding:0 0 6px}
 .mg-top::before,.mg-top::after{
-  content:"🦋"; position:absolute; top:-4px; font-size:26px;
+  content:"🦋"; position:absolute; top:0; font-size:30px;
   animation:mg-float 5s ease-in-out infinite;
 }
-.mg-top::before{left:6px}
-.mg-top::after{right:6px; transform:scaleX(-1); animation-delay:-2.5s}
+.mg-top::before{left:2px}
+.mg-top::after{right:2px; transform:scaleX(-1); animation-delay:-2.5s}
 @keyframes mg-float{0%,100%{translate:0 0}50%{translate:0 -8px}}
 
-.mg-orn{font-size:15px; letter-spacing:7px; color:var(--champagne); margin:0 0 6px}
+.mg-orn{font-size:15px; letter-spacing:7px; color:var(--champagne); margin:0 0 4px}
 .mg-titulo{
-  margin:0; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:34px;
-  letter-spacing:6px; text-transform:uppercase; color:var(--perla);
-  text-shadow:0 0 14px rgba(231,208,168,.55),0 2px 0 var(--ciruela);
+  margin:0; padding:2px 6px 4px; font-family:'Cinzel Decorative',serif; font-weight:700;
+  font-size:52px; line-height:1.1; letter-spacing:3px;
+  background:linear-gradient(180deg,#EDE4EB 5%,#E7D0A8 55%,#D6A6B9 100%);
+  -webkit-background-clip:text; background-clip:text;
+  color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 12px rgba(231,208,168,.55)) drop-shadow(0 2px 0 #5A445E);
 }
-.mg-sub{margin:2px 0 0; font-family:'Parisienne',cursive; font-size:25px; color:var(--champagne)}
+.mg-sub{margin:0; font-family:'Parisienne',cursive; font-size:30px; color:var(--champagne)}
 
 /* pestañas */
-.mg-tabs{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:20px 0 26px}
+.mg-tabs{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:16px 0 18px}
 .mg-tabs a{
   --b:rgba(237,228,235,.08); --c:var(--perla); --s:none;
   display:inline-block; padding:9px 18px; border-radius:999px; text-decoration:none;
@@ -57,10 +61,9 @@
   background:var(--b); color:var(--c); box-shadow:var(--s);
   border:1px solid rgba(231,208,168,.55); transition:.25s;
 }
-.mg-tabs a:hover{--b:rgba(231,208,168,.25); transform:translateY(-2px)}
+.mg-tabs a:hover{--b:rgba(231,208,168,.25)}
 .mg-tabs a b{margin-left:6px; padding:1px 7px; border-radius:99px; background:rgba(0,0,0,.18); font-size:11px}
 
-/* pestaña activa (por defecto: abiertos) */
 .mg-tabs a.t-abiertos,
 #mg-abiertos:target ~ .mg-tabs a.t-abiertos,
 #mg-inactivos:target ~ .mg-tabs a.t-inactivos,
@@ -72,88 +75,75 @@
   --b:rgba(237,228,235,.08); --c:var(--perla); --s:none;
 }
 
-/* paneles */
-.mg-p{display:none}
+/* paneles: MISMA altura siempre, con scroll interno */
+.mg-p{
+  display:none; height:430px; overflow-y:auto; overflow-x:hidden;
+  padding:4px 10px 4px 6px;
+  scrollbar-width:thin; scrollbar-color:#E7D0A8 rgba(0,0,0,.2);
+}
+.mg-p::-webkit-scrollbar{width:8px}
+.mg-p::-webkit-scrollbar-track{background:rgba(0,0,0,.2); border-radius:8px}
+.mg-p::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#E7D0A8,#D6A6B9); border-radius:8px}
+
 .mg-p-abiertos{display:block}
 #mg-inactivos:target ~ .mg-p-abiertos,
 #mg-terminados:target ~ .mg-p-abiertos{display:none}
 #mg-inactivos:target ~ .mg-p-inactivos,
 #mg-terminados:target ~ .mg-p-terminados{display:block}
 
-.mg-leyenda{
-  margin:0 0 22px; text-align:center; font-family:'Parisienne',cursive;
-  font-size:20px; color:var(--rosa);
-}
+.mg-leyenda{margin:0 0 14px; text-align:center; font-family:'Parisienne',cursive; font-size:21px; color:var(--rosa)}
 
 /* línea de tiempo */
-.mg-lista{position:relative; padding-left:48px}
+.mg-lista{position:relative; padding-left:46px}
 .mg-lista::before{
   content:""; position:absolute; left:15px; top:6px; bottom:6px; width:3px; border-radius:3px;
   background:linear-gradient(180deg,var(--champagne),var(--rosa),var(--azul),var(--lavanda));
   box-shadow:0 0 10px rgba(231,208,168,.55);
 }
-.mg-item{position:relative; margin:0 0 22px}
-.mg-item:last-child{margin-bottom:0}
+.mg-item{position:relative; margin:0 0 12px}
+.mg-item:last-child{margin-bottom:2px}
 .mg-item::before{
-  content:"✦"; position:absolute; left:-48px; top:2px; width:34px; height:34px;
+  content:"✦"; position:absolute; left:-46px; top:50%; margin-top:-15px; width:30px; height:30px;
   display:flex; align-items:center; justify-content:center; border-radius:50%;
   background:radial-gradient(circle at 35% 30%,#EDE4EB,#E7D0A8 60%,#C2A27A);
-  border:2px solid var(--oro); color:var(--ciruela); font-size:15px;
+  border:2px solid var(--oro); color:var(--ciruela); font-size:13px;
   box-shadow:0 0 12px rgba(231,208,168,.8);
 }
 .mg-p-inactivos .mg-item::before{content:"☾"; background:radial-gradient(circle at 35% 30%,#EDE4EB,#AD9CBC 65%,#8D9BCB); border-color:var(--azul); box-shadow:0 0 10px rgba(141,155,203,.7)}
 .mg-p-terminados .mg-item::before{content:"♡"; background:radial-gradient(circle at 35% 30%,#EDE4EB,#D6A6B9 65%,#C59FB3); border-color:var(--rosa-polvo); box-shadow:0 0 10px rgba(214,166,185,.7)}
 
-.mg-fecha{
-  display:inline-block; margin:0 0 7px 4px; padding:3px 14px; border-radius:999px;
-  background:linear-gradient(90deg,#E7D0A8,#E0B9A6); color:var(--ciruela);
-  font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
-}
-
+/* fila: Título — Personaje — Fecha */
 .mg-card{
-  position:relative; padding:16px 18px 16px; border-radius:6px 20px 20px 20px;
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 9px;
+  padding:9px 16px; border-radius:6px 18px 18px 18px;
   background:linear-gradient(160deg,#EDE4EB,#E8DDE8); color:var(--carbon);
-  border:1px solid var(--rosa); box-shadow:0 5px 16px rgba(54,41,27,.3);
+  border:1px solid var(--rosa); box-shadow:0 4px 12px rgba(54,41,27,.28);
   transition:transform .25s, box-shadow .25s;
 }
-.mg-card::after{
-  content:"✧"; position:absolute; right:14px; top:10px; color:var(--oro); font-size:16px;
-}
-.mg-card:hover{transform:translateY(-3px); box-shadow:0 9px 22px rgba(54,41,27,.35),0 0 16px rgba(231,208,168,.5)}
+.mg-card:hover{transform:translateX(3px); box-shadow:0 6px 16px rgba(54,41,27,.32),0 0 14px rgba(231,208,168,.5)}
 
-.mg-card h4{
-  margin:0 24px 4px 0; font-family:'Cormorant Garamond',serif; font-weight:700;
-  font-size:21px; line-height:1.15; color:var(--ciruela);
+.mg-card a.mg-t{
+  font-family:'Cormorant Garamond',serif; font-weight:700; font-size:19px; line-height:1.2;
+  color:var(--ciruela); text-decoration:none; transition:color .2s;
 }
-.mg-part{margin:0 0 8px; font-size:12.5px; font-weight:600; letter-spacing:.5px; color:var(--violeta)}
-.mg-part::before{content:"🌸 "}
-.mg-card p.mg-desc{margin:0 0 12px; font-size:14px; line-height:1.55; color:var(--carbon)}
+.mg-card a.mg-t:hover{color:var(--violeta); text-decoration:underline; text-decoration-color:var(--rosa)}
+.mg-sep{color:var(--oro); font-size:13px}
+.mg-pj{font-size:13px; font-weight:600; color:var(--violeta)}
+.mg-f{font-size:12px; font-weight:600; letter-spacing:.5px; color:var(--ciruela)}
 
-.mg-card a.mg-ir{
-  display:inline-block; padding:5px 15px; border-radius:999px; text-decoration:none;
-  font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-  background:linear-gradient(135deg,#6B62AE,#8D9BCB); color:#EDE4EB;
-  box-shadow:0 2px 8px rgba(107,98,174,.45); transition:.25s;
-}
-.mg-card a.mg-ir:hover{filter:brightness(1.12); box-shadow:0 0 14px rgba(141,155,203,.9)}
-
-/* inactivos: más suaves, como dormidos */
+/* inactivos: más suaves */
 .mg-p-inactivos .mg-card{background:linear-gradient(160deg,#E3DAE6,#D4C9DC); border-color:var(--lavanda); filter:saturate(.8)}
-.mg-p-inactivos .mg-card h4{color:#60507B}
-
-/* terminados: sello final */
+/* terminados */
 .mg-p-terminados .mg-card{background:linear-gradient(160deg,#EDE4EB,#EBD8DF); border-color:var(--rosa-polvo)}
-.mg-p-terminados .mg-card h4::after{
-  content:"— fin —"; display:block; margin-top:2px;
-  font-family:'Parisienne',cursive; font-weight:400; font-size:16px; color:var(--oro);
-}
 
-.mg-pie{margin:26px 0 0; text-align:center; font-size:15px; letter-spacing:7px; color:var(--champagne)}
+.mg-pie{margin:16px 0 0; text-align:center; font-size:15px; letter-spacing:7px; color:var(--champagne)}
 
 @media (max-width:520px){
-  .mg-wrap{padding:30px 14px 24px}
-  .mg-titulo{font-size:25px; letter-spacing:3px}
-  .mg-lista{padding-left:42px}
-  .mg-item::before{left:-42px; width:30px; height:30px}
+  .mg-wrap{padding:30px 12px 22px}
+  .mg-titulo{font-size:32px; letter-spacing:1px}
+  .mg-sub{font-size:24px}
+  .mg-top::before,.mg-top::after{font-size:22px}
+  .mg-lista{padding-left:40px}
+  .mg-item::before{left:-40px; width:28px; height:28px}
   .mg-lista::before{left:13px}
 }
