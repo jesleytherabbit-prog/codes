@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@600;700&family=Parisienne&family=Quicksand:wght@500;600&display=swap');
 
-/* ============ CRONOLOGÍA · MAGICAL GIRL (v2) ============ */
+/* ============ CRONOLOGÍA · MAGICAL GIRL (v3) ============ */
 .mg-wrap{
   --lila:#60507B; --violeta:#6B62AE; --lavanda:#AD9CBC; --rosa-polvo:#C59FB3;
   --rosa:#D6A6B9; --melocoton:#E0B9A6; --perla:#EDE4EB; --champagne:#E7D0A8;
@@ -28,9 +28,6 @@
 .mg-wrap > *{position:relative; z-index:1}
 @keyframes mg-twinkle{from{opacity:.2}to{opacity:.75}}
 
-/* anclas invisibles (no mueven la página) */
-.mg-wrap > .mg-anchor{position:fixed; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none}
-
 /* cabecera */
 .mg-top{text-align:center; padding:0 0 6px}
 .mg-top::before,.mg-top::after{
@@ -52,44 +49,36 @@
 }
 .mg-sub{margin:0; font-family:'Parisienne',cursive; font-size:30px; color:var(--champagne)}
 
-/* pestañas */
-.mg-tabs{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:16px 0 18px}
-.mg-tabs a{
+/* pestañas + paneles (sin anclas, sin scroll de página) */
+.mg-nav{position:relative; display:flex; justify-content:center; gap:8px; height:496px; margin-top:14px}
+.mg-tab{position:static; outline:none; -webkit-tap-highlight-color:transparent}
+.mg-lbl{
   --b:rgba(237,228,235,.08); --c:var(--perla); --s:none;
-  display:inline-block; padding:9px 18px; border-radius:999px; text-decoration:none;
-  font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+  display:inline-block; padding:9px 18px; border-radius:999px; cursor:pointer;
+  font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; white-space:nowrap;
   background:var(--b); color:var(--c); box-shadow:var(--s);
   border:1px solid rgba(231,208,168,.55); transition:.25s;
 }
-.mg-tabs a:hover{--b:rgba(231,208,168,.25)}
-.mg-tabs a b{margin-left:6px; padding:1px 7px; border-radius:99px; background:rgba(0,0,0,.18); font-size:11px}
+.mg-lbl:hover{--b:rgba(231,208,168,.25)}
+.mg-lbl b{margin-left:6px; padding:1px 7px; border-radius:99px; background:rgba(0,0,0,.18); font-size:11px}
 
-.mg-tabs a.t-abiertos,
-#mg-abiertos:target ~ .mg-tabs a.t-abiertos,
-#mg-inactivos:target ~ .mg-tabs a.t-inactivos,
-#mg-terminados:target ~ .mg-tabs a.t-terminados{
+/* pestaña activa: la clickeada, o Abiertos si no hay ninguna */
+.mg-tab:focus-within .mg-lbl,
+.mg-nav:not(:focus-within) .t-abiertos .mg-lbl{
   --b:linear-gradient(135deg,#E7D0A8,#D6A6B9); --c:#5A445E; --s:0 0 16px rgba(231,208,168,.6);
-}
-#mg-inactivos:target ~ .mg-tabs a.t-abiertos,
-#mg-terminados:target ~ .mg-tabs a.t-abiertos{
-  --b:rgba(237,228,235,.08); --c:var(--perla); --s:none;
 }
 
 /* paneles: MISMA altura siempre, con scroll interno */
 .mg-p{
-  display:none; height:430px; overflow-y:auto; overflow-x:hidden;
-  padding:4px 10px 4px 6px;
+  display:none; position:absolute; left:0; right:0; top:56px; height:430px;
+  overflow-y:auto; overflow-x:hidden; padding:4px 10px 4px 6px;
   scrollbar-width:thin; scrollbar-color:#E7D0A8 rgba(0,0,0,.2);
 }
 .mg-p::-webkit-scrollbar{width:8px}
 .mg-p::-webkit-scrollbar-track{background:rgba(0,0,0,.2); border-radius:8px}
 .mg-p::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#E7D0A8,#D6A6B9); border-radius:8px}
-
-.mg-p-abiertos{display:block}
-#mg-inactivos:target ~ .mg-p-abiertos,
-#mg-terminados:target ~ .mg-p-abiertos{display:none}
-#mg-inactivos:target ~ .mg-p-inactivos,
-#mg-terminados:target ~ .mg-p-terminados{display:block}
+.mg-tab:focus-within .mg-p,
+.mg-nav:not(:focus-within) .t-abiertos .mg-p{display:block}
 
 .mg-leyenda{margin:0 0 14px; text-align:center; font-family:'Parisienne',cursive; font-size:21px; color:var(--rosa)}
 
@@ -143,6 +132,9 @@
   .mg-titulo{font-size:32px; letter-spacing:1px}
   .mg-sub{font-size:24px}
   .mg-top::before,.mg-top::after{font-size:22px}
+  .mg-lbl{padding:8px 10px; font-size:11px; letter-spacing:.3px}
+  .mg-lbl b{margin-left:4px; padding:1px 5px}
+  .mg-nav{gap:5px}
   .mg-lista{padding-left:40px}
   .mg-item::before{left:-40px; width:28px; height:28px}
   .mg-lista::before{left:13px}
