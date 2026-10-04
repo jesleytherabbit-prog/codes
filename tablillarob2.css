@@ -17,4 +17,5 @@
 .tb-num::after{content:counter(actual) " / " counter(tope)}
 .tb-tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);background:#0d0f14;color:var(--oro);border:1px solid var(--oro);border-radius:3px;padding:5px 10px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease;z-index:5}
 .tb-pj .tb-barra:hover .tb-tip{opacity:1}
-.tb-her{display:flex;flex-wrap:wrap;gap:3px;margin:5px 0 0;font-size:14px;line-height:1}.tb-g{display:inline-block;filter:grayscale(1) brightness(.6);opacity:.3}.tb-g.on{filter:drop-shadow(0 0 3px rgba(184,68,63,.7));opacity:1;animation:tbGota 2.4s ease-in-out infinite}@keyframes tbGota{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
+.tb-her{display:flex;flex-wrap:wrap;gap:9px;margin:7px 0 0 2px;padding:0;height:16px}.tb-g{display:block;width:11px;height:11px;margin-top:3px;background:#3a3f4d;border-radius:50% 0 50% 50%;transform:rotate(-45deg)}.tb-g.on{background:radial-gradient(circle at 40% 60%,#e8463c 0,#b01a15 55%,#6e0d0a 100%);box-shadow:0 0 5px rgba(200,40,30,.75);animation:tbGota 2.4s ease-in-out infinite}@keyframes tbGota{0%,100%{box-shadow:0 0 3px rgba(200,40,30,.5)}50%{box-shadow:0 0 8px rgba(230,50,40,.95)}}
+.tb-cab br,.tb-combate br{display:none}
