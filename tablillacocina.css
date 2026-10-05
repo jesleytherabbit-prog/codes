@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Nunito:ital,wght@0,500;0,700;1,500&family=Pixelify+Sans:wght@500&display=swap');
+
+/* =========================================================
+   TABLILLA · COCINA MÁGICA  
+   Prefijo mk-  ·  Por HANA PARK
+   ========================================================= */
+
+.mk-tablilla {
+  --mk-papel: #F6E9D2;
+  --mk-hoja: #FFF8EA;
+  --mk-terracota: #B25D45;
+  --mk-terracota-osc: #8A3F2E;
+  --mk-mantel: #A8473E;
+  --mk-mostaza: #D9A84E;
+  --mk-dorado: #E9C46A;
+  --mk-salvia: #8DA37C;
+  --mk-salvia-osc: #5F7752;
+  --mk-azul: #4F6F7D;
+  --mk-azul-osc: #39525E;
+  --mk-madera: #A9744F;
+  --mk-ciruela: #8E5A6B;
+  --mk-cacao: #5A3A2B;
+  --mk-cacao-suave: #8B6A55;
+  --mk-activo: var(--mk-terracota);
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 560px;
+  margin: 20px auto;
+  padding: 58px 36px 26px;
+  overflow: hidden;
+  color: var(--mk-cacao);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  text-align: left;
+  /* pergamino cálido */
+  background-color: var(--mk-papel);
+  background-image:
+    radial-gradient(ellipse at 50% 35%, rgba(255,250,238,.9), transparent 70%),
+    radial-gradient(rgba(138,63,46,.07) 1px, transparent 1.5px);
+  background-size: 100% 100%, 16px 16px;
+  border: 2px solid var(--mk-cacao);
+  border-radius: 22px;
+  box-shadow:
+    inset 0 0 0 5px var(--mk-papel),
+    inset 0 0 0 6px rgba(90,58,43,.25),
+    inset 0 -40px 60px -40px rgba(169,116,79,.25),
+    0 10px 26px -14px rgba(90,58,43,.5);
+}
+.mk-tablilla *, .mk-tablilla *::before, .mk-tablilla *::after { box-sizing: border-box; }
+
+/* mantel a cuadros arriba */
+.mk-tablilla::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 24px;
+  background-color: #F1DDC2;
+  background-image:
+    linear-gradient(90deg, rgba(168,71,62,.55) 50%, transparent 50%),
+    linear-gradient(rgba(168,71,62,.55) 50%, transparent 50%);
+  background-size: 16px 16px;
+  border-bottom: 2px solid var(--mk-cacao);
+}
+.mk-tablilla::after {
+  content: "";
+  position: absolute;
+  top: 26px; left: 0; right: 0;
+  height: 9px;
+  background: radial-gradient(circle at 8px 0, var(--mk-mantel) 7.5px, transparent 8px) 0 0 / 16px 9px repeat-x;
+  filter: drop-shadow(0 2px 0 rgba(90,58,43,.18));
+}
+
+/* ---------- ENCABEZADO: tetera pixel con vapor ---------- */
+.mk-encabezado {
+  position: relative;
+  text-align: center;
+  padding-top: 52px;
+}
+.mk-tetera {
+  position: absolute;
+  top: 8px; left: 50%;
+  width: 48px; height: 27px;
+  margin-left: -24px;
+}
+.mk-tetera::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 3px;
+  box-shadow: 21px 0px 0 var(--mk-dorado), 24px 0px 0 var(--mk-dorado), 15px 3px 0 var(--mk-madera), 18px 3px 0 var(--mk-madera), 21px 3px 0 var(--mk-madera), 24px 3px 0 var(--mk-madera), 27px 3px 0 var(--mk-madera), 30px 3px 0 var(--mk-madera), 12px 6px 0 var(--mk-azul), 15px 6px 0 var(--mk-azul), 18px 6px 0 var(--mk-azul), 21px 6px 0 var(--mk-azul), 24px 6px 0 var(--mk-azul), 27px 6px 0 var(--mk-azul), 30px 6px 0 var(--mk-azul), 33px 6px 0 var(--mk-azul), 3px 9px 0 var(--mk-madera), 6px 9px 0 var(--mk-madera), 9px 9px 0 var(--mk-azul), 12px 9px 0 var(--mk-azul), 15px 9px 0 rgba(255,255,255,.55), 18px 9px 0 var(--mk-azul), 21px 9px 0 var(--mk-azul), 24px 9px 0 var(--mk-azul), 27px 9px 0 var(--mk-azul), 30px 9px 0 var(--mk-azul), 33px 9px 0 var(--mk-azul), 36px 9px 0 var(--mk-azul), 45px 9px 0 var(--mk-azul), 0px 12px 0 var(--mk-madera), 9px 12px 0 var(--mk-azul), 12px 12px 0 rgba(255,255,255,.55), 15px 12px 0 var(--mk-azul), 18px 12px 0 var(--mk-azul), 21px 12px 0 var(--mk-azul), 24px 12px 0 var(--mk-azul), 27px 12px 0 var(--mk-azul), 30px 12px 0 var(--mk-azul), 33px 12px 0 var(--mk-azul), 36px 12px 0 var(--mk-azul), 39px 12px 0 var(--mk-azul), 42px 12px 0 var(--mk-azul), 45px 12px 0 var(--mk-azul), 0px 15px 0 var(--mk-madera), 9px 15px 0 var(--mk-azul), 12px 15px 0 var(--mk-azul), 15px 15px 0 var(--mk-azul), 18px 15px 0 var(--mk-azul), 21px 15px 0 var(--mk-azul), 24px 15px 0 var(--mk-mostaza), 27px 15px 0 var(--mk-mostaza), 30px 15px 0 var(--mk-azul), 33px 15px 0 var(--mk-azul), 36px 15px 0 var(--mk-azul), 39px 15px 0 var(--mk-azul), 42px 15px 0 var(--mk-azul), 3px 18px 0 var(--mk-madera), 6px 18px 0 var(--mk-madera), 9px 18px 0 var(--mk-azul), 12px 18px 0 var(--mk-azul), 15px 18px 0 var(--mk-azul), 18px 18px 0 var(--mk-azul), 21px 18px 0 var(--mk-azul), 24px 18px 0 var(--mk-azul), 27px 18px 0 var(--mk-azul), 30px 18px 0 var(--mk-azul), 33px 18px 0 var(--mk-azul), 36px 18px 0 var(--mk-azul), 39px 18px 0 var(--mk-azul), 9px 21px 0 var(--mk-azul), 12px 21px 0 var(--mk-azul), 15px 21px 0 var(--mk-azul), 18px 21px 0 var(--mk-azul), 21px 21px 0 var(--mk-azul), 24px 21px 0 var(--mk-azul), 27px 21px 0 var(--mk-azul), 30px 21px 0 var(--mk-azul), 33px 21px 0 var(--mk-azul), 36px 21px 0 var(--mk-azul), 12px 24px 0 var(--mk-azul-osc), 15px 24px 0 var(--mk-azul-osc), 18px 24px 0 var(--mk-azul-osc), 21px 24px 0 var(--mk-azul-osc), 24px 24px 0 var(--mk-azul-osc), 27px 24px 0 var(--mk-azul-osc), 30px 24px 0 var(--mk-azul-osc), 33px 24px 0 var(--mk-azul-osc);
+}
+/* vapor */
+.mk-tetera::after {
+  content: "";
+  position: absolute;
+  top: -6px; left: 42px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 0 0 1px rgba(154,120,103,.15), -5px -9px 0 1px rgba(255,255,255,.85), 2px -18px 0 2px rgba(255,255,255,.7);
+  animation: mk-vapor 3.2s ease-in-out infinite;
+}
+@keyframes mk-vapor {
+  0%   { opacity: 0; margin-top: 4px; }
+  30%  { opacity: 1; }
+  100% { opacity: 0; margin-top: -14px; }
+}
+
+/* chispitas alrededor */
+.mk-chispas {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 2px; height: 2px;
+  pointer-events: none;
+}
+.mk-chispas::before, .mk-chispas::after {
+  content: "✦";
+  position: absolute;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--mk-dorado);
+  animation: mk-titilar 2.4s ease-in-out infinite;
+}
+.mk-chispas::before { top: 6px; left: -54px; }
+.mk-chispas::after  { top: 24px; left: 44px; color: var(--mk-dorado); font-size: 9px; animation-delay: 1.2s; }
+@keyframes mk-titilar { 0%,100% { opacity: .2; } 50% { opacity: 1; } }
+
+.mk-subtitulo {
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--mk-salvia-osc);
+}
+.mk-subtitulo::before, .mk-subtitulo::after { content: "❧"; margin: 0 8px; color: var(--mk-salvia); letter-spacing: 0; }
+.mk-subtitulo::before { display: inline-block; transform: scaleX(-1); }
+.mk-titulo {
+  margin: 2px 0 4px;
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: .5px;
+  color: var(--mk-terracota);
+  -webkit-text-stroke: 0;
+  text-shadow:
+    1.5px 1.5px 0 var(--mk-papel), -1.5px -1.5px 0 var(--mk-papel), 1.5px -1.5px 0 var(--mk-papel), -1.5px 1.5px 0 var(--mk-papel),
+    3px 3px 0 var(--mk-cacao), 0 3px 0 var(--mk-cacao), 3px 0 0 var(--mk-cacao),
+    3px 5px 6px rgba(90,58,43,.25);
+}
+
+/* ---------- CITA ---------- */
+.mk-cita {
+  margin: 14px auto 0;
+  max-width: 420px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--mk-cacao-suave);
+}
+.mk-cita-autor {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Pixelify Sans', monospace;
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mk-salvia-osc);
+}
+
+/* ---------- SEPARADOR: hilo + corazón pixel ---------- */
+.mk-separador::after {
+  content: "❦       ❦";
+  position: absolute;
+  top: -6px; left: 50%;
+  width: 90px; margin-left: -45px;
+  font-size: 13px; line-height: 1;
+  text-align: center;
+  white-space: pre;
+  color: var(--mk-salvia);
+}
+.mk-separador {
+  position: relative;
+  height: 12px;
+  margin: 22px 0;
+  background: linear-gradient(90deg, transparent, rgba(90,58,43,.35) 18%, rgba(90,58,43,.35) 44%, transparent 44%, transparent 56%, rgba(90,58,43,.35) 56%, rgba(90,58,43,.35) 82%, transparent) center / 100% 1px no-repeat;
+}
+.mk-separador::before {
+  content: "";
+  position: absolute;
+  top: 1px; left: 50%;
+  width: 2px; height: 2px;
+  margin-left: -7px;
+  top: -1px;
+  box-shadow: 6px 0px 0 var(--mk-dorado), 6px 2px 0 var(--mk-dorado), 4px 4px 0 var(--mk-dorado), 6px 4px 0 var(--mk-dorado), 8px 4px 0 var(--mk-dorado), 0px 6px 0 var(--mk-dorado), 2px 6px 0 var(--mk-dorado), 4px 6px 0 var(--mk-dorado), 6px 6px 0 #FFF6DA, 8px 6px 0 var(--mk-dorado), 10px 6px 0 var(--mk-dorado), 12px 6px 0 var(--mk-dorado), 4px 8px 0 var(--mk-dorado), 6px 8px 0 var(--mk-dorado), 8px 8px 0 var(--mk-dorado), 6px 10px 0 var(--mk-dorado), 6px 12px 0 var(--mk-dorado);
+  animation: mk-titilar 2.6s ease-in-out infinite
+}
+
+/* =========================================================
+   PESTAÑAS (fichero de recetas)
+   ========================================================= */
+.mk-pestanas { position: relative; }
+
+.mk-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 8px;
+  position: relative;
+  z-index: 1;
+}
+.mk-tab[href^="#mk-j1-"] { --mk-c: var(--mk-terracota); }
+.mk-tab[href^="#mk-j2-"] { --mk-c: var(--mk-salvia); }
+.mk-tab[href^="#mk-j3-"] { --mk-c: var(--mk-mostaza); }
+.mk-tab[href^="#mk-j4-"] { --mk-c: var(--mk-azul); }
+.mk-tab[href^="#mk-j5-"] { --mk-c: var(--mk-madera); }
+.mk-tab[href^="#mk-j6-"] { --mk-c: var(--mk-ciruela); }
+.mk-tab[href^="#mk-j7-"] { --mk-c: var(--mk-salvia-osc); }
+.mk-tab[href^="#mk-j8-"] { --mk-c: var(--mk-dorado); }
+.mk-tab[href^="#mk-j9-"] { --mk-c: var(--mk-terracota-osc); }
+.mk-tab[href^="#mk-j10-"] { --mk-c: var(--mk-azul-osc); }
+
+.mk-tab,
+.mk-tab:link,
+.mk-tab:visited {
+  position: relative;
+  top: 4px;
+  display: block;
+  flex: 1 1 72px;
+  min-width: 0;
+  padding: 7px 2px 9px;
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 11px;
+  letter-spacing: .5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: var(--mk-cacao) !important;
+  background: color-mix(in srgb, var(--mk-c, var(--mk-terracota)) 35%, var(--mk-papel));
+  border: 2px solid var(--mk-cacao);
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  transition: top .2s ease, background .2s ease, color .2s ease;
+}
+.mk-tab:hover {
+  top: 1px;
+  background: color-mix(in srgb, var(--mk-c, var(--mk-terracota)) 60%, var(--mk-papel));
+}
+
+/* pestaña activa */
+.mk-pestanas:has(.mk-ancla[id^="mk-j1-"]:target) { --mk-activo: var(--mk-terracota); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j2-"]:target) { --mk-activo: var(--mk-salvia); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j3-"]:target) { --mk-activo: var(--mk-mostaza); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j4-"]:target) { --mk-activo: var(--mk-azul); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j5-"]:target) { --mk-activo: var(--mk-madera); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j6-"]:target) { --mk-activo: var(--mk-ciruela); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j7-"]:target) { --mk-activo: var(--mk-salvia-osc); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j8-"]:target) { --mk-activo: var(--mk-dorado); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j9-"]:target) { --mk-activo: var(--mk-terracota-osc); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j10-"]:target) { --mk-activo: var(--mk-azul-osc); }
+.mk-pestanas:has(.mk-ancla[id^="mk-j1-"]:target) .mk-tab[href^="#mk-j1-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j2-"]:target) .mk-tab[href^="#mk-j2-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j3-"]:target) .mk-tab[href^="#mk-j3-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j4-"]:target) .mk-tab[href^="#mk-j4-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j5-"]:target) .mk-tab[href^="#mk-j5-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j6-"]:target) .mk-tab[href^="#mk-j6-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j7-"]:target) .mk-tab[href^="#mk-j7-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j8-"]:target) .mk-tab[href^="#mk-j8-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j9-"]:target) .mk-tab[href^="#mk-j9-"],
+.mk-pestanas:has(.mk-ancla[id^="mk-j10-"]:target) .mk-tab[href^="#mk-j10-"],
+.mk-pestanas:not(:has(.mk-ancla:target)) .mk-tab[href^="#mk-j1-"] {
+  top: 0;
+  color: #FFF6E4 !important;
+  text-shadow: 1px 1px 0 rgba(90,58,43,.55);
+  background: var(--mk-c, var(--mk-terracota));
+  padding-bottom: 13px;
+}
+
+/* anclas fijas: la página no salta al clickear */
+.mk-ancla {
+  position: fixed;
+  top: 0; left: 0;
+  width: 1px; height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mk-tabs-content {
+  position: relative;
+  border: 2px solid var(--mk-cacao);
+  border-top: 6px solid var(--mk-activo);
+  border-radius: 12px;
+  background: var(--mk-hoja);
+  box-shadow: inset 0 0 0 4px var(--mk-hoja), inset 0 0 0 5px rgba(90,58,43,.12), 3px 4px 0 rgba(90,58,43,.18);
+  transition: border-color .25s ease;
+}
+
+.mk-tab-panel {
+  display: none;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 18px 24px 18px;
+  text-align: justify;
+  background-image: repeating-linear-gradient(transparent 0 23.5px, rgba(95,119,82,.14) 23.5px 24.5px);
+  background-attachment: local;
+  background-position: 0 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mk-activo) transparent;
+  animation: mk-aparecer .35s ease;
+}
+@keyframes mk-aparecer { from { opacity: 0; } to { opacity: 1; } }
+.mk-tab-panel p { margin: 0 0 12px; }
+.mk-tab-panel p:last-child { margin-bottom: 0; }
+.mk-tab-panel b, .mk-tab-panel strong { color: var(--mk-terracota-osc); }
+.mk-tab-panel i, .mk-tab-panel em { color: var(--mk-salvia-osc); }
+.mk-tab-panel::-webkit-scrollbar { width: 6px; }
+.mk-tab-panel::-webkit-scrollbar-thumb { background: var(--mk-activo); border-radius: 6px; }
+
+/* jugador 1 visible por defecto */
+.mk-p1 { display: block; }
+.mk-ancla[id^="mk-j1-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j2-"]:target ~ .mk-p2,
+.mk-ancla[id^="mk-j3-"]:target ~ .mk-p3,
+.mk-ancla[id^="mk-j4-"]:target ~ .mk-p4,
+.mk-ancla[id^="mk-j5-"]:target ~ .mk-p5,
+.mk-ancla[id^="mk-j6-"]:target ~ .mk-p6,
+.mk-ancla[id^="mk-j7-"]:target ~ .mk-p7,
+.mk-ancla[id^="mk-j8-"]:target ~ .mk-p8,
+.mk-ancla[id^="mk-j9-"]:target ~ .mk-p9,
+.mk-ancla[id^="mk-j10-"]:target ~ .mk-p10 { display: block; }
+.mk-ancla[id^="mk-j2-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j3-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j4-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j5-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j6-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j7-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j8-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j9-"]:target ~ .mk-p1,
+.mk-ancla[id^="mk-j10-"]:target ~ .mk-p1 { display: none; }
+
+/* ---------- DETALLES: como lista de ingredientes ---------- */
+.mk-datos {
+  max-width: 360px;
+  margin: 0 auto;
+}
+.mk-datos-titulo {
+  margin-bottom: 4px;
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 10.5px;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--mk-salvia-osc);
+}
+.mk-dato {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--mk-cacao-suave);
+}
+.mk-dato > i {
+  flex: 1;
+  border-bottom: 2px dotted rgba(90,58,43,.35);
+  transform: translateY(-4px);
+}
+.mk-dato > b {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  color: var(--mk-cacao);
+}
+
+/* ---------- FIRMA ---------- */
+.mk-firma {
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--mk-cacao-suave);
+  opacity: .8;
+}
+.mk-firma a, .mk-firma a:link, .mk-firma a:visited {
+  color: var(--mk-terracota-osc) !important;
+  text-decoration: none !important;
+}
+.mk-firma a:hover { color: var(--mk-salvia-osc) !important; }
+
+@media (max-width: 520px) {
+  .mk-tablilla { padding: 54px 18px 22px; }
+  .mk-titulo { font-size: 25px; }
+  .mk-tabs-nav { flex-wrap: wrap; }
+  .mk-tab, .mk-tab:link, .mk-tab:visited { flex: 1 1 30%; font-size: 10px; border-radius: 8px 8px 0 0; }
+  .mk-tab-panel { padding: 16px 16px; }
+}
