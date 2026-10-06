@@ -1,0 +1,422 @@
+/* =========================================================
+   EXPEDIENTE DE RECURSOS — complemento de la tablilla gótica
+   (usa las variables --imp-* de .imp-tablilla)
+   ========================================================= */
+
+/* El foro convierte los saltos de línea en <br>: se ocultan en la estructura */
+.imp-rec > br, .imp-rec-cab > br, .imp-rec-cab-izq > br, .imp-rec-bloque > br,
+.imp-rec-pa > br, .imp-rec-duo > br, .imp-rec-celda > br, .imp-rec-pips > br,
+.imp-rec-leyenda > br, .imp-rec-reservas > br, .imp-rec-reserva > br,
+.imp-rec-trasf > br, .imp-rec-tf > br, .imp-rec-usos > br,
+.imp-rec-objetos > br, .imp-rec-obj > br {
+  display: none;
+}
+
+/* ---------- Folio del expediente ---------- */
+
+.imp-tablilla .imp-rec {
+  position: relative;
+  padding: 20px 22px 22px 32px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  color: var(--imp-ceniza-clara);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(113, 56, 58, 0.16), transparent 30%),
+    radial-gradient(circle at 8% 90%, rgba(60, 66, 75, 0.40), transparent 34%),
+    repeating-linear-gradient(180deg, transparent 0 27px, rgba(69, 67, 72, 0.22) 27px 28px),
+    linear-gradient(180deg, #242326, #1c1b1e);
+  border: 1px solid var(--imp-ceniza);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.55), 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Margen rojo de archivo (igual que el folio del prólogo) */
+.imp-tablilla .imp-rec::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 14px;
+  width: 1px;
+  background: rgba(142, 58, 66, 0.55);
+  pointer-events: none;
+}
+
+/* Clip de hierro oxidado sujetando el folio */
+.imp-tablilla .imp-rec::after {
+  content: "";
+  position: absolute;
+  top: -9px; left: 40px;
+  width: 14px; height: 30px;
+  border: 2px solid var(--imp-cobre);
+  border-radius: 7px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* ---------- Cabecera: nombre + sello de estado ---------- */
+
+.imp-tablilla .imp-rec-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 12px;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(107, 81, 71, 0.6);
+}
+
+.imp-tablilla .imp-rec-etiqueta {
+  display: block;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--imp-oxido);
+}
+
+.imp-tablilla .imp-rec-nombre {
+  display: block;
+  margin-top: 2px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 21px;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  color: var(--imp-marfil);
+  text-shadow: 1px 1px 0 var(--imp-oxido-sangre);
+}
+
+.imp-tablilla .imp-rec-ficha {
+  display: block;
+  margin-top: 3px;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--imp-ceniza-clara);
+  opacity: 0.75;
+}
+
+/* Sello de goma, torcido y gastado */
+.imp-tablilla .imp-rec-sello {
+  flex-shrink: 0;
+  padding: 5px 10px 4px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: var(--imp-verde);
+  border: 2px solid var(--imp-verde);
+  outline: 1px solid var(--imp-verde);
+  outline-offset: 2px;
+  transform: rotate(-7deg);
+  opacity: 0.9;
+  -webkit-mask-image: radial-gradient(circle at 30% 40%, #000 55%, rgba(0,0,0,0.55) 80%);
+  mask-image: radial-gradient(circle at 30% 40%, #000 55%, rgba(0,0,0,0.55) 80%);
+}
+.imp-tablilla .imp-rec-sello.herido {
+  color: var(--imp-oxido); border-color: var(--imp-oxido); outline-color: var(--imp-oxido);
+}
+.imp-tablilla .imp-rec-sello.grave {
+  color: var(--imp-coagulado); border-color: var(--imp-coagulado); outline-color: var(--imp-coagulado);
+  text-shadow: 0 0 8px rgba(142, 58, 66, 0.45);
+}
+.imp-tablilla .imp-rec-sello.inconsciente {
+  color: #8a93a3; border-color: #5a6270; outline-color: #5a6270;
+}
+
+/* ---------- Títulos de bloque ---------- */
+
+.imp-tablilla .imp-rec-bloque {
+  margin-top: 18px;
+}
+
+.imp-tablilla .imp-rec-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 2.5px;
+  color: var(--imp-marfil);
+}
+.imp-tablilla .imp-rec-titulo::before {
+  content: "\271A";
+  font-size: 10px;
+  color: var(--imp-coagulado);
+}
+.imp-tablilla .imp-rec-titulo::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--imp-cobre), transparent);
+}
+
+/* ---------- PA: barra de aguante ---------- */
+
+.imp-tablilla .imp-rec-pa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.imp-tablilla .imp-rec-lbl {
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--imp-ceniza-clara);
+  white-space: nowrap;
+}
+
+.imp-tablilla .imp-rec-barra {
+  position: relative;
+  flex: 1;
+  height: 10px;
+  background: var(--imp-carbon);
+  border: 1px solid var(--imp-ceniza);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+.imp-tablilla .imp-rec-barra > span {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  background: linear-gradient(90deg, var(--imp-oxido-sangre), var(--imp-coagulado));
+  box-shadow: 0 0 10px rgba(142, 58, 66, 0.55);
+}
+/* Marcas de regla, como un termómetro antiguo */
+.imp-tablilla .imp-rec-barra::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 9%, rgba(23, 23, 25, 0.7) 9% 10%);
+  pointer-events: none;
+}
+
+.imp-tablilla .imp-rec-num {
+  font-family: 'IM Fell Double Pica', Georgia, serif;
+  font-size: 18px;
+  color: var(--imp-marfil);
+  white-space: nowrap;
+}
+.imp-tablilla .imp-rec-num small {
+  font-size: 13px;
+  color: var(--imp-ceniza-clara);
+  opacity: 0.7;
+}
+
+/* ---------- Umbral + Heridas ---------- */
+
+.imp-tablilla .imp-rec-duo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.imp-tablilla .imp-rec-celda {
+  padding: 8px 12px;
+  background: rgba(23, 23, 25, 0.55);
+  border: 1px solid var(--imp-ceniza);
+  border-left: 3px solid var(--imp-verde);
+}
+.imp-tablilla .imp-rec-celda .imp-rec-lbl {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 11px;
+}
+
+/* Heridas: cruces de hospital */
+.imp-tablilla .imp-rec-pips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  line-height: 1;
+}
+.imp-tablilla .imp-pip {
+  font-size: 17px;
+  line-height: 1;
+  color: var(--imp-ceniza);                 /* libre: cruz apagada */
+  opacity: 0.8;
+  text-shadow: 1px 1px 0 var(--imp-carbon);
+}
+.imp-tablilla .imp-pip.sufrida {            /* herida abierta */
+  color: #B04650;
+  opacity: 1;
+  text-shadow: 0 0 7px rgba(142, 58, 66, 0.85), 1px 1px 0 var(--imp-carbon);
+}
+.imp-tablilla .imp-pip.estable {            /* herida vendada/estabilizada */
+  color: #8A9A8F;
+  opacity: 1;
+  text-shadow: 0 0 6px rgba(138, 154, 143, 0.55);
+}
+
+.imp-tablilla .imp-rec-leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 11.5px;
+  opacity: 0.7;
+}
+.imp-tablilla .imp-rec-leyenda .imp-pip { font-size: 11px; font-style: normal; }
+
+/* ---------- Reservas: pociones, rituales, arcanos ---------- */
+
+.imp-tablilla .imp-rec-reservas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.imp-tablilla .imp-rec-reserva {
+  position: relative;
+  padding: 10px 6px 8px;
+  text-align: center;
+  background: rgba(23, 23, 25, 0.55);
+  border: 1px solid var(--imp-ceniza);
+}
+/* Etiqueta de frasco de boticario */
+.imp-tablilla .imp-rec-reserva::before {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; bottom: 3px;
+  border: 1px dashed rgba(107, 81, 71, 0.55);
+  pointer-events: none;
+}
+.imp-tablilla .imp-rec-reserva .imp-rec-num {
+  display: block;
+  font-size: 24px;
+  line-height: 1.1;
+}
+.imp-tablilla .imp-rec-reserva .imp-rec-lbl {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  white-space: normal;
+}
+
+/* ---------- Trasfondos ---------- */
+
+.imp-tablilla .imp-rec-trasf {
+  display: flex;
+  flex-direction: column;
+}
+
+.imp-tablilla .imp-rec-tf {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 2px;
+  border-bottom: 1px dashed rgba(69, 67, 72, 0.9);
+}
+.imp-tablilla .imp-rec-tf:last-child { border-bottom: 0; }
+
+.imp-tablilla .imp-tf-nivel {
+  flex-shrink: 0;
+  min-width: 28px;
+  padding: 2px 4px;
+  text-align: center;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--imp-marfil);
+  background: var(--imp-oxido-sangre);
+  border: 1px solid var(--imp-coagulado);
+  box-shadow: 2px 2px 0 var(--imp-carbon);
+}
+
+.imp-tablilla .imp-tf-nombre {
+  flex: 1;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 13.5px;
+  letter-spacing: 1px;
+  color: var(--imp-marfil);
+}
+.imp-tablilla .imp-tf-nombre i {
+  display: block;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 0;
+  color: var(--imp-ceniza-clara);
+  opacity: 0.75;
+}
+
+/* Usos por misión: ● disponible · gastado = tachado */
+.imp-tablilla .imp-rec-usos {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.imp-tablilla .imp-uso {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--imp-marfil);
+  text-shadow: 0 0 5px rgba(210, 205, 195, 0.35);
+}
+.imp-tablilla .imp-uso.gastado {
+  color: var(--imp-ceniza);
+  text-shadow: none;
+  opacity: 0.8;
+}
+
+/* ---------- Objetos / inventario ---------- */
+
+.imp-tablilla .imp-rec-objetos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.imp-tablilla .imp-rec-obj {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.imp-tablilla .imp-rec-obj::before {
+  content: "\2020";              /* daga tipográfica */
+  color: var(--imp-oxido);
+}
+.imp-tablilla .imp-obj-nombre { color: var(--imp-ceniza-clara); }
+/* Línea de puntos entre el objeto y la cantidad */
+.imp-tablilla .imp-rec-obj::after {
+  content: "";
+  order: 2;
+  flex: 1;
+  border-bottom: 1px dotted var(--imp-ceniza);
+  transform: translateY(-4px);
+}
+.imp-tablilla .imp-obj-cant {
+  order: 3;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 13px;
+  color: var(--imp-marfil);
+}
+
+/* ---------- Observaciones ---------- */
+
+.imp-tablilla .imp-rec-notas,
+.imp-tablilla .imp-rec-notas p {
+  margin: 0 !important;
+  font-family: 'IM Fell DW Pica', Georgia, serif !important;
+  font-style: italic;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: var(--imp-ceniza-clara) !important;
+  text-align: justify;
+}
+.imp-tablilla .imp-rec-notas {
+  padding: 8px 12px;
+  border-left: 2px solid var(--imp-oxido-sangre);
+  background: rgba(113, 56, 58, 0.08);
+}
+
+/* ---------- Móvil ---------- */
+
+@media (max-width: 520px) {
+  .imp-tablilla .imp-rec { padding: 18px 14px 18px 26px; }
+  .imp-tablilla .imp-rec::before { left: 11px; }
+  .imp-tablilla .imp-rec-cab { flex-direction: column; align-items: flex-start; }
+  .imp-tablilla .imp-rec-sello { align-self: flex-end; margin-top: -6px; }
+  .imp-tablilla .imp-rec-duo { grid-template-columns: 1fr; }
+  .imp-tablilla .imp-rec-reservas { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .imp-tablilla .imp-rec-reserva .imp-rec-num { font-size: 20px; }
+  .imp-tablilla .imp-rec-reserva .imp-rec-lbl { font-size: 10px; letter-spacing: 1px; }
+}
