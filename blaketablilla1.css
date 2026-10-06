@@ -4,7 +4,7 @@
    ========================================================= */
 
 /* El foro convierte los saltos de línea en <br>: se ocultan en la estructura */
-.imp-rec > br, .imp-rec-cab > br, .imp-rec-cab-izq > br, .imp-rec-bloque > br,
+.imp-rec > br, .imp-rec-cuerpo > br, .imp-rec-ficha-linea > br, .imp-rec-der > br, .imp-rec-cab > br, .imp-rec-cab-izq > br, .imp-rec-bloque > br,
 .imp-rec-pa > br, .imp-rec-duo > br, .imp-rec-celda > br, .imp-rec-pips > br,
 .imp-rec-leyenda > br, .imp-rec-reservas > br, .imp-rec-reserva > br,
 .imp-rec-trasf > br, .imp-rec-tf > br, .imp-rec-usos > br,
@@ -16,7 +16,7 @@
 
 .imp-tablilla .imp-rec {
   position: relative;
-  padding: 20px 22px 22px 32px;
+  padding: 14px 18px 14px 32px;
   font-family: 'IM Fell DW Pica', Georgia, serif;
   color: var(--imp-ceniza-clara);
   background:
@@ -42,7 +42,8 @@
 .imp-tablilla .imp-rec::after {
   content: "";
   position: absolute;
-  top: -9px; left: 40px;
+  top: -9px; left: 50%;
+  margin-left: -7px;
   width: 14px; height: 30px;
   border: 2px solid var(--imp-cobre);
   border-radius: 7px;
@@ -408,13 +409,115 @@
   background: rgba(113, 56, 58, 0.08);
 }
 
+/* ---------- Expediente plegable (details/summary) ---------- */
+
+/* La cabecera es el botón: se oculta el triángulo nativo */
+.imp-tablilla summary.imp-rec-cab {
+  display: flex;
+  list-style: none;
+  cursor: pointer;
+  padding-bottom: 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, padding 0.3s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.imp-tablilla summary.imp-rec-cab::-webkit-details-marker { display: none; }
+.imp-tablilla summary.imp-rec-cab::marker { content: ""; }
+.imp-tablilla summary.imp-rec-cab:focus { outline: none; }
+.imp-tablilla summary.imp-rec-cab:focus-visible { outline: 1px solid var(--imp-verde); outline-offset: 4px; }
+
+.imp-tablilla .imp-rec[open] > summary.imp-rec-cab {
+  padding-bottom: 12px;
+  border-bottom-color: rgba(107, 81, 71, 0.6);
+}
+
+/* Lado derecho: sello + botón */
+.imp-tablilla .imp-rec-der {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Botón de hierro: ✚ cerrado, gira a ✕ al abrir */
+.imp-tablilla .imp-rec-boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--imp-ceniza-clara);
+  background: var(--imp-hollin);
+  border: 1px solid var(--imp-cobre);
+  box-shadow: 2px 2px 0 var(--imp-carbon);
+  transition: transform 0.35s ease, color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.imp-tablilla summary.imp-rec-cab:hover .imp-rec-boton {
+  color: var(--imp-marfil);
+  background: var(--imp-oxido-sangre);
+  border-color: var(--imp-coagulado);
+}
+.imp-tablilla .imp-rec[open] .imp-rec-boton {
+  transform: rotate(45deg);
+  color: var(--imp-marfil);
+  background: var(--imp-oxido-sangre);
+  border-color: var(--imp-coagulado);
+}
+
+.imp-tablilla .imp-rec-ficha-linea { margin-top: 10px; }
+.imp-tablilla .imp-rec-ficha-linea .imp-rec-ficha { margin-top: 0; }
+
+/* Resumen rápido visible con el expediente cerrado */
+.imp-tablilla .imp-rec-mini {
+  display: block;
+  margin-top: 4px;
+  font-family: 'IM Fell English SC', Georgia, serif;
+  font-size: 11.5px;
+  letter-spacing: 1.2px;
+  color: var(--imp-ceniza-clara);
+  opacity: 0.85;
+}
+.imp-tablilla .imp-rec-mini b {
+  font-weight: 400;
+  color: var(--imp-marfil);
+}
+.imp-tablilla .imp-rec-mini .imp-pip { font-size: 11px; }
+/* Al abrir, el resumen sobra: se oculta */
+.imp-tablilla .imp-rec[open] .imp-rec-mini { display: none; }
+
+/* Pista de "abrir" bajo el nombre (sólo cerrado) */
+.imp-tablilla .imp-rec:not([open]) .imp-rec-etiqueta::after {
+  content: "  ·  click para abrir";
+  color: var(--imp-ceniza-clara);
+  opacity: 0.55;
+}
+
+/* Contenido: aparece "enfocando", como el resto de la tablilla */
+.imp-tablilla .imp-rec[open] > .imp-rec-cuerpo {
+  animation: imp-rec-abrir 0.5s ease-out;
+}
+@keyframes imp-rec-abrir {
+  from { opacity: 0; filter: blur(3px); transform: translateY(-4px); }
+  to   { opacity: 1; filter: blur(0); transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imp-tablilla .imp-rec[open] > .imp-rec-cuerpo { animation: none; }
+  .imp-tablilla .imp-rec-boton { transition: none; }
+}
+
 /* ---------- Móvil ---------- */
 
 @media (max-width: 520px) {
   .imp-tablilla .imp-rec { padding: 18px 14px 18px 26px; }
   .imp-tablilla .imp-rec::before { left: 11px; }
-  .imp-tablilla .imp-rec-cab { flex-direction: column; align-items: flex-start; }
-  .imp-tablilla .imp-rec-sello { align-self: flex-end; margin-top: -6px; }
+  .imp-tablilla .imp-rec-cab { align-items: flex-start; }
+  .imp-tablilla .imp-rec-der { flex-direction: column-reverse; align-items: flex-end; gap: 10px; }
+  .imp-tablilla .imp-rec-sello { font-size: 11px; padding: 4px 7px 3px; letter-spacing: 1.5px; }
+  .imp-tablilla .imp-rec-nombre { font-size: 18px; }
   .imp-tablilla .imp-rec-duo { grid-template-columns: 1fr; }
   .imp-tablilla .imp-rec-reservas { grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .imp-tablilla .imp-rec-reserva .imp-rec-num { font-size: 20px; }
