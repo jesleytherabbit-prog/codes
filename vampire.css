@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============ VAMPIRE COCKTAIL CLUB — tablilla de rol ============ */
+.vcc{
+  --vcc-noche:#141417; --vcc-carbon:#2A2C31; --vcc-sangre:#C8102E; --vcc-vino:#7A0A1A;
+  --vcc-coag:#4A0610; --vcc-hueso:#EDE6DA; --vcc-texto:#D6CEC2; --vcc-oro:#C9A24A; --vcc-cristal:#9FB4C8;
+  position:relative; max-width:620px; margin:20px auto; overflow:hidden;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(200,16,46,.22), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 60%, rgba(122,10,26,.25), transparent 70%),
+    linear-gradient(180deg,#1B1C20 0%, var(--vcc-noche) 100%);
+  border:1px solid #3A1218; border-radius:4px;
+  box-shadow:0 0 0 4px var(--vcc-noche), 0 0 0 5px #5A0E1A, 0 18px 40px rgba(0,0,0,.6);
+  font-family:'Cormorant Garamond',Georgia,serif; color:var(--vcc-texto);
+  padding:0 0 26px;
+}
+.vcc *{box-sizing:border-box;}
+
+/* parpadeo de vela sobre todo */
+.vcc::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(circle at 12% 30%, rgba(255,150,80,.07), transparent 40%);
+  animation:vcc-vela 4s infinite;
+}
+@keyframes vcc-vela{0%,100%{opacity:.6}20%{opacity:1}23%{opacity:.5}40%{opacity:.9}62%{opacity:.7}65%{opacity:1}}
+
+/* ---------- goteo de sangre superior ---------- */
+.vcc-drips{position:relative; height:16px; background:linear-gradient(180deg,var(--vcc-vino),var(--vcc-sangre)); z-index:2;}
+.vcc-drips i{
+  position:absolute; top:12px; width:10px; height:18px; background:var(--vcc-sangre);
+  border-radius:0 0 6px 6px; animation:vcc-crece 6s ease-in-out infinite;
+}
+.vcc-drips i::after{
+  content:""; position:absolute; left:50%; bottom:-6px; width:7px; height:9px; margin-left:-3.5px;
+  background:var(--vcc-sangre); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation:vcc-gota 6s ease-in infinite; animation-delay:inherit;
+}
+.vcc-drips i:nth-child(1){left:6%;  height:22px; animation-delay:-1s}
+.vcc-drips i:nth-child(2){left:17%; height:12px; width:7px; animation-delay:-3s}
+.vcc-drips i:nth-child(3){left:31%; height:30px; animation-delay:-4.5s}
+.vcc-drips i:nth-child(4){left:46%; height:15px; width:8px; animation-delay:-2s}
+.vcc-drips i:nth-child(5){left:58%; height:26px; animation-delay:-5.2s}
+.vcc-drips i:nth-child(6){left:71%; height:10px; width:6px; animation-delay:-.5s}
+.vcc-drips i:nth-child(7){left:82%; height:34px; width:11px; animation-delay:-3.7s}
+.vcc-drips i:nth-child(8){left:93%; height:16px; width:8px; animation-delay:-2.6s}
+@keyframes vcc-crece{0%,100%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(1.15);transform-origin:top}}
+@keyframes vcc-gota{
+  0%,55%{transform:translateY(0) scale(.4);opacity:0}
+  65%{transform:translateY(2px) scale(1);opacity:1}
+  100%{transform:translateY(90px) scale(.8);opacity:0}
+}
+
+/* ---------- cabecera ---------- */
+.vcc-head{position:relative; z-index:1; text-align:center; padding:46px 24px 8px;}
+.vcc-kicker{font-family:'Cinzel',serif; font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--vcc-oro); opacity:.85;}
+.vcc-title{
+  font-family:'UnifrakturMaguntia',cursive; font-size:52px; line-height:1.05; margin:10px 0 2px;
+  color:var(--vcc-sangre);
+  text-shadow:0 0 18px rgba(200,16,46,.55), 0 2px 0 var(--vcc-coag);
+  animation:vcc-latido 5s ease-in-out infinite;
+}
+@keyframes vcc-latido{0%,100%{text-shadow:0 0 14px rgba(200,16,46,.45),0 2px 0 var(--vcc-coag)}50%{text-shadow:0 0 26px rgba(200,16,46,.85),0 2px 0 var(--vcc-coag)}}
+.vcc-sub{font-family:'Cinzel',serif; font-size:13px; letter-spacing:9px; color:var(--vcc-oro); padding-left:9px;}
+
+/* tarjeta de mesa reservada (aparece en hover) */
+.vcc-reserva{
+  display:inline-block; margin-top:14px; padding:5px 16px;
+  font-family:'Cinzel',serif; font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--vcc-hueso); border:1px solid rgba(201,162,74,.5); background:rgba(0,0,0,.35);
+  opacity:0; transform:translateY(-6px); transition:all .6s ease;
+}
+.vcc-reserva b{color:var(--vcc-sangre); font-weight:600; letter-spacing:2px;}
+.vcc-head:hover .vcc-reserva{opacity:1; transform:none;}
+
+/* ---------- separador: lentes rojos ---------- */
+.vcc-lentes{position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:14px; margin:18px 0 24px;}
+.vcc-lentes::before,.vcc-lentes::after{content:""; flex:1; height:1px; max-width:190px;}
+.vcc-lentes::before{background:linear-gradient(90deg,transparent,#5A0E1A);}
+.vcc-lentes::after{background:linear-gradient(270deg,transparent,#5A0E1A);}
+.vcc-lentes span{
+  position:relative; width:30px; height:30px; border-radius:50%;
+  border:3px solid #0B0B0D; outline:1px solid #3a3a40;
+  background:radial-gradient(circle at 35% 30%, #ff6b6b 0%, var(--vcc-sangre) 45%, var(--vcc-vino) 100%);
+  animation:vcc-brillo 3.5s ease-in-out infinite;
+}
+.vcc-lentes span:first-child::after{ /* puente */
+  content:""; position:absolute; right:-17px; top:9px; width:14px; height:5px;
+  border:2px solid #0B0B0D; border-bottom:none; border-radius:8px 8px 0 0;
+}
+@keyframes vcc-brillo{0%,100%{box-shadow:0 0 6px rgba(200,16,46,.4)}50%{box-shadow:0 0 16px rgba(255,40,60,.85)}}
+
+/* ---------- cuerpo: retrato + datos ---------- */
+.vcc-cuerpo{position:relative; z-index:1; display:flex; gap:22px; padding:0 30px; align-items:flex-end;}
+.vcc-retrato{
+  flex:0 0 200px; height:250px; position:relative; overflow:hidden;
+  border-radius:100px 100px 4px 4px; border:1px solid #4A1018;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(200,16,46,.55), rgba(122,10,26,.25) 45%, transparent 72%),
+    #0E0E11;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.8);
+}
+.vcc-retrato img{position:absolute; left:0; bottom:0; width:100%; height:100%; object-fit:cover; object-position:top center; filter:contrast(1.05) saturate(.9);}
+.vcc-retrato::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg,rgba(14,14,17,.85),transparent 35%); pointer-events:none;}
+
+.vcc-datos{flex:1; min-width:0;}
+.vcc-dato{display:flex; align-items:baseline; gap:10px; padding:7px 0; border-bottom:1px dotted rgba(200,16,46,.3);}
+.vcc-dato:last-child{border-bottom:none;}
+.vcc-dato span{flex:0 0 82px; font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--vcc-oro);}
+.vcc-dato p{margin:0; font-size:16px; color:var(--vcc-hueso); line-height:1.25;}
+.vcc-dato p i{color:var(--vcc-cristal);}
+.vcc-coctel p{color:#ff8f9d; font-style:italic;}
+
+/* ---------- texto del rol ---------- */
+.vcc-texto{
+  position:relative; z-index:1; margin:26px 30px 0; padding:22px 24px;
+  max-height:460px; overflow-y:auto;
+  background:rgba(10,10,12,.55); border:1px solid #2E1015; border-left:3px solid var(--vcc-sangre);
+  font-size:17px; line-height:1.65; text-align:justify;
+  scrollbar-width:thin; scrollbar-color:var(--vcc-vino) transparent;
+}
+.vcc-texto::-webkit-scrollbar{width:6px;}
+.vcc-texto::-webkit-scrollbar-thumb{background:var(--vcc-vino); border-radius:3px;}
+.vcc-texto p{margin:0 0 14px;}
+.vcc-texto p:last-child{margin-bottom:0;}
+.vcc-texto > p:first-child::first-letter{
+  float:left; font-family:'UnifrakturMaguntia',cursive; font-size:58px; line-height:.8;
+  padding:6px 8px 0 0; color:var(--vcc-sangre); text-shadow:0 0 10px rgba(200,16,46,.5);
+}
+.vcc-texto b,.vcc-texto strong{color:var(--vcc-hueso);}
+.vcc-dialogo{color:#E8354F; font-weight:600;}
+.vcc-pensamiento{color:var(--vcc-cristal); font-style:italic;}
+
+/* ---------- pie ---------- */
+.vcc-pie{position:relative; z-index:1; text-align:center; margin-top:26px;}
+.vcc-colmillos{position:relative; display:inline-block; width:46px; height:16px; border-top:2px solid var(--vcc-sangre);}
+.vcc-colmillos::before,.vcc-colmillos::after{
+  content:""; position:absolute; top:0; width:0; height:0;
+  border-left:6px solid transparent; border-right:6px solid transparent; border-top:15px solid var(--vcc-hueso);
+}
+.vcc-colmillos::before{left:6px;}
+.vcc-colmillos::after{right:6px;}
+.vcc-colmillos i{position:absolute; right:11px; top:14px; width:4px; height:6px; background:var(--vcc-sangre); border-radius:50% 50% 50% 50%/60% 60% 40% 40%; animation:vcc-gota-pie 3s ease-in infinite;}
+@keyframes vcc-gota-pie{0%,40%{opacity:0;transform:translateY(0)}55%{opacity:1}100%{opacity:0;transform:translateY(22px)}}
+.vcc-lema{margin-top:10px; font-style:italic; font-size:15px; color:#9b8f86;}
+.vcc-lema::before,.vcc-lema::after{content:"❦"; color:var(--vcc-sangre); font-style:normal; margin:0 10px;}
+.vcc-firma{margin-top:6px; font-family:'Cinzel',serif; font-size:9px; letter-spacing:4px; color:#5c5550; text-transform:uppercase;}
+
+/* ---------- móvil ---------- */
+@media (max-width:560px){
+  .vcc-title{font-size:38px;}
+  .vcc-cuerpo{flex-direction:column; align-items:center; padding:0 18px;}
+  .vcc-retrato{flex-basis:auto; width:180px; height:220px;}
+  .vcc-datos{width:100%;}
+  .vcc-texto{margin:22px 16px 0; padding:18px;}
+}
