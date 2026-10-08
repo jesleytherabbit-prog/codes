@@ -115,14 +115,14 @@
   position:relative; z-index:1; margin:26px 30px 0; padding:22px 24px;
   max-height:460px; overflow-y:auto;
   background:rgba(10,10,12,.55); border:1px solid #2E1015; border-left:3px solid var(--vcc-sangre);
-  font-size:17px; line-height:1.65; text-align:justify;
+  font-size:17px; line-height:1.65; text-align:left;
   scrollbar-width:thin; scrollbar-color:var(--vcc-vino) transparent;
 }
 .vcc-texto::-webkit-scrollbar{width:6px;}
 .vcc-texto::-webkit-scrollbar-thumb{background:var(--vcc-vino); border-radius:3px;}
 .vcc-texto p{margin:0 0 14px;}
 .vcc-texto p:last-child{margin-bottom:0;}
-.vcc-texto > p:first-child::first-letter{
+.vcc-texto p:first-of-type::first-letter{
   float:left; font-family:'UnifrakturMaguntia',cursive; font-size:58px; line-height:.8;
   padding:6px 8px 0 0; color:var(--vcc-sangre); text-shadow:0 0 10px rgba(200,16,46,.5);
 }
@@ -153,3 +153,21 @@
   .vcc-datos{width:100%;}
   .vcc-texto{margin:22px 16px 0; padding:18px;}
 }
+
+/* ---------- blindaje contra los estilos del foro ---------- */
+.vcc, .vcc p, .vcc div, .vcc i, .vcc b, .vcc strong, .vcc em,
+.vcc-texto, .vcc-texto *, .vcc-dato p, .vcc-lema{
+  font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif !important;
+}
+.vcc-kicker, .vcc-sub, .vcc-reserva, .vcc-reserva b, .vcc-dato span{
+  font-family:'Cinzel', Georgia, serif !important;
+}
+.vcc-title, .vcc-texto p:first-of-type::first-letter{
+  font-family:'UnifrakturMaguntia', 'Old English Text MT', serif !important;
+}
+.vcc-texto{font-size:17px !important; text-align:left !important;}
+.vcc-dato p{font-size:16px !important; text-align:left !important;}
+.vcc-lema::before, .vcc-lema::after{font-family:Georgia, serif !important;}
+/* el foro convierte los saltos de línea en <br>: los ocultamos entre bloques */
+.vcc > br, .vcc-head > br, .vcc-cuerpo > br, .vcc-datos > br, .vcc-dato > br,
+.vcc-texto > br, .vcc-pie > br, .vcc-drips > br, .vcc-lentes > br{display:none !important;}
