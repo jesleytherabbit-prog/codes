@@ -1,0 +1,97 @@
+/* ✦ Actualización de Bóveda ‧ Magical Girl (combina con bovedamagical.css) ✦ */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@600&family=DM+Serif+Display&family=Playfair+Display:wght@600&display=swap');
+
+.bvu{
+  --m1:#5F507B; --m3:#EDE4EB; --a1:#6B62AE; --a2:#9B80A5; --a3:#D6A6B9;
+  --f1:#C59FB3; --f2:#E0B9A6; --f3:#E7D0A8; --c2:#C9C3DD; --c3:#8D9BCB; --ink:#4A3F63;
+  --star:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+  position:relative; isolation:isolate; overflow:hidden;
+  width:360px; max-width:100%; margin:12px auto; padding:14px 14px 10px;
+  box-sizing:border-box; border-radius:22px; text-align:center;
+  font-family:'Cormorant Garamond',Georgia,serif; color:var(--ink);
+  background:
+    radial-gradient(ellipse at 15% 0%,rgba(214,166,185,.45),transparent 55%),
+    radial-gradient(ellipse at 100% 100%,rgba(141,155,203,.5),transparent 60%),
+    linear-gradient(165deg,#4E4268,var(--m1) 25%,var(--a1) 55%,#AD9CBC 82%,var(--a3));
+  box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 0 0 5px rgba(201,195,221,.25),
+    0 14px 34px -12px rgba(95,80,123,.7),0 0 30px -6px rgba(214,166,185,.55);
+}
+.bvu *{box-sizing:border-box;}
+.bvu br{display:none;}
+
+/* estrellas y grageas que caen */
+.bvu > i{position:absolute; z-index:-1; pointer-events:none;}
+.bvu > i:nth-of-type(-n+3){width:8px; height:8px; background:#fff; clip-path:var(--star);
+  filter:drop-shadow(0 0 3px #fff); animation:bvuTw 3s ease-in-out infinite;}
+.bvu > i:nth-of-type(1){top:10px; left:12px;}
+.bvu > i:nth-of-type(2){top:16px; right:14px; width:11px; height:11px; animation-delay:1s;}
+.bvu > i:nth-of-type(3){bottom:14px; left:18px; width:6px; height:6px; animation-delay:2s;}
+.bvu > i:nth-of-type(n+4){top:-12px; width:7px; height:10px; border-radius:50%; border:1px solid rgba(255,255,255,.8);
+  opacity:0; animation:bvuFall 9s linear infinite;}
+.bvu > i:nth-of-type(4){left:10%; background:var(--a3);}
+.bvu > i:nth-of-type(5){left:86%; background:var(--f3); animation-delay:3s;}
+.bvu > i:nth-of-type(6){left:55%; background:var(--c2); animation-delay:6s;}
+
+/* título */
+.bvu-head{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;}
+.bvu-head::before,.bvu-head::after{ /* frasquitos de grageas */
+  content:""; width:16px; height:19px; flex:0 0 auto; border:1.5px solid #fff; border-radius:4px 4px 6px 6px;
+  background:
+    radial-gradient(circle at 30% 75%,var(--a3) 0 2.5px,transparent 3px),
+    radial-gradient(circle at 70% 70%,var(--f3) 0 2.5px,transparent 3px),
+    radial-gradient(circle at 50% 45%,var(--c3) 0 2.5px,transparent 3px),
+    rgba(255,255,255,.25);
+  box-shadow:0 -3px 0 -1px var(--f3); animation:bvuBob 3s ease-in-out infinite;}
+.bvu-head::after{animation-delay:1.5s;}
+.bvu-title{font-family:'Cinzel Decorative',serif; font-weight:700; font-size:16px; line-height:1.15;
+  background:linear-gradient(100deg,#fff,var(--f3) 20%,#fff 35%,var(--a3) 50%,#fff 65%,var(--c2) 80%,#fff);
+  background-size:250% 100%; -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  filter:drop-shadow(0 2px 4px rgba(78,66,104,.6)); animation:bvuShim 6s linear infinite;}
+
+/* cuerpo nacarado */
+.bvu-body{padding:3px; border-radius:16px;
+  background:linear-gradient(135deg,var(--f3),var(--a3),var(--c2),var(--c3),var(--a3),var(--f3));
+  background-size:300% 300%; animation:bvuIris 10s ease infinite;}
+.bvu-in{padding:10px 14px 10px; border-radius:13px; text-align:left;
+  background:radial-gradient(ellipse at top right,rgba(214,166,185,.25),transparent 55%),linear-gradient(180deg,#F6F0F4,var(--m3));}
+.bvu-row{display:flex; align-items:baseline; gap:6px; padding:3px 0; font-size:15px;}
+.bvu-row span:first-child{font-family:'DM Serif Display',serif; color:var(--a1); white-space:nowrap;}
+.bvu-row span:first-child::before{content:"❀ "; color:var(--f1); font-size:11px;}
+.bvu-row::after{content:""; order:1; flex:1; min-width:10px; border-bottom:1.5px dotted var(--c2); translate:0 -4px;}
+.bvu-row span:last-child{order:2; font-weight:600;}
+.bvu-row.mas span:last-child{color:#5E72B8;}
+.bvu-row.menos span:last-child{color:#B9608A;}
+/* grageas actuales: placa amatista */
+.bvu-row.gold{position:relative; overflow:hidden; margin:4px -6px; padding:5px 10px; border-radius:10px;
+  background:linear-gradient(120deg,var(--m1),var(--a1) 55%,var(--a2)); box-shadow:0 0 0 2px rgba(214,166,185,.4);}
+.bvu-row.gold span:first-child{color:var(--m3);}
+.bvu-row.gold span:first-child::before{color:var(--f3);}
+.bvu-row.gold::after{border-color:rgba(237,228,235,.45);}
+.bvu-row.gold span:last-child{font-family:'DM Serif Display',serif; font-weight:400; font-size:19px; color:var(--f3); text-shadow:0 0 8px rgba(231,208,168,.7);}
+.bvu-row.gold::before{content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg);
+  animation:bvuSweep 4.5s ease-in-out infinite;}
+
+/* enlaces */
+.bvu-links{display:flex; justify-content:center; gap:6px; margin-top:8px;}
+.bvu-links a{font-family:'Playfair Display',serif; font-weight:600; font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+  padding:3px 12px; border-radius:20px; text-decoration:none !important;
+  color:#fff !important; background:linear-gradient(110deg,var(--a1),var(--a2)); border:1px solid #fff;
+  box-shadow:0 2px 6px -2px rgba(95,80,123,.6); transition:all .25s;}
+.bvu-links a:hover{transform:translateY(-1px); box-shadow:0 0 10px rgba(214,166,185,.9);}
+
+/* pie */
+.bvu-foot{margin-top:8px; font-family:'Bodoni Moda',serif; font-style:italic; font-size:13px; letter-spacing:1px; color:var(--m3);
+  text-shadow:0 0 8px rgba(237,228,235,.8),0 0 16px rgba(214,166,185,.7);}
+.bvu-foot::before,.bvu-foot::after{content:"🎀"; font-size:11px; margin:0 6px; display:inline-block; animation:bvuBow 2.8s ease-in-out infinite;}
+.bvu-foot::after{animation-delay:1.4s;}
+
+@keyframes bvuTw{0%,100%{opacity:.25; transform:scale(.6) rotate(0);}50%{opacity:1; transform:scale(1.1) rotate(45deg);}}
+@keyframes bvuFall{0%{opacity:0; transform:translateY(0) rotate(0);}10%{opacity:.85;}85%{opacity:.7;}100%{opacity:0; transform:translateY(300px) rotate(540deg);}}
+@keyframes bvuBob{0%,100%{translate:0 0; rotate:-6deg;}50%{translate:0 -3px; rotate:6deg;}}
+@keyframes bvuShim{0%{background-position:0% 50%;}100%{background-position:250% 50%;}}
+@keyframes bvuIris{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes bvuSweep{0%,50%{left:-60%;}85%,100%{left:140%;}}
+@keyframes bvuBow{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg) translateY(-2px);}}
+@media (prefers-reduced-motion:reduce){.bvu *,.bvu *::before,.bvu *::after,.bvu::before{animation:none !important;}}
