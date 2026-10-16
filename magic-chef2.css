@@ -103,6 +103,7 @@
 .mc-section:nth-of-type(2) { animation-delay: 0.15s; }
 .mc-section:nth-of-type(3) { animation-delay: 0.3s; }
 .mc-section:nth-of-type(4) { animation-delay: 0.45s; }
+.mc-section:nth-of-type(5) { animation-delay: 0.6s; }
 
 .mc-title {
   display: flex;
@@ -255,6 +256,49 @@
   color: var(--ink);
 }
 
+/* ---------- Palabras del máster ---------- */
+.mc-letter {
+  position: relative;
+  padding: 26px 28px 22px;
+  border: 1px solid rgba(196, 160, 90, 0.55);
+  border-radius: 8px;
+  background: rgba(231, 213, 184, 0.22);
+}
+.mc-quote {
+  position: absolute;
+  top: -14px;
+  left: 18px;
+  padding: 0 8px;
+  background: var(--ivory);
+  font-family: 'Pinyon Script', cursive;
+  font-size: 54px;
+  line-height: 0.8;
+  color: var(--gold);
+}
+.mc-letter p {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.mc .mc-sign {
+  margin-top: 8px;
+  text-align: right;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--terra);
+}
+.mc .mc-sign::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: var(--gold);
+}
+
 /* ---------- Estado de inscripciones ---------- */
 .mc-badge {
   display: inline-flex;
@@ -350,6 +394,8 @@
 }
 .mc .mc-num,
 .mc .mc-mono,
+.mc .mc-quote,
+.mc .mc-sign,
 .mc .mc-foot-line,
 .mc .mc-text p.mc-first::first-letter {
   font-family: 'Pinyon Script', cursive !important;
