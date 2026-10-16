@@ -264,16 +264,17 @@
   border-radius: 8px;
   background: rgba(231, 213, 184, 0.22);
 }
-.mc-quote {
+.mc-letter::before {
+  content: "";
   position: absolute;
-  top: -14px;
-  left: 18px;
-  padding: 0 8px;
-  background: var(--ivory);
-  font-family: 'Pinyon Script', cursive;
-  font-size: 54px;
-  line-height: 0.8;
-  color: var(--gold);
+  top: -6px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--ivory);
+  transform: rotate(45deg);
 }
 .mc-letter p {
   margin: 0 0 10px;
@@ -394,7 +395,6 @@
 }
 .mc .mc-num,
 .mc .mc-mono,
-.mc .mc-quote,
 .mc .mc-sign,
 .mc .mc-foot-line,
 .mc .mc-text p.mc-first::first-letter {
