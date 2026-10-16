@@ -169,7 +169,7 @@
   margin: 0 0 12px;
   font-size: 16.5px;
   line-height: 1.6;
-  text-align: justify;
+  text-align: left;
 }
 .mc-text p.mc-first::first-letter {
   float: left;
@@ -316,6 +316,44 @@
 .mc-s3 { left: 5%;  top: 58%; animation-delay: 4s; }
 .mc-s4 { right: 5%; top: 70%; animation-delay: 1s; }
 .mc-s5 { left: 50%; top: 92%; animation-delay: 5s; }
+
+/* ---------- Blindaje contra los estilos del foro ---------- */
+/* El foro impone su propia fuente a los textos de los posts; esto la anula */
+.mc,
+.mc div,
+.mc span,
+.mc p,
+.mc i,
+.mc .mc-value,
+.mc .mc-text p,
+.mc .mc-judge-role {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  text-align: left;
+}
+.mc .mc-head,
+.mc .mc-head div,
+.mc .mc-sub,
+.mc .mc-judge,
+.mc .mc-judge div,
+.mc .mc-foot,
+.mc .mc-foot div { text-align: center; }
+
+.mc .mc-kicker,
+.mc .mc-name,
+.mc .mc-label,
+.mc .mc-sub,
+.mc .mc-judge-name,
+.mc .mc-step-n,
+.mc .mc-badge,
+.mc .mc-foot-sub {
+  font-family: 'Cinzel', Georgia, serif !important;
+}
+.mc .mc-num,
+.mc .mc-mono,
+.mc .mc-foot-line,
+.mc .mc-text p.mc-first::first-letter {
+  font-family: 'Pinyon Script', cursive !important;
+}
 
 /* ---------- Animaciones ---------- */
 @keyframes mcFloat {
