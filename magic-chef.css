@@ -1,0 +1,350 @@
+/* =========================================================
+   MAGIC CHEF · El Caldero de Oro
+   Hoja de estilos para las plantillas del foro
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap');
+
+.mc {
+  --wood: #E7D5B8;
+  --wood-dark: #D9C19C;
+  --ivory: #FBF7EF;
+  --ink: #45372B;
+  --soft: #7E6C5C;
+  --terra: #B05E3E;
+  --sage: #657F59;
+  --gold: #C4A05A;
+  --line: rgba(69, 55, 43, 0.14);
+
+  width: 560px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(90deg, rgba(140, 95, 50, 0.09) 0 2px, transparent 2px 43px),
+    linear-gradient(180deg, var(--wood), var(--wood-dark));
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--ink);
+  text-align: left;
+  line-height: 1.45;
+}
+
+.mc *,
+.mc *::before,
+.mc *::after { box-sizing: border-box; }
+
+/* El foro convierte los saltos de línea en <br>: aquí se anulan */
+.mc br { display: none; }
+
+/* ---------- Panel ---------- */
+.mc-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 36px 36px;
+  border-radius: 8px;
+  background: var(--ivory);
+  border: 1px solid rgba(69, 55, 43, 0.16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 14px 30px -20px rgba(69, 55, 43, 0.55);
+}
+
+/* ---------- Cabecera ---------- */
+.mc-head { text-align: center; }
+
+.mc-logo {
+  display: block;
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  animation: mcFloat 5s ease-in-out infinite;
+}
+
+.mc-kicker {
+  margin-top: 10px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.mc-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 70%;
+  margin: 18px auto 0;
+}
+.mc-divider::before,
+.mc-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+.mc-divider::before { background: linear-gradient(90deg, transparent, var(--gold)); }
+.mc-divider::after  { background: linear-gradient(90deg, var(--gold), transparent); }
+
+.mc-star {
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  animation: mcTwinkle 3s ease-in-out infinite;
+}
+
+/* ---------- Secciones ---------- */
+.mc-section {
+  margin-top: 32px;
+  animation: mcRise 0.9s ease both;
+}
+.mc-section:nth-of-type(2) { animation-delay: 0.15s; }
+.mc-section:nth-of-type(3) { animation-delay: 0.3s; }
+.mc-section:nth-of-type(4) { animation-delay: 0.45s; }
+
+.mc-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.mc-num {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--sage);
+}
+.mc-name {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.mc-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line) 0%, var(--line) 42%, var(--gold) 50%, var(--line) 58%, var(--line) 100%);
+  background-size: 260% 100%;
+  animation: mcShimmer 7s linear infinite;
+}
+
+/* ---------- Filas de datos ---------- */
+.mc-row {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px dotted rgba(69, 55, 43, 0.22);
+  font-size: 16px;
+}
+.mc-row:last-child { border-bottom: 0; }
+
+.mc-label {
+  padding-top: 4px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mc-value { color: var(--ink); }
+
+.mc-hl {
+  font-style: italic;
+  color: var(--terra);
+}
+
+.mc-note {
+  display: block;
+  margin-top: 6px;
+}
+
+/* ---------- Texto corrido ---------- */
+.mc-text p {
+  margin: 0 0 12px;
+  font-size: 16.5px;
+  line-height: 1.6;
+  text-align: justify;
+}
+.mc-text p.mc-first::first-letter {
+  float: left;
+  padding: 8px 8px 0 0;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 56px;
+  line-height: 0.75;
+  color: var(--terra);
+}
+
+.mc-sub {
+  margin: 22px 0 10px;
+  text-align: center;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+/* ---------- Jurado ---------- */
+.mc-jury {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.mc-judge {
+  padding: 16px 8px 14px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(231, 213, 184, 0.2);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.mc-judge:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+.mc-mono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 24px;
+  color: var(--sage);
+}
+.mc-judge-name {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--terra);
+}
+.mc-judge-role {
+  margin-top: 4px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--soft);
+}
+
+/* ---------- Pruebas ---------- */
+.mc-step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 6px;
+  padding: 7px 0;
+  font-size: 16px;
+}
+.mc-step-n {
+  padding-top: 3px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 12px;
+  color: var(--gold);
+}
+.mc-step-t {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- Estado de inscripciones ---------- */
+.mc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: rgba(101, 127, 89, 0.12);
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mc-badge.mc-closed {
+  background: rgba(176, 94, 62, 0.12);
+  color: var(--terra);
+}
+.mc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: mcPulse 2s ease-out infinite;
+}
+
+/* ---------- Pie ---------- */
+.mc-foot {
+  margin-top: 36px;
+  text-align: center;
+}
+.mc-foot-line {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--terra);
+}
+.mc-foot-sub {
+  margin-top: 4px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 9.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+/* ---------- Destellos que suben ---------- */
+.mc-spark {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  opacity: 0;
+  pointer-events: none;
+  animation: mcDrift 8s ease-in-out infinite;
+}
+.mc-s1 { left: 8%;  top: 22%; animation-delay: 0s; }
+.mc-s2 { right: 7%; top: 30%; animation-delay: 2s; }
+.mc-s3 { left: 5%;  top: 58%; animation-delay: 4s; }
+.mc-s4 { right: 5%; top: 70%; animation-delay: 1s; }
+.mc-s5 { left: 50%; top: 92%; animation-delay: 5s; }
+
+/* ---------- Animaciones ---------- */
+@keyframes mcFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes mcTwinkle {
+  0%, 100% { opacity: 0.35; transform: rotate(45deg) scale(0.7); }
+  50%      { opacity: 1;    transform: rotate(45deg) scale(1.1); }
+}
+@keyframes mcShimmer {
+  0%   { background-position: 130% 0; }
+  100% { background-position: -130% 0; }
+}
+@keyframes mcRise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mcPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(101, 127, 89, 0.45); }
+  100% { box-shadow: 0 0 0 8px rgba(101, 127, 89, 0); }
+}
+@keyframes mcDrift {
+  0%   { opacity: 0;   transform: translateY(12px) rotate(45deg); }
+  30%  { opacity: 0.9; }
+  100% { opacity: 0;   transform: translateY(-48px) rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc *, .mc *::before, .mc *::after { animation: none !important; transition: none !important; }
+  .mc-spark { display: none; }
+}
