@@ -1,0 +1,597 @@
+/* =========================================================
+   MAGIC CHEF · Prólogo
+   Tablilla tipo revista para el post de apertura
+   Prefijo .mcz para no chocar con magic-chef.css
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Pinyon+Script&display=swap');
+
+.mcz {
+  --wood: #E7D5B8;
+  --wood-dark: #D9C19C;
+  --ivory: #FBF7EF;
+  --paper: #F5EDDD;
+  --ink: #45372B;
+  --soft: #7E6C5C;
+  --terra: #B05E3E;
+  --terra-dark: #8E4A30;
+  --sage: #657F59;
+  --gold: #C4A05A;
+  --gold-light: #E3C98E;
+  --line: rgba(69, 55, 43, 0.14);
+
+  width: 560px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(90deg, rgba(140, 95, 50, 0.09) 0 2px, transparent 2px 43px),
+    linear-gradient(180deg, var(--wood), var(--wood-dark));
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.mcz *,
+.mcz *::before,
+.mcz *::after { box-sizing: border-box; }
+
+/* El foro convierte los saltos de línea en <br>: aquí se anulan */
+.mcz br { display: none !important; }
+
+/* ---------- Hoja de la revista ---------- */
+.mcz-page {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 34px 34px;
+  border-radius: 8px;
+  background: var(--ivory);
+  border: 1px solid rgba(69, 55, 43, 0.16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 14px 30px -20px rgba(69, 55, 43, 0.55);
+}
+
+/* ---------- Cabecera de revista ---------- */
+.mcz-mast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 8px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 9.5px !important;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.mcz-mast-name { color: var(--terra); font-weight: 700; }
+.mcz-mast-rule {
+  height: 3px;
+  margin-top: 2px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.mcz-logo {
+  display: block;
+  width: 380px;
+  max-width: 100%;
+  margin: 18px auto 0;
+  animation: mczFloat 5s ease-in-out infinite;
+}
+
+.mcz-headline {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 30px !important;
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--ink);
+}
+.mcz-headline em {
+  font-style: italic;
+  color: var(--terra);
+}
+
+.mcz-deck {
+  margin: 10px auto 0;
+  max-width: 400px;
+  text-align: center;
+  font-size: 17px !important;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--soft);
+}
+
+.mcz-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 16px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 9.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz-meta span + span::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 14px 2px 0;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ---------- Cuerpo del artículo ---------- */
+.mcz-body {
+  margin-top: 22px;
+  column-count: 2;
+  column-gap: 26px;
+  column-rule: 1px solid var(--line);
+}
+.mcz-body p {
+  margin: 0 0 12px;
+  font-size: 15.5px !important;
+  line-height: 1.55;
+  text-align: justify;
+  hyphens: auto;
+  color: var(--ink);
+}
+.mcz-body p.mcz-first::first-letter {
+  float: left;
+  padding: 6px 8px 0 0;
+  font-size: 58px !important;
+  line-height: 0.72;
+  color: var(--terra);
+}
+
+/* ---------- Títulos de sección ---------- */
+.mcz-section {
+  margin-top: 30px;
+  animation: mczRise 0.9s ease both;
+}
+.mcz-kicker {
+  text-align: center;
+  font-size: 10px !important;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+  font-size: 15px !important;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra);
+  white-space: nowrap;
+}
+.mcz-title::before,
+.mcz-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line) 0%, var(--line) 42%, var(--gold) 50%, var(--line) 58%, var(--line) 100%);
+  background-size: 260% 100%;
+  animation: mczShimmer 7s linear infinite;
+}
+
+/* ---------- Salón de la fama ---------- */
+.mcz-fame {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.mcz-winner {
+  position: relative;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.mcz-winner:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+.mcz-year {
+  font-size: 26px !important;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+}
+.mcz-wname {
+  margin-top: 6px;
+  font-size: 11.5px !important;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  color: var(--terra);
+}
+.mcz-wrole {
+  font-size: 13.5px !important;
+  font-style: italic;
+  color: var(--soft);
+}
+.mcz-wdish {
+  margin-top: 6px;
+  font-size: 14.5px !important;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* Recuadro "¿Sabías que...?" */
+.mcz-fact {
+  position: relative;
+  margin-top: 14px;
+  padding: 14px 18px 14px 18px;
+  border: 1px dashed var(--sage);
+  border-radius: 8px;
+  background: rgba(101, 127, 89, 0.07);
+}
+.mcz-fact-tag {
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--sage);
+  font-size: 9.5px !important;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+.mcz-fact p {
+  margin: 8px 0 0;
+  font-size: 15.5px !important;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ---------- El premio ---------- */
+.mcz-prize {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 16px;
+}
+.mcz-seal {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold) 55%, #A9853F 100%);
+  box-shadow: 0 0 0 4px var(--ivory), 0 0 0 5px var(--gold), 0 8px 18px -8px rgba(69, 55, 43, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: mczGlow 4s ease-in-out infinite;
+}
+.mcz-seal::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(69, 55, 43, 0.45);
+  animation: mczSpin 30s linear infinite;
+}
+.mcz-seal-num {
+  font-size: 30px !important;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+.mcz-seal-unit {
+  margin-top: 4px;
+  font-size: 9.5px !important;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.mcz-prize-list div {
+  padding: 7px 0;
+  border-bottom: 1px dotted rgba(69, 55, 43, 0.22);
+  font-size: 15.5px !important;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.mcz-prize-list div:last-child { border-bottom: 0; }
+.mcz-prize-list b {
+  font-weight: 600;
+  color: var(--terra);
+}
+
+/* ---------- El jurado tiene la palabra ---------- */
+.mcz-intro {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 15.5px !important;
+  font-style: italic;
+  color: var(--soft);
+}
+.mcz-quote {
+  position: relative;
+  margin-top: 18px;
+  padding: 18px 20px 14px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  text-align: center;
+}
+.mcz-quote::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--ivory);
+  transform: rotate(45deg);
+}
+.mcz-quote p {
+  margin: 0;
+  font-size: 18px !important;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: center;
+}
+.mcz-who {
+  margin-top: 10px;
+  font-size: 10.5px !important;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  text-align: center;
+}
+.mcz-who-role {
+  display: block;
+  margin-top: 2px;
+  font-size: 13.5px !important;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--soft);
+}
+
+/* ---------- Agradecimiento al alcalde ---------- */
+.mcz-thanks {
+  position: relative;
+  margin-top: 16px;
+  padding: 18px 22px 16px 22px;
+  border-radius: 8px;
+  border: 1px solid rgba(196, 160, 90, 0.55);
+  background: var(--paper);
+}
+.mcz-thanks p {
+  margin: 0;
+  font-size: 16px !important;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.mcz-thanks b {
+  font-weight: 600;
+  color: var(--terra);
+}
+
+/* ---------- Patrocinadores ---------- */
+.mcz-sponsors {
+  position: relative;
+  margin-top: 30px;
+  padding: 22px 18px 18px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(227, 201, 142, 0.28), rgba(227, 201, 142, 0.08));
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
+.mcz-sponsors-title {
+  text-align: center;
+  font-size: 10px !important;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.mcz-sponsors-sub {
+  margin-top: 2px;
+  text-align: center;
+  font-size: 30px !important;
+  line-height: 1.1;
+  color: var(--terra);
+}
+.mcz-ads {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.mcz-ad {
+  position: relative;
+  padding: 16px 12px 14px;
+  border-radius: 8px;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.mcz-ad:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 10px 20px -14px rgba(69, 55, 43, 0.6);
+}
+.mcz-ad-tag {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 8.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--soft);
+  opacity: 0.7;
+}
+.mcz-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px rgba(196, 160, 90, 0.45);
+  font-size: 26px !important;
+  line-height: 1;
+  transition: transform 0.6s ease;
+}
+.mcz-ad:hover .mcz-emblem { transform: rotate(-8deg) scale(1.06); }
+.mcz-e1 { color: var(--terra); background: rgba(176, 94, 62, 0.08); }
+.mcz-e2 { color: var(--sage);  background: rgba(101, 127, 89, 0.1); }
+.mcz-e3 { color: var(--gold);  background: rgba(196, 160, 90, 0.12); }
+.mcz-e4 { color: var(--terra-dark); background: rgba(142, 74, 48, 0.08); }
+.mcz-ad-name {
+  font-size: 11.5px !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.mcz-ad-line {
+  margin-top: 6px;
+  font-size: 14px !important;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--soft);
+}
+
+/* ---------- Pie ---------- */
+.mcz-foot {
+  margin-top: 30px;
+  text-align: center;
+}
+.mcz-foot-line {
+  font-size: 34px !important;
+  line-height: 1.15;
+  color: var(--terra);
+  animation: mczGlowText 3.5s ease-in-out infinite;
+}
+.mcz-foot-sub {
+  margin-top: 6px;
+  font-size: 9.5px !important;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+/* ---------- Destellos ---------- */
+.mcz-spark {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  opacity: 0;
+  pointer-events: none;
+  animation: mczDrift 8s ease-in-out infinite;
+}
+.mcz-s1 { left: 5%;  top: 12%; animation-delay: 0s; }
+.mcz-s2 { right: 5%; top: 20%; animation-delay: 2s; }
+.mcz-s3 { left: 4%;  top: 45%; animation-delay: 4s; }
+.mcz-s4 { right: 4%; top: 60%; animation-delay: 1s; }
+.mcz-s5 { left: 6%;  top: 82%; animation-delay: 5s; }
+.mcz-s6 { right: 6%; top: 90%; animation-delay: 3s; }
+
+/* ---------- Blindaje contra los estilos del foro ---------- */
+.mcz,
+.mcz div,
+.mcz span,
+.mcz p,
+.mcz i,
+.mcz em,
+.mcz b {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+.mcz .mcz-mast,
+.mcz .mcz-mast span,
+.mcz .mcz-meta,
+.mcz .mcz-meta span,
+.mcz .mcz-kicker,
+.mcz .mcz-title,
+.mcz .mcz-year,
+.mcz .mcz-wname,
+.mcz .mcz-fact-tag,
+.mcz .mcz-seal-num,
+.mcz .mcz-seal-unit,
+.mcz .mcz-who,
+.mcz .mcz-sponsors-title,
+.mcz .mcz-ad-tag,
+.mcz .mcz-ad-name,
+.mcz .mcz-foot-sub {
+  font-family: 'Cinzel', Georgia, serif !important;
+}
+.mcz .mcz-who-role { font-family: 'Cormorant Garamond', Georgia, serif !important; }
+.mcz .mcz-body p.mcz-first::first-letter,
+.mcz .mcz-sponsors-sub,
+.mcz .mcz-emblem,
+.mcz .mcz-foot-line {
+  font-family: 'Pinyon Script', cursive !important;
+}
+.mcz .mcz-headline { font-family: 'Cormorant Garamond', Georgia, serif !important; }
+
+/* ---------- Pantallas estrechas ---------- */
+@media (max-width: 520px) {
+  .mcz-page { padding: 18px 18px 26px; }
+  .mcz-body { column-count: 1; }
+  .mcz-fame,
+  .mcz-ads { grid-template-columns: 1fr; }
+  .mcz-prize { grid-template-columns: 1fr; justify-items: center; }
+  .mcz-mast { flex-direction: column; gap: 2px; }
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes mczFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes mczShimmer {
+  0%   { background-position: 130% 0; }
+  100% { background-position: -130% 0; }
+}
+@keyframes mczRise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mczSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes mczGlow {
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.08); }
+}
+@keyframes mczGlowText {
+  0%, 100% { text-shadow: 0 0 0 rgba(196, 160, 90, 0); }
+  50%      { text-shadow: 0 0 12px rgba(196, 160, 90, 0.7); }
+}
+@keyframes mczDrift {
+  0%   { opacity: 0;   transform: translateY(12px) rotate(45deg); }
+  30%  { opacity: 0.9; }
+  100% { opacity: 0;   transform: translateY(-48px) rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcz *, .mcz *::before, .mcz *::after { animation: none !important; transition: none !important; }
+  .mcz-spark { display: none; }
+}
