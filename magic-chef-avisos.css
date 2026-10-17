@@ -1,0 +1,261 @@
+/* =========================================================
+   MAGIC CHEF · Avisos del máster
+   Notita pequeña para anunciar novedades en el post
+   Prefijo .mca para no chocar con las otras tablillas
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Pinyon+Script&display=swap');
+
+.mca {
+  --wood: #E7D5B8;
+  --wood-dark: #D9C19C;
+  --ivory: #FBF7EF;
+  --ink: #45372B;
+  --soft: #7E6C5C;
+  --terra: #B05E3E;
+  --sage: #657F59;
+  --gold: #C4A05A;
+  --pot: #3E4A5C;
+
+  position: relative;
+  width: 460px;
+  max-width: 100%;
+  margin: 10px auto;
+  padding: 26px 22px 20px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: var(--wood);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(90deg, rgba(140, 95, 50, 0.09) 0 2px, transparent 2px 43px),
+    linear-gradient(180deg, var(--wood), var(--wood-dark));
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.mca *,
+.mca *::before,
+.mca *::after { box-sizing: border-box; }
+
+/* El foro convierte los saltos de línea en <br>: aquí se anulan */
+.mca br { display: none !important; }
+
+/* ---------- La notita ---------- */
+.mca-note {
+  position: relative;
+  padding: 26px 26px 18px;
+  border-radius: 6px;
+  background: var(--ivory);
+  background-image: repeating-linear-gradient(180deg, transparent 0 25px, rgba(176, 94, 62, 0.08) 25px 26px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 12px 22px -14px rgba(69, 55, 43, 0.7);
+  transform: rotate(-1.2deg);
+  transition: transform 0.5s cubic-bezier(.3, 1.6, .5, 1);
+}
+.mca-note:hover { transform: rotate(0deg) scale(1.01); }
+
+/* Cinta washi */
+.mca-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 110px;
+  height: 24px;
+  margin-left: -55px;
+  background: repeating-linear-gradient(45deg, rgba(101, 127, 89, 0.55) 0 8px, rgba(101, 127, 89, 0.38) 8px 16px);
+  transform: rotate(2.5deg);
+  box-shadow: 0 1px 2px rgba(69, 55, 43, 0.15);
+}
+
+/* ---------- Caldero animado ---------- */
+.mca-pot {
+  position: absolute;
+  top: -22px;
+  right: 18px;
+  width: 54px;
+  height: 56px;
+}
+.mca-pot-body {
+  position: absolute;
+  bottom: 0;
+  left: 6px;
+  width: 42px;
+  height: 30px;
+  border-radius: 6px 6px 22px 22px;
+  background: var(--pot);
+  box-shadow: inset -6px -4px 0 rgba(0, 0, 0, 0.25);
+  animation: mcaWobble 2.6s ease-in-out infinite;
+}
+.mca-pot-rim {
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  right: -4px;
+  height: 9px;
+  border-radius: 6px;
+  background: #4F5D72;
+}
+.mca-pot-rim::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 2px;
+  height: 4px;
+  border-radius: 50%;
+  background: #9CC27E;
+  box-shadow: 0 0 6px #B9DD98;
+}
+.mca-steam {
+  position: absolute;
+  bottom: 30px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  animation: mcaSteam 2.8s ease-in infinite;
+}
+.mca-st1 { left: 14px; animation-delay: 0s; }
+.mca-st2 { left: 24px; animation-delay: 0.9s; }
+.mca-st3 { left: 32px; animation-delay: 1.8s; }
+
+/* ---------- Contenido ---------- */
+.mca-tag {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--terra);
+  font-size: 9.5px !important;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  animation: mcaBob 3s ease-in-out infinite;
+}
+/* Variantes de color de la etiqueta */
+.mca-tag.mca-green { background: var(--sage); }
+.mca-tag.mca-gold  { background: var(--gold); color: var(--ink); }
+
+.mca-title {
+  margin-top: 10px;
+  font-size: 34px !important;
+  line-height: 1.05;
+  color: var(--terra);
+}
+
+.mca-text {
+  margin-top: 8px;
+}
+.mca-text p {
+  margin: 0 0 8px;
+  font-size: 16.5px !important;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.mca-text b {
+  font-weight: 600;
+  color: var(--sage);
+}
+
+/* Botón */
+.mca-btn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 18px 5px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: rgba(196, 160, 90, 0.14);
+  font-size: 10.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: var(--terra) !important;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.mca-btn:hover {
+  background: var(--gold);
+  color: var(--ivory) !important;
+  animation: mcaWiggle 0.5s ease;
+}
+
+/* Firma */
+.mca-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(69, 55, 43, 0.25);
+}
+.mca-date {
+  font-size: 9.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.mca-sign {
+  font-size: 28px !important;
+  line-height: 1;
+  color: var(--terra);
+}
+
+/* ---------- Estrellitas ---------- */
+.mca-star {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  animation: mcaTwinkle 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+.mca-k1 { top: 10px;  left: 14px;  animation-delay: 0s; }
+.mca-k2 { bottom: 12px; right: 12px; animation-delay: 0.8s; }
+.mca-k3 { top: 46%;  left: 6px;  width: 5px; height: 5px; animation-delay: 1.6s; }
+
+/* ---------- Blindaje contra los estilos del foro ---------- */
+.mca,
+.mca div,
+.mca span,
+.mca p,
+.mca b,
+.mca i {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+.mca .mca-tag,
+.mca .mca-btn,
+.mca .mca-date {
+  font-family: 'Cinzel', Georgia, serif !important;
+}
+.mca .mca-title,
+.mca .mca-sign {
+  font-family: 'Pinyon Script', cursive !important;
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes mcaSteam {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  25%  { opacity: 0.85; }
+  100% { transform: translateY(-34px) translateX(4px) scale(1.5); opacity: 0; }
+}
+@keyframes mcaWobble {
+  0%, 100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg); }
+}
+@keyframes mcaBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+@keyframes mcaTwinkle {
+  0%, 100% { opacity: 0.2; transform: rotate(45deg) scale(0.6); }
+  50%      { opacity: 1;   transform: rotate(45deg) scale(1.1); }
+}
+@keyframes mcaWiggle {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-3deg); }
+  75%      { transform: rotate(3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mca *, .mca *::before, .mca *::after { animation: none !important; transition: none !important; }
+}
