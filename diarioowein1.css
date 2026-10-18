@@ -1,5 +1,8 @@
 /* =========================================================
    DIARIO POÉTICO-PROFÉTICO · Owein Higham
+   Foro hp-avada-kedavra · solo CSS (sin JavaScript)
+   Tapa:     https://i.imgur.com/EaHumJl.png
+   Página:   https://i.imgur.com/2HqcAeb.png
    ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&display=swap');
 
@@ -157,3 +160,26 @@
 
 /* Foroactivo convierte los saltos de línea del post en <br>: se ocultan los que caen entre bloques */
 .dpp-envol > br, .dpp-libro > br, .dpp-pag > br, .dpp-hoja > br, .dpp-tapa > br { display: none; }
+
+/* ===== Blindaje contra los estilos del foro (p, div, span heredan su fuente) ===== */
+.dpp-libro .dpp-hoja,
+.dpp-libro .dpp-hoja p,
+.dpp-libro .dpp-hoja div,
+.dpp-libro .dpp-hoja span,
+.dpp-libro .dpp-hoja i,
+.dpp-libro .dpp-hoja em,
+.dpp-libro .dpp-hoja b,
+.dpp-libro .dpp-hoja strong {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 17px !important;
+  line-height: 26px !important;
+  letter-spacing: normal !important;
+  color: #4a3424 !important;
+}
+.dpp-libro .dpp-hoja p { margin: 0 0 26px !important; padding: 0 !important; font-weight: 600 !important; font-style: normal !important; }
+.dpp-libro .dpp-hoja p:last-child { margin-bottom: 0 !important; }
+.dpp-libro .dpp-hoja .dpp-poema { font-style: italic !important; font-weight: 500 !important; font-size: 18px !important; color: #4a3424 !important; }
+.dpp-libro .dpp-hoja .dpp-fecha { font-family: 'Caveat', cursive !important; font-size: 19px !important; font-weight: 600 !important; color: #8a6542 !important; }
+.dpp-libro .dpp-hoja .dpp-titulo { font-size: 21px !important; font-weight: 700 !important; color: #5b3b22 !important; }
+.dpp-libro .dpp-hoja .dpp-profecia { font-style: italic !important; font-weight: 500 !important; color: #6b3f2a !important; }
+.dpp-libro .dpp-hoja .dpp-firma { font-family: 'Caveat', cursive !important; font-size: 20px !important; font-weight: 600 !important; color: #5b3b22 !important; }
