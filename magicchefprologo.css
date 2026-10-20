@@ -1,0 +1,230 @@
+/* =========================================================
+   MAGIC CHEF · Prólogo II: los aspirantes
+   ========================================================= */
+
+/* ---------- Piloto "En antena" ---------- */
+.mcz .mcc-onair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 22px auto 0;
+}
+.mcz .mcc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 4px;
+  border: 1px solid var(--terra);
+  border-radius: 99px;
+  background: rgba(176, 94, 62, 0.07);
+  font-size: 10px !important;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.mcz .mcc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--terra);
+  animation: mccPulse 1.6s ease-in-out infinite;
+}
+.mcz .mcc-freq {
+  font-size: 15px !important;
+  font-style: italic;
+  color: var(--soft);
+}
+
+/* ---------- Ficha del presentador ---------- */
+.mcz .mcc-host {
+  margin-top: 18px;
+  padding: 16px 20px 6px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.mcz .mcc-host-name {
+  font-size: 34px !important;
+  line-height: 1.1;
+  color: var(--terra);
+}
+.mcz .mcc-host-role {
+  margin-top: 2px;
+  font-size: 9.5px !important;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz .mcc-host .mcz-body { margin-top: 10px; }
+
+/* ---------- Tarjetas de aspirantes ---------- */
+.mcz .mcc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.mcz .mcc-card {
+  position: relative;
+  padding: 13px 15px 12px;
+  border: 1px solid rgba(196, 160, 90, 0.55);
+  border-radius: 4px;
+  background: var(--paper);
+  box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px rgba(196, 160, 90, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.mcz .mcc-card:nth-child(odd) { transform: rotate(-0.6deg); }
+.mcz .mcc-card:nth-child(even) { transform: rotate(0.5deg); }
+.mcz .mcc-card:hover {
+  transform: translateY(-3px) rotate(0deg);
+  box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px var(--gold), 0 12px 18px -12px rgba(69, 55, 43, 0.55);
+}
+/* Sello de lacre de cada carta */
+.mcz .mcc-card::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #C9775A, var(--terra-dark));
+  box-shadow: 0 1px 2px rgba(69, 55, 43, 0.4);
+}
+.mcz .mcc-card.mcc-wide { grid-column: 1 / -1; }
+
+.mcz .mcc-name {
+  font-size: 13.5px !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.mcz .mcc-tag {
+  margin-top: 3px;
+  font-size: 8.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz .mcc-note {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px dotted rgba(69, 55, 43, 0.25);
+  font-size: 15px !important;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.mcz .mcc-note i { color: var(--terra-dark); }
+
+/* ---------- Llamada final: aún quedan plazas ---------- */
+.mcz .mcc-cta {
+  position: relative;
+  margin-top: 30px;
+  padding: 22px 24px 24px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(227, 201, 142, 0.35), transparent 70%),
+    var(--paper);
+  text-align: center;
+}
+.mcz .mcc-cta-title {
+  font-size: 34px !important;
+  line-height: 1.1;
+  color: var(--terra);
+  animation: mczGlowText 3.5s ease-in-out infinite;
+}
+.mcz .mcc-cta-text {
+  margin: 8px auto 0;
+  max-width: 400px;
+  font-size: 16px !important;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.mcz .mcc-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 9px 22px 8px;
+  border-radius: 99px;
+  background: var(--terra);
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--terra);
+  font-size: 10.5px !important;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: var(--ivory) !important;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.mcz .mcc-btn:hover { background: var(--terra-dark); transform: translateY(-2px); }
+.mcz .mcc-cta-small {
+  margin-top: 12px;
+  font-size: 9px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+@keyframes mccPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(176, 94, 62, 0.45); }
+  50% { opacity: 0.55; box-shadow: 0 0 0 5px rgba(176, 94, 62, 0); }
+}
+
+/* Texto alineado a la izquierda: en columnas estrechas el justificado deja huecos */
+.mcz .mcc-host .mcz-body p { text-align: left !important; }
+
+/* ---------- Blindaje de fuentes ---------- */
+.mcz .mcc-pill, .mcz .mcc-host-role, .mcz .mcc-name, .mcz .mcc-tag,
+.mcz .mcc-btn, .mcz .mcc-cta-small { font-family: 'Cinzel', Georgia, serif !important; }
+.mcz .mcc-host-name, .mcz .mcc-cta-title { font-family: 'Pinyon Script', cursive !important; font-weight: 400 !important; }
+.mcz .mcc-freq, .mcz .mcc-note, .mcz .mcc-cta-text { font-family: 'Cormorant Garamond', Georgia, serif !important; }
+
+/* ---------- Pantallas estrechas ---------- */
+@media (max-width: 520px) {
+  .mcz .mcc-grid { grid-template-columns: 1fr; }
+  .mcz .mcc-card:nth-child(odd), .mcz .mcc-card:nth-child(even) { transform: none; }
+}
+
+/* ---------- Caja con scroll para las cartas ---------- */
+.mcz .mcc-scroll-hint {
+  margin-top: 26px;
+  text-align: center;
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.mcz .mcc-scroll-hint::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: 6px auto 0;
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  transform: rotate(45deg);
+  animation: mccBob 1.8s ease-in-out infinite;
+}
+.mcz .mcc-scroll {
+  max-height: 520px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding: 2px 14px 22px 10px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  background: linear-gradient(180deg, rgba(245, 237, 221, 0.6), rgba(251, 247, 239, 0) 60px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+.mcz .mcc-scroll::-webkit-scrollbar { width: 6px; }
+.mcz .mcc-scroll::-webkit-scrollbar-track { background: rgba(196, 160, 90, 0.12); border-radius: 6px; }
+.mcz .mcc-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 6px; }
+.mcz .mcc-scroll::-webkit-scrollbar-thumb:hover { background: var(--terra); }
+.mcz .mcc-scroll .mcz-section:first-child { margin-top: 14px; }
+
+@keyframes mccBob {
+  0%, 100% { transform: translateY(0) rotate(45deg); }
+  50% { transform: translateY(3px) rotate(45deg); }
+}
