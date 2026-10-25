@@ -1,0 +1,117 @@
+.hana-lumos {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  overflow: visible;
+  font-style: italic;
+  animation: hana-lumos-brillo 3s ease-in-out infinite alternate;
+}
+
+/* Halo suave detrás de la palabra */
+.hana-lumos::before {
+  content: "";
+  position: absolute;
+  inset: -0.15em -0.35em;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(210, 235, 255, 0.35),
+    rgba(190, 220, 255, 0) 70%
+  );
+  filter: blur(5px);
+  animation: hana-lumos-halo 3s ease-in-out infinite alternate;
+}
+
+/* Chispitas alrededor */
+.hana-lumos::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: white;
+  box-shadow:
+    -29px -12px 2px 0 #fff,
+     24px -15px 3px 0 #dceeff,
+     35px   3px 2px 0 #fff,
+    -36px   5px 3px 0 #dceeff,
+    -15px  15px 2px 0 #fff,
+     14px  12px 3px 0 #dceeff;
+  animation: hana-lumos-chispas 3s ease-in-out infinite;
+}
+
+@keyframes hana-lumos-brillo {
+  0%, 15% {
+    color: inherit;
+    text-shadow: none;
+  }
+
+  60% {
+    color: #f5faff;
+    text-shadow:
+      0 0 4px #fff,
+      0 0 10px rgba(220, 240, 255, 0.8),
+      0 0 20px rgba(180, 215, 255, 0.5);
+  }
+
+  100% {
+    color: #fff;
+    text-shadow:
+      0 0 3px #fff,
+      0 0 8px #fff,
+      0 0 16px rgba(220, 240, 255, 0.95),
+      0 0 28px rgba(185, 220, 255, 0.75),
+      0 0 40px rgba(165, 205, 255, 0.4);
+  }
+}
+
+@keyframes hana-lumos-halo {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes hana-lumos-chispas {
+  0%, 20% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+
+  45% {
+    opacity: 0.9;
+  }
+
+  65% {
+    opacity: 0.4;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-7px) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hana-lumos,
+  .hana-lumos::before,
+  .hana-lumos::after {
+    animation: none;
+  }
+
+  .hana-lumos {
+    text-shadow:
+      0 0 5px rgba(220, 240, 255, 0.9),
+      0 0 14px rgba(185, 220, 255, 0.6);
+  }
+
+  .hana-lumos::before { opacity: 0.5; }
+  .hana-lumos::after  { opacity: 0.65; }
+}
