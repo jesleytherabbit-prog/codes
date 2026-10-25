@@ -1,0 +1,202 @@
+/* =========================================================
+   MAGIC CHEF · Los elegidos
+   Complemento de magic-chef-prologo.css (prefijo .mce)
+   ========================================================= */
+
+/* ---------- Nota de Rupert ---------- */
+.mcz .mce-note {
+  position: relative;
+  margin: 24px auto 0;
+  max-width: 440px;
+  padding: 26px 28px 20px;
+  background: #FFFDF8;
+  border: 1px solid rgba(196, 160, 90, 0.6);
+  box-shadow: 0 0 0 5px #FFFDF8, 0 0 0 6px rgba(196, 160, 90, 0.35), 0 16px 24px -18px rgba(69, 55, 43, 0.6);
+  transform: rotate(-0.6deg);
+}
+.mcz .mce-note::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px dashed rgba(196, 160, 90, 0.4);
+  pointer-events: none;
+}
+.mcz .mce-note-hello { font-size: 28px !important; line-height: 1.15; color: var(--terra); }
+.mcz .mce-note p { margin: 8px 0 0; font-size: 15.5px !important; line-height: 1.5; color: var(--ink); }
+.mcz .mce-note-sign { margin-top: 10px; text-align: right; font-size: 30px !important; line-height: 1.1; color: var(--terra); }
+
+/* ---------- Plano del pabellón ---------- */
+.mcz .mce-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+  text-align: center;
+  font-size: 9px !important;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz .mce-legend span { padding-bottom: 6px; border-bottom: 1px solid var(--gold); }
+
+.mcz .mce-scroll {
+  max-height: 620px;
+  overflow-y: auto;
+  margin-top: 8px;
+  padding: 10px 12px 18px 6px;
+  border-bottom: 1px solid var(--gold);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+.mcz .mce-scroll::-webkit-scrollbar { width: 6px; }
+.mcz .mce-scroll::-webkit-scrollbar-track { background: rgba(196, 160, 90, 0.12); border-radius: 6px; }
+.mcz .mce-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 6px; }
+
+.mcz .mce-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* ---------- Tarjeta de concursante ---------- */
+.mcz .mce-card {
+  position: relative;
+  padding: 14px 14px 12px;
+  border: 1px solid rgba(196, 160, 90, 0.55);
+  border-radius: 6px;
+  background: var(--paper);
+  box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px rgba(196, 160, 90, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.mcz .mce-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px var(--gold), 0 12px 18px -12px rgba(69, 55, 43, 0.55);
+}
+.mcz .mce-head { display: flex; align-items: center; gap: 12px; }
+
+/* Foto: si el enlace falla, se ve la inicial de debajo */
+.mcz .mce-photo {
+  position: relative;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px rgba(196, 160, 90, 0.45);
+  background: var(--ivory);
+  overflow: hidden;
+}
+.mcz .mce-photo b {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px !important;
+  font-weight: 700;
+  color: var(--gold);
+}
+.mcz .mce-photo i {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: 50% 25%;
+}
+
+.mcz .mce-num {
+  position: absolute;
+  top: -9px;
+  right: 10px;
+  padding: 3px 9px 2px;
+  border-radius: 99px;
+  background: var(--terra);
+  box-shadow: 0 0 0 2px var(--paper);
+  font-size: 8.5px !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+.mcz .mce-name {
+  font-size: 13px !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.mcz .mce-tag {
+  margin-top: 3px;
+  font-size: 8px !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz .mce-ps {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dotted rgba(69, 55, 43, 0.25);
+  font-size: 14.5px !important;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--soft);
+}
+.mcz .mce-ps b { font-style: normal; font-weight: 700; color: var(--terra); }
+
+/* Tarjeta decorativa del fondo del pabellón */
+.mcz .mce-card.mce-deco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+}
+.mcz .mce-deco-title { font-size: 26px !important; line-height: 1.1; color: var(--terra); }
+.mcz .mce-deco-sub { margin-top: 4px; font-size: 14px !important; font-style: italic; color: var(--soft); }
+
+/* ---------- Datos fuera de rol ---------- */
+.mcz .mce-info {
+  margin-top: 28px;
+  padding: 18px 20px 14px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: var(--paper);
+}
+.mcz .mce-info-title {
+  text-align: center;
+  font-size: 11px !important;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.mcz .mce-info-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px dotted rgba(69, 55, 43, 0.22);
+}
+.mcz .mce-info-row:last-child { border-bottom: 0; }
+.mcz .mce-info-label {
+  padding-top: 3px;
+  font-size: 9px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz .mce-info-value { font-size: 15.5px !important; line-height: 1.4; color: var(--ink); }
+
+/* ---------- Blindaje de fuentes ---------- */
+.mcz .mce-legend, .mcz .mce-num, .mcz .mce-name, .mcz .mce-tag, .mcz .mce-photo b,
+.mcz .mce-info-title, .mcz .mce-info-label { font-family: 'Cinzel', Georgia, serif !important; }
+.mcz .mce-note-hello, .mcz .mce-note-sign, .mcz .mce-deco-title { font-family: 'Pinyon Script', cursive !important; font-weight: 400 !important; }
+.mcz .mce-note p, .mcz .mce-ps, .mcz .mce-deco-sub, .mcz .mce-info-value { font-family: 'Cormorant Garamond', Georgia, serif !important; }
+
+/* ---------- Pantallas estrechas ---------- */
+@media (max-width: 520px) {
+  .mcz .mce-grid, .mcz .mce-legend { grid-template-columns: 1fr; }
+  .mcz .mce-legend span:last-child { display: none; }
+  .mcz .mce-info-row { grid-template-columns: 1fr; gap: 2px; }
+}
