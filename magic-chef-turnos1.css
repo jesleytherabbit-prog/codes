@@ -1,0 +1,217 @@
+/* =========================================================
+   MAGIC CHEF · Turnos
+   Complemento de magic-chef-prologo.css (prefijo .mct)
+   Sirve para todos los posts de turno
+   ========================================================= */
+
+/* Texto narrado a la izquierda: en columnas el justificado deja huecos */
+.mcz .mcz-body p { text-align: left !important; hyphens: manual; }
+.mcz .mcz-body .mct-r { color: var(--terra) !important; font-weight: 600; }
+
+/* ---------- Caja de reglas fuera de rol ---------- */
+.mcz .mct-box {
+  position: relative;
+  margin-top: 18px;
+  padding: 20px 20px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: var(--paper);
+}
+.mcz .mct-box-tag {
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  padding: 3px 10px 2px;
+  border-radius: 99px;
+  background: var(--sage);
+  font-size: 8.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+}
+.mcz .mct-p {
+  margin: 8px 0 0;
+  font-size: 15.5px !important;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.mcz .mct-p:first-of-type { margin-top: 2px; }
+.mcz .mct-p b { color: var(--terra-dark); }
+
+/* Pasos numerados */
+.mcz .mct-step {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  align-items: start;
+}
+.mcz .mct-step-n {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--terra);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px !important;
+  font-weight: 700;
+  color: var(--ivory);
+}
+.mcz .mct-step-t { font-size: 15.5px !important; line-height: 1.45; color: var(--ink); }
+.mcz .mct-step-t b { color: var(--terra-dark); }
+
+/* ---------- Tablas ---------- */
+.mcz .mct-table {
+  margin-top: 12px;
+  border: 1px solid rgba(196, 160, 90, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.mcz .mct-row {
+  display: grid;
+  border-top: 1px solid rgba(196, 160, 90, 0.35);
+}
+.mcz .mct-row:first-child { border-top: 0; }
+.mcz .mct-row:nth-child(even) { background: rgba(245, 237, 221, 0.55); }
+.mcz .mct-row.mct-head { background: #2E2118 !important; }
+.mcz .mct-c2 { grid-template-columns: 38% minmax(0, 1fr); }
+.mcz .mct-c3 { grid-template-columns: 30% 16% minmax(0, 1fr); }
+.mcz .mct-c3b { grid-template-columns: 34% minmax(0, 1fr) minmax(0, 1fr); }
+.mcz .mct-cell {
+  padding: 8px 10px;
+  border-left: 1px solid rgba(196, 160, 90, 0.3);
+  font-size: 14.5px !important;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.mcz .mct-cell:first-child { border-left: 0; }
+.mcz .mct-cell b { color: var(--terra-dark); }
+.mcz .mct-head .mct-cell {
+  padding: 7px 10px 6px;
+  font-size: 8.5px !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.mcz .mct-num {
+  text-align: center;
+  font-size: 18px !important;
+  font-weight: 700;
+  color: var(--terra);
+}
+.mcz .mct-plus { color: var(--sage) !important; font-weight: 700; }
+.mcz .mct-minus { color: var(--terra) !important; font-weight: 700; }
+
+/* ---------- Plantilla de tirada para copiar ---------- */
+.mcz .mct-code {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px dashed rgba(196, 160, 90, 0.8);
+  border-radius: 4px;
+  background: #FFFDF8;
+  font-family: 'Courier New', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.mcz .mct-code div { white-space: normal; }
+.mcz .mct-code b { color: var(--terra-dark); }
+
+/* ---------- Avisos pequeños ---------- */
+.mcz .mct-note {
+  margin-top: 10px;
+  padding-left: 14px;
+  border-left: 2px solid var(--gold);
+  font-size: 14.5px !important;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--soft);
+}
+
+/* ---------- Fecha límite ---------- */
+.mcz .mct-deadline {
+  margin: 26px auto 0;
+  max-width: 380px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  text-align: center;
+}
+.mcz .mct-deadline-k {
+  font-size: 9px !important;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.mcz .mct-deadline-v { margin-top: 4px; font-size: 18px !important; color: var(--ink); }
+
+/* ---------- Blindaje de fuentes ---------- */
+.mcz .mct-box-tag, .mcz .mct-step-n, .mcz .mct-head .mct-cell, .mcz .mct-num,
+.mcz .mct-deadline-k { font-family: 'Cinzel', Georgia, serif !important; }
+.mcz .mct-p, .mcz .mct-step-t, .mcz .mct-cell, .mcz .mct-note,
+.mcz .mct-deadline-v { font-family: 'Cormorant Garamond', Georgia, serif !important; }
+
+/* ---------- Pantallas estrechas ---------- */
+@media (max-width: 520px) {
+  .mcz .mcz-body { column-count: 1; }
+  .mcz .mct-c2, .mcz .mct-c3, .mcz .mct-c3b { grid-template-columns: 1fr; }
+  .mcz .mct-cell { border-left: 0; }
+  .mcz .mct-head { display: none; }
+}
+
+/* Subtítulo dentro de una celda (el foro oculta los <br>) */
+.mcz .mct-sub { display: block; margin-top: 2px; font-size: 13px !important; font-style: italic; color: var(--soft); }
+.mcz .mct-c3t { grid-template-columns: 27% 25% minmax(0, 1fr); }
+@media (max-width: 520px) { .mcz .mct-c3t { grid-template-columns: 1fr; } }
+
+/* ---------- Turnos a una sola columna ---------- */
+.mcz .mcz-body { column-count: 1 !important; column-rule: 0 !important; }
+
+/* Tabla de dificultades (5 columnas) */
+.mcz .mct-c5 { grid-template-columns: 32% repeat(4, minmax(0, 1fr)); }
+.mcz .mct-c5 .mct-cell { text-align: center; }
+.mcz .mct-c5 .mct-cell:first-child { text-align: left; }
+@media (max-width: 520px) {
+  .mcz .mct-c5 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .mcz .mct-c5 .mct-cell:first-child { grid-column: 1 / -1; }
+  .mcz .mct-c5.mct-head { display: grid; }
+  .mcz .mct-c5.mct-head .mct-cell:first-child { display: none; }
+}
+
+/* ---------- Spoiler del foro con el estilo de la tablilla ---------- */
+.mcz .mct-lead {
+  margin: 30px auto 0;
+  max-width: 420px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 16px !important;
+  font-style: italic;
+  color: var(--soft);
+}
+.mcz .spoiler, .mcz .codebox.spoilerbox, .mcz dl.codebox {
+  margin-top: 12px !important;
+  border: 1px solid var(--gold) !important;
+  border-radius: 6px !important;
+  background: var(--ivory) !important;
+  overflow: hidden;
+}
+.mcz .spoiler_title, .mcz .codebox dt, .mcz .spoilerbox dt {
+  padding: 10px 14px !important;
+  background: #2E2118 !important;
+  color: var(--gold-light) !important;
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 0 !important;
+}
+.mcz .spoiler_content, .mcz .codebox dd, .mcz .spoilerbox dd {
+  margin: 0 !important;
+  padding: 4px 16px 20px !important;
+  background: var(--ivory) !important;
+  color: var(--ink) !important;
+  border: 0 !important;
+}
+.mcz .mct-c5.mct-head .mct-cell { padding: 7px 3px 6px; font-size: 7.5px !important; letter-spacing: 0.06em; }
