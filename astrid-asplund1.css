@@ -300,3 +300,17 @@
   .aa-lang p{grid-column:1/-1}
   .aa-anim{grid-template-columns:1fr}
 }
+
+/* ---------- FUENTES BLINDADAS (el foro impone Verdana) ---------- */
+.aa.aa,.aa.aa p,.aa.aa div,.aa.aa span,.aa.aa a,.aa.aa b,.aa.aa i,.aa.aa em,.aa.aa strong,.aa.aa small{font-family:'Source Serif 4',Georgia,serif !important}
+.aa.aa .aa-name,.aa.aa .aa-name span,.aa.aa .aa-motto,.aa.aa .aa-volume,.aa.aa .aa-volume b,.aa.aa .aa-volume span,
+.aa.aa .aa-nav a b,.aa.aa .aa-n,.aa.aa .aa-t,.aa.aa .aa-lead,.aa.aa .aa-seal,.aa.aa .aa-dual-t,.aa.aa .aa-what,
+.aa.aa .aa-book-n,.aa.aa .aa-book-t,.aa.aa .aa-ph,.aa.aa .aa-card-n,.aa.aa .aa-card-n a,.aa.aa .aa-attr-v,.aa.aa .aa-cb-v,
+.aa.aa .aa-points .aa-v,.aa.aa .aa-sk-b,.aa.aa .aa-spell-n,.aa.aa .aa-item b,.aa.aa .aa-item b a,.aa.aa .aa-lang b,
+.aa.aa .aa-bg-n,.aa.aa .aa-bg-lv,.aa.aa summary{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif !important}
+.aa.aa .aa-kicker,.aa.aa .aa-cover-foot,.aa.aa .aa-cover-foot span,.aa.aa .aa-nav a,.aa.aa .aa-ref,.aa.aa .aa-h3,
+.aa.aa .aa-grp-t,.aa.aa .aa-k,.aa.aa .aa-mono-cap,.aa.aa .aa-mono-cap span,.aa.aa .aa-dual-k,.aa.aa .aa-when,.aa.aa .aa-onrol,
+.aa.aa .aa-book-m,.aa.aa .aa-card-r,.aa.aa .aa-attr-k,.aa.aa .aa-attr.aa-tal::after,.aa.aa .aa-cb-k,.aa.aa .aa-cb-f,
+.aa.aa .aa-sm,.aa.aa summary::after,.aa.aa .aa-sk-l,.aa.aa .aa-spell-c,.aa.aa .aa-lang-l,.aa.aa .aa-bg-n small,
+.aa.aa .aa-foot,.aa.aa .aa-foot b{font-family:'Inter',system-ui,Helvetica,Arial,sans-serif !important}
+.aa.aa .aa-runes{font-family:'Noto Sans Runic',serif !important}
