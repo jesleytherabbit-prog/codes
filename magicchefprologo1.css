@@ -228,3 +228,34 @@
   0%, 100% { transform: translateY(0) rotate(45deg); }
   50% { transform: translateY(3px) rotate(45deg); }
 }
+/* =========================================================
+   MAGIC CHEF · Prólogo III: las cartas
+   Complemento de magic-chef-prologo.css (prefijo .mcl)
+   ========================================================= */
+
+.mcz .mcz-body p { text-align: left !important; hyphens: manual; }
+.mcz .mcz-body p i { color: var(--terra-dark); }
+
+/* Separador */
+.mcz .mcl-sep { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 30px auto 0; }
+.mcz .mcl-sep span { width: 90px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.mcz .mcl-sep span:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+.mcz .mcl-sep i { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+.mcz .mcl-after { margin: 26px auto 0; max-width: 420px; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: 16px !important; font-style: italic; line-height: 1.5; color: var(--soft); }
+.mcz .mcl-letter { position: relative; margin: 22px auto 0; max-width: 430px; padding: 34px 34px 30px; background: #FFFDF8; border: 1px solid rgba(196, 160, 90, 0.6); box-shadow: 0 0 0 5px #FFFDF8, 0 0 0 6px rgba(196, 160, 90, 0.35), 0 18px 26px -18px rgba(69, 55, 43, 0.6); transform: rotate(-0.8deg); transition: transform 0.4s ease; }
+.mcz .mcl-letter:hover { transform: rotate(0deg) translateY(-3px); }
+.mcz .mcl-letter::before { content: ""; position: absolute; inset: 10px; border: 1px dashed rgba(196, 160, 90, 0.4); pointer-events: none; }
+.mcz .mcl-seal { position: absolute; top: -22px; left: 50%; width: 46px; height: 46px; margin-left: -23px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #C9775A, var(--terra-dark) 70%); box-shadow: 0 3px 6px rgba(69, 55, 43, 0.4), inset 0 0 0 4px rgba(255, 255, 255, 0.12); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', Georgia, serif !important; font-size: 11px !important; font-weight: 700; letter-spacing: 0.08em; color: #F3D9C4; }
+.mcz .mcl-hello { font-family: 'Pinyon Script', cursive !important; font-size: 30px !important; line-height: 1.15; color: var(--terra); }
+.mcz .mcl-letter p { margin: 10px 0 0; font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: 16px !important; line-height: 1.5; color: var(--ink); }
+.mcz .mcl-letter b { color: var(--terra-dark); }
+.mcz .mcl-sign { margin-top: 18px; text-align: right; }
+.mcz .mcl-sign-pre { font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: 15px !important; font-style: italic; color: var(--soft); }
+.mcz .mcl-sign-name { font-family: 'Pinyon Script', cursive !important; font-size: 34px !important; line-height: 1.1; color: var(--terra); }
+.mcz .mcl-sign-role { font-family: 'Cinzel', Georgia, serif !important; font-size: 8.5px !important; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); }
+.mcz .mcl-ps { margin-top: 16px !important; padding-top: 10px; border-top: 1px dotted rgba(69, 55, 43, 0.25); font-style: italic; font-size: 15px !important; color: var(--soft) !important; }
+@media (max-width: 520px) { .mcz .mcz-body { column-count: 1; } .mcz .mcl-letter { padding: 30px 22px 24px; } }
+
+/* Diálogos de Rupert */
+.mcz .mcz-body .mcl-r { color: var(--terra) !important; font-weight: 600; }
+.mcz .mcz-body .mcl-r i { color: var(--terra-dark) !important; }
