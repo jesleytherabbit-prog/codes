@@ -1,0 +1,96 @@
+/* ===== Firma hover · Hana Park ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Pinyon+Script&display=swap');
+
+.fhn{position:relative;width:500px;height:200px;margin:0 auto;overflow:hidden;line-height:1;text-align:left;
+  font-family:'Cormorant Garamond',Georgia,serif;--oro:#f3e3b8;--menta:#c9f0a8;--verde:#9fe08a}
+.fhn img{display:block;width:500px;height:200px;max-width:none;border:0;margin:0;padding:0}
+
+/* --- destello en la punta de la varita --- */
+.fhn::before{content:"";position:absolute;left:202px;top:70px;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;
+  background:radial-gradient(circle,#fff 0 10%,rgba(230,255,215,.95) 20%,rgba(160,235,130,.5) 42%,transparent 70%);
+  opacity:0;transform:scale(.2);pointer-events:none;z-index:4}
+.fhn:hover::before{animation:fhIn .45s ease-out forwards,fhLatido 1.6s .45s ease-in-out infinite}
+@keyframes fhIn{0%{opacity:0;transform:scale(.2)}60%{opacity:1;transform:scale(1.9)}100%{opacity:1;transform:scale(1)}}
+@keyframes fhLatido{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.3)}}
+
+/* --- chispas que salen de la varita --- */
+.fhn::after{content:"";position:absolute;left:201px;top:69px;width:3px;height:3px;border-radius:50%;background:#fff;
+  opacity:0;pointer-events:none;z-index:4;
+  box-shadow:-40px -18px 0 0 #fff,-62px 6px 0 1px var(--menta),-30px 28px 0 0 var(--oro),-55px -40px 0 0 var(--verde),
+    -18px -46px 0 1px #fff,10px -38px 0 0 var(--oro),34px -22px 0 0 var(--menta),44px 10px 0 1px #fff,
+    26px 36px 0 0 var(--verde),-8px 42px 0 0 #fff,-74px -14px 0 0 var(--oro),-48px 40px 0 1px var(--menta),
+    60px -42px 0 0 #fff,-86px 22px 0 0 var(--verde),-24px -6px 0 0 var(--oro),70px 26px 0 0 var(--menta)}
+.fhn:hover::after{animation:fhChispa 1.8s .1s ease-out infinite}
+@keyframes fhChispa{0%{opacity:1;transform:scale(.1)}70%{opacity:.9}100%{opacity:0;transform:scale(1.7)}}
+
+/* --- paneles (se abren desde la varita hacia afuera) --- */
+.fhc,.fhp{position:absolute;top:8px;width:178px;height:184px;box-sizing:border-box;padding:28px 12px 8px;z-index:3;
+  background:linear-gradient(160deg,rgba(16,40,22,.93),rgba(32,62,32,.87));
+  border:1px solid rgba(243,227,184,.55);border-radius:10px;color:var(--oro);opacity:0;pointer-events:none;
+  box-shadow:0 0 14px rgba(190,240,150,.35),inset 0 0 18px rgba(201,240,168,.15);
+  transition:clip-path .3s ease-in,opacity .3s}
+.fhc{left:8px;clip-path:inset(0 0 0 100% round 10px)}
+.fhp{right:8px;clip-path:inset(0 100% 0 0 round 10px);display:flex;justify-content:space-around;align-items:flex-start;padding-top:40px}
+.fhn:hover .fhc,.fhn:hover .fhp{opacity:1;clip-path:inset(0 0 0 0 round 10px);
+  transition:clip-path .6s .25s cubic-bezier(.6,0,.2,1),opacity .15s .25s}
+
+/* títulos de los paneles */
+.fhc::before,.fhp::before{position:absolute;top:5px;left:0;right:0;text-align:center;font:21px/1 'Pinyon Script',cursive;
+  color:var(--menta);text-shadow:0 0 7px rgba(201,240,168,.85)}
+.fhc::before{content:"\2726  Combate  \2726"}
+.fhp::before{content:"\2726  Magia  \2726"}
+
+/* brillo que barre el panel de combate */
+.fhc::after{content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;
+  background:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);background-size:260% 100%;background-position:160% 0}
+.fhn:hover .fhc::after{animation:fhBarrido 1.4s .8s ease-in-out forwards}
+@keyframes fhBarrido{to{background-position:-60% 0}}
+
+/* --- filas de combate --- */
+.fhc b{display:flex;justify-content:space-between;align-items:center;height:16px;padding:0 2px;
+  border-bottom:1px dotted rgba(243,227,184,.28);font-size:13px;font-weight:700;color:#fff;
+  text-shadow:0 0 5px rgba(201,240,168,.7);opacity:0;transform:translateX(10px)}
+.fhc b::before{font-size:12px;font-weight:600;color:var(--oro);letter-spacing:.3px;text-shadow:none}
+.fhc b:nth-child(1)::before{content:"Iniciativa"}
+.fhc b:nth-child(2)::before{content:"Ataque F\00ED sico"}
+.fhc b:nth-child(3)::before{content:"Lucha F\00ED sica"}
+.fhc b:nth-child(4)::before{content:"Ataque M\00E1 gico"}
+.fhc b:nth-child(5)::before{content:"Lucha M\00E1 gica"}
+.fhc b:nth-child(6)::before{content:"Defensa"}
+.fhc b:nth-child(7)::before{content:"PAs"}
+.fhc b:nth-child(8)::before{content:"Umbral de heridas"}
+.fhc b:nth-child(9)::before{content:"Heridas"}
+.fhc b:nth-child(4),.fhc b:nth-child(5){color:var(--menta)}
+.fhn:hover .fhc b{animation:fhFila .35s ease-out forwards}
+.fhc b:nth-child(1){animation-delay:.6s!important}
+.fhc b:nth-child(2){animation-delay:.67s!important}
+.fhc b:nth-child(3){animation-delay:.74s!important}
+.fhc b:nth-child(4){animation-delay:.81s!important}
+.fhc b:nth-child(5){animation-delay:.88s!important}
+.fhc b:nth-child(6){animation-delay:.95s!important}
+.fhc b:nth-child(7){animation-delay:1.02s!important}
+.fhc b:nth-child(8){animation-delay:1.09s!important}
+.fhc b:nth-child(9){animation-delay:1.16s!important}
+@keyframes fhFila{to{opacity:1;transform:none}}
+
+/* --- gemas de magia --- */
+.fhp b{position:relative;width:44px;height:44px;border-radius:50%;text-align:center;font:700 21px/44px 'Cormorant Garamond',serif;color:#fff;
+  background:radial-gradient(circle at 35% 30%,#fff 0 6%,rgba(201,240,168,.9) 18%,#4f9a4a 62%,#1f4a25 100%);
+  box-shadow:0 0 10px rgba(201,240,168,.6),inset 0 0 6px rgba(255,255,255,.5);border:1px solid rgba(243,227,184,.7);
+  text-shadow:0 1px 3px rgba(0,40,10,.8);opacity:0;transform:scale(0)}
+.fhp b:nth-child(2){background:radial-gradient(circle at 35% 30%,#fff 0 6%,#e3d0ff 18%,#8e6bc4 62%,#3d2a63 100%);box-shadow:0 0 10px rgba(210,180,255,.6),inset 0 0 6px rgba(255,255,255,.5)}
+.fhp b:nth-child(3){background:radial-gradient(circle at 35% 30%,#fff 0 6%,#fff1c4 18%,#d1a849 62%,#6b4f17 100%);box-shadow:0 0 10px rgba(255,225,150,.7),inset 0 0 6px rgba(255,255,255,.5)}
+.fhp b::after{position:absolute;top:52px;left:-14px;right:-14px;font:600 12px/1.1 'Cormorant Garamond',serif;color:var(--oro);text-shadow:none}
+.fhp b:nth-child(1)::after{content:"Pociones"}
+.fhp b:nth-child(2)::after{content:"Rituales"}
+.fhp b:nth-child(3)::after{content:"Destino"}
+.fhn:hover .fhp b{animation:fhGema .5s cubic-bezier(.3,1.6,.5,1) forwards,fhFlota 3s ease-in-out infinite}
+.fhp b:nth-child(1){animation-delay:.7s,1.2s!important}
+.fhp b:nth-child(2){animation-delay:.82s,1.5s!important}
+.fhp b:nth-child(3){animation-delay:.94s,1.8s!important}
+@keyframes fhGema{to{opacity:1;transform:scale(1)}}
+@keyframes fhFlota{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* pie del panel de magia */
+.fhp::after{content:"\2727  Sanadora de San Mungo  \2727";white-space:nowrap;position:absolute;left:0;right:0;bottom:14px;text-align:center;
+  font:16px/1 'Pinyon Script',cursive;color:var(--oro);opacity:.9}
