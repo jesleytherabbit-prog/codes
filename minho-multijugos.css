@@ -1,0 +1,60 @@
+.minho-multijugos {
+  color: #769aaf;
+  position: relative;
+  animation: minho-voz-prestada 9s linear infinite;
+}
+
+/* La voz permanece estable salvo breves fallos */
+@keyframes minho-voz-prestada {
+  0%, 39%, 45%, 76%, 82%, 100% {
+    color: #769aaf;
+    text-shadow: none;
+  }
+
+  40% {
+    color: #769aaf;
+    text-shadow:
+      -1px 0 rgba(118, 154, 175, 0.65),
+       1px 1px rgba(167, 144, 181, 0.45);
+  }
+
+  41% {
+    color: #91afbf;
+    text-shadow:
+       2px 0 rgba(118, 154, 175, 0.5),
+      -2px 0 rgba(167, 144, 181, 0.4);
+  }
+
+  42% {
+    color: #769aaf;
+    text-shadow: none;
+  }
+
+  43%, 44% {
+    color: #769aaf;
+    text-shadow:
+      -1px 1px rgba(167, 144, 181, 0.5),
+       1px 0 rgba(118, 154, 175, 0.6),
+       0 0 7px rgba(118, 154, 175, 0.25);
+  }
+
+  77%, 80% {
+    color: #8aa5b5;
+    text-shadow:
+       1px 0 rgba(167, 144, 181, 0.55),
+      -1px 0 rgba(118, 154, 175, 0.55);
+  }
+
+  78%, 81% {
+    color: #769aaf;
+    text-shadow: 0 0 5px rgba(118, 154, 175, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .minho-multijugos {
+    animation: none;
+    color: #769aaf;
+    text-shadow: 1px 0 3px rgba(167, 144, 181, 0.25);
+  }
+}
