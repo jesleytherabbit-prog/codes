@@ -1,4 +1,3 @@
-/* ✦ CRONOLOGÍA DE HANA ‧ Magical Girl (combina con hanaparkmagical.css) ✦ */
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@500;600&family=DM+Serif+Display&family=Playfair+Display:wght@600&display=swap');
 
 .crn{
@@ -149,3 +148,41 @@
 
 @media (max-width:500px){.crn-nav{flex-wrap:wrap;} .crn-title{font-size:25px;}}
 @media (prefers-reduced-motion:reduce){.crn *,.crn *::before,.crn *::after{animation:none !important;}}
+
+/* ═══════════ SEGUNDO BLOQUE (otro año): pestañas t4–t6 ═══════════ */
+#crn-t4:checked ~ .crn-nav label[for="crn-t4"],
+#crn-t5:checked ~ .crn-nav label[for="crn-t5"],
+#crn-t6:checked ~ .crn-nav label[for="crn-t6"]{color:#fff; border-color:#fff;
+  background:linear-gradient(120deg,var(--a1),var(--a2) 55%,var(--a3));
+  box-shadow:0 0 0 3px rgba(255,255,255,.18),0 0 18px rgba(214,166,185,.85),0 4px 10px -2px rgba(60,40,90,.5);}
+#crn-t4:checked ~ .crn-nav label[for="crn-t4"]::before,
+#crn-t5:checked ~ .crn-nav label[for="crn-t5"]::before,
+#crn-t6:checked ~ .crn-nav label[for="crn-t6"]::before{color:#fff; animation:cnTw 1.6s ease-in-out infinite;}
+#crn-t4:checked ~ .crn-panels #crn-p4,
+#crn-t5:checked ~ .crn-panels #crn-p5,
+#crn-t6:checked ~ .crn-panels #crn-p6{display:block; animation:cnIn .6s cubic-bezier(.2,.8,.3,1);}
+#crn-p4{--tone:#B8955A; --tone2:var(--f3);}
+#crn-p5{--tone:var(--c3); --tone2:var(--c2);}
+#crn-p6{--tone:var(--a1); --tone2:var(--a3);}
+
+/* separador de mes dentro de la línea de tiempo */
+.crn-mes{position:relative; margin:10px 0 6px -22px; padding-left:22px;
+  font-family:'Cinzel Decorative',serif; font-weight:700; font-size:12.5px; letter-spacing:1.5px; color:var(--m1);}
+.crn-mes:first-child{margin-top:0;}
+.crn-mes::before{content:"☾"; position:absolute; left:2px; top:50%; translate:0 -50%; font-family:serif; font-size:13px; color:var(--tone);
+  background:#F6F0F4; border-radius:50%; width:14px; text-align:center; line-height:14px;}
+.crn-mes::after{content:""; display:inline-block; vertical-align:middle; width:40%; height:1px; margin-left:8px;
+  background:linear-gradient(90deg,var(--tone2),transparent);}
+
+/* lugar del rol / materia */
+.crn-r small{font-family:'Bodoni Moda',serif; font-style:italic; font-size:12.5px; color:var(--a2);}
+.crn-r small::before{content:"⌂ "; font-style:normal; color:var(--a3);}
+#crn-p5 .crn-r small::before{content:"✎ ";}
+
+/* calificaciones */
+.crn-n{font-family:'Playfair Display',serif; font-size:9.5px; letter-spacing:1px; text-transform:uppercase; line-height:1.8;
+  padding:0 8px; border-radius:20px; border:1px solid;}
+.crn-n.e{color:#5E72B8; border-color:rgba(94,114,184,.5); background:rgba(141,155,203,.15);}
+.crn-n.s{color:#3F8A6A; border-color:rgba(63,138,106,.45); background:rgba(76,160,125,.12);}
+.crn-n.a{color:#A9823F; border-color:rgba(169,130,63,.45); background:rgba(231,208,168,.25);}
+.crn-n.e::before{content:"✦ ";}
