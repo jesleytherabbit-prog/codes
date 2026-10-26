@@ -1,0 +1,93 @@
+.elfo-pop {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  font-style: italic;
+  animation: elfo-aparecer 6s ease-in-out infinite;
+}
+
+/* Pequeños destellos alrededor */
+.elfo-pop::before,
+.elfo-pop::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #edf5ff;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.elfo-pop::before {
+  left: 15%;
+  top: 15%;
+  box-shadow:
+    -5px 5px 2px rgba(225, 239, 255, 0.7),
+    12px -4px 2px rgba(255, 255, 255, 0.8),
+    28px 7px 2px rgba(225, 239, 255, 0.6);
+  animation: elfo-destellos 6s ease-out infinite;
+}
+
+.elfo-pop::after {
+  right: 10%;
+  bottom: 15%;
+  box-shadow:
+    5px -8px 2px rgba(255, 255, 255, 0.7),
+    -18px 3px 2px rgba(225, 239, 255, 0.6);
+  animation: elfo-destellos 6s ease-out 0.3s infinite;
+}
+
+/* Se materializa y permanece legible */
+@keyframes elfo-aparecer {
+  0%, 100% {
+    opacity: 0.35;
+    filter: blur(1px);
+    text-shadow: none;
+  }
+
+  15%, 75% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 5px rgba(215, 235, 255, 0.3);
+  }
+
+  90% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: none;
+  }
+}
+
+@keyframes elfo-destellos {
+  0%, 5% {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+
+  13% {
+    opacity: 0.8;
+  }
+
+  25% {
+    opacity: 0.3;
+  }
+
+  38%, 100% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elfo-pop,
+  .elfo-pop::before,
+  .elfo-pop::after {
+    animation: none;
+  }
+
+  .elfo-pop {
+    opacity: 1;
+    filter: none;
+  }
+}
