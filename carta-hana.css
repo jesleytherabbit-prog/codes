@@ -1,0 +1,33 @@
+/* Carta de Hana */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+
+.hcarta {
+  position: relative;
+  max-width: 460px;
+  margin: 24px auto;
+  padding: 32px 36px 40px;
+  background: #fbf6ec;
+  background-image: repeating-linear-gradient(transparent 0 31px, rgba(120,100,150,.15) 31px 32px);
+  border: 1px solid #e3d8c4;
+  box-shadow: 0 3px 12px rgba(40,25,10,.25);
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 32px;
+  color: #3b2f4a;
+  transform: rotate(-.6deg);
+}
+.hcarta p { margin: 0 0 32px; }
+.hcarta-saludo { font-weight: 600; }
+.hcarta-firma { text-align: right; font-weight: 600; margin: 0 !important; }
+.hcarta-sello {
+  position: absolute; right: -14px; bottom: -14px;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #9b7bc4, #5e3d8a 70%);
+  box-shadow: 0 2px 5px rgba(0,0,0,.35), inset 0 0 0 5px rgba(255,255,255,.12);
+  color: #efe4ff; font-family: 'Caveat', cursive; font-size: 26px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+}
+@media (max-width: 500px) {
+  .hcarta { padding: 24px 20px 34px; font-size: 20px; }
+  .hcarta-sello { right: 6px; }
+}
