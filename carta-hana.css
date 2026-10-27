@@ -10,24 +10,26 @@
   background-image: repeating-linear-gradient(transparent 0 31px, rgba(120,100,150,.15) 31px 32px);
   border: 1px solid #e3d8c4;
   box-shadow: 0 3px 12px rgba(40,25,10,.25);
-  font-family: 'Caveat', cursive;
-  font-size: 22px;
-  line-height: 32px;
-  color: #3b2f4a;
+  font-family: 'Caveat', cursive !important;
+  font-size: 22px !important;
+  line-height: 32px !important;
+  color: #3b2f4a !important;
   transform: rotate(-.6deg);
 }
+:where(.hcarta) :where(p, div, span, h1, b, i, strong, em) { font-family: inherit !important; font-size: inherit !important; color: inherit !important; line-height: inherit !important; }
+
 .hcarta p { margin: 0 0 32px; }
-.hcarta-saludo { font-weight: 600; }
-.hcarta-firma { text-align: right; font-weight: 600; margin: 0 !important; }
+.hcarta-saludo { font-weight: 600 !important; }
+.hcarta-firma { text-align: right !important; font-weight: 600 !important; margin: 0 !important; }
 .hcarta-sello {
   position: absolute; right: -14px; bottom: -14px;
   width: 54px; height: 54px; border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #9b7bc4, #5e3d8a 70%);
   box-shadow: 0 2px 5px rgba(0,0,0,.35), inset 0 0 0 5px rgba(255,255,255,.12);
-  color: #efe4ff; font-family: 'Caveat', cursive; font-size: 26px; font-weight: 600;
+  color: #efe4ff !important; font-family: 'Caveat', cursive !important; font-size: 26px !important; font-weight: 600 !important;
   display: flex; align-items: center; justify-content: center;
 }
 @media (max-width: 500px) {
-  .hcarta { padding: 24px 20px 34px; font-size: 20px; }
+  .hcarta { padding: 24px 20px 34px; font-size: 20px !important; }
   .hcarta-sello { right: 6px; }
 }
