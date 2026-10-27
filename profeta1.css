@@ -1,0 +1,92 @@
+/* El Profeta - plantilla de noticia para el foro */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+.prf-diario {
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 28px 32px 32px;
+  background: #f1e7d0;
+  background-image: radial-gradient(ellipse at center, rgba(255,250,235,.6) 0%, rgba(176,148,100,.25) 100%);
+  color: #2b2116 !important;
+  font-family: 'IM Fell English', Georgia, serif !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 4px 18px rgba(40,25,10,.35), inset 0 0 60px rgba(120,90,50,.25);
+  border: 1px solid #c9b48a;
+  box-sizing: border-box;
+}
+.prf-diario * { box-sizing: border-box; }
+
+:where(.prf-diario) :where(p, div, span, h1, b, i, strong, em) { font-family: inherit !important; font-size: inherit !important; color: inherit !important; line-height: inherit !important; }
+
+/* Cabecera */
+.prf-cabecera { text-align: center !important; border-bottom: 4px double #2b2116; padding-bottom: 6px; }
+.prf-lema {
+  font-family: 'Old Standard TT', serif !important; font-size: 10px !important; letter-spacing: 3px !important;
+  text-transform: uppercase; color: #5b4630 !important;
+}
+.prf-nombre {
+  font-family: 'UnifrakturMaguntia', serif !important; font-size: 64px !important; line-height: 1 !important;
+  margin: 4px 0 2px; color: #1c140c !important;
+}
+.prf-datos {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;
+  border-top: 1px solid #2b2116; margin-top: 6px; padding-top: 4px;
+  font-family: 'Old Standard TT', serif !important; font-size: 11px !important; text-transform: uppercase; letter-spacing: 1px !important;
+}
+
+/* Titular */
+.prf-seccion {
+  margin: 16px 0 4px; text-align: center !important; font-family: 'Old Standard TT', serif !important;
+  font-size: 11px !important; letter-spacing: 4px !important; text-transform: uppercase; color: #6d5737 !important;
+}
+.prf-titular {
+  font-family: 'Old Standard TT', serif !important; font-weight: 700 !important; font-size: 30px !important; line-height: 1.15 !important;
+  text-align: center !important; margin: 0 0 8px; color: #1c140c !important;
+}
+.prf-subtitular {
+  font-style: italic !important; text-align: center !important; font-size: 16px !important; margin: 0 auto 12px;
+  max-width: 560px; color: #4a3a28 !important;
+}
+.prf-firma {
+  text-align: center !important; font-family: 'Old Standard TT', serif !important; font-size: 11px !important;
+  text-transform: uppercase; letter-spacing: 2px !important; border-top: 1px solid #2b2116;
+  border-bottom: 1px solid #2b2116; padding: 3px 0; margin-bottom: 16px;
+}
+
+/* Foto que se mueve */
+.prf-foto { margin: 0 0 16px; border: 1px solid #2b2116; padding: 6px; background: #e6d9bb; }
+.prf-foto img {
+  display: block; width: 100%; height: auto;
+  filter: sepia(.55) grayscale(.6) contrast(1.1);
+  animation: prf-mueve 6s ease-in-out infinite;
+}
+@keyframes prf-mueve {
+  0%, 100% { transform: scale(1); filter: sepia(.55) grayscale(.6) contrast(1.1) brightness(1); }
+  50% { transform: scale(1.02); filter: sepia(.55) grayscale(.6) contrast(1.1) brightness(1.06); }
+}
+.prf-foto div { overflow: hidden; }
+.prf-pie { font-style: italic !important; font-size: 13px !important; text-align: center !important; margin-top: 6px; color: #4a3a28 !important; }
+
+/* Cuerpo */
+.prf-cuerpo {
+  column-count: 2; column-gap: 26px; column-rule: 1px solid #b59f78;
+  font-size: 15px !important; line-height: 1.55 !important; text-align: justify !important; hyphens: auto;
+}
+.prf-cuerpo p { margin: 0 0 10px; }
+.prf-cuerpo p:first-child::first-letter {
+  float: left; font-family: 'UnifrakturMaguntia', serif !important; font-size: 58px !important;
+  line-height: .85 !important; padding: 4px 6px 0 0; color: #1c140c !important;
+}
+.prf-fin {
+  text-align: center !important; margin-top: 14px; font-family: 'Old Standard TT', serif !important;
+  font-size: 12px !important; letter-spacing: 6px !important; color: #6d5737 !important;
+}
+
+@media (max-width: 600px) {
+  .prf-diario { padding: 18px 16px; }
+  .prf-nombre { font-size: 44px !important; }
+  .prf-titular { font-size: 23px !important; }
+  .prf-cuerpo { column-count: 1; }
+  .prf-datos { justify-content: center; }
+}
