@@ -1,0 +1,88 @@
+/* El Profeta - plantilla de noticia para el foro */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+.prf-diario {
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 28px 32px 32px;
+  background: #f1e7d0;
+  background-image: radial-gradient(ellipse at center, rgba(255,250,235,.6) 0%, rgba(176,148,100,.25) 100%);
+  color: #2b2116;
+  font-family: 'IM Fell English', Georgia, serif;
+  box-shadow: 0 4px 18px rgba(40,25,10,.35), inset 0 0 60px rgba(120,90,50,.25);
+  border: 1px solid #c9b48a;
+  box-sizing: border-box;
+}
+.prf-diario * { box-sizing: border-box; }
+
+/* Cabecera */
+.prf-cabecera { text-align: center; border-bottom: 4px double #2b2116; padding-bottom: 6px; }
+.prf-lema {
+  font-family: 'Old Standard TT', serif; font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: #5b4630;
+}
+.prf-nombre {
+  font-family: 'UnifrakturMaguntia', serif; font-size: 64px; line-height: 1;
+  margin: 4px 0 2px; color: #1c140c;
+}
+.prf-datos {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;
+  border-top: 1px solid #2b2116; margin-top: 6px; padding-top: 4px;
+  font-family: 'Old Standard TT', serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* Titular */
+.prf-seccion {
+  margin: 16px 0 4px; text-align: center; font-family: 'Old Standard TT', serif;
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #6d5737;
+}
+.prf-titular {
+  font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 30px; line-height: 1.15;
+  text-align: center; margin: 0 0 8px; color: #1c140c;
+}
+.prf-subtitular {
+  font-style: italic; text-align: center; font-size: 16px; margin: 0 auto 12px;
+  max-width: 560px; color: #4a3a28;
+}
+.prf-firma {
+  text-align: center; font-family: 'Old Standard TT', serif; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 2px; border-top: 1px solid #2b2116;
+  border-bottom: 1px solid #2b2116; padding: 3px 0; margin-bottom: 16px;
+}
+
+/* Foto que se mueve */
+.prf-foto { margin: 0 0 16px; border: 1px solid #2b2116; padding: 6px; background: #e6d9bb; }
+.prf-foto img {
+  display: block; width: 100%; height: auto;
+  filter: sepia(.55) grayscale(.6) contrast(1.1);
+  animation: prf-mueve 6s ease-in-out infinite;
+}
+@keyframes prf-mueve {
+  0%, 100% { transform: scale(1); filter: sepia(.55) grayscale(.6) contrast(1.1) brightness(1); }
+  50% { transform: scale(1.02); filter: sepia(.55) grayscale(.6) contrast(1.1) brightness(1.06); }
+}
+.prf-foto div { overflow: hidden; }
+.prf-pie { font-style: italic; font-size: 13px; text-align: center; margin-top: 6px; color: #4a3a28; }
+
+/* Cuerpo */
+.prf-cuerpo {
+  column-count: 2; column-gap: 26px; column-rule: 1px solid #b59f78;
+  font-size: 15px; line-height: 1.55; text-align: justify; hyphens: auto;
+}
+.prf-cuerpo p { margin: 0 0 10px; }
+.prf-cuerpo p:first-child::first-letter {
+  float: left; font-family: 'UnifrakturMaguntia', serif; font-size: 58px;
+  line-height: .85; padding: 4px 6px 0 0; color: #1c140c;
+}
+.prf-fin {
+  text-align: center; margin-top: 14px; font-family: 'Old Standard TT', serif;
+  font-size: 12px; letter-spacing: 6px; color: #6d5737;
+}
+
+@media (max-width: 600px) {
+  .prf-diario { padding: 18px 16px; }
+  .prf-nombre { font-size: 44px; }
+  .prf-titular { font-size: 23px; }
+  .prf-cuerpo { column-count: 1; }
+  .prf-datos { justify-content: center; }
+}
