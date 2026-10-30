@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&display=swap');
+
+/* ===== Tapiz de la Casa Balsan ===== */
+.btz{--vino:#200b0f;--panel:#2c1116;--card:#34151b;--heir:#3a161d;--oro:#e2bd6e;--oro2:#e8c780;--hilo:#b8924f;--hilo2:#7a6038;--txt:#eadcc0;--txt2:#c4ac80;--txt3:#b9a47e;--plata:#c9d1db;
+  max-width:760px!important;margin:10px auto!important;padding:34px 30px 30px!important;box-sizing:border-box!important;
+  background-color:var(--vino)!important;
+  background-image:repeating-linear-gradient(45deg,rgba(212,176,106,.04) 0 2px,transparent 2px 16px),repeating-linear-gradient(-45deg,rgba(212,176,106,.04) 0 2px,transparent 2px 16px)!important;
+  border:2px solid #8a6a38!important;outline:1px solid #5c4526;outline-offset:-10px;border-radius:6px;
+  font-family:'Cormorant Garamond',Georgia,serif!important;font-size:16px!important;line-height:1.35!important;color:var(--txt)!important;text-align:center!important}
+.btz *{box-sizing:border-box;font-family:inherit}
+.btz br{display:none!important}
+.btz .cz,.btz .n,.btz .tit,.btz .btz-nav label,.btz .rama,.btz .ph{font-family:'Cinzel',Georgia,serif!important}
+
+/* Encabezado */
+.btz .escudo{width:64px;height:76px;margin:0 auto 10px;background:#e2bd6e;clip-path:polygon(0 0,100% 0,100% 55%,50% 100%,0 55%);display:flex;align-items:center;justify-content:center}
+.btz .escudo span{display:flex;align-items:center;justify-content:center;width:58px;height:70px;margin-top:-3px;background:#4a1820;clip-path:polygon(0 0,100% 0,100% 55%,50% 100%,0 55%);font-family:'Cinzel',Georgia,serif!important;font-size:30px;font-weight:700;color:var(--oro2);padding-bottom:10px}
+.btz .tit{display:block;font-size:34px!important;font-weight:700;letter-spacing:.14em;color:var(--oro2)!important;line-height:1.15!important}
+.btz .sub{display:block;font-size:16px;color:#d6c6a6;margin-top:6px}
+.btz .lema{display:block;font-style:italic;font-size:17px;color:var(--txt2);margin-top:2px}
+.btz .sep{display:block;width:60%;height:1px;margin:18px auto;background:linear-gradient(90deg,transparent,var(--hilo),transparent)}
+
+/* Pestañas */
+.btz input[type=radio]{display:none!important}
+.btz .btz-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 22px}
+.btz .btz-nav label{cursor:pointer;padding:7px 14px;border:1px solid var(--hilo2);border-radius:3px;font-size:12px!important;letter-spacing:.12em;color:var(--txt2)!important;background:rgba(42,16,21,.7);transition:.2s}
+.btz .btz-nav label:hover{border-color:var(--oro);color:var(--oro2)!important}
+.btz .pan{display:none}
+#btz-t1:checked~.btz-nav label[for=btz-t1],#btz-t2:checked~.btz-nav label[for=btz-t2],#btz-t3:checked~.btz-nav label[for=btz-t3],#btz-t4:checked~.btz-nav label[for=btz-t4],#btz-t5:checked~.btz-nav label[for=btz-t5]{background:var(--oro);border-color:var(--oro);color:#2a1015!important}
+#btz-t1:checked~.btz-pans .p1,#btz-t2:checked~.btz-pans .p2,#btz-t3:checked~.btz-pans .p3,#btz-t4:checked~.btz-pans .p4,#btz-t5:checked~.btz-pans .p5{display:block}
+
+.btz .rama{display:block;font-size:17px!important;letter-spacing:.16em;color:var(--oro)!important;margin-bottom:4px}
+.btz .rama-sub{display:block;font-style:italic;color:var(--txt2);margin-bottom:18px}
+
+/* Pareja / generación */
+.btz .g{display:flex;align-items:center;justify-content:center;gap:0}
+.btz .p{flex:0 1 270px;min-height:118px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;background:var(--card);border:1px solid #9a7a44;border-radius:4px;box-shadow:inset 0 0 0 4px #2a1015,inset 0 0 0 5px #5c4526}
+.btz .p .n{display:block;font-size:14.5px!important;font-weight:600;letter-spacing:.04em;color:var(--oro2)!important;line-height:1.25!important}
+.btz .p .d{display:block;font-size:14px;color:var(--txt2);margin:3px 0 4px}
+.btz .p .e{display:block;font-size:15px;font-style:italic;line-height:1.3!important}
+.btz .p.h{background:var(--heir);border:2px solid var(--oro)}
+.btz .p.a{background:#42181f;border:3px double #f0cf85;box-shadow:0 0 0 4px #2a1015,0 0 0 5px var(--hilo)}
+.btz .p.a .n{font-size:15.5px!important;font-weight:700;color:#f3d892!important}
+.btz .p.ga{background:#2e1a24;border-color:var(--plata);box-shadow:inset 0 0 0 4px #24121a,inset 0 0 0 5px #6f7886}
+.btz .p.ga .n{color:#e4e9f0!important}.btz .p.ga .d{color:#b9c3d0}
+.btz .p.q{background:radial-gradient(circle at 38% 42%,#0c0505 0 22%,#3a1a10 34%,#1c0b0b 58%);border:1px dashed #6b4a2a;box-shadow:none;color:#b8a588}
+.btz .p.q .n{color:#8f7550!important}.btz .p.q .d{color:#9c8763}
+.btz .p.o{background:rgba(52,21,27,.5);border:2px dashed #8f7a5c;box-shadow:none;color:#d6c6a6}
+.btz .p.o .n{color:#d9bd86!important}
+
+/* Hilo de matrimonio con gema */
+.btz .m{flex:0 0 52px;position:relative;height:10px;border-top:2px solid var(--hilo);border-bottom:2px solid var(--hilo)}
+.btz .m:after{content:"";position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;background:var(--oro);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.btz .m.x{border-style:dashed;border-color:#8f7a5c}.btz .m.x:after{background:#6b5a40}
+.btz .m.pl:after{background:#dfe6ee}
+
+/* Hilos entre generaciones */
+.btz .c{position:relative;width:2px;height:40px;margin:0 auto;background:var(--hilo)}
+.btz .c.dot{height:64px;background:none;border-left:2px dotted var(--hilo);width:0}
+.btz .c span{position:absolute;left:12px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:13px;font-style:italic;color:var(--txt3)}
+.btz .nota{display:block;font-size:14px;font-style:italic;color:var(--txt3);margin:10px 0 0}
+
+/* Hermanos */
+.btz .hijos{display:block;font-size:13px;font-style:italic;color:var(--txt3);margin:4px 0 8px}
+.btz .her{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;padding-top:14px;margin-bottom:6px}
+.btz .her:before{content:"";position:absolute;top:0;left:22%;right:22%;border-top:2px solid var(--hilo)}
+.btz .her .p{flex:0 1 220px;min-height:118px}
+.btz .nota+.c,.btz .her+.nota{margin-top:10px}
+
+/* Extras */
+.btz .mini{display:inline-block;margin:12px auto 0;padding:8px 22px;border:1px solid var(--hilo2);border-radius:40px;background:var(--panel);font-size:14px}
+.btz .mini b{font-family:'Cinzel',Georgia,serif!important;color:var(--oro2);font-weight:600}
+.btz .lejos{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:16px}
+.btz .lejos .p{flex:0 1 270px}
+.btz .dos{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.btz .dos>div{flex:1 1 280px;max-width:330px}
+.btz .dos .g{flex-direction:column}
+.btz .dos .g .p{width:100%;flex:none}
+.btz .dos .g .m{flex:none;width:10px;height:34px;border:0;border-left:2px solid var(--hilo);border-right:2px solid var(--hilo)}
+
+/* Paneles del archivo */
+.btz .arch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;text-align:left}
+.btz .caja{padding:18px 20px;background:rgba(42,16,21,.85);border:1px solid var(--hilo2);border-radius:4px;font-size:16px;line-height:1.45!important}
+.btz .caja.ancha{grid-column:1/-1}
+.btz .caja .ph{display:block;font-size:12.5px!important;font-weight:600;letter-spacing:.14em;color:var(--oro)!important;margin-bottom:8px}
+.btz .caja .li{display:block;margin-bottom:5px}
+.btz .caja b{color:var(--oro2)}
+.btz .casas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 16px}
+.btz .ley .li i{display:inline-block;width:46px;vertical-align:middle;margin-right:8px}
+.btz .ley .k1{border-top:2px solid var(--hilo)}.btz .ley .k2{border-top:2px dotted var(--hilo)}
+.btz .ley .k3{height:8px;border-top:2px solid var(--hilo);border-bottom:2px solid var(--hilo)}
+.btz .ley .k4{height:8px;border-top:2px dashed #8f7a5c;border-bottom:2px dashed #8f7a5c}
+.btz .ley .k5{height:14px;border:2px solid var(--oro)}.btz .ley .k6{height:14px;border:2px dashed #8f7a5c}
+.btz .ley .k7{height:14px;background:radial-gradient(circle,#0c0505 0 30%,#3a1a10 60%,#1c0b0b)}
+
+.btz .pie{display:block;margin-top:26px;font-style:italic;color:var(--txt3);font-size:16px}
+
+@media (max-width:620px){
+  .btz{padding:26px 14px 20px!important}
+  .btz .g{flex-direction:column}
+  .btz .g .p{width:100%;flex:none}
+  .btz .g .m{flex:none;width:10px;height:30px;border:0;border-left:2px solid var(--hilo);border-right:2px solid var(--hilo)}
+  .btz .g .m.x{border-left-style:dashed;border-right-style:dashed}
+  .btz .arch,.btz .casas{grid-template-columns:minmax(0,1fr)}
+  .btz .tit{font-size:26px!important}
+}
