@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.tdp-box{
+  width:260px; margin:14px auto; padding:18px 12px 14px;
+  background:#fff4fa; text-align:center;
+  font-family:'Press Start 2P', monospace;
+  box-shadow:
+    0 -4px 0 0 #f7a8c8, 0 4px 0 0 #f7a8c8,
+    -4px 0 0 0 #f7a8c8, 4px 0 0 0 #f7a8c8,
+    0 8px 0 0 #cdb6f3, 4px 4px 0 0 #cdb6f3, 8px 0 0 0 #cdb6f3;
+}
+.tdp-mesa{display:flex; justify-content:center; gap:22px; height:56px; align-items:flex-end;}
+.tdp-slot{display:flex; flex-direction:column; align-items:center;}
+
+.tdp-dado{
+  width:30px; height:30px; background:#fff; position:relative;
+  box-shadow:0 -3px 0 0 #f48fb1, 0 3px 0 0 #f48fb1, -3px 0 0 0 #f48fb1, 3px 0 0 0 #f48fb1;
+  animation:tdp-roll 1.2s steps(3) infinite;
+}
+.tdp-dado::before{
+  content:""; position:absolute; left:4px; top:4px;
+  width:6px; height:6px; background:#f48fb1;
+  box-shadow:16px 0 #f48fb1, 0 16px #f48fb1, 16px 16px #f48fb1, 8px 8px #f48fb1;
+}
+.tdp-dado.tdp-lila{animation-delay:-.6s;
+  box-shadow:0 -3px 0 0 #b591e8, 0 3px 0 0 #b591e8, -3px 0 0 0 #b591e8, 3px 0 0 0 #b591e8;}
+.tdp-dado.tdp-lila::before{background:#b591e8;
+  box-shadow:16px 0 #b591e8, 0 16px #b591e8, 16px 16px #b591e8, 8px 8px #b591e8;}
+
+.tdp-sombra{width:28px; height:4px; margin-top:7px; background:#f3d3e6;
+  animation:tdp-sombra 1.2s steps(3) infinite;}
+.tdp-slot:last-child .tdp-sombra{animation-delay:-.6s;}
+
+.tdp-txt{margin-top:14px; font-size:10px; color:#a874c9;
+  text-shadow:2px 2px 0 #ffd6ea; white-space:nowrap;}
+.tdp-pts{display:inline-block; width:0; overflow:hidden; vertical-align:bottom;
+  animation:tdp-dots 1.6s steps(4) infinite;}
+.tdp-chispa{color:#9fe3cf; animation:tdp-blink 1s steps(2) infinite;}
+.tdp-chispa.tdp-b{animation-delay:-.5s; color:#f7a8c8;}
+
+@keyframes tdp-roll{
+  0%  {transform:translateY(0) rotate(0deg);}
+  25% {transform:translateY(-18px) rotate(90deg);}
+  50% {transform:translateY(0) rotate(180deg);}
+  75% {transform:translateY(-9px) rotate(270deg);}
+  100%{transform:translateY(0) rotate(360deg);}
+}
+@keyframes tdp-sombra{
+  0%,50%,100%{transform:scaleX(1); opacity:1;}
+  25%{transform:scaleX(.5); opacity:.5;}
+  75%{transform:scaleX(.75); opacity:.75;}
+}
+@keyframes tdp-dots{to{width:4ch;}}
+@keyframes tdp-blink{50%{opacity:0;}}
