@@ -1,0 +1,181 @@
+/* ─── ELIXIR VITALIS ─── */
+
+.ev-pocion {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  vertical-align: middle;
+  color: #a9c99b;
+  font-style: italic;
+}
+
+/* Espacio del vial */
+.ev-vial {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 42px;
+  pointer-events: none;
+}
+
+/* Corcho */
+.ev-vial::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 10px;
+  width: 8px;
+  height: 6px;
+  border: 1px solid #ad9165;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, #806345, #c3a373, #87694a);
+}
+
+/* Cuello de cristal */
+.ev-vial::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  left: 9px;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(220, 240, 222, 0.65);
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.03) 55%,
+    rgba(255, 255, 255, 0.15)
+  );
+}
+
+/* Cuerpo del frasco */
+.ev-cristal {
+  position: absolute;
+  z-index: 1;
+  left: 1px;
+  bottom: 0;
+  width: 26px;
+  height: 29px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(210, 235, 218, 0.7);
+  border-radius: 9px 9px 10px 10px;
+  background: rgba(190, 220, 200, 0.06);
+  box-shadow:
+    inset -3px 0 5px rgba(220, 245, 225, 0.12),
+    0 0 5px rgba(155, 195, 125, 0.15);
+  animation: ev-resplandor 6s ease-in-out infinite;
+}
+
+/* Reflejo del cristal */
+.ev-cristal::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  top: 4px;
+  bottom: 5px;
+  left: 4px;
+  width: 3px;
+  border-radius: 4px;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+/* Líquido */
+.ev-liquido {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  height: 23px;
+  border-radius: 45% 45% 0 0 / 4px 4px 0 0;
+  transform-origin: center bottom;
+  background: linear-gradient(
+    180deg,
+    #d4dfa1 0%,
+    #95bc78 20%,
+    #52885e 65%,
+    #315b46 100%
+  );
+  box-shadow: inset 0 2px 2px rgba(240, 236, 175, 0.5);
+  animation: ev-oleaje 4s ease-in-out infinite;
+}
+
+/* Burbujas dentro del líquido */
+.ev-liquido::before,
+.ev-liquido::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  width: 3px;
+  height: 3px;
+  box-sizing: border-box;
+  border: 1px solid rgba(237, 242, 190, 0.8);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ev-burbujas 3.8s ease-in infinite;
+}
+
+.ev-liquido::before {
+  left: 11px;
+}
+
+.ev-liquido::after {
+  left: 22px;
+  width: 2px;
+  height: 2px;
+  animation-delay: -1.9s;
+}
+
+@keyframes ev-oleaje {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(4deg) translateY(1px); }
+}
+
+@keyframes ev-burbujas {
+  0%, 10% {
+    opacity: 0;
+    transform: translateY(0) scale(0.7);
+  }
+  25% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-17px) scale(1.15);
+  }
+}
+
+@keyframes ev-resplandor {
+  0%, 100% {
+    box-shadow:
+      inset -3px 0 5px rgba(220, 245, 225, 0.12),
+      0 0 4px rgba(155, 195, 125, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset -3px 0 5px rgba(220, 245, 225, 0.2),
+      0 0 9px rgba(155, 195, 125, 0.4),
+      0 0 15px rgba(210, 195, 125, 0.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-pocion .ev-cristal,
+  .ev-pocion .ev-liquido,
+  .ev-pocion .ev-liquido::before,
+  .ev-pocion .ev-liquido::after {
+    animation: none;
+  }
+}
