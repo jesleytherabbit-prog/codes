@@ -353,3 +353,109 @@
     opacity: 0;
   }
 }
+/* ─── HERBIVICUS: CRECIMIENTO VEGETAL ─── */
+
+.hp-herbivicus {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  overflow: visible;
+  color: #96a78d;
+  font-style: italic;
+  animation: hp-herbivicus-brillo 7s ease-in-out infinite;
+}
+
+.hp-herbivicus::before,
+.hp-herbivicus::after {
+  content: "";
+  position: absolute;
+  width: 0.65em;
+  height: 1em;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 90% 0 90% 0;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 46%,
+      rgba(230, 239, 183, 0.7) 49%,
+      rgba(230, 239, 183, 0.7) 51%,
+      transparent 54%
+    ),
+    linear-gradient(135deg, #b8cc91, #64875e);
+  box-shadow: 0 0 5px rgba(166, 200, 129, 0.25);
+  transform-origin: bottom center;
+  animation: hp-herbivicus-brotar 7s ease-in-out infinite;
+}
+
+.hp-herbivicus::before {
+  left: -0.8em;
+  bottom: 0.05em;
+  --hoja-giro: -30deg;
+}
+
+.hp-herbivicus::after {
+  right: -0.8em;
+  bottom: 0.05em;
+  --hoja-giro: 30deg;
+  animation-delay: 0.45s;
+}
+
+@keyframes hp-herbivicus-brotar {
+  0%, 8% {
+    opacity: 0;
+    transform:
+      translateY(0.3em)
+      rotate(var(--hoja-giro))
+      scale(0.05);
+  }
+
+  30%, 60% {
+    opacity: 0.9;
+    transform:
+      translateY(0)
+      rotate(var(--hoja-giro))
+      scale(1);
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform:
+      translateY(-0.25em)
+      rotate(var(--hoja-giro))
+      scale(1.05);
+  }
+}
+
+@keyframes hp-herbivicus-brillo {
+  0%, 85%, 100% {
+    color: #96a78d;
+    text-shadow: none;
+  }
+
+  30%, 55% {
+    color: #d5e5bd;
+    text-shadow:
+      0 0 4px rgba(215, 235, 185, 0.7),
+      0 0 10px rgba(155, 195, 125, 0.45),
+      0 0 18px rgba(155, 195, 125, 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-herbivicus,
+  .hp-herbivicus::before,
+  .hp-herbivicus::after {
+    animation: none;
+  }
+
+  .hp-herbivicus {
+    text-shadow: 0 0 5px rgba(155, 195, 125, 0.35);
+  }
+
+  .hp-herbivicus::before,
+  .hp-herbivicus::after {
+    opacity: 0.65;
+    transform: rotate(var(--hoja-giro)) scale(0.8);
+  }
+}
