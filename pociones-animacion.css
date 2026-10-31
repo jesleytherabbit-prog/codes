@@ -179,3 +179,191 @@
     animation: none;
   }
 }
+/* ─── ESENCIA DE DÍCTAMO ─── */
+
+.ed-pocion {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  vertical-align: middle;
+  color: #b5bc8c;
+  font-style: italic;
+}
+
+.ed-vial {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 38px;
+  pointer-events: none;
+}
+
+/* Tapón */
+.ed-vial::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 9px;
+  width: 12px;
+  height: 6px;
+  box-sizing: border-box;
+  border: 1px solid #a68b5e;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #70573c, #b99a69, #70573c);
+}
+
+/* Cuello */
+.ed-vial::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  left: 10px;
+  width: 10px;
+  height: 7px;
+  box-sizing: border-box;
+  border: 1px solid rgba(228, 225, 189, 0.65);
+  border-bottom: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 247, 207, 0.25),
+    rgba(255, 247, 207, 0.04)
+  );
+}
+
+/* Frasco de boticario */
+.ed-cristal {
+  position: absolute;
+  left: 1px;
+  bottom: 0;
+  width: 28px;
+  height: 27px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(218, 222, 182, 0.7);
+  border-radius: 7px 7px 5px 5px;
+  background: rgba(185, 188, 135, 0.08);
+  box-shadow:
+    inset -3px 0 4px rgba(241, 231, 178, 0.12),
+    0 0 4px rgba(180, 190, 125, 0.15);
+}
+
+/* Reflejo del vidrio */
+.ed-cristal::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 4px;
+  bottom: 4px;
+  left: 3px;
+  width: 2px;
+  border-radius: 3px;
+  background: linear-gradient(
+    rgba(255, 250, 220, 0.6),
+    rgba(255, 250, 220, 0.04)
+  );
+}
+
+/* Hoja sobre el cristal */
+.ed-cristal::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 11px;
+  top: 9px;
+  width: 6px;
+  height: 9px;
+  border: 1px solid rgba(233, 226, 177, 0.6);
+  border-radius: 90% 0 90% 0;
+  background: rgba(66, 86, 49, 0.7);
+  transform: rotate(-20deg);
+}
+
+/* Esencia: tonos oliva y ámbar */
+.ed-liquido {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  height: 22px;
+  border-radius: 45% 45% 0 0 / 3px 3px 0 0;
+  transform-origin: bottom center;
+  background: linear-gradient(
+    180deg,
+    #d3cb8a,
+    #a6a465 25%,
+    #7d864b 60%,
+    #64633d
+  );
+  box-shadow: inset 0 2px 2px rgba(247, 226, 158, 0.55);
+  animation: ed-oleaje 5s ease-in-out infinite;
+}
+
+/* Reflejo cálido que atraviesa el líquido */
+.ed-liquido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(246, 224, 155, 0.3) 50%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  animation: ed-reflejo 7s ease-in-out infinite;
+}
+
+/* Una burbuja lenta */
+.ed-liquido::after {
+  content: "";
+  position: absolute;
+  left: 23px;
+  bottom: 5px;
+  width: 3px;
+  height: 3px;
+  box-sizing: border-box;
+  border: 1px solid rgba(241, 230, 177, 0.7);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ed-burbuja 6s ease-in infinite;
+}
+
+@keyframes ed-oleaje {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes ed-reflejo {
+  0%, 15% {
+    opacity: 0;
+    background-position: 100% 0;
+  }
+  45% { opacity: 0.8; }
+  75%, 100% {
+    opacity: 0;
+    background-position: 0% 0;
+  }
+}
+
+@keyframes ed-burbuja {
+  0%, 25% {
+    opacity: 0;
+    transform: translateY(0) scale(0.7);
+  }
+  40% { opacity: 0.6; }
+  80%, 100% {
+    opacity: 0;
+    transform: translateY(-15px) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-pocion .ed-liquido,
+  .ed-pocion .ed-liquido::before,
+  .ed-pocion .ed-liquido::after {
+    animation: none;
+  }
+}
