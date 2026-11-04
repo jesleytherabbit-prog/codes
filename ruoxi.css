@@ -1,0 +1,49 @@
+/* RuÃ²xÄ« Zhang Â· ficha de Avada Kedavra */
+.rx-sheet {
+  box-sizing: border-box;
+  width: 580px;
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 5px;
+  border: 3px double #b4cfc4;
+  background: linear-gradient(120deg,#052d24,#447765 42%,#092f27 72%);
+  color: #193d33;
+  font: 15px/1.55 Georgia,serif;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.rx-sheet *, .rx-sheet *::before, .rx-sheet *::after {box-sizing:border-box}
+.rx-head {
+  position:relative; isolation:isolate; overflow:hidden; aspect-ratio:2.4;
+  display:flex; align-items:center; justify-content:flex-end;
+  background:#0a372b url("seda.webp") center/cover;
+  color:#f0f5e9; text-align:center;
+}
+.rx-portrait {position:absolute; inset:3% auto 0 3%; width:39%; height:98%; background:url("retrato.png") center bottom/contain no-repeat}
+.rx-name {position:relative;width:49%; margin-right:6%; text-shadow:0 2px 5px #082a20; line-height:1.25}
+.rx-name strong {display:block;font:clamp(24px,5vw,44px)/1.25 serif;letter-spacing:.08em}
+.rx-name em {display:block;font-size:clamp(16px,3.4vw,26px)}
+.rx-kicker,.rx-title {font:600 10px/1.5 Georgia,serif;letter-spacing:.18em;text-transform:uppercase}
+.rx-title {display:block;margin-top:6px}
+.rx-charm {position:absolute;right:2%;top:0;width:12px;height:44%;border-left:1px solid #c0d8c9;transform-origin:top left;animation:rx-sway 5s ease-in-out infinite alternate}
+.rx-charm::after {content:"";position:absolute;bottom:0;left:-7px;width:14px;height:21px;border:2px double silver;border-radius:50%;background:radial-gradient(at 30% 25%,#e0fff2,#77b79b,#1d634d);box-shadow:0 8px 0 -4px #7caa96}
+.rx-spark {position:absolute;left:48%;top:24%;color:white;animation:rx-glint 5s ease-in-out infinite}
+.rx-sheet blockquote {margin:0;padding:12px;text-align:center;background:#143e32;color:#e2f1e6;font-style:italic}
+.rx-panel {padding:16px clamp(12px,4%,24px) 20px;background:linear-gradient(115deg,#f5f5eb,#e1eee3);border:1px solid #9bb5a6;margin-top:5px}
+.rx-sheet h2 {margin:0 0 12px;padding:0 0 8px;color:#174c3a;border-bottom:1px solid #9fb7a8;font:small-caps 600 22px/1.2 Georgia,serif}
+.rx-row {padding:4px 0;border-bottom:1px solid #b6c8bc70}
+.rx-row b {color:#235c47}
+.rx-sheet details {margin:5px 0;border:1px solid #abbdaf;background:#ffffff48}
+.rx-sheet summary {cursor:pointer;padding:6px 12px;color:#204d3c;font-weight:bold}
+.rx-sheet summary:focus-visible {outline:2px solid #236850;outline-offset:1px}
+.rx-sheet details[open] summary {background:#d1e4d8}
+.rx-inner {padding:5px 12px 10px}
+.rx-second {min-height:110px;display:flex;align-items:center;justify-content:center;gap:20px;background:radial-gradient(ellipse at 75% 95%,#477964,#0b352b 65%);color:#eff6ef}
+.rx-second strong {display:block;font:italic 26px Georgia,serif}
+.rx-locket {width:44px;height:38px;border-radius:50%;border:3px double silver;background:radial-gradient(#c7ffeb,#488c75);text-align:center;line-height:32px;color:white;position:relative}
+.rx-locket::after {content:"â–";position:absolute;inset:-2px;border-radius:50%;border:3px double silver;background:radial-gradient(at 35% 25%,#bbebd1,#36745f);transform-origin:center top;animation:rx-open 7s ease-in-out infinite}
+.rx-sheet footer {padding:8px;text-align:center;color:#e4efe4;font:10px/1.4 Georgia,serif;letter-spacing:.1em}
+@keyframes rx-open {0%,28%,100%{transform:perspective(90px) rotateX(0)}55%,80%{transform:perspective(90px) rotateX(130deg)}}
+@keyframes rx-sway {from{transform:rotate(-3deg)}to{transform:rotate(4deg)}}
+@keyframes rx-glint {0%,45%,80%,100%{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.rx-sheet *,.rx-sheet *::after{animation:none!important}}
