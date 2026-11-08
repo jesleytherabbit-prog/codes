@@ -8,7 +8,7 @@
   position:relative; isolation:isolate; overflow:hidden;
   width:500px; max-width:100%; margin:14px auto; padding:16px 18px 12px;
   box-sizing:border-box; border-radius:24px;
-  font-family:'Cormorant Garamond',Georgia,serif; color:var(--ink);
+  font-family:'Cormorant Garamond',Georgia,serif; font-size:14px; line-height:1.35; color:var(--ink);
   background:
     radial-gradient(ellipse at 15% 0%,rgba(214,166,185,.45),transparent 55%),
     radial-gradient(ellipse at 100% 100%,rgba(141,155,203,.5),transparent 60%),
@@ -97,7 +97,10 @@
 #crn-p2{--tone:#8D84A8; --tone2:var(--c2);}
 #crn-p3{--tone:#B8955A; --tone2:var(--f3);}
 
-.crn-ley{margin:0 0 8px; text-align:center; font-family:'Bodoni Moda',serif; font-style:italic; font-size:13px; color:var(--a2);}
+/* !important: el foro les impone su propia fuente y tamaño a los <p>, enlaces y <em> */
+.crn .crn-p p.crn-ley{margin:0 0 8px !important; padding:0 !important; text-align:center !important; text-indent:0 !important;
+  font-family:'Bodoni Moda',serif !important; font-style:italic !important; font-weight:400 !important;
+  font-size:13px !important; line-height:1.4 !important; letter-spacing:normal !important; color:var(--a2) !important;}
 .crn-ley::before,.crn-ley::after{content:" ˚ ✧ ˚ "; color:var(--a3);}
 
 /* línea de tiempo */
@@ -116,14 +119,14 @@
   border:1px solid #fff; box-shadow:0 0 6px var(--tone2);}
 .crn-r:hover{transform:translateX(3px); box-shadow:0 0 0 2px rgba(214,166,185,.35),0 4px 12px -6px rgba(95,80,123,.6);}
 .crn-r:hover::before{animation:cnGem 1s ease-in-out infinite;}
-.crn-r a{flex:1 1 100%; font-family:'DM Serif Display',serif; font-size:16.5px; line-height:1.2;
+.crn .crn-r a{flex:1 1 100%; font-family:'DM Serif Display',serif !important; font-weight:400 !important; font-style:normal !important; font-size:16.5px !important; line-height:1.2 !important;
   color:var(--m1) !important; text-decoration:none !important;}
-.crn-r a:hover{color:var(--tone) !important;}
-.crn-r > span{font-size:14.5px; font-weight:600;}
+.crn .crn-r a:hover{color:var(--tone) !important;}
+.crn .crn-r > span{font-family:'Cormorant Garamond',Georgia,serif !important; font-size:14.5px !important; font-weight:600 !important; line-height:1.3 !important;}
 .crn-r > span::before{content:"♡ "; color:var(--f1); font-weight:400;}
 .crn-r em{margin-left:auto; padding:0 9px; border-radius:20px; font-style:normal;
-  font-family:'Playfair Display',serif; font-size:10px; letter-spacing:1px; text-transform:uppercase; line-height:1.8;
-  color:#fff; background:linear-gradient(110deg,var(--tone),var(--tone2));}
+  font-family:'Playfair Display',serif !important; font-weight:400 !important; font-size:10px !important; letter-spacing:1px !important; text-transform:uppercase; line-height:1.8 !important;
+  color:#fff !important; background:linear-gradient(110deg,var(--tone),var(--tone2));}
 .crn-empty{padding:16px 0 10px; text-align:center; font-family:'Bodoni Moda',serif; font-style:italic; font-size:14px; color:var(--a2);}
 .crn-empty::before{content:"☾"; display:block; font-size:20px; color:var(--a3); animation:cnMoon 4s ease-in-out infinite;}
 
@@ -175,7 +178,7 @@
   background:linear-gradient(90deg,var(--tone2),transparent);}
 
 /* lugar del rol / materia */
-.crn-r small{font-family:'Bodoni Moda',serif; font-style:italic; font-size:12.5px; color:var(--a2);}
+.crn .crn-r small{font-family:'Bodoni Moda',serif !important; font-style:italic !important; font-size:12.5px !important; color:var(--a2) !important;}
 .crn-r small::before{content:"⌂ "; font-style:normal; color:var(--a3);}
 #crn-p5 .crn-r small::before{content:"✎ ";}
 
