@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Pinyon+Script&display=swap');
+
+/* ════════════════════════════════════════════
+   LECHUCERÍA · Dark Academia
+   Todo empieza por .lch para no chocar con el foro
+   ════════════════════════════════════════════ */
+
+.lch {
+  /* ── Paleta (cámbiala aquí y cambia todo) ── */
+  --tinta:   #0D0D0D;
+  --bronce:  #5B4636;
+  --nogal:   #4B2E19;
+  --avena:   #B49A83;
+  --umbra:   #7E3E28;
+  --noche:   #2C3E50;
+  --oliva:   #5E6253;
+  --ciruela: #5A3D55;
+  --ceniza:  #A49C92;
+  --pergamino: #E3D3BC;
+
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 30px auto;
+  padding: 46px 0 22px;
+  overflow: hidden;
+  /* cielo nocturno + estrellas fijas */
+  background:
+    radial-gradient(1px 1px at 12% 18%, rgba(227,211,188,.8), transparent 60%),
+    radial-gradient(1px 1px at 82% 12%, rgba(227,211,188,.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 68% 30%, rgba(227,211,188,.6), transparent 60%),
+    radial-gradient(1px 1px at 26% 40%, rgba(227,211,188,.5), transparent 60%),
+    radial-gradient(1px 1px at 92% 46%, rgba(227,211,188,.5), transparent 60%),
+    radial-gradient(ellipse 90% 55% at 50% 0%, rgba(44,62,80,.95), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 100%, rgba(90,61,85,.35), transparent 70%),
+    linear-gradient(180deg, #1c2733 0%, #121417 45%, var(--tinta) 100%);
+  /* arco gótico arriba */
+  border-radius: 290px 290px 10px 10px / 130px 130px 10px 10px;
+  border: 1px solid var(--bronce);
+  box-shadow:
+    0 0 0 5px var(--tinta),
+    0 0 0 6px rgba(126,62,40,.55),
+    0 18px 40px rgba(0,0,0,.6);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--pergamino);
+  text-align: left;
+}
+.lch *, .lch *::before, .lch *::after { box-sizing: border-box; }
+.lch br { display: none; }               /* evita saltos que mete el foro */
+.lch .lch-descripcion br { display: inline; }
+
+/* estrellas que titilan */
+.lch::before,
+.lch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1.5px 1.5px at 20% 10%, #fff, transparent 70%),
+    radial-gradient(1px 1px at 40% 22%, #fff, transparent 70%),
+    radial-gradient(1.5px 1.5px at 75% 22%, #fff, transparent 70%),
+    radial-gradient(1px 1px at 58% 8%, #fff, transparent 70%),
+    radial-gradient(1px 1px at 8% 32%, #fff, transparent 70%);
+  animation: lch-titilar 4s ease-in-out infinite;
+  opacity: .3;
+}
+.lch::after {
+  background:
+    radial-gradient(1px 1px at 30% 14%, #fff, transparent 70%),
+    radial-gradient(1.5px 1.5px at 88% 30%, #fff, transparent 70%),
+    radial-gradient(1px 1px at 50% 34%, #fff, transparent 70%),
+    radial-gradient(1px 1px at 15% 24%, #fff, transparent 70%);
+  animation-delay: 2s;
+}
+@keyframes lch-titilar { 0%,100% { opacity: .15; } 50% { opacity: .9; } }
+
+/* ── Cabecera ── */
+.lch-cabecera { position: relative; z-index: 1; text-align: center; padding: 0 30px; }
+
+.lch-luna {
+  display: block;
+  width: 40px; height: 40px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  box-shadow: inset -9px 3px 0 0 var(--pergamino);
+  transform: rotate(-20deg);
+  filter: drop-shadow(0 0 8px rgba(227,211,188,.55));
+  animation: lch-brillo 5s ease-in-out infinite;
+}
+@keyframes lch-brillo {
+  0%,100% { filter: drop-shadow(0 0 6px rgba(227,211,188,.4)); }
+  50%     { filter: drop-shadow(0 0 14px rgba(227,211,188,.8)); }
+}
+
+.lch-sub {
+  font: italic 15px 'Cormorant Garamond', serif;
+  color: var(--ceniza);
+  letter-spacing: 2px;
+  margin: 0;
+}
+.lch-titulo {
+  font: 600 32px 'Cinzel', serif;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: var(--avena);
+  text-shadow: 0 0 18px rgba(180,154,131,.35), 0 2px 0 var(--tinta);
+  margin: 2px 0 4px;
+  line-height: 1.1;
+}
+.lch-ornamento {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  color: var(--avena); font-size: 12px;
+  margin: 6px auto 4px;
+}
+.lch-ornamento::before,
+.lch-ornamento::after {
+  content: ""; height: 1px; width: 110px;
+  background: linear-gradient(90deg, transparent, var(--bronce), var(--avena));
+}
+.lch-ornamento::after { background: linear-gradient(90deg, var(--avena), var(--bronce), transparent); }
+
+.lch-registro {
+  font: 10px 'Cinzel', serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--oliva);
+  margin: 0 0 24px;
+}
+
+/* ── Cuerpo: ventana + ficha ── */
+.lch-cuerpo {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 196px 1fr;
+  gap: 28px;
+  padding: 0 36px;
+  align-items: center;
+}
+
+/* ventana en arco con la lechuza */
+.lch-ventana {
+  position: relative;
+  width: 196px; height: 250px;
+  border-radius: 98px 98px 4px 4px;
+  border: 2px solid var(--bronce);
+  box-shadow: 0 0 0 5px var(--tinta), 0 0 0 6px var(--umbra), 0 10px 25px rgba(0,0,0,.7);
+  background: radial-gradient(ellipse at 50% 30%, var(--noche), var(--tinta));
+  overflow: hidden;
+  transition: box-shadow .5s;
+}
+.lch-ventana::before {               /* texto si aún no hay imagen */
+  content: "✦ tu lechuza aquí ✦";
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: italic 14px 'Cormorant Garamond', serif;
+  color: var(--ceniza);
+}
+.lch-ventana img {
+  position: relative;
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: sepia(.25) saturate(.85);
+  transition: filter .6s, transform .6s;
+}
+.lch-ventana::after {                /* viñeta + parteluz */
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 35px rgba(0,0,0,.85);
+  background: linear-gradient(90deg, transparent calc(50% - .5px), rgba(91,70,54,.35) 50%, transparent calc(50% + .5px));
+  pointer-events: none;
+}
+.lch-ventana:hover { box-shadow: 0 0 0 5px var(--tinta), 0 0 0 6px var(--avena), 0 0 30px rgba(180,154,131,.35); }
+.lch-ventana:hover img { filter: sepia(0) saturate(1); transform: scale(1.04); }
+
+/* ficha */
+.lch-nombre {
+  font: 600 25px 'Cinzel', serif;
+  color: var(--pergamino);
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.15;
+}
+.lch-mote {
+  font: italic 16px 'Cormorant Garamond', serif;
+  color: var(--avena);
+  margin: 2px 0 14px;
+}
+.lch-datos { list-style: none; margin: 0; padding: 0; }
+.lch-datos li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px dotted rgba(180,154,131,.28);
+  margin: 0;
+}
+.lch-datos li:last-child { border-bottom: 0; }
+.lch-datos span {
+  font: 10px 'Cinzel', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ceniza);
+  white-space: nowrap;
+}
+.lch-datos b {
+  font: 600 16px 'Cormorant Garamond', serif;
+  color: var(--pergamino);
+  text-align: right;
+}
+
+/* ── Separador ── */
+.lch-separador {
+  position: relative; z-index: 1;
+  text-align: center;
+  color: var(--avena);
+  font-size: 22px;
+  margin: 20px 0 12px;
+  text-shadow: 0 0 10px rgba(180,154,131,.5);
+}
+
+/* ── Descripción ── */
+.lch-descripcion {
+  position: relative; z-index: 1;
+  margin: 0 36px;
+  padding: 18px 22px;
+  max-height: 170px;
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(13,13,13,.65), rgba(75,46,25,.25));
+  border: 1px solid rgba(91,70,54,.8);
+  outline: 1px solid rgba(13,13,13,.9);
+  outline-offset: 3px;
+  border-radius: 3px;
+  font: 16px/1.6 'Cormorant Garamond', serif;
+  color: #cfc2b0;
+  text-align: justify;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bronce) transparent;
+}
+.lch-descripcion::-webkit-scrollbar { width: 5px; }
+.lch-descripcion::-webkit-scrollbar-thumb { background: var(--bronce); border-radius: 5px; }
+.lch-descripcion p { margin: 0 0 10px; }
+.lch-descripcion p:last-child { margin: 0; }
+.lch-descripcion::first-letter {
+  font: 600 30px/1 'Cinzel', serif;
+  color: var(--avena);
+  float: left;
+  margin: 3px 6px 0 0;
+}
+
+/* ── Pie ── */
+.lch-pie {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-top: 20px;
+  font: 10px 'Cinzel', serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--oliva);
+}
+.lch-sello {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 48% 52% 50% 46% / 50% 46% 54% 50%;
+  background: radial-gradient(circle at 35% 30%, #7d5677, var(--ciruela) 55%, #33212f);
+  box-shadow: 0 2px 5px rgba(0,0,0,.6), inset 0 0 0 3px rgba(0,0,0,.15);
+  font: 700 14px 'Cinzel', serif;
+  color: var(--avena);
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.6);
+}
+
+/* ── Pantallas pequeñas ── */
+@media (max-width: 560px) {
+  .lch { border-radius: 200px 200px 10px 10px / 90px 90px 10px 10px; }
+  .lch-cuerpo { grid-template-columns: 1fr; justify-items: center; padding: 0 22px; }
+  .lch-ficha { width: 100%; }
+  .lch-nombre, .lch-mote { text-align: center; }
+  .lch-descripcion { margin: 0 22px; }
+}
+
+/* ── Créditos ── */
+.lch-credito {
+  position: relative; z-index: 1;
+  margin-top: 12px;
+  text-align: center;
+  font: italic 12px 'Cormorant Garamond', serif;
+  color: var(--oliva);
+  letter-spacing: 1px;
+}
+.lch-credito a,
+.lch-credito a:visited {
+  font: 9px 'Cinzel', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ceniza);
+  text-decoration: none;
+  transition: color .3s, text-shadow .3s;
+}
+.lch-credito a:hover { color: var(--avena); text-shadow: 0 0 8px rgba(180,154,131,.5); }
