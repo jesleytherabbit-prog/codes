@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Pinyon+Script&display=swap');
+
+/* ════════════════════════════════════════════
+   CARTA EN SOBRE · Dark Academia
+   Se abre al pulsar el sobre (sin JavaScript).
+   Todo empieza por .crt para no chocar con el foro
+   ════════════════════════════════════════════ */
+
 .crt {
   /* ── Paleta ── */
   --tinta:   #0D0D0D;
@@ -256,6 +263,25 @@
   color: var(--ceniza);
 }
 .crt-pista::before { content: "✦  Pulsa el lacre para abrir  ✦"; }
+
+/* créditos */
+.crt-credito {
+  margin-top: 6px;
+  text-align: center;
+  font: italic 11px 'Cormorant Garamond', serif;
+  color: var(--oliva);
+  letter-spacing: 1px;
+}
+.crt-credito a,
+.crt-credito a:visited {
+  font: 8px 'Cinzel', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ceniza);
+  text-decoration: none;
+  transition: color .3s, text-shadow .3s;
+}
+.crt-credito a:hover { color: var(--avena); text-shadow: 0 0 8px rgba(180,154,131,.5); }
 
 /* ════ ABIERTA ════ */
 .crt:has(.crt-abrir:checked) .crt-solapa {
