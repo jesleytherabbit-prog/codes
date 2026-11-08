@@ -27,6 +27,8 @@
   border-radius: 26px;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
   color: var(--carbon);
   text-align: left;
   /* marco de vidrio iridiscente */
@@ -193,12 +195,19 @@
   color: var(--rosa);
   text-shadow: 0 0 10px rgba(214,166,185,.7);
 }
-.rhp-intro {
-  margin: 10px 0 0;
+/* los <p> llevan !important porque el foro les impone su propia fuente y tamaño */
+.rhp .rhp-in p.rhp-intro {
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
   max-width: 330px;
-  font-size: 10.5px;
-  line-height: 1.6;
-  color: rgba(237,228,235,.88);
+  font-family: 'Montserrat', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 10.5px !important;
+  line-height: 1.6 !important;
+  letter-spacing: normal !important;
+  text-indent: 0 !important;
+  color: rgba(237,228,235,.88) !important;
 }
 
 /* ───────── MARIPOSAS DE CRISTAL ───────── */
@@ -418,6 +427,7 @@
   border-radius: 999px;
   font-size: 8.5px;
   font-weight: 600;
+  line-height: 1.4;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: #fff;
@@ -433,19 +443,31 @@
 .rhp-af.af4::before { content: "✦✦✦✦✧"; }
 .rhp-af.af5::before { content: "✦✦✦✦✦"; }
 
-.rhp-cita {
-  margin: 5px 0 3px;
-  font-family: 'Allura', cursive;
-  font-size: 17px;
-  line-height: 1.05;
-  color: var(--amatista);
+.rhp .rhp-in p.rhp-cita {
+  margin: 5px 0 3px !important;
+  padding: 0 !important;
+  font-family: 'Allura', cursive !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 1.05 !important;
+  letter-spacing: normal !important;
+  text-indent: 0 !important;
+  color: var(--amatista) !important;
 }
-.rhp-desc {
-  margin: 0;
-  font-size: 10px;
-  line-height: 1.55;
-  color: #4A3D45;
-  text-align: justify;
+.rhp .rhp-in p.rhp-desc {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+  letter-spacing: normal !important;
+  text-indent: 0 !important;
+  color: #4A3D45 !important;
+  text-align: justify !important;
+  hyphens: auto;
 }
 
 /* ───────── PIE ───────── */
@@ -454,8 +476,8 @@
   z-index: 2;
   padding: 12px 20px 16px;
   text-align: center;
-  font-family: 'Allura', cursive;
-  font-size: 21px;
+  font-family: 'Allura', cursive !important;
+  font-size: 21px !important;
   color: var(--rosapolvo);
 }
 .rhp-pie::before,
