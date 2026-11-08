@@ -1,0 +1,99 @@
+/* ===== Firma hover · Woojin Moon ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@600;700&display=swap');
+
+.fwj{position:relative;width:500px;height:200px;margin:0 auto;overflow:hidden;line-height:1;text-align:left;
+  font-family:'Cormorant Garamond',Georgia,serif;--oro:#e6cf98;--bronce:#b08a4e;--iris:#a6e0d6;--ambar:#f2c46e}
+.fwc b,.fwp b{font-variant-numeric:lining-nums}
+.fwj img{display:block;width:500px;height:200px;max-width:none;border:0;margin:0;padding:0}
+
+/* --- sello antiplagas: anillos que se expanden desde la ventana --- */
+.fwj::after{content:"";position:absolute;left:232px;top:38px;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;
+  border:1.5px solid var(--oro);outline:1px solid rgba(166,224,214,.55);outline-offset:7px;
+  box-shadow:0 0 12px rgba(230,207,152,.6),inset 0 0 10px rgba(230,207,152,.4);
+  opacity:0;transform:scale(.2);pointer-events:none;z-index:4}
+.fwj:hover::after{animation:fwSello 2s ease-out infinite}
+@keyframes fwSello{0%{opacity:0;transform:scale(.2)}25%{opacity:1}100%{opacity:0;transform:scale(2.8)}}
+
+/* --- enjambre que huye girando --- */
+.fwj::before{content:"";position:absolute;left:232px;top:38px;width:3px;height:3px;border-radius:50%;background:var(--oro);
+  opacity:0;pointer-events:none;z-index:4;
+  box-shadow:-22px -8px 1px 0 #fff,-30px 12px 0 0 var(--iris),-14px 22px 1px 0 var(--oro),18px 20px 0 1px var(--bronce),
+    26px -6px 1px 0 #fff,8px 28px 0 0 var(--iris),-34px -2px 0 0 var(--bronce),30px 10px 1px 0 var(--oro),
+    -6px -16px 0 0 var(--iris),14px -14px 1px 0 #fff,-24px 30px 0 0 var(--bronce),36px 26px 0 0 var(--iris),
+    -40px 20px 1px 0 var(--oro),2px 36px 0 1px #fff,22px 34px 1px 0 var(--bronce),-12px 8px 0 0 var(--iris)}
+.fwj:hover::before{animation:fwEnjambre 2.4s .15s ease-out infinite}
+@keyframes fwEnjambre{0%{opacity:0;transform:scale(.2) rotate(0)}15%{opacity:1}100%{opacity:0;transform:scale(2.6) rotate(60deg)}}
+
+/* --- paneles (se abren desde el centro hacia afuera) --- */
+.fwc,.fwp{position:absolute;top:8px;width:178px;height:184px;box-sizing:border-box;padding:28px 12px 8px;z-index:3;
+  background:linear-gradient(160deg,rgba(12,11,9,.94),rgba(40,31,20,.88));
+  border:1px solid rgba(230,207,152,.5);border-radius:6px;color:var(--oro);opacity:0;pointer-events:none;
+  box-shadow:0 0 14px rgba(214,180,110,.3),inset 0 0 18px rgba(176,138,78,.18);
+  transition:clip-path .3s ease-in,opacity .3s}
+.fwc{left:8px;clip-path:inset(0 0 0 100% round 6px)}
+.fwp{right:8px;clip-path:inset(0 100% 0 0 round 6px);display:flex;justify-content:space-around;align-items:flex-start;padding-top:40px}
+.fwj:hover .fwc,.fwj:hover .fwp{opacity:1;clip-path:inset(0 0 0 0 round 6px);
+  transition:clip-path .6s .25s cubic-bezier(.6,0,.2,1),opacity .15s .25s}
+
+/* títulos de los paneles, con línea dorada a los lados */
+.fwc::before,.fwp::before{position:absolute;top:8px;left:0;right:0;text-align:center;
+  font:700 12px/1 'Cinzel',serif;letter-spacing:3px;text-transform:uppercase;color:var(--oro);
+  text-shadow:0 0 6px rgba(230,207,152,.6);
+  background:linear-gradient(90deg,transparent 8%,rgba(230,207,152,.55) 8% 28%,transparent 28% 72%,rgba(230,207,152,.55) 72% 92%,transparent 92%) no-repeat center/100% 1px}
+.fwc::before{content:"Combate"}
+.fwp::before{content:"Magia"}
+
+/* brillo que barre el panel de combate */
+.fwc::after{content:"";position:absolute;inset:0;border-radius:6px;pointer-events:none;
+  background:linear-gradient(100deg,transparent 40%,rgba(255,240,210,.18) 50%,transparent 60%);background-size:260% 100%;background-position:160% 0}
+.fwj:hover .fwc::after{animation:fwBarrido 1.4s .8s ease-in-out forwards}
+@keyframes fwBarrido{to{background-position:-60% 0}}
+
+/* --- filas de combate --- */
+.fwc b{display:flex;justify-content:space-between;align-items:center;height:16px;padding:0 2px;
+  border-bottom:1px dotted rgba(230,207,152,.25);font-size:13px;font-weight:700;color:#fff;
+  text-shadow:0 0 5px rgba(230,207,152,.6);opacity:0;transform:translateX(10px)}
+.fwc b::before{font-size:12px;font-weight:600;color:var(--oro);letter-spacing:.3px;text-shadow:none}
+.fwc b:nth-child(1)::before{content:"Iniciativa"}
+.fwc b:nth-child(2)::before{content:"Ataque F\00ED sico"}
+.fwc b:nth-child(3)::before{content:"Lucha F\00ED sica"}
+.fwc b:nth-child(4)::before{content:"Ataque M\00E1 gico"}
+.fwc b:nth-child(5)::before{content:"Lucha M\00E1 gica"}
+.fwc b:nth-child(6)::before{content:"Defensa"}
+.fwc b:nth-child(7)::before{content:"PAs"}
+.fwc b:nth-child(8)::before{content:"Umbral de heridas"}
+.fwc b:nth-child(9)::before{content:"Heridas"}
+.fwc b:nth-child(2),.fwc b:nth-child(3){color:var(--ambar)}
+.fwj:hover .fwc b{animation:fwFila .35s ease-out forwards}
+.fwc b:nth-child(1){animation-delay:.6s!important}
+.fwc b:nth-child(2){animation-delay:.67s!important}
+.fwc b:nth-child(3){animation-delay:.74s!important}
+.fwc b:nth-child(4){animation-delay:.81s!important}
+.fwc b:nth-child(5){animation-delay:.88s!important}
+.fwc b:nth-child(6){animation-delay:.95s!important}
+.fwc b:nth-child(7){animation-delay:1.02s!important}
+.fwc b:nth-child(8){animation-delay:1.09s!important}
+.fwc b:nth-child(9){animation-delay:1.16s!important}
+@keyframes fwFila{to{opacity:1;transform:none}}
+
+/* --- gemas de magia --- */
+.fwp b{position:relative;width:44px;height:44px;border-radius:50%;text-align:center;font:700 21px/44px 'Cormorant Garamond',serif;color:#fff;
+  background:radial-gradient(circle at 35% 30%,#fff 0 6%,#c8f1ea 18%,#3f8f88 62%,#163b3a 100%);
+  box-shadow:0 0 10px rgba(166,224,214,.55),inset 0 0 6px rgba(255,255,255,.5);border:1px solid rgba(230,207,152,.7);
+  text-shadow:0 1px 3px rgba(0,0,0,.8);opacity:0;transform:scale(0)}
+.fwp b:nth-child(2){background:radial-gradient(circle at 35% 30%,#fff 0 6%,#f1d9b0 18%,#9a6b34 62%,#3d2610 100%);box-shadow:0 0 10px rgba(214,170,110,.6),inset 0 0 6px rgba(255,255,255,.5)}
+.fwp b:nth-child(3){background:radial-gradient(circle at 35% 30%,#fff 0 6%,#fff1c4 18%,#d1a849 62%,#6b4f17 100%);box-shadow:0 0 10px rgba(255,225,150,.7),inset 0 0 6px rgba(255,255,255,.5)}
+.fwp b::after{position:absolute;top:52px;left:-14px;right:-14px;font:600 12px/1.1 'Cormorant Garamond',serif;color:var(--oro);text-shadow:none}
+.fwp b:nth-child(1)::after{content:"Pociones"}
+.fwp b:nth-child(2)::after{content:"Rituales"}
+.fwp b:nth-child(3)::after{content:"Destino"}
+.fwj:hover .fwp b{animation:fwGema .5s cubic-bezier(.3,1.6,.5,1) forwards,fwFlota 3s ease-in-out infinite}
+.fwp b:nth-child(1){animation-delay:.7s,1.2s!important}
+.fwp b:nth-child(2){animation-delay:.82s,1.5s!important}
+.fwp b:nth-child(3){animation-delay:.94s,1.8s!important}
+@keyframes fwGema{to{opacity:1;transform:scale(1)}}
+@keyframes fwFlota{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* pie del panel de magia */
+.fwp::after{content:"Controlador de Plagas";white-space:nowrap;position:absolute;left:0;right:0;bottom:14px;text-align:center;
+  font:500 9.5px/1 'Cinzel',serif;letter-spacing:1px;text-transform:uppercase;color:var(--oro);opacity:.85}
