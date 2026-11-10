@@ -1,0 +1,70 @@
+/* =========================================================
+   CORAZÓN DE BRUJA · Especial Confesionario
+   Importa el CSS base de la revista y ajusta las fotos de los
+   concursantes (sprites de cuerpo entero, proporción 1:2).
+   ========================================================= */
+@import url('https://cdn.jsdelivr.net/gh/jesleytherabbit-prog/codes@main/magic-chef-corazon.css');
+
+/* Portada: alineación de los 12 concursantes (4 columnas x 3 filas) */
+.cdb .cdb-cv-main .cdb-lineup {
+  position: absolute !important;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  padding: 6px 6px 68px;
+  background: linear-gradient(170deg, #FFE3EC 0%, #FFD7E4 60%, #FFF1F5 100%);
+}
+.cdb .cdb-cv-main .cdb-lineup img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain !important;
+  object-position: center bottom !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Minis de la portada: se ve la cara (parte de arriba del sprite) */
+.cdb .cdb-mini img {
+  width: 74px !important;
+  height: 92px !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  background: #fff;
+}
+
+/* Polaroids de página */
+.cdb .cdb-pola img {
+  width: 100% !important;
+  max-width: none !important;
+  aspect-ratio: 3 / 4;
+  object-fit: cover !important;
+  object-position: center 8% !important;
+}
+
+/* Miniaturas en la tabla de cintas */
+.cdb .cdb-th {
+  float: left;
+  display: block;
+  width: 38px !important;
+  height: 58px !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  margin: 0 8px 2px 0 !important;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 8px rgba(90, 10, 40, 0.25);
+  background: #fff;
+  transform: rotate(-3deg);
+}
+
+@media (max-width: 600px) {
+  .cdb .cdb-cv-main .cdb-lineup { padding-bottom: 78px; }
+}
