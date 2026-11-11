@@ -8,7 +8,8 @@
   border:1px solid rgba(243,227,184,.6);border-radius:6px;
   box-shadow:0 0 16px rgba(190,240,150,.28),0 6px 18px rgba(0,0,0,.55)}
 .nhp br{display:none}
-.nhp p{margin:0}
+/* el foro fuerza Verdana en los <p> (.content p): se pisa aquí */
+.nhp p{margin:0;font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:600!important;font-style:normal!important}
 
 /* --- esquina doblada --- */
 .nhp::after{content:"";position:absolute;top:0;right:0;width:28px;height:28px;z-index:3;
@@ -19,19 +20,19 @@
   background:linear-gradient(160deg,#102816,#203e20);border-bottom:2px solid var(--oro)}
 .nhp-head::after{content:"";position:absolute;left:36px;right:36px;bottom:6px;height:1px;
   background:linear-gradient(90deg,transparent,rgba(243,227,184,.8),transparent)}
-.nhp-sub{display:block;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--menta)}
+.nhp-sub{display:block;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--menta)}
 .nhp-tit{display:block;margin-top:4px;font:30px/1.15 'Pinyon Script',cursive;color:#fff;text-shadow:0 0 8px rgba(201,240,168,.8)}
 .nhp-rol{display:block;margin-top:2px;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--oro)}
 
 /* --- datos (para, de, asunto, fecha) --- */
 .nhp-meta{margin:14px 24px 0;padding-bottom:8px;border-bottom:1px dotted rgba(31,58,38,.45)}
-.nhp-meta p{margin:3px 0;font-size:16px}
-.nhp-meta b{display:inline-block;min-width:74px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--musgo)}
+.nhp .nhp-meta p{margin:3px 0;font-size:18px;line-height:1.3}
+.nhp .nhp-meta b{display:inline-block;min-width:78px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--musgo)}
 
 /* --- cuerpo con renglones --- */
-.nhp-body{margin:12px 24px 0;font-size:17px;
+.nhp-body{margin:12px 24px 0;
   background:repeating-linear-gradient(180deg,transparent 0 22px,rgba(31,58,38,.12) 22px 23px)}
-.nhp-body p{margin:0 0 23px;line-height:23px}
+.nhp .nhp-body p{margin:0 0 23px;font-size:19px;line-height:23px}
 
 /* --- firma y sello --- */
 .nhp-firma{min-height:62px;margin:2px 24px 0 auto;text-align:right}
