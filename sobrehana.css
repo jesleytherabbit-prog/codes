@@ -1,0 +1,95 @@
+/* ===== Sobre con carta · Woojin → Hana ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Pinyon+Script&family=Caveat:wght@500;600&family=Noto+Serif+KR:wght@600&display=swap');
+
+/* Paleta (cambia aquí los colores y se actualiza todo) */
+.shp{--arcilla:#F1AE94;--oxido:#AD6454;--flor:#FFEDDF;--salvia:#868A6D;--liquen:#D2D3BE;--adobe:#967258;--mesa:#426567;--oasis:#A8BFBD;
+  --tinta:#2B4547;/* Painted Mesa oscurecido, solo para que el texto se lea bien */
+  position:relative;width:100%;max-width:500px;box-sizing:border-box;margin:0 auto;
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.35;text-align:left;color:var(--tinta)}
+.shp br{display:none}
+/* el foro fuerza Verdana en los <p> (.content p): se pisa aquí */
+.shp p{margin:0;font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:600!important;font-style:normal!important}
+.shp input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+
+/* --- caja del sobre (deja lugar arriba para que la tapa se abra) --- */
+.shp-caja{padding-top:0;transition:padding-top .9s ease}
+.shp input:checked ~ .shp-caja{padding-top:140px}
+
+.shp-sobre{display:block;position:relative;height:250px;cursor:pointer;perspective:900px;border-radius:5px;
+  background:
+    linear-gradient(to bottom right,transparent 49.6%,rgba(80,58,40,.40) 50%,transparent 50.4%) left bottom/50% 55% no-repeat,
+    linear-gradient(to bottom left,transparent 49.6%,rgba(80,58,40,.40) 50%,transparent 50.4%) right bottom/50% 55% no-repeat,
+    linear-gradient(180deg,#DCC4A6,#C6A883);
+  border:1px solid rgba(66,101,103,.55);
+  box-shadow:0 0 16px rgba(168,191,189,.32),0 6px 18px rgba(0,0,0,.55)}
+
+/* --- tapa (frente arcilla clara, dorso con forro verde azulado) --- */
+.shp-tapa{position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);height:137px;z-index:3;
+  transform-origin:top center;transform-style:preserve-3d;transition:transform .9s ease}
+.shp-tapa i,.shp-tapa b{position:absolute;left:0;top:0;width:100%;height:100%;font-style:normal;
+  clip-path:polygon(0 0,100% 0,50% 100%);-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.shp-tapa i{background:linear-gradient(180deg,#E2CCB0 0%,#D3B793 60%,#B99872 100%)}
+.shp-tapa b{transform:rotateX(180deg);clip-path:polygon(0 100%,100% 100%,50% 0);
+  background:radial-gradient(circle,rgba(210,211,190,.45) 0 1.2px,transparent 1.7px) 0 0/14px 14px,linear-gradient(160deg,#868A6D,#6B6F55)}
+.shp input:checked ~ .shp-caja .shp-tapa{transform:rotateX(180deg)}
+
+/* --- lacre óxido con "하나" --- */
+.shp-lacre{position:absolute;left:50%;top:137px;width:60px;height:58px;margin:-29px 0 0 -30px;z-index:4;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50% 46% 52% 48% / 48% 52% 46% 50%;
+  background:radial-gradient(circle at 35% 30%,#7FA3A5,#426567 45%,#254243 100%);
+  box-shadow:0 3px 6px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.10),inset 0 0 0 5px rgba(20,45,46,.45);
+  color:rgba(255,237,223,.92);font:600 19px/1 'Noto Serif KR','Cormorant Garamond',serif;
+  text-shadow:0 1px 0 rgba(0,0,0,.4),0 -1px 0 rgba(255,255,255,.2);
+  transition:opacity .35s,transform .6s,box-shadow .4s}
+.shp-sobre:hover .shp-lacre{box-shadow:0 3px 6px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.10),0 0 14px rgba(168,191,189,.95)}
+.shp input:checked ~ .shp-caja .shp-lacre{opacity:0;transform:scale(.6) translateY(-14px);pointer-events:none}
+
+/* --- etiqueta con el destinatario --- */
+.shp-para{position:absolute;left:50%;bottom:14px;width:54%;margin-left:-27%;box-sizing:border-box;padding:6px 8px 7px;text-align:center;
+  background:linear-gradient(180deg,#F8F0E4,#EFE2D0);border:1px solid rgba(150,114,88,.6);border-radius:3px;
+  box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.shp-para small{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mesa)}
+.shp-para span{display:block;font:600 27px/1.05 'Caveat',cursive;color:var(--tinta)}
+.shp-para em{display:block;font-style:normal;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--adobe)}
+
+/* --- matasellos y estampilla lunar --- */
+.shp-mata{position:absolute;left:16px;bottom:18px;width:54px;height:54px;box-sizing:border-box;border-radius:50%;transform:rotate(-14deg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  border:2px solid rgba(66,101,103,.8);box-shadow:inset 0 0 0 3px #D6BC9C,inset 0 0 0 4px rgba(66,101,103,.6);
+  font-size:8px;letter-spacing:1px;text-transform:uppercase;line-height:1.25;color:rgba(43,69,71,.95)}
+.shp-mata em{display:block;font-style:normal}
+.shp-est{position:absolute;right:16px;bottom:18px;width:40px;height:50px;box-sizing:border-box;
+  display:flex;align-items:center;justify-content:center;background:#D2D3BE;
+  border:3px dotted rgba(66,101,103,.85);outline:1px solid rgba(66,101,103,.4);outline-offset:-5px}
+.shp-est i{display:block;width:22px;height:22px;border-radius:50%;border:2px solid var(--mesa);box-shadow:inset 0 0 0 3px #D2D3BE,inset 0 0 0 6px var(--mesa)}
+
+/* --- pista para abrir --- */
+.shp-pista{display:block;margin-top:12px;text-align:center;font:600 24px/1 'Caveat',cursive;color:var(--oasis);
+  text-shadow:0 0 7px rgba(168,191,189,.6);animation:shpLatido 2.2s ease-in-out infinite;transition:opacity .4s}
+@keyframes shpLatido{0%,100%{opacity:1}50%{opacity:.45}}
+.shp input:checked ~ .shp-caja .shp-pista{opacity:0;animation:none}
+
+/* --- carta (se despliega al abrir) --- */
+.shp-carta{max-height:0;overflow:hidden;opacity:0;transform:translateY(-26px);
+  transition:max-height 1.1s ease,opacity .6s .25s,transform .9s .25s}
+.shp input:checked ~ .shp-carta{max-height:1600px;opacity:1;transform:none}
+
+.shp-papel{position:relative;margin:16px 0 4px;padding:20px 26px 14px;
+  background:
+    radial-gradient(circle at 86% 14%,transparent 0 22px,rgba(150,114,88,.20) 23px 25px,transparent 26px),
+    linear-gradient(180deg,transparent 31%,rgba(150,114,88,.14) 33%,transparent 35%,transparent 64%,rgba(150,114,88,.14) 66%,transparent 68%),
+    linear-gradient(180deg,#F4EADB 0%,#E9D9C3 100%);
+  border:1px solid rgba(168,191,189,.55);border-radius:5px;
+  box-shadow:0 0 16px rgba(168,191,189,.32),0 6px 18px rgba(0,0,0,.55)}
+/* Woojin escribe a mano: letra Caveat, sin renglones, con tachaduras */
+.shp .shp-fecha{text-align:right;font-family:'Caveat',cursive!important;font-weight:500!important;font-size:19px;letter-spacing:1px;color:var(--adobe)}
+.shp .shp-sal{margin-top:6px;font-size:34px;line-height:1.1;font-family:'Caveat',cursive!important;font-weight:600!important;color:var(--tinta)}
+.shp-txt{margin-top:6px}
+.shp .shp-txt p{margin:0 0 14px;font-family:'Caveat',cursive!important;font-weight:500!important;font-size:24px;line-height:27px;color:var(--tinta)}
+.shp .shp-tach{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(43,69,71,.85);color:rgba(43,69,71,.55)}
+.shp-firma{margin-top:0;text-align:right}
+.shp-fir{display:inline-block;font:600 40px/1.1 'Caveat',cursive;color:var(--mesa)}
+.shp .shp-pd{margin-top:4px;padding-top:6px;border-top:1px dotted rgba(150,114,88,.6);font-family:'Caveat',cursive!important;font-weight:500!important;font-size:21px;color:var(--adobe)}
+.shp-by{margin-top:8px;text-align:right;font-size:11px;letter-spacing:1px;color:rgba(150,114,88,.8)}
+.shp-by a{color:var(--mesa);text-decoration:none}
