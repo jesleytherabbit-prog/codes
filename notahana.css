@@ -1,0 +1,54 @@
+/* ===== Nota del escritorio · Hana Park ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Pinyon+Script&display=swap');
+
+.nhp{position:relative;width:100%;max-width:500px;box-sizing:border-box;margin:0 auto;padding:0 0 14px;overflow:hidden;
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.35;text-align:left;color:#1f3a26;
+  --oro:#f3e3b8;--menta:#c9f0a8;--verde:#9fe08a;--tinta:#1f3a26;--musgo:#2f6a3a;
+  background:linear-gradient(180deg,#f6ecd0 0%,#efe0b6 100%);
+  border:1px solid rgba(243,227,184,.6);border-radius:6px;
+  box-shadow:0 0 16px rgba(190,240,150,.28),0 6px 18px rgba(0,0,0,.55)}
+.nhp br{display:none}
+.nhp p{margin:0}
+
+/* --- esquina doblada --- */
+.nhp::after{content:"";position:absolute;top:0;right:0;width:28px;height:28px;z-index:3;
+  background:linear-gradient(225deg,#0a0a0a 0 50%,#cdbb85 50% 100%);box-shadow:-2px 2px 4px rgba(0,0,0,.3)}
+
+/* --- encabezado --- */
+.nhp-head{position:relative;padding:16px 36px 16px;text-align:center;color:var(--oro);
+  background:linear-gradient(160deg,#102816,#203e20);border-bottom:2px solid var(--oro)}
+.nhp-head::after{content:"";position:absolute;left:36px;right:36px;bottom:6px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(243,227,184,.8),transparent)}
+.nhp-sub{display:block;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--menta)}
+.nhp-tit{display:block;margin-top:4px;font:30px/1.15 'Pinyon Script',cursive;color:#fff;text-shadow:0 0 8px rgba(201,240,168,.8)}
+.nhp-rol{display:block;margin-top:2px;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--oro)}
+
+/* --- datos (para, de, asunto, fecha) --- */
+.nhp-meta{margin:14px 24px 0;padding-bottom:8px;border-bottom:1px dotted rgba(31,58,38,.45)}
+.nhp-meta p{margin:3px 0;font-size:16px}
+.nhp-meta b{display:inline-block;min-width:74px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--musgo)}
+
+/* --- cuerpo con renglones --- */
+.nhp-body{margin:12px 24px 0;font-size:17px;
+  background:repeating-linear-gradient(180deg,transparent 0 22px,rgba(31,58,38,.12) 22px 23px)}
+.nhp-body p{margin:0 0 23px;line-height:23px}
+
+/* --- firma y sello --- */
+.nhp-firma{min-height:62px;margin:2px 24px 0 auto;text-align:right}
+.nhp-fir{display:block;font:32px/1.1 'Pinyon Script',cursive;color:#16301c}
+.nhp-cargo{display:block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--musgo)}
+.nhp:hover .nhp-fir{animation:nhEscribe 1.4s steps(20) 1}
+@keyframes nhEscribe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+.nhp-sello{position:absolute;left:28px;bottom:30px;width:66px;height:66px;box-sizing:border-box;border-radius:50%;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;color:rgba(47,106,58,.88);
+  border:2px solid rgba(47,106,58,.8);box-shadow:inset 0 0 0 3px #efe0b6,inset 0 0 0 4px rgba(47,106,58,.7);
+  transform:rotate(-12deg);transition:transform .4s,box-shadow .4s}
+.nhp-sello span{font:26px/1 'Pinyon Script',cursive}
+.nhp-sello small{margin-top:2px;font-size:7px;letter-spacing:1px;text-transform:uppercase}
+.nhp:hover .nhp-sello{transform:rotate(-8deg) scale(1.07);
+  box-shadow:inset 0 0 0 3px #efe0b6,inset 0 0 0 4px rgba(47,106,58,.7),0 0 12px rgba(159,224,138,.85)}
+
+/* --- créditos --- */
+.nhp-by{margin:4px 24px 0;text-align:right;font-size:11px;letter-spacing:1px;color:rgba(31,58,38,.55)}
+.nhp-by a{color:var(--musgo);text-decoration:none}
