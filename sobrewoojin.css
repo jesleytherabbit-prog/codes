@@ -7,7 +7,8 @@
   position:relative;width:100%;max-width:500px;box-sizing:border-box;margin:0 auto;
   font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.35;text-align:left;color:var(--tinta)}
 .swj br{display:none}
-.swj p{margin:0}
+/* el foro fuerza Verdana en los <p> (.content p): se pisa aquí */
+.swj p{margin:0;font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:600!important;font-style:normal!important}
 .swj input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
 
 /* --- caja del sobre (deja lugar arriba para que la tapa se abra) --- */
@@ -78,13 +79,13 @@
   background:linear-gradient(180deg,#FFEDDF 0%,#F6DCC9 100%);
   border:1px solid rgba(168,191,189,.55);border-radius:5px;
   box-shadow:0 0 16px rgba(168,191,189,.32),0 6px 18px rgba(0,0,0,.55)}
-.swj-fecha{text-align:right;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--oxido)}
-.swj-sal{margin-top:10px;font:30px/1.1 'Pinyon Script',cursive;color:var(--tinta)}
-.swj-txt{margin-top:8px;font-size:17px;
+.swj .swj-fecha{text-align:right;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--oxido)}
+.swj .swj-sal{margin-top:10px;font-size:30px;line-height:1.1;font-family:'Pinyon Script',cursive!important;font-weight:400!important;color:var(--tinta)}
+.swj-txt{margin-top:8px;
   background:repeating-linear-gradient(180deg,transparent 0 22px,rgba(134,138,109,.30) 22px 23px)}
-.swj-txt p{margin:0 0 23px;line-height:23px}
+.swj .swj-txt p{margin:0 0 23px;font-size:19px;line-height:23px}
 .swj-firma{margin-top:-4px;text-align:right}
 .swj-fir{display:inline-block;font:36px/1.1 'Pinyon Script',cursive;color:var(--oxido)}
-.swj-pd{margin-top:6px;padding-top:8px;border-top:1px dotted rgba(150,114,88,.6);font-size:15px;color:var(--adobe)}
+.swj .swj-pd{margin-top:6px;padding-top:8px;border-top:1px dotted rgba(150,114,88,.6);font-size:17px;color:var(--adobe)}
 .swj-by{margin-top:8px;text-align:right;font-size:11px;letter-spacing:1px;color:rgba(150,114,88,.8)}
 .swj-by a{color:var(--mesa);text-decoration:none}
