@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&display=swap');
+
+/* ============================================================
+   ALAIN DIONYSOS BALSAN — Maison Balsan
+   Old money ecuestre francés, oscuro. Vino, oro viejo, marfil.
+   (sin naranjas: Alain los detesta)
+   ============================================================ */
+
+.alain-sheet{
+  --night:#150b0e; --deep:#1d1015; --wine:#5a1a25; --ox:#8e3a42; --rose:#cf8a92;
+  --gold:#c4a35c; --gold2:#8f7438; --ivory:#eee2ca; --muted:#a99b8c; --line:#4a2630;
+  position:relative; box-sizing:border-box; max-width:760px; margin:10px auto; padding:6px;
+  color:var(--ivory); font-family:'Cormorant Garamond',Georgia,serif; font-size:16px; line-height:1.55; text-align:left;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(142,58,66,.30), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.012) 0 2px, transparent 2px 14px),
+    var(--night);
+  border:1px solid var(--gold2); border-radius:3px;
+  box-shadow:0 0 0 4px var(--night), 0 0 0 5px var(--wine), 0 14px 34px rgba(0,0,0,.6);
+}
+.alain-sheet *{ box-sizing:border-box; }
+.alain-sheet img{ max-width:100%; }
+
+/* ---------- CABECERA ---------- */
+.alain-header{ padding:22px 18px 14px; border-bottom:1px solid var(--line); }
+.alain-header-row{ display:flex; align-items:center; gap:26px; justify-content:center; flex-wrap:wrap; }
+.alain-portrait{ position:relative; width:200px; flex:0 0 auto; text-align:center; }
+.alain-glow{ position:absolute; left:50%; top:46%; width:260px; height:260px; margin:-130px 0 0 -130px; border-radius:50%;
+  background:radial-gradient(circle, rgba(220,190,120,.34), rgba(220,190,120,0) 66%); pointer-events:none; animation:alain-vela 4.2s ease-in-out infinite; }
+.alain-photo-frame{ position:relative; padding:9px; background:linear-gradient(135deg,#e2c885,#8f7438 45%,#d9bd78 70%,#6f5a2a);
+  box-shadow:0 6px 18px rgba(0,0,0,.65), inset 0 0 0 1px rgba(0,0,0,.5); }
+.alain-photo-frame::after{ content:""; position:absolute; left:9px; right:9px; top:9px; bottom:9px; box-shadow:inset 0 0 0 2px rgba(20,8,10,.85), inset 0 0 18px rgba(0,0,0,.55); pointer-events:none; }
+.alain-photo-frame img{ display:block !important; width:100%; height:auto; }
+.alain-plaque{ position:relative; display:inline-block; margin-top:9px; padding:3px 12px 4px; font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:#2a1a0c;
+  background:linear-gradient(180deg,#e2c885,#a98d4a); border-radius:2px; box-shadow:0 2px 5px rgba(0,0,0,.6); }
+.alain-plaque span{ display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12px; letter-spacing:.04em; text-transform:none; color:#4a3514; }
+
+.alain-header-text{ flex:1 1 260px; min-width:220px; text-align:center; }
+.alain-kicker{ font-family:'Cinzel',serif; font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); }
+.alain-name{ font-family:'UnifrakturMaguntia','Times New Roman',serif; font-size:56px; line-height:1.05; margin:4px 0 2px; color:var(--ivory); text-shadow:0 2px 0 var(--wine), 0 0 22px rgba(142,58,66,.55); }
+.alain-sub{ font-family:'Cinzel',serif; font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--rose); }
+.alain-sub::before{ content:"\265E\00a0\00a0"; color:var(--gold); }
+.alain-orn{ margin:12px auto 10px; max-width:300px; text-align:center; }
+.alain-orn span{ display:block; height:14px; position:relative; }
+.alain-orn span::before{ content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:linear-gradient(90deg,transparent,var(--gold2),transparent); }
+.alain-orn span::after{ content:"\2766"; position:absolute; left:50%; top:-5px; transform:translateX(-50%); padding:0 10px; font-size:18px; line-height:1; color:var(--gold); background:var(--night); }
+.alain-tag{ font-style:italic; font-size:17px; color:var(--muted); }
+
+/* ---------- PESTAÑAS ---------- */
+.alain-tabs{ padding:0 14px 6px; }
+.alain-tabs input[type=radio]{ position:absolute; opacity:0; pointer-events:none; width:0; height:0; }
+.alain-tabnav{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; padding:14px 0 12px; }
+.alain-tabnav label{ cursor:pointer; padding:5px 15px 6px; font-family:'Cinzel',serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+  background:linear-gradient(180deg,#2a1219,#1a0c11); border:1px solid var(--line); border-radius:2px; transition:color .25s, border-color .25s, box-shadow .25s; }
+.alain-tabnav label:hover{ color:var(--ivory); border-color:var(--gold2); }
+.alain-tabnav .abn-l1::before{ content:"\265E\00a0"; }
+.alain-tabnav .abn-l2::before{ content:"\2766\00a0"; }
+.alain-tabnav .abn-l3::before{ content:"\2720\00a0"; }
+.alain-tabnav .abn-l4::before{ content:"\2726\00a0"; }
+.alain-tabnav .abn-l5::before{ content:"\269C\00a0"; }
+#abn-t1:checked ~ .alain-tabnav .abn-l1, #abn-t2:checked ~ .alain-tabnav .abn-l2, #abn-t3:checked ~ .alain-tabnav .abn-l3,
+#abn-t4:checked ~ .alain-tabnav .abn-l4, #abn-t5:checked ~ .alain-tabnav .abn-l5{
+  color:#2a1a0c; background:linear-gradient(180deg,#e2c885,#a98d4a); border-color:#e2c885; box-shadow:0 0 12px rgba(196,163,92,.45); }
+
+.alain-panel{ display:none; padding:6px 4px 14px; }
+#abn-t1:checked ~ .alain-panels #abn-p1, #abn-t2:checked ~ .alain-panels #abn-p2, #abn-t3:checked ~ .alain-panels #abn-p3,
+#abn-t4:checked ~ .alain-panels #abn-p4, #abn-t5:checked ~ .alain-panels #abn-p5{ display:block; animation:alain-in .45s ease; }
+
+/* ---------- PIEZAS COMUNES ---------- */
+.ab-h{ margin:22px 0 10px; text-align:center; }
+.ab-h span{ display:inline-block; position:relative; padding:0 34px; font-family:'UnifrakturMaguntia',serif; font-size:25px; line-height:1.2; color:var(--rose); }
+.ab-h span::before,.ab-h span::after{ content:""; position:absolute; top:52%; width:22px; height:1px; background:var(--gold2); }
+.ab-h span::before{ left:0; } .ab-h span::after{ right:0; }
+.ab-p{ margin:0 0 9px; text-align:justify; }
+.ab-note{ text-align:center; font-style:italic; color:var(--muted); font-size:14px; margin:-4px 0 8px; }
+.ab-card{ background:linear-gradient(180deg,rgba(90,26,37,.22),rgba(21,11,14,.4)); border:1px solid var(--line); border-radius:3px; padding:6px 14px; }
+
+/* tarjeta de catálogo (Datos) */
+.ab-cat-top{ display:flex; justify-content:space-between; padding:4px 0 8px; margin-bottom:2px; border-bottom:1px double var(--gold2);
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); }
+.ab-group{ padding:8px 0; border-bottom:1px dashed var(--line); }
+.ab-group:last-child{ border-bottom:0; }
+.ab-row{ display:flex; gap:12px; padding:2px 0; }
+.ab-k{ flex:0 0 190px; font-family:'Cinzel',serif; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--rose); padding-top:3px; }
+.ab-v{ flex:1; color:var(--ivory); }
+
+/* citas */
+.ab-quote{ margin:18px 14px; padding:12px 18px; text-align:center; font-style:italic; font-size:21px; line-height:1.35; color:var(--ivory);
+  border-top:1px solid var(--gold2); border-bottom:1px solid var(--gold2); background:radial-gradient(ellipse at center, rgba(142,58,66,.25), transparent 75%); }
+.ab-quote span{ display:block; margin-top:4px; font-family:'Cinzel',serif; font-style:normal; font-size:10.5px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
+.ab-quote-sm{ font-size:18px; }
+
+/* capitular (historia) */
+.ab-hist .ab-p:first-child::first-letter{ float:left; margin:2px 8px 0 0; font-family:'UnifrakturMaguntia',serif; font-size:54px; line-height:.8; color:var(--gold); }
+
+/* fuerte / débil / puntos */
+.ab-duo{ display:flex; gap:10px; margin:12px 0; flex-wrap:wrap; }
+.ab-tile{ flex:1 1 200px; text-align:center; padding:10px 12px; border:1px solid var(--line); border-radius:3px; background:linear-gradient(180deg,rgba(90,26,37,.25),rgba(21,11,14,.5)); }
+.ab-tk{ display:block; font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+.ab-tv{ display:block; font-size:20px; font-style:italic; color:var(--ivory); }
+.ab-up{ border-color:var(--gold2); } .ab-up .ab-tv{ color:var(--gold); }
+.ab-down .ab-tv{ color:var(--rose); }
+.ab-trio .ab-tv{ font-style:normal; font-family:'UnifrakturMaguntia',serif; font-size:30px; line-height:1.1; color:var(--gold); }
+
+/* fichas chip */
+.ab-chips{ display:flex; flex-wrap:wrap; gap:7px; justify-content:center; }
+.ab-chip{ padding:3px 13px 4px; border:1px solid var(--gold2); border-radius:20px; font-style:italic; background:rgba(196,163,92,.07); color:var(--ivory); }
+.ab-dark .ab-chip{ border-color:var(--ox); background:rgba(90,26,37,.35); color:var(--rose); }
+
+/* familia / mascotas */
+.ab-fam{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; }
+.ab-fcard{ padding:9px 12px; border:1px solid var(--line); border-left:3px solid var(--ox); border-radius:2px; background:linear-gradient(180deg,rgba(90,26,37,.2),rgba(21,11,14,.45)); }
+.ab-fn{ font-weight:600; font-size:17px; color:var(--ivory); line-height:1.25; }
+.ab-fr{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin:1px 0 3px; }
+.ab-ft{ font-size:14.5px; color:var(--muted); line-height:1.4; }
+.ab-gone{ opacity:.65; border-left-color:var(--muted); } .ab-gone .ab-fn::after{ content:" \2020"; color:var(--muted); }
+.ab-pets .ab-fcard{ border-left-color:var(--gold2); }
+
+/* ---------- ATRIBUTOS ---------- */
+.ab-attrs{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+.ab-attr{ text-align:center; padding:8px 4px 6px; border:1px solid var(--line); border-radius:3px; background:linear-gradient(180deg,rgba(90,26,37,.25),rgba(21,11,14,.5)); }
+.ab-an{ display:block; font-family:'Cinzel',serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.ab-av{ display:block; font-family:'UnifrakturMaguntia',serif; font-size:34px; line-height:1.1; color:var(--ivory); }
+.ab-top{ border-color:var(--gold); box-shadow:0 0 14px rgba(196,163,92,.35), inset 0 0 12px rgba(196,163,92,.12); }
+.ab-top .ab-an{ color:var(--gold); } .ab-top .ab-av{ color:var(--gold); text-shadow:0 0 14px rgba(196,163,92,.6); }
+
+/* habilidades */
+.ab-skills{ padding:6px 4px 4px; }
+.ab-sk{ display:flex; align-items:baseline; gap:8px; padding:2px 6px; border-radius:2px; }
+.ab-sn{ flex:1 1 auto; }
+.ab-pips{ flex:0 0 auto; font-size:11px; letter-spacing:.2em; color:var(--gold2); }
+.ab-pips::before{ content:"\25C7\25C7\25C7\25C7"; }
+.ab-sl{ flex:0 0 150px; text-align:right; font-size:14.5px; color:var(--muted); }
+.ab-sl i{ color:var(--rose); }
+.ab-sk.l0{ opacity:.55; }
+.ab-sk.l1 .ab-pips::before{ content:"\25C6\25C7\25C7\25C7"; }
+.ab-sk.l2 .ab-pips::before{ content:"\25C6\25C6\25C7\25C7"; color:var(--rose); }
+.ab-sk.l2 .ab-sl{ color:var(--ivory); }
+.ab-sk.l4{ background:linear-gradient(90deg,rgba(196,163,92,.16),transparent); }
+.ab-sk.l4 .ab-pips::before{ content:"\25C6\25C6\25C6\25C7"; color:var(--gold); }
+.ab-sk.l4 .ab-sn{ color:var(--gold); font-weight:600; font-size:17px; }
+.ab-sk.l4 .ab-sl{ color:var(--gold); }
+
+/* combate */
+.ab-combat{ padding:8px 14px; }
+.ab-crow{ display:flex; align-items:baseline; gap:10px; padding:4px 0; border-bottom:1px dashed var(--line); }
+.ab-crow:last-child{ border-bottom:0; }
+.ab-crow .ab-k{ flex:0 0 130px; padding-top:0; }
+.ab-f{ flex:1; font-size:14px; color:var(--muted); }
+.ab-r{ flex:0 0 auto; min-width:30px; text-align:right; font-family:'UnifrakturMaguntia',serif; font-size:24px; line-height:1; color:var(--gold); }
+
+/* ---------- SPOILERS (override del fondo negro del foro) ---------- */
+.alain-sheet details{ margin:8px 0; background:transparent !important; border:1px solid var(--line); border-radius:3px; }
+.alain-sheet summary{ display:block; cursor:pointer; list-style:none; padding:7px 14px; color:var(--ivory) !important; background:linear-gradient(90deg,#3a1520,#1d1015) !important;
+  font-family:'Cinzel',serif; font-size:13px; letter-spacing:.14em; text-transform:uppercase; border-radius:2px; transition:background .25s; }
+.alain-sheet summary::-webkit-details-marker{ display:none; }
+.alain-sheet summary::before{ content:"\25B8\00a0\00a0"; color:var(--gold); }
+.alain-sheet details[open] > summary::before{ content:"\25BE\00a0\00a0"; }
+.alain-sheet details[open] > summary{ border-bottom:1px solid var(--gold2); }
+.alain-sheet summary:hover{ background:linear-gradient(90deg,#5a1a25,#2a1219) !important; }
+.alain-sheet summary.p, .alain-sheet summary.np{ font-size:12px; padding:5px 12px; letter-spacing:.1em; }
+.ab-in-det{ padding:8px 10px 6px; }
+
+/* items (hechizos, idiomas, trasfondos…) */
+.ab-item{ margin:0 0 10px; padding:8px 12px 8px 14px; border-left:3px solid var(--ox); background:linear-gradient(90deg,rgba(90,26,37,.22),transparent); }
+.ab-in{ font-weight:600; font-size:18px; color:var(--ivory); line-height:1.25; }
+.ab-tag{ font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin:1px 0 4px; }
+.ab-it{ font-size:15.5px; color:#d6c8b0; text-align:justify; }
+.ab-it:empty{ display:none; }
+.ab-empty{ padding:6px; text-align:center; font-style:italic; color:var(--muted); }
+
+/* ---------- PIE ---------- */
+.alain-footer{ margin-top:6px; padding:14px 10px 12px; text-align:center; border-top:1px solid var(--line);
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:.2em; color:var(--gold2); }
+.alain-footer::before{ content:"\2766\00a0\00a0"; color:var(--gold); } .alain-footer::after{ content:"\00a0\00a0\2766"; color:var(--gold); }
+
+/* ---------- MOVIMIENTO (luz de vela, nada de oscuridad) ---------- */
+@keyframes alain-vela{ 0%,100%{ opacity:.55; transform:scale(.97); } 35%{ opacity:.85; transform:scale(1.03); } 60%{ opacity:.65; transform:scale(1); } }
+@keyframes alain-in{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion:reduce){ .alain-glow,.alain-panel{ animation:none !important; } }
+
+/* ---------- MÓVIL ---------- */
+@media (max-width:560px){
+  .ab-attrs{ grid-template-columns:repeat(auto-fit,minmax(92px,1fr)); }
+  .alain-name{ font-size:44px; }
+  .ab-row{ flex-direction:column; gap:0; margin-bottom:4px; } .ab-k{ flex:none; }
+  .ab-crow{ flex-wrap:wrap; } .ab-crow .ab-k{ flex:1 1 100%; } .ab-f{ flex:1 1 70%; }
+  .ab-sl{ flex-basis:110px; font-size:13px; }
+}
