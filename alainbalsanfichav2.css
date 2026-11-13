@@ -43,7 +43,7 @@
 .alain-orn{ margin:12px auto 10px; max-width:300px; text-align:center; }
 .alain-orn span{ display:block; height:14px; position:relative; }
 .alain-orn span::before{ content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:linear-gradient(90deg,transparent,var(--gold2),transparent); }
-.alain-orn span::after{ content:"\2766"; position:absolute; left:50%; top:-5px; transform:translateX(-50%); padding:0 10px; font-size:18px; line-height:1; color:var(--gold); background:var(--night); }
+.alain-orn span::after{ content:""; position:absolute; left:50%; top:50%; width:8px; height:8px; margin:-4px 0 0 -4px; transform:rotate(45deg); background:var(--gold); box-shadow:0 0 0 3px var(--night), 0 0 0 4px var(--gold2); }
 .alain-tag{ font-style:italic; font-size:17px; color:var(--muted); }
 
 /* ---------- PESTAÑAS ---------- */
@@ -54,7 +54,7 @@
   background:linear-gradient(180deg,#2a1219,#1a0c11); border:1px solid var(--line); border-radius:2px; transition:color .25s, border-color .25s, box-shadow .25s; }
 .alain-tabnav label:hover{ color:var(--ivory); border-color:var(--gold2); }
 .alain-tabnav .abn-l1::before{ content:"\265E\00a0"; }
-.alain-tabnav .abn-l2::before{ content:"\2766\00a0"; }
+.alain-tabnav .abn-l2::before{ content:"\25C8\00a0"; }
 .alain-tabnav .abn-l3::before{ content:"\2720\00a0"; }
 .alain-tabnav .abn-l4::before{ content:"\2726\00a0"; }
 .alain-tabnav .abn-l5::before{ content:"\269C\00a0"; }
@@ -172,7 +172,7 @@
 /* ---------- PIE ---------- */
 .alain-footer{ margin-top:6px; padding:14px 10px 12px; text-align:center; border-top:1px solid var(--line);
   font-family:'Cinzel',serif; font-size:11px; letter-spacing:.2em; color:var(--gold2); }
-.alain-footer::before{ content:"\2766\00a0\00a0"; color:var(--gold); } .alain-footer::after{ content:"\00a0\00a0\2766"; color:var(--gold); }
+.alain-footer::before{ content:"\25C6\00a0\00a0"; color:var(--gold); } .alain-footer::after{ content:"\00a0\00a0\25C6"; color:var(--gold); }
 
 /* ---------- MOVIMIENTO (luz de vela, nada de oscuridad) ---------- */
 @keyframes alain-vela{ 0%,100%{ opacity:.55; transform:scale(.97); } 35%{ opacity:.85; transform:scale(1.03); } 60%{ opacity:.65; transform:scale(1); } }
