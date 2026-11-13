@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Playfair+Display:wght@600&display=swap');
+
+/* ════════════════════════════════════════════
+   SOBRE MAGICAL GIRL · se abre al pulsar (sin JavaScript)
+   Todo empieza por .crm para no chocar con otros sobres.
+
+   PERSONALIZAR SIN TOCAR ESTE ARCHIVO:
+   en el HTML, dentro de <div class="crm" style="...">,
+   cambia solo las variables que quieras. Ej.:
+   <div class="crm" style="--sobre:#F3DCE6; --lacre:#9FD3C7;">
+   Los símbolos (♥ ☾ ✧ …) están en el HTML.
+   ════════════════════════════════════════════ */
+
+.crm {
+  /* ── Colores editables (valores por defecto) ── */
+  --sobre:      #E4DAEC;   /* sobre (las sombras se calculan solas) */
+  --sobre2:     #D6A6B9;   /* segundo tono del degradé del sobre */
+  --papel:      #F6F0F4;   /* papel de la carta */
+  --lineas:     #9B80A5;   /* renglones del papel */
+  --tinta:      #4A3F63;   /* texto de la carta */
+  --detalle:    #9B80A5;   /* fecha, despedida, dirección */
+  --acento:     #C59FB3;   /* adornos */
+  --titulo:     #5F507B;   /* saludo y nombre del destinatario */
+  --firma1:     #6B62AE;   /* brillo de la firma (3 tonos) */
+  --firma2:     #D6A6B9;
+  --firma3:     #8D9BCB;
+  --lacre:      #C59FB3;   /* sello */
+  --lacre-letra:#FFFFFF;
+  --estampilla: #6B62AE;
+  --estampilla-simbolo: #E7D0A8;
+  --cinta1:     #C59FB3;   /* cinta "Pulsa el lacre…" */
+  --cinta2:     #E0B9A6;
+  --cinta-texto:#5F507B;
+  --brillo:     #FFFFFF;   /* estrellitas y destellos */
+  --credito:    #AD9CBC;
+
+  --star: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 44px 0 10px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--tinta);
+  text-align: left;
+}
+.crm *, .crm *::before, .crm *::after { box-sizing: border-box; }
+.crm br { display: none; }
+.crm .crm-texto br { display: inline; }
+
+/* ════ ESTRELLITAS alrededor ════ */
+.crm > i {
+  position: absolute;
+  z-index: 6;
+  width: 10px; height: 10px;
+  background: var(--brillo);
+  clip-path: var(--star);
+  filter: drop-shadow(0 0 3px var(--brillo));
+  pointer-events: none;
+  animation: crm-tw 3s ease-in-out infinite;
+}
+.crm > i:nth-of-type(1) { top: 34px;  left: 3%;  }
+.crm > i:nth-of-type(2) { top: 22px;  right: 6%; width: 13px; height: 13px; animation-delay: .8s; }
+.crm > i:nth-of-type(3) { bottom: 110px; left: -6px; width: 7px; height: 7px; animation-delay: 1.6s; }
+.crm > i:nth-of-type(4) { bottom: 80px; right: -4px; width: 11px; height: 11px; animation-delay: 2.3s; }
+.crm > i:nth-of-type(5) { top: 8px; left: 46%; width: 7px; height: 7px; animation-delay: 1.2s; }
+
+/* ════ LA CARTA ════ */
+.crm-carta {
+  position: relative;
+  top: 0;
+  z-index: 2;
+  width: 88%;
+  margin: 0 auto;
+  max-height: 120px;               /* escondida dentro del sobre */
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  transition: max-height .6s ease-in .15s, top .4s;
+}
+.crm-papel {
+  position: relative;
+  padding: 28px 30px 150px;        /* el hueco de abajo queda dentro del sobre */
+  border-radius: 14px 14px 0 0;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 26px, color-mix(in srgb, var(--lineas) 16%, transparent) 26px 27px) 0 118px / 100% 100% no-repeat,
+    radial-gradient(ellipse at top right, color-mix(in srgb, var(--acento) 30%, transparent), transparent 55%),
+    radial-gradient(ellipse at bottom left, color-mix(in srgb, var(--firma3) 18%, transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in srgb, var(--papel), white 40%), var(--papel) 45%, color-mix(in srgb, var(--papel), var(--sobre) 45%));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brillo) 80%, transparent), inset 0 0 0 4px color-mix(in srgb, var(--acento) 22%, transparent), 0 -4px 14px color-mix(in srgb, var(--titulo) 35%, transparent);
+}
+.crm-papel > * {                   /* la tinta aparece al abrir */
+  position: relative;
+  opacity: 0;
+  filter: blur(3px);
+  transition: opacity .3s, filter .3s;
+}
+.crm-papel > .crm-marca {          /* marca de agua */
+  position: absolute;
+  top: 36%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 160px;
+  line-height: 1;
+  color: color-mix(in srgb, var(--acento) 13%, transparent);
+  pointer-events: none;
+}
+
+.crm-membrete {
+  text-align: center;
+  font: 600 10px 'Playfair Display', serif;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--detalle);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed color-mix(in srgb, var(--acento) 60%, transparent);
+}
+.crm-adorno {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: var(--acento);
+  margin-bottom: 6px;
+  text-transform: none;
+}
+.crm-saludo {
+  font: italic 20px 'Bodoni Moda', serif;
+  color: var(--titulo);
+  margin-bottom: 10px;
+}
+.crm-texto {
+  max-height: 290px;               /* cartas largas: aparece scroll */
+  overflow-y: auto;
+  padding-right: 6px;
+  font: 500 17px/1.6 'Cormorant Garamond', serif;
+  color: var(--tinta);
+  text-align: justify;
+  scrollbar-width: thin;
+  scrollbar-color: var(--acento) transparent;
+}
+.crm-texto::-webkit-scrollbar { width: 5px; }
+.crm-texto::-webkit-scrollbar-thumb { background: linear-gradient(var(--firma2), var(--firma1)); border-radius: 10px; }
+.crm-texto b, .crm-texto strong { color: var(--firma1); }
+.crm-despedida {
+  margin-top: 18px;
+  text-align: right;
+  font: italic 500 17px 'Cormorant Garamond', serif;
+  color: var(--detalle);
+}
+.crm-firma {
+  text-align: right;
+  font: italic 30px/1.2 'Bodoni Moda', serif;
+}
+.crm-firma span {                  /* firma con brillo nacarado */
+  background: linear-gradient(100deg, var(--firma1), var(--firma2) 30%, var(--firma3) 55%, var(--firma1) 80%, var(--firma2));
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: crm-shim 6s linear infinite;
+}
+
+/* ════ EL SOBRE ════ */
+.crm-sobre {
+  position: relative;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 270px;
+  margin: -120px auto 0;
+  cursor: pointer;
+  transition: top .4s;             /* sin transform: así la carta no salta adelante */
+  -webkit-tap-highlight-color: transparent;
+}
+.crm-abrir { position: absolute; opacity: 0; pointer-events: none; }
+
+/* parte trasera (el interior) */
+.crm-fondo {
+  position: absolute; inset: 0;
+  z-index: 1;
+  border-radius: 16px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--sobre), var(--titulo) 55%), color-mix(in srgb, var(--sobre), var(--titulo) 70%));
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--brillo) 55%, transparent),
+    0 0 26px -4px color-mix(in srgb, var(--sobre2) 80%, transparent),
+    0 16px 34px -12px color-mix(in srgb, var(--titulo) 85%, transparent);
+}
+
+/* bolsillo delantero, por encima de la carta */
+.crm-bolsillo {
+  position: absolute; inset: 0;
+  z-index: 3;
+  display: block;
+  border-radius: 16px;
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+  background:
+    radial-gradient(circle at 12% 30%, color-mix(in srgb, var(--brillo) 70%, transparent) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 88% 40%, color-mix(in srgb, var(--brillo) 70%, transparent) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 25% 75%, color-mix(in srgb, var(--brillo) 60%, transparent) 0 1px, transparent 2px),
+    linear-gradient(160deg, color-mix(in srgb, var(--sobre), white 25%), var(--sobre) 45%, var(--sobre2));
+}
+.crm-bolsillo::before {            /* solapa inferior nacarada */
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+  background:
+    linear-gradient(120deg, transparent 30%, color-mix(in srgb, var(--brillo) 45%, transparent) 45%, transparent 60%) 0 0 / 250% 100%,
+    linear-gradient(180deg, color-mix(in srgb, var(--sobre), white 45%), color-mix(in srgb, var(--sobre), var(--sobre2) 35%));
+  animation: crm-nacar 7s ease-in-out infinite;
+}
+
+.crm-destinatario {
+  position: absolute;
+  z-index: 1;
+  left: 0; right: 0; bottom: 20px;
+  text-align: center;
+  font: 600 10px 'Playfair Display', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--detalle);
+}
+.crm-destinatario b {
+  display: block;
+  margin-top: 2px;
+  font: italic 25px/1.15 'Bodoni Moda', serif;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--titulo);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--brillo) 80%, transparent);
+}
+.crm-destinatario i {
+  display: block;
+  margin-top: 4px;
+  font: 600 9px 'Playfair Display', serif;
+  font-style: normal;
+  letter-spacing: 2.5px;
+  color: var(--detalle);
+}
+
+/* sello postal (el símbolo va en el HTML) */
+.crm-estampilla {
+  position: absolute;
+  z-index: 1;
+  right: 18px; bottom: 18px;
+  width: 38px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+  background: linear-gradient(160deg, var(--estampilla), color-mix(in srgb, var(--estampilla), var(--firma3) 50%));
+  border: 3px solid color-mix(in srgb, var(--brillo) 85%, transparent);
+  outline: 1px dashed color-mix(in srgb, var(--estampilla) 60%, transparent);
+  outline-offset: 1px;
+  color: var(--estampilla-simbolo);
+  font-size: 18px;
+  line-height: 1;
+  text-shadow: 0 0 6px var(--estampilla-simbolo);
+  transform: rotate(6deg);
+  box-shadow: 0 3px 8px -3px color-mix(in srgb, var(--titulo) 70%, transparent);
+}
+
+/* solapa de arriba (la que se abre) */
+.crm-solapa {
+  position: absolute; inset: 0 0 auto 0;
+  height: 100%;
+  z-index: 4;
+  transform-origin: top center;
+  transform: perspective(900px) rotateX(0deg);
+  filter: drop-shadow(0 3px 4px color-mix(in srgb, var(--titulo) 45%, transparent));
+  transition: transform .55s ease .6s, z-index 0s linear .87s;
+}
+.crm-solapa::before,
+.crm-solapa::after {
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 56%);
+  border-radius: 16px 16px 0 0;
+}
+.crm-solapa::before {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--sobre), var(--sobre2) 30%), color-mix(in srgb, var(--sobre), var(--sobre2) 60%));
+}
+.crm-solapa::after {               /* destello que pasa */
+  background: linear-gradient(100deg, transparent 35%, color-mix(in srgb, var(--brillo) 55%, transparent) 50%, transparent 65%);
+  background-size: 300% 100%;
+  animation: crm-destello 5.5s ease-in-out infinite;
+}
+
+/* lacre */
+.crm-lacre {
+  position: absolute;
+  z-index: 5;
+  left: 50%; top: 56%;
+  width: 52px; height: 52px;
+  margin: -26px 0 0 -26px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--lacre), white 40%), var(--lacre) 55%, color-mix(in srgb, var(--lacre), black 22%));
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--brillo) 85%, transparent),
+    0 3px 8px color-mix(in srgb, var(--titulo) 60%, transparent);
+  font: 700 20px 'Cinzel Decorative', serif;
+  color: var(--lacre-letra);
+  text-shadow: 0 0 6px color-mix(in srgb, var(--brillo) 70%, transparent);
+  animation: crm-sello 3s ease-in-out infinite;
+  transition: opacity .45s ease .6s, scale .45s ease .6s;
+}
+.crm-sobre:hover .crm-lacre {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--brillo) 85%, transparent),
+    0 3px 8px color-mix(in srgb, var(--titulo) 60%, transparent),
+    0 0 22px 4px color-mix(in srgb, var(--sobre2) 85%, transparent);
+}
+
+/* al pasar el mouse sube el sobre Y la carta juntos */
+.crm-sobre:hover,
+.crm:has(.crm-sobre:hover) .crm-carta { top: -3px; }
+
+/* cinta con el texto de ayuda (los textos van en el HTML) */
+.crm-pista {
+  margin-top: 18px;
+  text-align: center;
+}
+.crm-pista span {
+  display: inline-block;
+  padding: 5px 28px;
+  font: italic 13px 'Bodoni Moda', serif;
+  color: var(--cinta-texto);
+  background: linear-gradient(90deg, var(--cinta1), var(--cinta2) 50%, var(--cinta1));
+  box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--titulo) 60%, transparent);
+  clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%, 6% 50%);
+}
+.crm-pista .crm-pista-abierta { display: none; }
+
+/* créditos */
+.crm-credito {
+  margin-top: 8px;
+  text-align: center;
+  font: italic 500 12px 'Cormorant Garamond', serif;
+  color: var(--credito);
+  letter-spacing: 1px;
+}
+.crm-credito a,
+.crm-credito a:visited {
+  font: 700 9px 'Cinzel Decorative', serif;
+  letter-spacing: 2px;
+  color: var(--credito);
+  text-decoration: none;
+  transition: color .3s, text-shadow .3s;
+}
+.crm-credito a:hover { color: var(--sobre2); text-shadow: 0 0 8px var(--sobre2); }
+
+/* ════ ABIERTA ════ */
+.crm:has(.crm-abrir:checked) .crm-solapa {
+  transform: perspective(900px) rotateX(180deg);
+  z-index: 0;
+  transition: transform .6s ease, z-index 0s linear .3s;
+}
+.crm:has(.crm-abrir:checked) .crm-lacre {
+  scale: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease, scale .4s ease;
+}
+.crm:has(.crm-abrir:checked) .crm-carta {
+  max-height: 720px;
+  transition: max-height 1.4s cubic-bezier(.45,.05,.3,1) .5s, top .4s;
+}
+.crm:has(.crm-abrir:checked) .crm-papel > * {
+  opacity: 1;
+  filter: blur(0);
+  transition: opacity 1.2s ease 1.2s, filter 1.2s ease 1.2s;
+}
+.crm:has(.crm-abrir:checked) .crm-pista .crm-pista-cerrada { display: none; }
+.crm:has(.crm-abrir:checked) .crm-pista .crm-pista-abierta { display: inline-block; }
+.crm:has(.crm-abrir:checked) .crm-sobre:hover,
+.crm:has(.crm-abrir:checked):has(.crm-sobre:hover) .crm-carta { top: 0; }
+
+/* ════ ANIMACIONES ════ */
+@keyframes crm-tw      { 0%,100% { opacity: .25; transform: scale(.6) rotate(0); } 50% { opacity: 1; transform: scale(1.1) rotate(45deg); } }
+@keyframes crm-shim    { to { background-position: 250% 50%; } }
+@keyframes crm-nacar   { 0%,100% { background-position: 100% 0, 0 0; } 50% { background-position: 0% 0, 0 0; } }
+@keyframes crm-destello{ 0%,55% { background-position: 100% 0; } 85%,100% { background-position: 0% 0; } }
+@keyframes crm-sello   { 0%,100% { rotate: -8deg; } 50% { rotate: 6deg; } }
+
+/* ── Pantallas pequeñas ── */
+@media (max-width: 480px) {
+  .crm-papel { padding: 24px 20px 150px; }
+  .crm-destinatario b { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crm *, .crm *::before, .crm *::after, .crm > i { animation: none !important; }
+}
