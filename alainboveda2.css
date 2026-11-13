@@ -15,6 +15,10 @@
 }
 .alain-vault *{ box-sizing:border-box; }
 
+/* el foro convierte cada salto de línea del HTML en <br>: se ocultan los de estructura (los de dentro de los paneles se conservan) */
+.alain-vault > br, .av-header > br, .av-image > br, .av-tabs > br, .av-tabnav > br, .av-panels > br{ display:none !important; }
+.av-panel > br:first-child, .av-panel > br:last-child{ display:none !important; }
+
 /* título */
 .av-header{ padding:14px 10px 10px; text-align:center; }
 .av-title{ display:inline-block; position:relative; padding:0 46px; font-family:'UnifrakturMaguntia','Times New Roman',serif; font-size:36px; line-height:1.15; color:var(--ivory); text-shadow:0 2px 0 var(--wine), 0 0 20px rgba(142,58,66,.55); }
