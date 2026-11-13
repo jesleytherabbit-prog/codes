@@ -105,8 +105,9 @@
 
 /* foto de cuerpo entero (sentado) recortada tipo sticker */
 .sj-sit {
-  position: absolute; left: 4px; top: 0; width: 150px; height: 176px; z-index: 5;
-  background-size: 100% auto; background-position: center bottom; background-repeat: no-repeat;
+  /* imagen completa (2:3) sin recortar; el aire transparente de arriba queda fuera de la hoja */
+  position: absolute; left: 4px; top: -52px; width: 150px; height: 225px; z-index: 5;
+  background-size: 100% 100%; background-position: center; background-repeat: no-repeat;
   filter: var(--sticker);
   transform: rotate(-2deg); transform-origin: 50% 100%;
   transition: transform .4s cubic-bezier(.3,1.5,.5,1);
@@ -164,7 +165,7 @@
 @keyframes sjBling { 0%, 70%, 100% { transform: rotate(8deg); } 78% { transform: rotate(14deg) scale(1.06); } 86% { transform: rotate(3deg); } }
 /* nota a mano junto a la foto */
 .sj .sj-wandnote {
-  position: absolute; left: 170px; top: 40px; width: 150px; z-index: 4; transform: rotate(-3deg);
+  position: absolute; left: 158px; top: 52px; width: 158px; z-index: 4; transform: rotate(3deg); text-align: right;
   font-family: 'Permanent Marker', cursive !important; font-size: 12px; line-height: 15px; color: var(--ink);
 }
 .sj .sj-wandnote b { color: var(--red) !important; font-weight: 400; }
@@ -352,7 +353,7 @@
   .sj-page { padding: 22px 12px 12px; }
   .sj-head { height: auto; display: flex; flex-direction: column; align-items: center; gap: 12px; padding-bottom: 8px; }
   /* Seokjin sentado sobre el borde del banner */
-  .sj-sit { position: relative; left: auto; top: auto; order: -1; margin-bottom: -26px; width: 160px; height: 188px; }
+  .sj-sit { position: relative; left: auto; top: auto; order: -1; margin: -56px 0 -26px; width: 160px; height: 240px; pointer-events: none; }
   .sj-banner { position: relative; left: auto; top: auto; width: 100%; height: auto; aspect-ratio: 318 / 196; }
   .sj .sj-caption { position: static; align-self: flex-start; }
   .sj-id { position: relative; right: auto; top: auto; }
