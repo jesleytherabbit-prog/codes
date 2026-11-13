@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* Nota del escritorio de Irina Mills · Ethereal Medical Couture · prefijo .nim */
+div.nim{--teal:#183B3A;--mal:#376C62;--sea:#A9CDC1;--ice:#A9C9DC;--por:#F6F3EB;--cha:#C9AB80;--ink:#243B39;--ink2:#728581;--line:#DCE5E0;
+  --serif:'Cormorant Garamond','Times New Roman',serif;--sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  position:relative;box-sizing:border-box;width:560px;max-width:100%;margin:0 auto;overflow:hidden;text-align:left;color:var(--ink);
+  font:300 14px/1.85 var(--sans);border:1px solid var(--line);
+  background:radial-gradient(90% 30% at 100% 0%,rgba(169,205,193,.25),transparent 70%),radial-gradient(80% 30% at 0% 100%,rgba(169,201,220,.2),transparent 70%),var(--por);
+  box-shadow:0 20px 44px -24px rgba(16,39,38,.55)}
+div.nim *,div.nim *::before,div.nim *::after{box-sizing:border-box}
+div.nim,div.nim div,div.nim span,div.nim p,div.nim b,div.nim small,div.nim a{font-family:var(--sans)!important;text-transform:none;letter-spacing:normal;font-style:normal;text-decoration:none;text-shadow:none}
+div.nim p{margin:0}
+div.nim a{color:var(--mal)!important;border-bottom:1px solid rgba(55,108,98,.4);transition:color .3s}
+div.nim a:hover{color:var(--teal)!important}
+
+div.nim .nim-head{position:relative;padding:34px 36px 28px;text-align:center;color:var(--por);overflow:hidden;
+  background:radial-gradient(110% 90% at 85% 0%,rgba(169,205,193,.3),transparent 62%),linear-gradient(165deg,#1f4a47,#183B3A 60%,#122e2d)}
+div.nim .nim-head::before{content:"";position:absolute;inset:0;pointer-events:none;background-repeat:no-repeat;
+  background-image:radial-gradient(circle,rgba(246,243,235,.85) 0 1.3px,transparent 2.5px),radial-gradient(circle,rgba(169,205,193,.8) 0 1.6px,transparent 3px),radial-gradient(circle,rgba(169,201,220,.7) 0 1.5px,transparent 3px);
+  background-size:7px 7px,9px 9px,8px 8px;background-position:12% 30%,88% 22%,70% 85%;animation:nim-mote 24s ease-in-out infinite alternate}
+div.nim .nim-head>*{position:relative}
+div.nim .nim-sub{display:block;font-size:9.5px;letter-spacing:3px!important;text-transform:uppercase!important;color:var(--sea);font-weight:500;line-height:1.7}
+div.nim .nim-tit{display:block;margin-top:10px;font-family:var(--serif)!important;font-size:38px;line-height:1.1;font-weight:400;color:var(--por);animation:nim-glow 8s ease-in-out infinite alternate}
+div.nim .nim-rol{display:block;margin-top:12px;font-size:10.5px;letter-spacing:5px!important;text-transform:uppercase!important;color:var(--cha);font-weight:500}
+div.nim .nim-rol::before,div.nim .nim-rol::after{content:"";display:inline-block;width:28px;height:1px;vertical-align:middle;margin:0 12px;background:linear-gradient(90deg,transparent,var(--cha))}
+div.nim .nim-rol::after{background:linear-gradient(90deg,var(--cha),transparent)}
+
+div.nim .nim-meta{margin:30px 36px 0;padding:0 0 14px;border-bottom:1px solid var(--cha)}
+div.nim .nim-meta p{display:flex;gap:12px;padding:4px 0;font-size:13.5px;border-bottom:1px dashed var(--line)}
+div.nim .nim-meta p:last-child{border-bottom:0}
+div.nim .nim-meta b{flex:0 0 74px;font-size:9.5px;letter-spacing:2.6px!important;text-transform:uppercase!important;color:var(--mal);font-weight:500;line-height:2.1}
+
+div.nim .nim-body{padding:26px 36px 4px}
+div.nim .nim-body p{margin:0 0 14px;color:var(--ink)}
+div.nim .nim-body p:first-child{font-family:var(--serif)!important;font-size:22px;line-height:1.3;color:var(--teal);font-style:italic!important}
+div.nim .nim-frase{display:block;margin:20px 0 4px;padding:2px 0 2px 18px;border-left:2px solid var(--cha);font-family:var(--serif)!important;font-style:italic!important;font-size:24px;line-height:1.3;color:var(--mal)}
+
+div.nim .nim-firma{padding:6px 36px 0;text-align:right}
+div.nim .nim-firma img{display:inline-block;max-width:230px;height:auto;max-height:110px;border:0;vertical-align:bottom}
+div.nim .nim-nom{display:block;font-family:var(--serif)!important;font-size:21px;line-height:1.2;color:var(--teal);font-weight:500}
+div.nim .nim-cargo{display:block;font-size:9.5px;letter-spacing:3px!important;text-transform:uppercase!important;color:var(--mal);font-weight:500}
+
+div.nim .nim-sello{position:relative;width:78px;height:78px;margin:-52px 0 0 36px;border-radius:50%;text-align:center;color:var(--teal);
+  border:1px solid var(--cha);background:radial-gradient(circle at 35% 30%,#fff,#eef5f1 55%,#d6e6df);box-shadow:0 0 0 4px rgba(201,171,128,.18),0 6px 14px -8px rgba(16,39,38,.5);overflow:hidden}
+div.nim .nim-sello::before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(55,108,98,.45)}
+div.nim .nim-sello::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.8) 50%,transparent 62%) 170% 0/300% 100% no-repeat;animation:nim-shim 8s ease-in-out infinite}
+div.nim .nim-sello span{display:block;margin-top:17px;font-family:var(--serif)!important;font-size:26px;line-height:1;font-weight:500;color:var(--mal)}
+div.nim .nim-sello small{display:block;margin-top:3px;font-size:7px;letter-spacing:2px!important;text-transform:uppercase!important;color:var(--teal);font-weight:500}
+
+div.nim .nim-by{margin-top:22px;padding:14px 36px 16px;text-align:center;background:var(--teal);color:var(--sea);font-size:9.5px;letter-spacing:3px!important;text-transform:uppercase!important}
+div.nim .nim-by a{color:var(--cha)!important;border-bottom-color:rgba(201,171,128,.5)}
+
+@keyframes nim-shim{0%{background-position:170% 0}55%,100%{background-position:-70% 0}}
+@keyframes nim-glow{from{text-shadow:0 0 12px rgba(169,205,193,.1)}to{text-shadow:0 0 24px rgba(169,205,193,.35)}}
+@keyframes nim-mote{from{transform:translate(0,0);opacity:.6}to{transform:translate(10px,-14px);opacity:1}}
+@media (max-width:600px){div.nim .nim-tit{font-size:30px}div.nim .nim-head,div.nim .nim-body,div.nim .nim-firma{padding-left:22px;padding-right:22px}div.nim .nim-meta{margin-left:22px;margin-right:22px}div.nim .nim-sello{margin-left:22px}}
+@media (prefers-reduced-motion:reduce){div.nim *,div.nim *::before,div.nim *::after{animation:none!important;transition:none!important}}
