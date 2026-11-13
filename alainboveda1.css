@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============================================================
+   BÓVEDA — Alain Balsan · Maison Balsan
+   Vino, oro viejo y marfil. Hace juego con la ficha.
+   ============================================================ */
+
+.alain-vault{
+  --night:#150b0e; --wine:#5a1a25; --ox:#8e3a42; --rose:#cf8a92; --gold:#c4a35c; --gold2:#8f7438; --ivory:#eee2ca; --muted:#a99b8c; --line:#4a2630;
+  position:relative; box-sizing:border-box; max-width:560px; margin:10px auto; padding:6px;
+  color:var(--ivory); font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; line-height:1.6; text-align:left;
+  background:radial-gradient(ellipse at 50% 0%, rgba(142,58,66,.30), transparent 60%), repeating-linear-gradient(90deg, rgba(255,255,255,.012) 0 2px, transparent 2px 14px), var(--night);
+  border:1px solid var(--gold2); border-radius:3px;
+  box-shadow:0 0 0 4px var(--night), 0 0 0 5px var(--wine), 0 14px 34px rgba(0,0,0,.6);
+}
+.alain-vault *{ box-sizing:border-box; }
+
+/* título */
+.av-header{ padding:14px 10px 10px; text-align:center; }
+.av-title{ display:inline-block; position:relative; padding:0 46px; font-family:'UnifrakturMaguntia','Times New Roman',serif; font-size:36px; line-height:1.15; color:var(--ivory); text-shadow:0 2px 0 var(--wine), 0 0 20px rgba(142,58,66,.55); }
+.av-title::before,.av-title::after{ content:""; position:absolute; top:54%; width:30px; height:1px; background:linear-gradient(90deg,transparent,var(--gold2)); }
+.av-title::before{ left:0; }
+.av-title::after{ right:0; transform:scaleX(-1); }
+
+/* imagen + personaje */
+.av-image{ position:relative; height:210px; margin:0 6px; background-color:#24121a; background-size:cover; background-position:center; border:1px solid var(--gold2); box-shadow:inset 0 0 40px rgba(0,0,0,.7); }
+.av-image::before{ content:""; position:absolute; left:50%; top:50%; width:230px; height:230px; margin:-115px 0 0 -115px; border-radius:50%;
+  background:radial-gradient(circle, rgba(220,190,120,.32), rgba(220,190,120,0) 66%); animation:av-vela 4.2s ease-in-out infinite; pointer-events:none; }
+.av-image-inner{ position:absolute; left:50%; top:50%; width:104px; height:128px; margin:-64px 0 0 -52px; background-size:cover; background-position:center top; background-color:#24121a;
+  border:6px solid #b99a52; outline:1px solid rgba(0,0,0,.6); box-shadow:0 6px 16px rgba(0,0,0,.7), inset 0 0 0 1px rgba(0,0,0,.6); }
+
+/* pestañas */
+.av-tabs{ padding:0 12px 4px; }
+.av-tabs input[type=radio]{ position:absolute; opacity:0; pointer-events:none; width:0; height:0; }
+.av-tabnav{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; padding:14px 0 10px; }
+.av-tabnav label{ cursor:pointer; padding:5px 14px 6px; font-family:'Cinzel',serif; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+  background:linear-gradient(180deg,#2a1219,#1a0c11); border:1px solid var(--line); border-radius:2px; transition:color .25s, border-color .25s, box-shadow .25s; }
+.av-tabnav label:hover{ color:var(--ivory); border-color:var(--gold2); }
+#av-t1:checked ~ .av-tabnav label[for=av-t1], #av-t2:checked ~ .av-tabnav label[for=av-t2], #av-t3:checked ~ .av-tabnav label[for=av-t3]{
+  color:#2a1a0c; background:linear-gradient(180deg,#e2c885,#a98d4a); border-color:#e2c885; box-shadow:0 0 12px rgba(196,163,92,.45); }
+
+.av-panel{ display:none; margin:4px 2px 10px; padding:12px 18px; background:linear-gradient(180deg,rgba(90,26,37,.25),rgba(21,11,14,.5)); border:1px solid var(--line); border-left:3px solid var(--ox); border-radius:2px; }
+#av-t1:checked ~ .av-panels #av-p1, #av-t2:checked ~ .av-panels #av-p2, #av-t3:checked ~ .av-panels #av-p3{ display:block; animation:av-in .45s ease; }
+
+/* los colores de los [color] del BBCode se aclaran para que se lean sobre fondo oscuro */
+.av-panel font[color="#8E3A42"]{ color:#cf8a92 !important; font-family:'Cinzel',serif; font-size:13px; letter-spacing:.06em; }
+.av-panel font[color="#A3000D"]{ color:#e0606b !important; }
+
+/* pie */
+.av-footer{ margin-top:4px; padding:12px 10px 10px; text-align:center; border-top:1px solid var(--line); font-family:'Cinzel',serif; font-size:11px; letter-spacing:.2em; color:var(--gold2); }
+.av-footer::before{ content:"\25C6\00a0\00a0"; color:var(--gold); } .av-footer::after{ content:"\00a0\00a0\25C6"; color:var(--gold); }
+
+@keyframes av-vela{ 0%,100%{ opacity:.55; transform:scale(.97); } 35%{ opacity:.85; transform:scale(1.03); } 60%{ opacity:.65; transform:scale(1); } }
+@keyframes av-in{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion:reduce){ .av-image::before,.av-panel{ animation:none !important; } }
+@media (max-width:480px){ .av-title{ font-size:30px; padding:0 36px; } .av-image{ height:180px; } }
