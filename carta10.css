@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Pinyon+Script&display=swap');
+
+/* ════════════════════════════════════════════
+   CARTA EN SOBRE · Dark Academia (personalizable)
+   Se abre al pulsar el sobre (sin JavaScript).
+   Todo empieza por .crt para no chocar con el foro.
+
+   PERSONALIZAR SIN TOCAR ESTE ARCHIVO:
+   cada usuario agrega en su HTML, dentro de
+   <div class="crt" style="...">, solo las variables
+   que quiera cambiar. Ej.:
+   <div class="crt" style="--sobre:#C9B6D9; --lacre:#5A3D55;">
+   Los símbolos (✦ ☾ etc.) están en el HTML.
+   ════════════════════════════════════════════ */
+
+.crt {
+  /* ── Colores editables (valores por defecto) ── */
+  --sobre:        #B49A83;   /* papel del sobre (las sombras se calculan solas) */
+  --papel:        #E3D3BC;   /* pergamino de la carta */
+  --tinta:        #4B2E19;   /* texto de la carta */
+  --detalle:      #5B4636;   /* fecha, despedida, líneas */
+  --acento:       #7E3E28;   /* firma y adornos */
+  --lacre:        #7E3E28;   /* sello de cera */
+  --lacre-letra:  #E3D3BC;   /* inicial del sello */
+  --nombre:       #0D0D0D;   /* nombre del destinatario */
+  --direccion:    #5B4636;   /* "Para" y dirección */
+  --estampilla:   #2C3E50;   /* fondo del sello postal */
+  --estampilla-simbolo: #B49A83;
+  --pista:        #A49C92;   /* texto "Pulsa el lacre…" y link del crédito */
+  --credito:      #5E6253;   /* "by:" */
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 44px 0 10px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  text-align: left;
+}
+.crt *, .crt *::before, .crt *::after { box-sizing: border-box; }
+.crt br { display: none; }
+.crt .crt-texto br { display: inline; }
+
+/* ════ LA CARTA ════ */
+.crt-carta {
+  position: relative;
+  top: 0;
+  z-index: 2;
+  width: 88%;
+  margin: 0 auto;
+  max-height: 120px;               /* escondida dentro del sobre */
+  overflow: hidden;
+  transition: max-height .6s ease-in .15s, top .4s;
+}
+.crt-papel {
+  position: relative;
+  padding: 30px 32px 150px;        /* el hueco de abajo queda dentro del sobre */
+  background:
+    radial-gradient(ellipse at 50% 40%, transparent 55%, color-mix(in srgb, var(--detalle) 28%, transparent) 100%),
+    radial-gradient(circle at 85% 12%, color-mix(in srgb, var(--acento) 10%, transparent), transparent 30%),
+    radial-gradient(circle at 10% 70%, color-mix(in srgb, var(--detalle) 10%, transparent), transparent 25%),
+    linear-gradient(175deg, color-mix(in srgb, var(--papel), white 30%), var(--papel) 40%, color-mix(in srgb, var(--papel), black 7%));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--detalle) 25%, transparent), 0 -2px 12px rgba(0,0,0,.35);
+  color: var(--tinta);
+}
+.crt-papel > * {                   /* la tinta aparece al abrir */
+  position: relative;
+  opacity: 0;
+  filter: blur(3px);
+  transition: opacity .3s, filter .3s;
+}
+
+/* marca de agua (símbolo grande de fondo) */
+.crt-papel > .crt-marca {
+  position: absolute;
+  top: 34%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 170px;
+  line-height: 1;
+  color: color-mix(in srgb, var(--detalle) 8%, transparent);
+  pointer-events: none;
+}
+
+.crt-membrete {
+  text-align: center;
+  font: 10px 'Cinzel', serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--detalle);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--detalle) 30%, transparent);
+}
+.crt-adorno {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: var(--acento);
+  margin-bottom: 6px;
+  text-transform: none;
+}
+.crt-saludo {
+  font: italic 600 20px 'Cormorant Garamond', serif;
+  color: var(--tinta);
+  margin-bottom: 10px;
+}
+.crt-texto {
+  max-height: 290px;               /* cartas largas: aparece scroll */
+  overflow-y: auto;
+  padding-right: 6px;
+  font: 17px/1.6 'Cormorant Garamond', serif;
+  color: color-mix(in srgb, var(--tinta), black 20%);
+  text-align: justify;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sobre) transparent;
+}
+.crt-texto::-webkit-scrollbar { width: 4px; }
+.crt-texto::-webkit-scrollbar-thumb { background: var(--sobre); border-radius: 4px; }
+.crt-texto p { margin: 0 0 10px; }
+.crt-despedida {
+  margin-top: 18px;
+  text-align: right;
+  font: italic 17px 'Cormorant Garamond', serif;
+  color: var(--detalle);
+}
+.crt-firma {
+  text-align: right;
+  font: 34px/1.1 'Pinyon Script', cursive;
+  color: var(--acento);
+}
+
+/* ════ EL SOBRE ════ */
+.crt-sobre {
+  position: relative;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 270px;
+  margin: -120px auto 0;
+  cursor: pointer;
+  /* OJO: sin transform aquí. Un transform crea una capa nueva
+     y la carta saltaba por delante del sobre al pasar el mouse. */
+  transition: top .4s;
+  -webkit-tap-highlight-color: transparent;
+}
+.crt-abrir { position: absolute; opacity: 0; pointer-events: none; }
+
+/* parte trasera (el interior) */
+.crt-fondo {
+  position: absolute; inset: 0;
+  z-index: 1;
+  border-radius: 4px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--sobre), black 40%), color-mix(in srgb, var(--sobre), black 50%));
+  box-shadow: 0 14px 30px rgba(0,0,0,.55);
+}
+
+/* bolsillo delantero, por encima de la carta */
+.crt-bolsillo {
+  position: absolute; inset: 0;
+  z-index: 3;
+  display: block;
+  border-radius: 0 0 4px 4px;
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--sobre), white 15%), var(--sobre) 50%, color-mix(in srgb, var(--sobre), black 11%));
+}
+.crt-bolsillo::before {            /* solapa inferior */
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--sobre), white 22%), color-mix(in srgb, var(--sobre), white 7%));
+  filter: drop-shadow(0 -2px 3px rgba(0,0,0,.25));
+}
+.crt-bolsillo::after {             /* textura de papel */
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--sobre), black 50%) 0, transparent 30%),
+    radial-gradient(circle at 90% 60%, color-mix(in srgb, var(--sobre), black 50%) 0, transparent 25%);
+  opacity: .15;
+  pointer-events: none;
+}
+
+.crt-destinatario {
+  position: absolute;
+  z-index: 1;
+  left: 0; right: 0; bottom: 18px;
+  text-align: center;
+  font: italic 15px 'Cormorant Garamond', serif;
+  color: var(--direccion);
+}
+.crt-destinatario b {
+  display: block;
+  font: 28px/1.1 'Pinyon Script', cursive;
+  font-weight: normal;
+  color: var(--nombre);
+}
+.crt-destinatario i {
+  display: block;
+  font: 9.5px 'Cinzel', serif;
+  font-style: normal;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--direccion);
+  margin-top: 4px;
+}
+
+/* sello postal decorativo (el símbolo va en el HTML) */
+.crt-estampilla {
+  position: absolute;
+  z-index: 1;
+  right: 18px; bottom: 18px;
+  width: 38px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--estampilla);
+  border: 3px solid color-mix(in srgb, var(--sobre), white 22%);
+  outline: 1px dashed color-mix(in srgb, var(--sobre), black 55%);
+  outline-offset: 1px;
+  color: var(--estampilla-simbolo);
+  font-size: 18px;
+  line-height: 1;
+  transform: rotate(6deg);
+  opacity: .9;
+}
+
+/* solapa de arriba (la que se abre) */
+.crt-solapa {
+  position: absolute; inset: 0 0 auto 0;
+  height: 100%;
+  z-index: 4;
+  transform-origin: top center;
+  transform: perspective(900px) rotateX(0deg);
+  filter: drop-shadow(0 3px 3px rgba(0,0,0,.35));
+  transition: transform .55s ease .6s, z-index 0s linear .87s;
+}
+.crt-solapa::before {
+  content: "";
+  position: absolute; inset: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 56%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--sobre), black 8%), color-mix(in srgb, var(--sobre), black 17%));
+  border-radius: 4px 4px 0 0;
+}
+
+/* lacre */
+.crt-lacre {
+  position: absolute;
+  z-index: 5;
+  left: 50%; top: 56%;
+  width: 56px; height: 56px;
+  transform: translate(-50%, -50%);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 48% 52% 50% 46% / 50% 46% 54% 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), transparent 40%), var(--lacre);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,.5),
+    inset 0 0 0 5px rgba(0,0,0,.14),
+    inset 0 0 0 7px rgba(255,255,255,.06);
+  font: 700 22px 'Cinzel', serif;
+  color: color-mix(in srgb, var(--lacre-letra) 85%, transparent);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.15);
+  transition: transform .45s ease .6s, opacity .45s ease .6s;
+}
+.crt-sobre:hover .crt-lacre { animation: crt-latido 1.6s ease-in-out infinite; }
+@keyframes crt-latido {
+  0%,100% { box-shadow: 0 3px 6px rgba(0,0,0,.5), inset 0 0 0 5px rgba(0,0,0,.14), 0 0 0 transparent; }
+  50%     { box-shadow: 0 3px 6px rgba(0,0,0,.5), inset 0 0 0 5px rgba(0,0,0,.14), 0 0 18px color-mix(in srgb, var(--lacre-letra) 55%, transparent); }
+}
+
+/* al pasar el mouse sube el sobre Y la carta juntos (sin transform) */
+.crt-sobre:hover,
+.crt:has(.crt-sobre:hover) .crt-carta { top: -3px; }
+
+/* texto de ayuda (los textos van en el HTML) */
+.crt-pista {
+  margin-top: 16px;
+  text-align: center;
+  font: 10px 'Cinzel', serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pista);
+}
+.crt-pista-abierta { display: none; }
+
+/* créditos */
+.crt-credito {
+  margin-top: 6px;
+  text-align: center;
+  font: italic 11px 'Cormorant Garamond', serif;
+  color: var(--credito);
+  letter-spacing: 1px;
+}
+.crt-credito a,
+.crt-credito a:visited {
+  font: 8px 'Cinzel', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pista);
+  text-decoration: none;
+  transition: color .3s, text-shadow .3s;
+}
+.crt-credito a:hover { color: var(--sobre); text-shadow: 0 0 8px color-mix(in srgb, var(--sobre) 50%, transparent); }
+
+/* ════ ABIERTA ════ */
+.crt:has(.crt-abrir:checked) .crt-solapa {
+  transform: perspective(900px) rotateX(180deg);
+  z-index: 0;
+  transition: transform .6s ease, z-index 0s linear .3s;
+}
+.crt:has(.crt-abrir:checked) .crt-lacre {
+  transform: translate(-50%, -50%) scale(1.5) rotate(-12deg);
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+  transition: transform .4s ease, opacity .4s ease;
+}
+.crt:has(.crt-abrir:checked) .crt-carta {
+  max-height: 720px;
+  transition: max-height 1.4s cubic-bezier(.45,.05,.3,1) .5s, top .4s;
+}
+.crt:has(.crt-abrir:checked) .crt-papel > * {
+  opacity: 1;
+  filter: blur(0);
+  transition: opacity 1.2s ease 1.2s, filter 1.2s ease 1.2s;
+}
+.crt:has(.crt-abrir:checked) .crt-pista-cerrada { display: none; }
+.crt:has(.crt-abrir:checked) .crt-pista-abierta { display: inline; }
+.crt:has(.crt-abrir:checked) .crt-sobre:hover,
+.crt:has(.crt-abrir:checked):has(.crt-sobre:hover) .crt-carta { top: 0; }
+
+/* ── Pantallas pequeñas ── */
+@media (max-width: 480px) {
+  .crt-papel { padding: 24px 20px 150px; }
+  .crt-destinatario b { font-size: 25px; }
+}
