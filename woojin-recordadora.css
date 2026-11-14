@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Stardos+Stencil:wght@400;700&family=Kalam:wght@400;700&family=Gowun+Batang:wght@700&family=Work+Sans:wght@400;500;600&display=swap');
+
+/* ═══ Woojin Moon · Recordadora (archivero del DRCCM) ═══ */
+.wr {
+  --metal: #59604a;
+  --metal2: #4a5040;
+  --metal3: #3c4234;
+  --kraft: #efe4cc;
+  --kraft2: #e4d5b5;
+  --manila: #e2cd98;
+  --manila2: #d4bc84;
+  --ink: #2f3a2c;
+  --ink2: #3a4a5c;
+  --pencil: #5d5a52;
+  --rust: #b0553a;
+  --olive: #a9ad83;
+  --slate: #9fb2b9;
+  --ochre: #d9be7c;
+  --moss: #b9c49c;
+  --brass: #c4a35a;
+  --text: #3d3a34;
+  position: relative;
+  width: 520px; margin: 10px auto; box-sizing: border-box;
+  padding: 16px 16px 20px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, var(--metal), var(--metal2));
+  border-radius: 6px 6px 3px 3px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.12), inset 0 0 0 1px rgba(0,0,0,.4), 0 12px 26px rgba(0,0,0,.45);
+  color: var(--text) !important;
+  font-family: 'Work Sans', verdana, sans-serif !important;
+  text-align: left; line-height: normal;
+}
+.wr * { box-sizing: border-box; }
+.wr div, .wr span, .wr p, .wr a, .wr summary { font-family: 'Work Sans', verdana, sans-serif !important; }
+/* patas del mueble */
+.wr::before, .wr::after {
+  content: ""; position: absolute; bottom: -8px; width: 34px; height: 8px;
+  background: var(--metal3); border-radius: 0 0 3px 3px;
+}
+.wr::before { left: 26px; }
+.wr::after { right: 26px; }
+
+/* ── Ficha superior (pegada con cinta) ───── */
+.wr-head {
+  position: relative; display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px 11px; margin-bottom: 14px;
+  background:
+    linear-gradient(rgba(96,120,92,.14) 1px, transparent 1px) 0 0 / 12px 12px,
+    linear-gradient(90deg, rgba(96,120,92,.14) 1px, transparent 1px) 0 0 / 12px 12px,
+    linear-gradient(180deg, var(--kraft), var(--kraft2));
+  border-radius: 2px; transform: rotate(-.6deg);
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+}
+.wr-head::before, .wr-head::after {
+  content: ""; position: absolute; top: -7px; width: 58px; height: 17px; background: #e8dab4; opacity: .85;
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
+}
+.wr-head::before { left: 18px; transform: rotate(-5deg); }
+.wr-head::after { right: 18px; transform: rotate(4deg); }
+.wr-seal {
+  flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--rust); border-radius: 6px; color: var(--rust);
+  font-family: 'Gowun Batang', serif !important; font-size: 25px; font-weight: 700; line-height: 1;
+  transform: rotate(-7deg); opacity: .85;
+}
+.wr-ttl { flex: 1; min-width: 0; }
+.wr-kick { display: block; font-family: 'Special Elite', monospace !important; font-size: 10px; letter-spacing: 2px; color: var(--pencil); text-transform: uppercase; }
+.wr .wr-title {
+  display: block; font-family: 'Stardos Stencil', 'Arial Black', sans-serif !important;
+  font-size: 32px; font-weight: 700; line-height: 1; color: var(--ink); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;
+}
+.wr-ley { display: flex; flex-direction: column; gap: 3px; flex: none; }
+.wr-ley span { display: flex; align-items: center; gap: 5px; font-family: 'Special Elite', monospace !important; font-size: 10px; color: var(--ink); }
+.wr-ley span::before { content: ""; width: 14px; height: 8px; border-radius: 2px 2px 0 0; border: 1px solid rgba(47,58,44,.5); }
+.wr-ley .l1::before { background: var(--moss); }
+.wr-ley .l2::before { background: var(--ochre); }
+.wr-ley .l3::before { background: var(--slate); }
+
+/* ── Cajones ─────────────────────────────── */
+.wr-drawer {
+  position: relative; margin: 0 0 10px;
+  background: linear-gradient(180deg, #666d55, #565d47);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), inset 0 -2px 0 rgba(0,0,0,.25), 0 0 0 1px var(--metal3), 0 3px 0 var(--metal3);
+}
+.wr-drawer:last-of-type { margin-bottom: 0; }
+.wr-drawer > summary {
+  position: relative; list-style: none; cursor: pointer; outline: none;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 66px; padding: 0 16px;
+}
+.wr-drawer > summary::-webkit-details-marker { display: none; }
+.wr-drawer > summary::marker { content: ""; }
+/* portaetiquetas de bronce */
+.wr-label {
+  position: relative; display: flex; align-items: center; gap: 10px;
+  padding: 5px 12px; min-width: 150px;
+  background: linear-gradient(180deg, var(--kraft), var(--kraft2));
+  border: 3px solid var(--brass); border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.4);
+}
+.wr-label b { font-family: 'Stardos Stencil', sans-serif !important; font-size: 24px; color: var(--ink); letter-spacing: 2px; line-height: 1; }
+.wr-label i { font-style: normal; font-family: 'Special Elite', monospace !important; font-size: 10px; color: var(--pencil); line-height: 1.15; }
+/* tirador */
+.wr-handle {
+  position: relative; width: 92px; height: 18px; border-radius: 9px;
+  background: linear-gradient(180deg, #e0c47c, var(--brass) 45%, #8d7036);
+  box-shadow: 0 2px 3px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.45);
+  transition: transform .25s;
+}
+.wr-handle::before {
+  content: ""; position: absolute; left: 12px; right: 12px; top: 5px; height: 8px; border-radius: 4px;
+  background: var(--metal3); box-shadow: inset 0 2px 2px rgba(0,0,0,.5);
+}
+.wr-drawer > summary:hover .wr-handle { transform: translateY(1px); }
+.wr-count {
+  font-family: 'Special Elite', monospace !important; font-size: 11px; color: var(--kraft);
+  text-shadow: 0 1px 0 rgba(0,0,0,.4); text-align: right; line-height: 1.3;
+}
+.wr-drawer[open] > summary { box-shadow: 0 3px 0 rgba(0,0,0,.25); }
+.wr-drawer[open] .wr-handle { transform: translateY(2px) scale(.97); }
+
+/* interior del cajón */
+.wr-in {
+  margin: 0 8px; padding: 14px 10px 10px;
+  background: linear-gradient(180deg, #2c3027, #3a3f33 30px);
+  border-radius: 0 0 3px 3px;
+  box-shadow: inset 0 6px 10px rgba(0,0,0,.45);
+  animation: wr-slide .45s ease;
+}
+.wr-drawer[open] { padding-bottom: 8px; }
+@keyframes wr-slide { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+.wr-list { max-height: 360px; overflow-y: auto; padding: 2px 4px 2px 0; scrollbar-width: thin; scrollbar-color: var(--brass) transparent; }
+.wr-list::-webkit-scrollbar { width: 6px; }
+.wr-list::-webkit-scrollbar-thumb { background: var(--brass); border-radius: 3px; }
+
+/* ── Carpetas ────────────────────────────── */
+.wr-f {
+  position: relative; display: grid; grid-template-columns: 1fr auto; column-gap: 10px; align-items: center;
+  margin: 15px 0 0; padding: 9px 12px 8px;
+  background: linear-gradient(180deg, var(--manila), var(--manila2));
+  border-radius: 0 4px 3px 3px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35);
+  transition: transform .2s;
+}
+.wr-f:first-child { margin-top: 13px; }
+.wr-f:nth-child(even) { margin-left: 10px; }
+.wr-f:hover { transform: translateY(-4px); }
+/* pestaña de color según estado */
+.wr-f::before {
+  content: attr(data-n); position: absolute; top: -13px; left: 0; height: 14px; padding: 0 10px;
+  border-radius: 4px 4px 0 0; background: var(--moss);
+  font-family: 'Special Elite', monospace !important; font-size: 9px; line-height: 15px; color: var(--ink); letter-spacing: 1px;
+}
+.wr-f:nth-child(3n+2)::before { left: 34%; }
+.wr-f:nth-child(3n)::before { left: auto; right: 0; }
+.wr-f.s2::before { background: var(--ochre); }
+.wr-f.s3::before { background: var(--slate); }
+.wr .wr-f a {
+  grid-column: 1; font-family: 'Special Elite', monospace !important; font-size: 13px;
+  color: var(--ink) !important; text-decoration: none !important; line-height: 1.25;
+}
+.wr .wr-f a:hover { color: var(--rust) !important; }
+.wr-f span { grid-column: 1; font-size: 11px; color: var(--pencil); margin-top: 1px; }
+.wr-f span::before { content: "con · "; font-family: 'Kalam', cursive !important; }
+.wr-f span.t::before { content: "tipo · "; }
+.wr-f em {
+  grid-column: 2; grid-row: 1 / 3; text-align: right; font-style: normal;
+  font-family: 'Special Elite', monospace !important; font-size: 10px; color: var(--ink2); line-height: 1.3;
+}
+/* sello de estado */
+.wr-f em::after {
+  display: block; margin-top: 4px; margin-left: auto; width: max-content;
+  padding: 1px 6px; border: 1.5px solid currentColor; border-radius: 2px;
+  font-family: 'Stardos Stencil', sans-serif !important; font-size: 10px; letter-spacing: 1px;
+  transform: rotate(-4deg); opacity: .85;
+}
+.wr-f.s1 em::after { content: "EN CURSO"; color: #4e6634; }
+.wr-f.s2 em::after { content: "EN PAUSA"; color: #9a7428; }
+.wr-f.s3 em::after { content: "ARCHIVADO"; color: var(--rust); }
+
+/* ── Pie ─────────────────────────────────── */
+.wr-foot {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
+  font-family: 'Special Elite', monospace !important; font-size: 10px; letter-spacing: 1.5px; color: var(--kraft);
+  opacity: .8;
+}
+.wr-foot a { color: var(--kraft) !important; text-decoration: none !important; border-bottom: 1px dotted var(--kraft); }
+.wr-foot i { font-style: normal; font-family: 'Gowun Batang', serif !important; font-size: 18px; color: var(--brass); }
