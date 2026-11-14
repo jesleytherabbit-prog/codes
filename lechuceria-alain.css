@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════════
+   LECHUCERÍA · ALAIN D. BALSAN — «Volière Balsan»
+   by: Hana Park · todo vive bajo .avb
+   ═══════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&family=DM+Sans:opsz,wght@9..40,400..600&display=swap');
+
+.avb{
+  --avb-marfil:#F0E8DB; --avb-papel:#F7F2E9; --avb-vino:#692F3C; --avb-noche:#273345;
+  --avb-cuero:#6A4A37; --avb-oro:#BDA477; --avb-salvia:#899184; --avb-fondo:#141210; --avb-bruma:#1C2A2E;
+  --avb-bodoni:'Bodoni Moda', 'Didot', Georgia, serif;
+  --avb-corm:'Cormorant Garamond', Garamond, Georgia, serif;
+  --avb-sans:'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  max-width:640px !important; margin:0 auto !important; padding:0 !important; box-sizing:border-box !important;
+  background:var(--avb-marfil) !important; color:var(--avb-noche) !important; overflow:hidden !important;
+  border:1px solid var(--avb-oro) !important; border-radius:240px 240px 4px 4px !important;
+  box-shadow:0 0 0 5px var(--avb-fondo), 0 0 0 6px var(--avb-oro), 0 14px 30px rgba(0,0,0,.45) !important;
+  font-family:var(--avb-corm) !important; line-height:1.45 !important; text-align:left !important;
+}
+.avb *, .avb *::before, .avb *::after{ box-sizing:border-box !important; }
+.avb br{ display:none !important; }
+.avb a{ text-decoration:none !important; }
+
+/* ── Arco de mármol ── */
+.avb-arco{
+  position:relative !important; text-align:center !important; padding:44px 40px 20px !important;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='420' viewBox='0 0 680 420'%3E%3Cg fill='none' opacity='.35'%3E%3Cpath d='M-20 90C120 60 180 150 300 120S520 40 700 110' stroke='%23899184' stroke-width='1.2'/%3E%3Cpath d='M-20 260C90 230 220 300 360 250S560 200 700 280' stroke='%23899184' stroke-width='.8'/%3E%3Cpath d='M140 0C160 80 110 160 180 260S150 380 200 430' stroke='%23BDA477' stroke-width='.7'/%3E%3Cpath d='M520 0C500 90 560 170 520 280S560 380 540 430' stroke='%23899184' stroke-width='.9'/%3E%3C/g%3E%3C/svg%3E") center top / cover no-repeat,
+    radial-gradient(ellipse at 30% 20%, #F7F1E6 0%, #EDE3D2 45%, #DCCFB8 100%) !important;
+}
+.avb-lugar{ max-width:400px !important; margin:0 auto !important; font-family:var(--avb-sans) !important; font-size:10px !important; letter-spacing:.32em !important; text-transform:uppercase !important; line-height:1.7 !important; color:var(--avb-cuero) !important; }
+.avb-sello{
+  width:46px !important; height:46px !important; margin:8px auto 2px !important; border-radius:50% !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  background:var(--avb-vino) !important; color:var(--avb-marfil) !important;
+  font-family:var(--avb-bodoni) !important; font-style:italic !important; font-size:19px !important;
+  box-shadow:0 0 0 3px var(--avb-marfil), 0 0 0 4.5px var(--avb-oro), inset 0 0 0 4px rgba(255,255,255,.1) !important;
+}
+.avb-titulo{ margin:4px 0 0 !important; font-family:var(--avb-bodoni) !important; font-weight:500 !important; font-size:36px !important; line-height:1.05 !important; letter-spacing:.04em !important; color:var(--avb-noche) !important; }
+.avb-titulo i{ font-style:italic !important; color:var(--avb-vino) !important; }
+.avb-orla{ display:flex !important; align-items:center !important; justify-content:center !important; gap:14px !important; margin:6px 0 4px !important; color:var(--avb-oro) !important; font-size:12px !important; }
+.avb-orla::before, .avb-orla::after{ content:"" !important; width:56px !important; height:1px !important; background:var(--avb-oro) !important; }
+.avb-sub{ font-family:var(--avb-corm) !important; font-style:italic !important; font-size:18px !important; color:var(--avb-vino) !important; }
+.avb-registro{ display:inline-block !important; margin-top:8px !important; padding:3px 12px !important; border:1px solid var(--avb-oro) !important; border-radius:20px !important; font-family:var(--avb-sans) !important; font-size:9.5px !important; letter-spacing:.24em !important; text-transform:uppercase !important; color:var(--avb-cuero) !important; }
+
+/* ── Cuerpo: ventana + ficha ── */
+.avb-cuerpo{
+  display:grid !important; grid-template-columns:220px minmax(0,1fr) !important; gap:22px !important; align-items:center !important;
+  padding:20px 28px 18px !important; border-top:1px solid rgba(189,164,119,.6) !important;
+}
+
+/* ventana gótica con bruma */
+.avb-ventana{
+  position:relative !important; width:220px !important; height:300px !important; overflow:hidden !important;
+  border-radius:110px 110px 3px 3px !important; background:var(--avb-bruma) !important;
+  border:3px solid var(--avb-marfil) !important;
+  box-shadow:0 0 0 1px var(--avb-oro), 0 0 0 6px var(--avb-marfil), 0 0 0 7px var(--avb-oro), 0 10px 22px rgba(20,18,16,.35) !important;
+}
+.avb-ventana img{
+  position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; max-width:none !important;
+  object-fit:cover !important; object-position:32% 40% !important; transform:scale(1.08) !important;
+  transition:transform 6s ease, filter .8s ease !important; border:0 !important;
+}
+.avb-ventana:hover img{ transform:scale(1.16) !important; filter:brightness(1.12) saturate(1.1) !important; }
+/* dos capas de bruma que se cruzan */
+.avb-ventana::before, .avb-ventana::after{
+  content:"" !important; position:absolute !important; left:-60% !important; width:220% !important; pointer-events:none !important; z-index:2 !important;
+}
+.avb-ventana::before{
+  bottom:-10px !important; height:55% !important;
+  background:radial-gradient(ellipse at 30% 70%, rgba(220,226,226,.38), transparent 60%), radial-gradient(ellipse at 75% 80%, rgba(200,210,212,.30), transparent 55%) !important;
+  animation:avb-bruma 16s ease-in-out infinite alternate !important;
+}
+.avb-ventana::after{
+  top:20% !important; height:45% !important;
+  background:radial-gradient(ellipse at 60% 50%, rgba(210,218,220,.20), transparent 60%) !important;
+  animation:avb-bruma 22s ease-in-out infinite alternate-reverse !important;
+}
+@keyframes avb-bruma{ from{ transform:translateX(0); opacity:.7; } to{ transform:translateX(26%); opacity:1; } }
+/* destello tornasol al pasar el mouse */
+.avb-brillo{
+  position:absolute !important; inset:0 !important; z-index:3 !important; pointer-events:none !important; opacity:0 !important;
+  background:linear-gradient(115deg, transparent 35%, rgba(150,190,255,.18) 45%, rgba(220,170,255,.16) 52%, rgba(255,230,170,.14) 58%, transparent 68%) !important;
+  background-size:250% 100% !important; background-position:100% 0 !important;
+  transition:opacity .6s ease !important;
+}
+.avb-ventana:hover .avb-brillo{ opacity:1 !important; animation:avb-tornasol 2.4s ease forwards !important; }
+@keyframes avb-tornasol{ from{ background-position:100% 0; } to{ background-position:0 0; } }
+/* parteluz dorado de la ventana */
+.avb-parteluz{ position:absolute !important; inset:0 !important; z-index:4 !important; pointer-events:none !important; border-radius:107px 107px 0 0 !important; box-shadow:inset 0 0 40px rgba(10,14,16,.55) !important; }
+.avb-placa{ margin:12px auto 0 !important; width:220px !important; text-align:center !important; font-family:var(--avb-sans) !important; font-size:9.5px !important; letter-spacing:.3em !important; text-transform:uppercase !important; color:var(--avb-cuero) !important; }
+
+/* ficha como entrada del Archivo */
+.avb-entrada{ font-family:var(--avb-sans) !important; font-size:9.5px !important; letter-spacing:.2em !important; text-transform:uppercase !important; color:var(--avb-cuero) !important; }
+.avb-nombre{ margin-top:6px !important; font-family:var(--avb-bodoni) !important; font-size:24px !important; line-height:1.15 !important; color:var(--avb-noche) !important; }
+.avb-mote{ margin-top:4px !important; font-family:var(--avb-corm) !important; font-style:italic !important; font-size:16px !important; line-height:1.3 !important; color:var(--avb-vino) !important; }
+.avb-datos{ list-style:none !important; margin:12px 0 0 !important; padding:10px 0 0 !important; border-top:1px solid var(--avb-oro) !important; }
+.avb-datos li{ display:grid !important; grid-template-columns:76px minmax(0,1fr) !important; gap:10px !important; align-items:baseline !important; padding:4px 0 !important; margin:0 !important; border-bottom:1px dotted rgba(189,164,119,.7) !important; background:none !important; list-style:none !important; }
+.avb-datos li::before{ display:none !important; }
+.avb-datos span{ font-family:var(--avb-sans) !important; font-size:9px !important; letter-spacing:.18em !important; text-transform:uppercase !important; color:var(--avb-cuero) !important; }
+.avb-datos b{ font-family:var(--avb-corm) !important; font-size:15.5px !important; font-weight:600 !important; line-height:1.25 !important; color:var(--avb-noche) !important; }
+
+/* ── Descripción ── */
+.avb-separador{ display:flex !important; align-items:center !important; justify-content:center !important; gap:14px !important; color:var(--avb-oro) !important; font-size:13px !important; padding:2px 0 !important; }
+.avb-separador::before, .avb-separador::after{ content:"" !important; width:90px !important; height:1px !important; background:var(--avb-oro) !important; }
+.avb-descripcion{
+  margin:8px 28px 0 !important; padding:16px 20px !important; background:var(--avb-papel) !important;
+  border:1px solid rgba(189,164,119,.7) !important;
+  max-height:300px !important; overflow-y:auto !important; scrollbar-width:thin !important; scrollbar-color:var(--avb-oro) transparent !important;
+  font-family:var(--avb-corm) !important; font-size:16.5px !important; line-height:1.55 !important; color:var(--avb-noche) !important;
+  white-space:pre-line !important; text-align:justify !important;
+}
+.avb-descripcion::-webkit-scrollbar{ width:6px !important; }
+.avb-descripcion::-webkit-scrollbar-thumb{ background:var(--avb-oro) !important; border-radius:6px !important; }
+.avb-descripcion::first-letter{ float:left !important; font-family:var(--avb-bodoni) !important; font-size:44px !important; line-height:.9 !important; padding:4px 8px 0 0 !important; color:var(--avb-vino) !important; }
+.avb-nota{
+  margin:10px 28px 18px !important; padding-left:14px !important; border-left:1px solid var(--avb-vino) !important;
+  font-family:var(--avb-corm) !important; font-style:italic !important; font-size:15px !important; line-height:1.4 !important; color:var(--avb-cuero) !important;
+}
+.avb-nota b{ font-weight:600 !important; color:var(--avb-vino) !important; }
+
+/* ── Pie ── */
+.avb-pie{ padding:14px 26px 12px !important; text-align:center !important; background:var(--avb-fondo) !important; border-top:1px solid var(--avb-oro) !important; }
+.avb-norma{ max-width:480px !important; margin:0 auto !important; font-family:var(--avb-corm) !important; font-style:italic !important; font-size:15px !important; line-height:1.4 !important; color:#DCCFB8 !important; }
+.avb-correo{ display:flex !important; align-items:center !important; justify-content:center !important; gap:8px !important; margin-top:8px !important; font-family:var(--avb-sans) !important; font-size:10px !important; letter-spacing:.3em !important; text-transform:uppercase !important; color:var(--avb-oro) !important; }
+.avb-mini{ width:22px !important; height:22px !important; border-radius:50% !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; background:var(--avb-vino) !important; color:var(--avb-marfil) !important; font-family:var(--avb-bodoni) !important; font-style:italic !important; font-size:11px !important; letter-spacing:0 !important; box-shadow:0 0 0 1.5px var(--avb-oro) !important; }
+.avb-credito{ margin-top:8px !important; font-family:var(--avb-sans) !important; font-size:11px !important; color:#DCCFB8 !important; }
+.avb-credito a{ color:var(--avb-oro) !important; }
+.avb-credito a:hover{ color:var(--avb-marfil) !important; }
+
+/* ── Pantallas chicas ── */
+@media (max-width:620px){
+  .avb{ border-radius:160px 160px 4px 4px !important; }
+  .avb-arco{ padding:40px 18px 18px !important; }
+  .avb-titulo{ font-size:28px !important; }
+  .avb-cuerpo{ grid-template-columns:minmax(0,1fr) !important; justify-items:center !important; padding:16px !important; }
+  .avb-descripcion, .avb-nota{ margin-left:16px !important; margin-right:16px !important; }
+}
