@@ -1,0 +1,16 @@
+/* ==========================================================
+   Grimorio Silvano · EXTRAS · dibujos de margen y respuestas de Hana
+   Va junto con grimorio-silvano.css. Reutilizable en cualquier página.
+   ========================================================== */
+
+/* respuesta de Hana debajo de una nota de papá (sin estilos en línea) */
+.gs-papa .gs-respuesta.gs-ko,.gs-respuesta.gs-ko{margin-top:8px!important;font-family:'Nanum Pen Script',cursive!important;color:#1f3a5a!important;font-size:20px!important;opacity:1!important;letter-spacing:0!important}
+.gs-papa .gs-respuesta.gs-es,.gs-respuesta.gs-es{font-family:'Caveat',cursive!important;font-size:14px!important;color:#6b5236!important;line-height:1.15!important;opacity:1!important}
+
+.gs-dibujo--luna{width:50px!important;height:50px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%231f3a5a' stroke-width='1' stroke-linecap='round' opacity='.8'%3E %3Cpath d='M34 10 C22 12 16 24 20 36 C24 46 36 50 46 44 C34 44 26 34 28 24 C29 18 31 13 34 10Z'/%3E %3Cpath d='M48 14 v6 M45 17 h6'/%3E%3Cpath d='M12 46 v4 M10 48 h4'/%3E%3Cpath d='M50 30 l2 2 M52 30 l-2 2' opacity='.7'/%3E%3C/g%3E %3Ccircle cx='42' cy='22' r='1.2' fill='%23c9a85a'/%3E%3Ccircle cx='14' cy='20' r='1' fill='%23c9a85a'/%3E%3C/svg%3E")!important}
+.gs-dibujo--capullo{width:50px!important;height:58px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 70'%3E%3Cg fill='none' stroke='%231f3a5a' stroke-width='1' stroke-linecap='round' opacity='.8'%3E %3Cpath d='M30 68 C30 56 30 48 30 40'/%3E%3Cpath d='M30 40 C20 38 18 24 30 10 C42 24 40 38 30 40Z'/%3E%3Cpath d='M30 40 C26 30 27 20 30 10'/%3E %3Cpath d='M30 52 C22 50 18 46 16 42 C22 42 28 46 30 52'/%3E %3Cpath d='M44 14 C48 12 50 9 50 6' stroke-dasharray='2 2.5'/%3E%3Cpath d='M46 20 C51 19 54 17 56 14' stroke-dasharray='2 2.5'/%3E%3C/g%3E %3Ctext x='47' y='32' font-family='serif' font-style='italic' font-size='8' fill='%231f3a5a' opacity='.75'%3Eshh%3C/text%3E%3C/svg%3E")!important}
+.gs-dibujo--frasco{width:40px!important;height:56px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 70'%3E%3Cg fill='none' stroke='%234a3a2a' stroke-width='1' stroke-linecap='round' opacity='.8'%3E %3Crect x='18' y='4' width='14' height='9' rx='2'/%3E%3Cpath d='M19 13 v6 C10 22 10 30 10 36 V60 C10 65 14 67 25 67 C36 67 40 65 40 60 V36 C40 30 40 22 31 19 v-6'/%3E %3Cpath d='M14 40 H36' opacity='.4'/%3E%3Cpath d='M34 30 C36 36 36 50 34 58' opacity='.35'/%3E%3Cpath d='M32 8 C38 6 42 9 44 14' stroke-dasharray='1.5 2'/%3E%3C/g%3E %3Cg fill='%235a6e46' opacity='.85'%3E%3Ccircle cx='19' cy='59' r='3'/%3E%3Ccircle cx='26' cy='60' r='3'/%3E%3Ccircle cx='32' cy='58' r='2.8'/%3E%3Ccircle cx='22' cy='53' r='2.8'/%3E%3Ccircle cx='29' cy='52' r='2.7'/%3E%3C/g%3E %3Cg fill='%23e9dcbc' opacity='.6'%3E%3Ccircle cx='18' cy='58' r='.8'/%3E%3Ccircle cx='25' cy='59' r='.8'/%3E%3Ccircle cx='21' cy='52' r='.8'/%3E%3C/g%3E%3C/svg%3E")!important}
+
+/* lámina más alta (flores de tallo largo) */
+.gs-arbol.gs-arbol--alta{width:250px!important;margin:-6px -14px 6px 12px!important;transform-origin:40% 100%}
+.gs-lamina-pie.gs-lamina-pie--alta{width:240px!important}
