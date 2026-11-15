@@ -19,7 +19,7 @@
 
 .gs-esquina--id{animation-delay:4.5s!important;bottom:8px!important;right:8px!important;transform:scale(-1,-1)!important}
 
-.gs-enredadera{position:absolute!important;top:120px!important;bottom:120px!important;left:104px!important;width:18px!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 90'%3E%3Cpath d='M12 0 C4 22 20 45 12 67 C8 78 12 85 12 90' fill='none' stroke='%237a5a32' stroke-width='1' opacity='.55'/%3E%3Cpath d='M12 20 q-11 -4 -10 -14 q9 3 10 14z' fill='%235a6e46' opacity='.55'/%3E%3Cpath d='M13 58 q11 -2 11 -12 q-10 2 -11 12z' fill='%235a6e46' opacity='.55'/%3E%3Ccircle cx='16' cy='36' r='1.4' fill='%23c9a85a'/%3E%3Ccircle cx='18' cy='39' r='1.1' fill='%23c9a85a'/%3E%3C/svg%3E") repeat-y center top/18px 68px;pointer-events:none!important;transform-origin:50% 0;animation:gs-crece 14s linear infinite,gs-mece 5s ease-in-out infinite}
+.gs-enredadera{position:absolute!important;top:120px!important;bottom:120px!important;left:98px!important;width:18px!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 90'%3E%3Cpath d='M12 0 C4 22 20 45 12 67 C8 78 12 85 12 90' fill='none' stroke='%237a5a32' stroke-width='1' opacity='.55'/%3E%3Cpath d='M12 20 q-11 -4 -10 -14 q9 3 10 14z' fill='%235a6e46' opacity='.55'/%3E%3Cpath d='M13 58 q11 -2 11 -12 q-10 2 -11 12z' fill='%235a6e46' opacity='.55'/%3E%3Ccircle cx='16' cy='36' r='1.4' fill='%23c9a85a'/%3E%3Ccircle cx='18' cy='39' r='1.1' fill='%23c9a85a'/%3E%3C/svg%3E") repeat-y center top/18px 68px;pointer-events:none!important;transform-origin:50% 0;animation:gs-crece 14s linear infinite,gs-mece 5s ease-in-out infinite}
 
 .gs-cabecera{text-align:center!important;margin:0 0 4px -40px!important}
 
@@ -45,9 +45,9 @@
 
 .gs-lamina-pie{clear:right!important;float:right!important;width:270px!important;text-align:center!important;font-family:'IM Fell English',Georgia,serif!important;font-style:italic!important;font-size:12px!important;color:#6d5737!important;margin:-4px -8px 10px 10px!important}
 
-.gs-seccion{position:relative!important;font-family:'IM Fell English SC',Georgia,serif!important;font-size:14px!important;letter-spacing:2px!important;color:#2e4231!important;margin:14px 0 4px!important;border-bottom:1px solid rgba(110,80,40,.35)!important;padding-bottom:2px!important}
+.gs-seccion{position:relative!important;overflow:hidden!important;font-family:'IM Fell English SC',Georgia,serif!important;font-size:14px!important;letter-spacing:2px!important;color:#2e4231!important;margin:14px 0 4px!important;border-bottom:1px solid rgba(110,80,40,.35)!important;padding-bottom:2px!important}
 
-.gs-seccion:before{content:"❦ "!important;color:#7a5a32!important;font-size:12px!important}
+.gs-seccion:before{content:''!important;display:inline-block!important;width:16px!important;height:10px!important;margin-right:6px!important;vertical-align:-1px!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 12'%3E%3Cpath d='M1 11 C6 10 10 7 12 2' fill='none' stroke='%237a5a32' stroke-width='1' stroke-linecap='round'/%3E%3Cpath d='M12 2 C15 1 19 2 19 5 C16 7 13 6 12 2z' fill='%235a6e46'/%3E%3Cpath d='M7 8 C7 5 9 3 11 3 C11 6 9 8 7 8z' fill='%236f8f5e'/%3E%3C/svg%3E") no-repeat center/contain!important}
 
 .gs-pagina p{margin:0 0 8px!important;text-align:justify!important;font-family:'Cormorant Garamond',Georgia,serif!important}
 
@@ -57,7 +57,7 @@
 
 .gs-pagina li{position:relative!important;margin:0 0 4px!important;font-family:'Cormorant Garamond',Georgia,serif!important}
 
-.gs-pagina li:before{content:"❧"!important;position:absolute!important;left:-16px!important;color:#7a5a32!important;font-size:12px!important}
+.gs-pagina li:before{content:'✦'!important;position:absolute!important;left:-15px!important;top:1px!important;color:#7a5a32!important;font-size:9px!important}
 
 .gs-pagina b{font-weight:600!important;color:#2e4231!important}
 
@@ -126,6 +126,6 @@
 .gs-orla{animation:gs-respira 6s ease-in-out infinite}
 @keyframes gs-respira{0%,100%{opacity:.75}50%{opacity:1}}
 @keyframes gs-crece{from{background-position:center 0}to{background-position:center 68px}}
-@keyframes gs-mece{0%,100%{transform:skewX(0deg)}50%{transform:skewX(1.2deg)}}
+@keyframes gs-mece{0%,100%{transform:skewX(0deg)}50%{transform:skewX(.4deg)}}
 @keyframes gs-arbol-mece{0%,100%{transform:rotate(0deg)}50%{transform:rotate(.7deg)}}
 @keyframes gs-polen{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:1}60%{opacity:.8}100%{opacity:0;transform:translate(-40px,90px) scale(1.1)}}
