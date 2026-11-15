@@ -1,0 +1,154 @@
+/* ==========================================================
+   Divisor de paso del tiempo · Hana Park
+   Uso: <div class="hp-reloj"> ... </div>
+   ========================================================== */
+
+.hp-reloj {
+  --hp-oro: #c9b27c;
+  --hp-oro-claro: #efe3bf;
+  --hp-tinta: #2f3550;
+  --hp-fondo: #fbf7ec;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 28px auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Líneas laterales con destello */
+.hp-reloj__linea {
+  position: relative !important;
+  flex: 1 1 auto !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, var(--hp-oro), transparent) !important;
+}
+.hp-reloj__linea::after {
+  content: "✧" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -55%) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  color: var(--hp-oro) !important;
+  background: transparent !important;
+  animation: hp-reloj-brillo 3s ease-in-out infinite !important;
+}
+.hp-reloj__linea--der::after { animation-delay: 1.5s !important; }
+
+/* Centro: reloj + texto */
+.hp-reloj__centro {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex: 0 0 auto !important;
+}
+
+/* Esfera */
+.hp-reloj__esfera {
+  position: relative !important;
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--hp-fondo) 60%, var(--hp-oro-claro)) !important;
+  border: 2px solid var(--hp-oro) !important;
+  box-shadow:
+    0 0 0 3px var(--hp-fondo),
+    0 0 0 4px var(--hp-oro-claro),
+    0 0 14px rgba(201, 178, 124, 0.55) !important;
+  animation: hp-reloj-aura 4s ease-in-out infinite !important;
+  box-sizing: border-box !important;
+}
+
+/* Marcas de las horas 12, 3, 6 y 9 */
+.hp-reloj__marca {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 2px !important;
+  height: 5px !important;
+  margin: -2.5px 0 0 -1px !important;
+  background: var(--hp-oro) !important;
+  border-radius: 1px !important;
+}
+.hp-reloj__marca:nth-child(1) { transform: rotate(0deg)   translateY(-20px) !important; }
+.hp-reloj__marca:nth-child(2) { transform: rotate(90deg)  translateY(-20px) !important; }
+.hp-reloj__marca:nth-child(3) { transform: rotate(180deg) translateY(-20px) !important; }
+.hp-reloj__marca:nth-child(4) { transform: rotate(270deg) translateY(-20px) !important; }
+
+/* Agujas: el minutero gira rápido y el horario lento, para que se vea pasar el tiempo */
+.hp-reloj__aguja {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 50% !important;
+  transform-origin: 50% 100% !important;
+  border-radius: 2px !important;
+  background: var(--hp-tinta) !important;
+}
+.hp-reloj__aguja--hora {
+  width: 3px !important;
+  height: 13px !important;
+  margin-left: -1.5px !important;
+  animation: hp-reloj-giro 36s linear infinite !important;
+}
+.hp-reloj__aguja--minuto {
+  width: 2px !important;
+  height: 19px !important;
+  margin-left: -1px !important;
+  background: var(--hp-oro) !important;
+  animation: hp-reloj-giro 3s linear infinite !important;
+}
+.hp-reloj__eje {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 6px !important;
+  height: 6px !important;
+  margin: -3px 0 0 -3px !important;
+  border-radius: 50% !important;
+  background: var(--hp-tinta) !important;
+  box-shadow: 0 0 0 1.5px var(--hp-oro-claro) !important;
+}
+
+/* Texto debajo del reloj */
+.hp-reloj__texto {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1.2 !important;
+  color: var(--hp-tinta) !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+.hp-reloj__texto b,
+.hp-reloj__texto strong {
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: var(--hp-oro) !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+
+@keyframes hp-reloj-giro {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes hp-reloj-aura {
+  0%, 100% { box-shadow: 0 0 0 3px var(--hp-fondo), 0 0 0 4px var(--hp-oro-claro), 0 0 10px rgba(201,178,124,.35); }
+  50%      { box-shadow: 0 0 0 3px var(--hp-fondo), 0 0 0 4px var(--hp-oro-claro), 0 0 20px rgba(201,178,124,.75); }
+}
+@keyframes hp-reloj-brillo {
+  0%, 100% { opacity: .35; }
+  50%      { opacity: 1; }
+}
