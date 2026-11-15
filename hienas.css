@@ -1,0 +1,111 @@
+/* ==========================================================
+   Efecto "Árbol de las hienas" · Hana Park
+   Uso: <div class="hp-hienas"> ... </div>
+   ========================================================== */
+
+.hp-hienas {
+  --hp-hoja: #2f4a32;
+  --hp-hoja-claro: #6f8f5e;
+  --hp-tinta: #2f3550;
+  --hp-risa: #a8925a;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  height: 110px !important;
+  margin: 18px auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Texto principal, con un temblor como de risa contenida */
+.hp-hienas__texto {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 600 !important;
+  font-size: 26px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+  color: var(--hp-tinta) !important;
+  text-shadow: 0 0 12px rgba(111, 143, 94, 0.35) !important;
+  z-index: 2 !important;
+  animation: hp-hienas-temblor 2.6s ease-in-out infinite !important;
+}
+
+/* Hojas */
+.hp-hienas__hoja {
+  position: absolute !important;
+  width: 14px !important;
+  height: 7px !important;
+  border-radius: 0 100% 0 100% !important;
+  background: linear-gradient(135deg, var(--hp-hoja-claro), var(--hp-hoja)) !important;
+  opacity: 0;
+  z-index: 1 !important;
+  animation: hp-hienas-hoja 6s ease-in-out infinite !important;
+}
+.hp-hienas__hoja::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 2px !important;
+  right: 2px !important;
+  height: 1px !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  transform: rotate(-20deg) !important;
+}
+.hp-hienas__hoja:nth-of-type(1) { left: 8%;  top: 18%; animation-delay: 0s !important; }
+.hp-hienas__hoja:nth-of-type(2) { left: 88%; top: 26%; animation-delay: 1.2s !important; animation-duration: 7s !important; }
+.hp-hienas__hoja:nth-of-type(3) { left: 20%; top: 72%; animation-delay: 2.4s !important; }
+.hp-hienas__hoja:nth-of-type(4) { left: 76%; top: 70%; animation-delay: 3.3s !important; animation-duration: 6.5s !important; }
+.hp-hienas__hoja:nth-of-type(5) { left: 50%; top: 4%;  animation-delay: 4.1s !important; animation-duration: 7.5s !important; }
+.hp-hienas__hoja:nth-of-type(6) { left: 4%;  top: 50%; animation-delay: 5s !important; }
+
+/* Los "ja" que se escapan flotando */
+.hp-hienas__ja {
+  position: absolute !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  color: var(--hp-risa) !important;
+  white-space: nowrap !important;
+  opacity: 0;
+  z-index: 1 !important;
+  animation: hp-hienas-ja 4s ease-out infinite !important;
+}
+.hp-hienas__ja:nth-of-type(1) { left: 14%; top: 58%; animation-delay: 0.2s !important; }
+.hp-hienas__ja:nth-of-type(2) { left: 70%; top: 60%; animation-delay: 1s !important;  font-size: 15px !important; }
+.hp-hienas__ja:nth-of-type(3) { left: 36%; top: 66%; animation-delay: 1.8s !important; font-size: 11px !important; }
+.hp-hienas__ja:nth-of-type(4) { left: 84%; top: 52%; animation-delay: 2.6s !important; }
+.hp-hienas__ja:nth-of-type(5) { left: 56%; top: 70%; animation-delay: 3.3s !important; font-size: 12px !important; }
+.hp-hienas__ja:nth-of-type(6) { left: 26%; top: 48%; animation-delay: 3.9s !important; font-size: 14px !important; }
+
+@keyframes hp-hienas-temblor {
+  0%, 60%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  64% { transform: translate(-50%, -50%) rotate(-1.2deg); }
+  68% { transform: translate(-50%, -50%) rotate(1.2deg); }
+  72% { transform: translate(-50%, -50%) rotate(-0.8deg); }
+  76% { transform: translate(-50%, -50%) rotate(0.8deg); }
+  80% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+@keyframes hp-hienas-hoja {
+  0%   { opacity: 0;   transform: translate(0, 0) rotate(0deg); }
+  15%  { opacity: .9; }
+  50%  { transform: translate(10px, 8px) rotate(140deg); }
+  85%  { opacity: .9; }
+  100% { opacity: 0;   transform: translate(-6px, 18px) rotate(300deg); }
+}
+@keyframes hp-hienas-ja {
+  0%   { opacity: 0;  transform: translateY(0) rotate(-6deg) scale(.8); }
+  20%  { opacity: 1; }
+  70%  { opacity: .8; }
+  100% { opacity: 0;  transform: translateY(-38px) rotate(8deg) scale(1.1); }
+}
