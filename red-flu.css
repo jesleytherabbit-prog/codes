@@ -1,0 +1,145 @@
+/* ==========================================================
+   Intermedio · Viaje por la Red Flu · Hana Park
+   Uso: <div class="hp-flu"> ... </div>
+   ========================================================== */
+
+.hp-flu {
+  --flu-verde: #3ddc84;
+  --flu-verde-claro: #b8ffcf;
+  --flu-verde-osc: #0e5a34;
+  --flu-ceniza: #c9c2b5;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  height: 140px !important;
+  margin: 26px auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 70px / 50px !important;
+  background: radial-gradient(ellipse at 50% 100%, #12351f 0%, #0b1a12 55%, #070d09 100%) !important;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.8), 0 0 18px rgba(61,220,132,.25) !important;
+  box-sizing: border-box !important;
+  isolation: isolate !important;
+}
+
+/* Remolino giratorio de fondo */
+.hp-flu__remolino {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 260px !important;
+  height: 260px !important;
+  margin: -130px 0 0 -130px !important;
+  border-radius: 50% !important;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(61,220,132,.35) 40deg, transparent 90deg, rgba(184,255,207,.25) 160deg, transparent 220deg, rgba(61,220,132,.3) 290deg, transparent 360deg) !important;
+  filter: blur(6px) !important;
+  z-index: 0 !important;
+  animation: hp-flu-gira 3s linear infinite;
+}
+.hp-flu__remolino--2 {
+  width: 180px !important;
+  height: 180px !important;
+  margin: -90px 0 0 -90px !important;
+  opacity: .8 !important;
+  animation: hp-flu-gira-inv 2s linear infinite;
+}
+
+/* Llamas verdes */
+.hp-flu__llama {
+  position: absolute !important;
+  bottom: -20px !important;
+  width: 60px !important;
+  height: 110px !important;
+  border-radius: 50% 50% 40% 40% / 70% 70% 30% 30% !important;
+  background: radial-gradient(ellipse at 50% 80%, var(--flu-verde-claro) 0%, var(--flu-verde) 35%, var(--flu-verde-osc) 70%, transparent 75%) !important;
+  filter: blur(4px) !important;
+  mix-blend-mode: screen !important;
+  transform-origin: 50% 100%;
+  z-index: 1 !important;
+  animation: hp-flu-llama 1.2s ease-in-out infinite alternate;
+}
+.hp-flu__llama:nth-of-type(1) { left: 8% !important;  height: 80px !important; animation-delay: -.2s !important; }
+.hp-flu__llama:nth-of-type(2) { left: 22% !important; height: 120px !important; animation-delay: -.6s !important; }
+.hp-flu__llama:nth-of-type(3) { left: 38% !important; height: 95px !important;  animation-delay: -.9s !important; }
+.hp-flu__llama:nth-of-type(4) { left: 52% !important; height: 125px !important; animation-delay: -.4s !important; }
+.hp-flu__llama:nth-of-type(5) { left: 67% !important; height: 90px !important;  animation-delay: -1.1s !important; }
+.hp-flu__llama:nth-of-type(6) { left: 82% !important; height: 110px !important; animation-delay: -.7s !important; }
+
+/* Chispas y ceniza que suben */
+.hp-flu__chispa {
+  position: absolute !important;
+  bottom: 10px !important;
+  width: 4px !important;
+  height: 4px !important;
+  border-radius: 50% !important;
+  background: var(--flu-verde-claro) !important;
+  box-shadow: 0 0 6px 2px rgba(61,220,132,.8) !important;
+  z-index: 2 !important;
+  opacity: 0;
+  animation: hp-flu-chispa 2.4s ease-out infinite;
+}
+.hp-flu__chispa:nth-of-type(odd) {
+  background: var(--flu-ceniza) !important;
+  box-shadow: none !important;
+  width: 3px !important;
+  height: 3px !important;
+}
+.hp-flu__chispa:nth-of-type(1) { left: 12% !important; animation-delay: 0s !important; }
+.hp-flu__chispa:nth-of-type(2) { left: 26% !important; animation-delay: .5s !important; }
+.hp-flu__chispa:nth-of-type(3) { left: 41% !important; animation-delay: 1.1s !important; }
+.hp-flu__chispa:nth-of-type(4) { left: 57% !important; animation-delay: .3s !important; }
+.hp-flu__chispa:nth-of-type(5) { left: 70% !important; animation-delay: 1.6s !important; }
+.hp-flu__chispa:nth-of-type(6) { left: 85% !important; animation-delay: .8s !important; }
+.hp-flu__chispa:nth-of-type(7) { left: 33% !important; animation-delay: 1.9s !important; }
+.hp-flu__chispa:nth-of-type(8) { left: 63% !important; animation-delay: 1.3s !important; }
+
+/* Texto */
+.hp-flu__texto {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 3 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+.hp-flu__etiqueta {
+  display: block !important;
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+  color: var(--flu-verde-claro) !important;
+  opacity: .85 !important;
+  margin-bottom: 4px !important;
+}
+.hp-flu__destino {
+  display: block !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 600 !important;
+  font-size: 26px !important;
+  line-height: 1.1 !important;
+  color: #f2fff6 !important;
+  text-shadow: 0 0 8px rgba(61,220,132,.9), 0 0 18px rgba(61,220,132,.6) !important;
+  animation: hp-flu-destino 2.4s ease-in-out infinite;
+}
+
+@keyframes hp-flu-gira     { to { transform: rotate(360deg); } }
+@keyframes hp-flu-gira-inv { to { transform: rotate(-360deg); } }
+@keyframes hp-flu-llama {
+  0%   { transform: scaleY(.85) scaleX(1.05) skewX(-4deg); opacity: .8; }
+  100% { transform: scaleY(1.15) scaleX(.9) skewX(5deg);  opacity: 1; }
+}
+@keyframes hp-flu-chispa {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  15%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(14px, -120px); }
+}
+@keyframes hp-flu-destino {
+  0%, 100% { letter-spacing: 0.5px; filter: blur(0); }
+  45%      { letter-spacing: 3px;   filter: blur(1.2px); }
+  55%      { letter-spacing: 3px;   filter: blur(1.2px); }
+}
