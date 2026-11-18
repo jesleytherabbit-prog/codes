@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+
+/* ===== VOTADO · sello magical girl ===== */
+.vtd-sello {
+  position: relative;
+  display: inline-block;
+  padding: 10px 22px 12px;
+  line-height: 1;
+  vertical-align: middle;
+  animation: vtd-flotar 3.2s ease-in-out infinite;
+}
+
+/* halo suave detrás */
+.vtd-sello::before {
+  content: "";
+  position: absolute;
+  inset: 4px 6px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(255, 196, 235, .55) 0%, rgba(214, 190, 255, .25) 55%, transparent 75%);
+  filter: blur(6px);
+  animation: vtd-halo 2.6s ease-in-out infinite;
+  z-index: 0;
+}
+
+.vtd-palabra {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-family: 'Leckerli One', cursive !important;
+  font-size: 34px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px;
+  filter:
+    drop-shadow(0 0 0 #fff)
+    drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff)
+    drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff)
+    drop-shadow(0 3px 0 #e78ac3)
+    drop-shadow(0 4px 6px rgba(190, 120, 220, .45));
+}
+
+/* cada letra rebota por turno, con brillo de arcoíris pastel */
+.vtd-palabra span {
+  display: inline-block;
+  font-family: 'Leckerli One', cursive !important;
+  background: linear-gradient(100deg, #ff7cc8 0%, #ffa6dc 25%, #fff3fb 40%, #c9a4ff 55%, #8fc9ff 75%, #ff7cc8 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation:
+    vtd-brillo 3.5s linear infinite,
+    vtd-saltito 2.4s ease-in-out infinite;
+}
+.vtd-palabra span:nth-child(1) { animation-delay: 0s, 0s; }
+.vtd-palabra span:nth-child(2) { animation-delay: -.15s, .12s; }
+.vtd-palabra span:nth-child(3) { animation-delay: -.3s, .24s; }
+.vtd-palabra span:nth-child(4) { animation-delay: -.45s, .36s; }
+.vtd-palabra span:nth-child(5) { animation-delay: -.6s, .48s; }
+.vtd-palabra span:nth-child(6) { animation-delay: -.75s, .6s; }
+
+/* destellos */
+.vtd-chispa {
+  position: absolute;
+  z-index: 2;
+  font-family: Arial, sans-serif !important;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 4px #ff9fd8, 0 0 8px #c9a4ff;
+  pointer-events: none;
+  animation: vtd-titilar 1.8s ease-in-out infinite;
+}
+.vtd-c1 { top: 0;    left: 4px;   font-size: 14px; animation-delay: 0s; }
+.vtd-c2 { top: 2px;  right: 2px;  font-size: 11px; animation-delay: .6s; color: #fff6c9; }
+.vtd-c3 { bottom: 2px; right: 14px; font-size: 9px; animation-delay: 1.1s; }
+.vtd-c4 { bottom: 4px; left: 12px; font-size: 8px; animation-delay: .35s; color: #ffd6f0; }
+
+/* corazoncito */
+.vtd-corazon {
+  position: absolute;
+  z-index: 2;
+  top: -4px;
+  right: 16px;
+  font-family: Arial, sans-serif !important;
+  font-size: 12px;
+  line-height: 1;
+  color: #ff7cc8;
+  text-shadow: 0 0 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  animation: vtd-latido 1.4s ease-in-out infinite;
+}
+
+/* ===== animaciones ===== */
+@keyframes vtd-flotar {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-3px) rotate(1deg); }
+}
+@keyframes vtd-halo {
+  0%, 100% { opacity: .7; transform: scale(1); }
+  50%      { opacity: 1;  transform: scale(1.06); }
+}
+@keyframes vtd-brillo {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+@keyframes vtd-saltito {
+  0%, 60%, 100% { transform: translateY(0) scale(1); }
+  70%           { transform: translateY(-5px) scale(1.08, .95); }
+  80%           { transform: translateY(0) scale(.96, 1.04); }
+}
+@keyframes vtd-titilar {
+  0%, 100% { opacity: 0;  transform: scale(.3) rotate(0deg); }
+  50%      { opacity: 1;  transform: scale(1.15) rotate(45deg); }
+}
+@keyframes vtd-latido {
+  0%, 100% { transform: scale(1) rotate(12deg); }
+  20%      { transform: scale(1.3) rotate(12deg); }
+  40%      { transform: scale(1) rotate(12deg); }
+}
