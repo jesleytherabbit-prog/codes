@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bungee&family=Special+Elite&family=Permanent+Marker&family=Rubik+Mono+One&display=swap');
+
+/* ✦ PUNK estilo recorte de revista ✦ */
+.punkrec {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1;
+  font-size: 1em;
+}
+
+.punkrec span {
+  display: inline-block;
+  margin: 0 1px;
+  padding: 2px 4px 1px;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, .45);
+  transition: transform .2s ease;
+}
+
+.punkrec span:hover {
+  transform: rotate(0deg) scale(1.15) !important;
+}
+
+/* P: periódico, tipografía de máquina */
+.punkrec .pr1 {
+  font-family: 'Special Elite', monospace !important;
+  background: #efe6cf;
+  color: #111;
+  font-size: 1.05em;
+  transform: rotate(-6deg) translateY(1px);
+  clip-path: polygon(0 4%, 96% 0, 100% 92%, 5% 100%);
+}
+
+/* U: negro con letra rosa chillón */
+.punkrec .pr2 {
+  font-family: 'Abril Fatface', serif !important;
+  background: #111;
+  color: #ff2e88;
+  font-size: 1.15em;
+  transform: rotate(4deg) translateY(-2px);
+  clip-path: polygon(3% 0, 100% 6%, 95% 100%, 0 94%);
+}
+
+/* N: amarillo con letra negra */
+.punkrec .pr3 {
+  font-family: 'Bungee', sans-serif !important;
+  background: #ffe600;
+  color: #111;
+  font-size: .95em;
+  transform: rotate(-3deg) translateY(2px);
+  clip-path: polygon(0 0, 100% 3%, 97% 97%, 2% 100%);
+}
+
+/* K: rojo con letra blanca, trazo de marcador */
+.punkrec .pr4 {
+  font-family: 'Permanent Marker', cursive !important;
+  background: #d7192b;
+  color: #fff;
+  font-size: 1.1em;
+  transform: rotate(7deg) translateY(-1px);
+  clip-path: polygon(4% 3%, 100% 0, 96% 100%, 0 95%);
+}
