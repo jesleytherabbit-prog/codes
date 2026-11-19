@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@500;600&display=swap');
+
+/* ✦ Amanecer · Lunes, diciembre 2033 ✦ */
+.amn-escena {
+  --amn-t: 14s;
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 240px;
+  margin: 18px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0b1033;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.35) inset, 0 6px 22px rgba(40,30,90,.35);
+  isolation: isolate;
+}
+.amn-escena div, .amn-escena span { box-sizing: border-box; }
+
+/* ── Cielos ── */
+.amn-cielo { position: absolute; inset: 0; z-index: 1; }
+.amn-noche { background: linear-gradient(180deg, #0b1033 0%, #1e2a5e 60%, #3b3f7a 100%); }
+.amn-alba  { background: linear-gradient(180deg, #4d4585 0%, #b67bb8 40%, #f29bb5 65%, #ffc79a 100%); opacity: 0; animation: amn-alba var(--amn-t) ease-in-out infinite; }
+.amn-dia   { background: linear-gradient(180deg, #9fd0f3 0%, #cfe6fb 45%, #f9e1ef 78%, #fff0de 100%); opacity: 0; animation: amn-dia var(--amn-t) ease-in-out infinite; }
+
+/* ── Estrellas ── */
+.amn-estrellas {
+  position: absolute; top: 0; left: 0; z-index: 2;
+  width: 2px; height: 2px; border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    40px 22px #fff, 92px 58px #dfe6ff, 130px 18px #fff, 176px 74px #fde9ff,
+    214px 34px #fff, 262px 12px #dfe6ff, 300px 64px #fff, 352px 28px #fde9ff,
+    396px 80px #fff, 440px 16px #dfe6ff, 488px 52px #fff, 530px 26px #fde9ff,
+    574px 70px #fff, 600px 36px #dfe6ff, 66px 96px #fde9ff, 238px 104px #fff,
+    420px 112px #dfe6ff, 552px 100px #fff, 150px 120px #dfe6ff, 330px 96px #fde9ff;
+  animation: amn-estrellas var(--amn-t) ease-in-out infinite;
+}
+.amn-estrellas::after {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 3px; border-radius: 50%;
+  box-shadow: 112px 40px #fff, 284px 50px #fff, 466px 34px #fff, 196px 92px #fff;
+  animation: amn-titila 1.8s ease-in-out infinite alternate;
+}
+
+/* ── Luna ── */
+.amn-luna {
+  position: absolute; z-index: 3;
+  width: 34px; height: 34px; border-radius: 50%;
+  top: 16%; left: 12%;
+  box-shadow: 9px -4px 0 0 #fff6dc;
+  filter: drop-shadow(0 0 8px rgba(255,240,210,.7));
+  animation: amn-luna var(--amn-t) ease-in-out infinite;
+}
+
+/* ── Sol ── */
+.amn-sol {
+  position: absolute; z-index: 3;
+  width: 58px; height: 58px; border-radius: 50%;
+  right: 16%; bottom: -30%;
+  background: radial-gradient(circle at 40% 38%, #fffbe8 0%, #ffe3a3 45%, #ffbf8a 100%);
+  box-shadow: 0 0 22px 8px rgba(255,214,150,.75), 0 0 60px 24px rgba(255,170,190,.45);
+  animation: amn-sol var(--amn-t) ease-in-out infinite;
+}
+.amn-sol::after {
+  content: ''; position: absolute; inset: -22px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,236,190,.45) 0%, rgba(255,236,190,0) 70%);
+  animation: amn-latido 3s ease-in-out infinite;
+}
+
+/* ── Nubes ── */
+.amn-nube {
+  position: absolute; z-index: 4;
+  width: 46px; height: 16px; border-radius: 20px;
+  background: #fff3f8;
+  box-shadow: 18px -8px 0 2px #fff3f8, 36px 0 0 -1px #fff3f8;
+  opacity: 0;
+}
+.amn-n1 { top: 28%; left: -20%; animation: amn-nubes var(--amn-t) ease-in-out infinite, amn-deriva1 var(--amn-t) linear infinite; }
+.amn-n2 { top: 44%; left: -30%; transform: scale(.7); animation: amn-nubes var(--amn-t) ease-in-out infinite, amn-deriva2 var(--amn-t) linear infinite; }
+
+/* ── Bosque y escarcha ── */
+.amn-pinos {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background-repeat: repeat-x;
+  animation: amn-tierra var(--amn-t) ease-in-out infinite;
+}
+.amn-atras {
+  z-index: 5; height: 92px; bottom: 18px;
+  background-size: 210px 92px;
+  background-position: 40px bottom;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' preserveAspectRatio='none'%3E%3Cpath fill='%2399bcd2' d='M0 60V52L5 38 10 52 14 30 20 52 24 42 28 52 33 26 40 52 45 40 50 52 56 32 62 52 66 44 70 52 76 28 83 52 87 40 92 52 98 34 104 52 108 42 113 52 117 36 120 46V60Z'/%3E%3C/svg%3E");
+}
+.amn-frente {
+  z-index: 7; height: 78px; bottom: 10px;
+  background-size: 170px 78px;
+  background-position: 0 bottom;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' preserveAspectRatio='none'%3E%3Cpath fill='%23557f93' d='M0 60V50L7 24 14 50 19 38 24 50 31 16 39 50 44 36 49 50 57 22 65 50 70 40 75 50 83 18 91 50 96 34 101 50 108 26 115 50 120 40V60Z'/%3E%3C/svg%3E");
+}
+.amn-nieve {
+  position: absolute; z-index: 8; left: -10%; right: -10%; bottom: -4px;
+  height: 30px; border-radius: 50% 50% 0 0 / 24px 24px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #eaf1fb 60%, #dfe7f6 100%);
+  animation: amn-tierra var(--amn-t) ease-in-out infinite;
+}
+.amn-nieve::before {
+  content: ''; position: absolute; top: 8px; left: 0;
+  width: 2px; height: 2px; border-radius: 50%;
+  box-shadow: 60px 2px #fff, 150px 6px #ffe9f6, 250px 1px #fff, 340px 7px #fff7e0, 430px 3px #fff, 530px 6px #ffe9f6, 610px 2px #fff;
+  animation: amn-titila 1.4s ease-in-out infinite alternate;
+}
+
+/* ── El destello dorado entre los troncos ── */
+.amn-destello {
+  position: absolute; z-index: 6;
+  left: 38%; bottom: 46px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #ffe9a8;
+  box-shadow: 0 0 8px 3px rgba(255,210,110,.95), 0 0 18px 8px rgba(255,190,90,.5);
+  opacity: 0; transform: scale(0);
+  animation: amn-destello var(--amn-t) ease-out infinite;
+}
+
+/* ── Texto ── */
+.amn-texto {
+  position: absolute; z-index: 9;
+  top: 22%; left: 0; right: 0;
+  text-align: center;
+  opacity: 0;
+  animation: amn-texto var(--amn-t) ease-in-out infinite;
+}
+.amn-diaNombre {
+  display: block;
+  font-family: 'Parisienne', cursive !important;
+  font-size: 52px !important;
+  line-height: 1 !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255,170,205,.9), 0 2px 0 rgba(200,120,170,.45);
+}
+.amn-fecha {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Quicksand', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 6px !important;
+  text-transform: uppercase;
+  color: #8a5d93 !important;
+  text-shadow: 0 0 6px rgba(255,255,255,.95);
+}
+.amn-fecha::before, .amn-fecha::after {
+  content: '✦';
+  display: inline-block;
+  margin: 0 10px;
+  color: #f4a7c6;
+  letter-spacing: 0;
+  animation: amn-titila 1.2s ease-in-out infinite alternate;
+}
+
+/* ── Velo para reiniciar el ciclo suave ── */
+.amn-velo {
+  position: absolute; inset: 0; z-index: 10;
+  background: #0b1033;
+  opacity: 0; pointer-events: none;
+  animation: amn-velo var(--amn-t) ease-in-out infinite;
+}
+
+/* ════ Keyframes ════ */
+@keyframes amn-alba    { 0%,15% {opacity:0} 36% {opacity:1} 62%,100% {opacity:0} }
+@keyframes amn-dia     { 0%,30% {opacity:0} 62%,94% {opacity:1} 95%,100% {opacity:0} }
+@keyframes amn-estrellas { 0%,15% {opacity:1} 40%,95% {opacity:0} 96%,100% {opacity:1} }
+@keyframes amn-luna {
+  0%,12% {top:16%; left:12%; opacity:1}
+  42% {top:46%; left:4%; opacity:0}
+  95% {top:46%; left:4%; opacity:0}
+  96%,100% {top:16%; left:12%; opacity:1}
+}
+@keyframes amn-sol {
+  0%,20% {bottom:-30%}
+  62%,94% {bottom:44%}
+  95%,100% {bottom:-30%}
+}
+@keyframes amn-nubes  { 0%,30% {opacity:0} 60%,94% {opacity:.9} 95%,100% {opacity:0} }
+@keyframes amn-deriva1 { 0% {left:-20%} 100% {left:70%} }
+@keyframes amn-deriva2 { 0% {left:-30%} 100% {left:45%} }
+@keyframes amn-tierra {
+  0%,15% {filter: brightness(.32) saturate(.6)}
+  40%    {filter: brightness(.7) saturate(.9) hue-rotate(-12deg)}
+  60%,94% {filter: brightness(1) saturate(1)}
+  95%,100% {filter: brightness(.32) saturate(.6)}
+}
+@keyframes amn-destello {
+  0%,4% {opacity:0; transform:scale(0)}
+  7%    {opacity:1; transform:scale(1.4)}
+  9%    {opacity:.8; transform:scale(.9)}
+  12%,100% {opacity:0; transform:scale(0)}
+}
+@keyframes amn-texto {
+  0%,50% {opacity:0; transform: translateY(8px); letter-spacing: 0}
+  64%,90% {opacity:1; transform: translateY(0)}
+  94%,100% {opacity:0}
+}
+@keyframes amn-velo { 0%,89% {opacity:0} 93%,96% {opacity:1} 100% {opacity:0} }
+@keyframes amn-titila { 0% {opacity:.35} 100% {opacity:1} }
+@keyframes amn-latido { 0%,100% {transform:scale(.9); opacity:.7} 50% {transform:scale(1.1); opacity:1} }
+
+@media (max-width: 480px) {
+  .amn-escena { height: 200px; }
+  .amn-diaNombre { font-size: 40px !important; }
+  .amn-fecha { font-size: 11px !important; letter-spacing: 4px !important; }
+}
