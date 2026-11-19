@@ -846,3 +846,67 @@
   mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent) !important;
   animation: hbFog 22s ease-in-out infinite !important;
 }
+
+/* ---- Imágenes del Prólogo I (imgur) ---- */
+.lnd-hb-bird {
+  width: 140px !important; height: 130px !important;
+  margin: 12px auto 0 auto !important;
+  background: url('https://i.imgur.com/heokY6j.png') center / contain no-repeat !important;
+  filter: drop-shadow(0 0 8px rgba(179,154,112,0.35)) !important;
+}
+.lnd-hb-still {
+  width: 120px !important; height: 110px !important;
+  margin: 26px auto -24px auto !important;
+  background: url('https://i.imgur.com/heokY6j.png') center / contain no-repeat !important;
+  filter: grayscale(1) brightness(0.85) contrast(0.9) blur(0.4px) !important;
+}
+/* fotografía antigua de la verbena, pegada con esquineros */
+.lnd-hb-photo {
+  position: relative !important;
+  display: block !important;
+  width: 330px !important;
+  margin: 22px auto 8px auto !important;
+  padding: 9px 9px 30px 9px !important;
+  background: #f4eedf !important;
+  box-shadow: 1px 3px 8px rgba(60,40,20,0.40) !important;
+  transform: rotate(-2deg) !important;
+}
+.lnd-hb-photo-img {
+  display: block !important;
+  height: 210px !important;
+  background: url('https://i.imgur.com/bSiTYUe.png') center / cover no-repeat !important;
+  filter: sepia(0.55) contrast(0.95) brightness(0.95) !important;
+  box-shadow: inset 0 0 30px rgba(60,40,20,0.45) !important;
+}
+.lnd-hb-photo-cap {
+  position: absolute !important;
+  left: 0; right: 0; bottom: 7px;
+  text-align: center !important;
+  font-family: 'La Belle Aurore', cursive !important;
+  font-size: 15px !important;
+  color: #67564A !important;
+}
+.lnd-hb-corner {
+  position: absolute !important;
+  width: 0 !important; height: 0 !important;
+  border-style: solid !important;
+}
+.lnd-hb-k1 { top: -4px; left: -4px; border-width: 22px 22px 0 0 !important; border-color: #3a2f27 transparent transparent transparent !important; }
+.lnd-hb-k2 { top: -4px; right: -4px; border-width: 0 22px 22px 0 !important; border-color: transparent #3a2f27 transparent transparent !important; }
+.lnd-hb-k3 { bottom: -4px; left: -4px; border-width: 22px 0 0 22px !important; border-color: transparent transparent transparent #3a2f27 !important; }
+.lnd-hb-k4 { bottom: -4px; right: -4px; border-width: 0 0 22px 22px !important; border-color: transparent transparent #3a2f27 transparent !important; }
+/* el pueblo fantasma al final, entre la niebla */
+.lnd-hb-ruins {
+  height: 230px !important;
+  margin: 0 -50px !important;
+  background: url('https://i.imgur.com/M3e1xSL.png') center / cover no-repeat !important;
+  filter: grayscale(0.35) sepia(0.15) brightness(0.75) !important;
+  opacity: 0.85 !important;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 35%, #000 100%) !important;
+  mask-image: linear-gradient(180deg, transparent 0, #000 35%, #000 100%) !important;
+}
+.lnd-hb-ruins:after {
+  height: 160px !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
