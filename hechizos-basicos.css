@@ -1,0 +1,1197 @@
+/* ==========================================
+   HECHIZOS BÁSICOS — BASE COMPARTIDA
+   ========================================== */
+
+.hb {
+  --hb-color: #bac8da;
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  overflow: visible;
+  vertical-align: baseline;
+  font-style: italic;
+  color: var(--hb-color);
+}
+
+.hb::before,
+.hb::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+/* ANIMACIONES COMPARTIDAS */
+
+@keyframes hb-destello {
+  0%, 12%, 75%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  32%, 48% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+}
+
+@keyframes hb-expandir {
+  0%, 10% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  25% { opacity: 0.85; }
+  65%, 100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes hb-crecer {
+  0%, 10% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  38%, 68% {
+    opacity: 0.85;
+    transform: scaleY(1);
+  }
+  92%, 100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes hb-trazar {
+  0%, 10% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  40%, 65% {
+    opacity: 0.85;
+    clip-path: inset(0);
+  }
+  92%, 100% {
+    opacity: 0;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes hb-subir {
+  0%, 10% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  28% { opacity: 0.85; }
+  70%, 100% {
+    opacity: 0;
+    transform: translateY(-0.65em);
+  }
+}
+
+@keyframes hb-lanzar {
+  0%, 12% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  20% { opacity: 1; }
+  45%, 100% {
+    opacity: 0;
+    transform: translateX(1.6em);
+  }
+}
+
+@keyframes hb-atraer {
+  0%, 10% {
+    opacity: 0;
+    transform: translateX(1.5em) scale(1);
+  }
+  20% { opacity: 0.9; }
+  48%, 100% {
+    opacity: 0;
+    transform: translateX(0) scale(0.2);
+  }
+}
+
+@keyframes hb-brillar {
+  0%, 12%, 88%, 100% { text-shadow: none; }
+  38%, 55% {
+    text-shadow:
+      0 0 4px var(--hb-color),
+      0 0 11px var(--hb-color);
+  }
+}
+
+@keyframes hb-sacudir {
+  0%, 22%, 42%, 100% { transform: translateX(0); }
+  26%, 34% { transform: translateX(-1px) rotate(-1deg); }
+  30%, 38% { transform: translateX(1px) rotate(1deg); }
+}
+
+@keyframes hb-reunir {
+  0%, 10% {
+    opacity: 0;
+    transform: scaleX(1.6);
+  }
+  25% { opacity: 0.85; }
+  55%, 72% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hb-separar {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+  25% { opacity: 0.9; }
+  65%, 100% {
+    opacity: 0;
+    transform: scaleX(1.7);
+  }
+}
+
+/* ==========================================
+   1. ADOLERET — CHISPA DE FUEGO
+   ========================================== */
+
+.hb-adoleret { --hb-color: #dfa07c; }
+
+.hb-adoleret::after {
+  right: -0.3em;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffe4ab;
+  box-shadow: -5px 1px 4px #d77e54;
+  animation: hb-lanzar 8s ease-in infinite;
+}
+
+/* 2. AGMEN — POTENCIACIÓN BLANQUECINA */
+
+.hb-agmen {
+  --hb-color: #dce5ed;
+  animation: hb-brillar 8s ease-in-out infinite;
+}
+
+.hb-agmen::after {
+  inset: -0.2em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #dce5ed55, transparent 70%);
+  animation: hb-destello 8s ease-in-out infinite;
+}
+
+/* 3. ALARTE ASCENDERE — ASCENSO Y CAÍDA */
+
+.hb-alarte {
+  --hb-color: #c6b9dd;
+  animation: hb-alarte-salto 8s ease-in-out infinite;
+}
+
+@keyframes hb-alarte-salto {
+  0%, 15%, 65%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-0.4em) rotate(-2deg); }
+  43% { transform: translateY(0.1em) rotate(1deg); }
+  52% { transform: translateY(0); }
+}
+
+/* 4. ALCHIMIA INCANTATIO MÍNIMA — ESENCIA CONDENSADA */
+
+.hb-alchimia { --hb-color: #a9c5b0; }
+
+.hb-alchimia::before {
+  right: -0.75em;
+  bottom: 0.1em;
+  width: 0.35em;
+  height: 0.5em;
+  border: 1px solid #d9dfb8;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(transparent 25%, #8fb184 26%);
+  animation: hb-alchimia-esencia 8s ease-in-out infinite;
+}
+
+@keyframes hb-alchimia-esencia {
+  0%, 10% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  25% { opacity: 0.9; }
+  55%, 100% {
+    opacity: 0;
+    transform: translate(-0.4em, -0.65em) scale(0.15);
+  }
+}
+
+/* 5. ALOHOMORA — CANDADO QUE SE ABRE */
+
+.hb-alohomora { --hb-color: #d5c192; }
+
+.hb-alohomora::before {
+  right: -0.8em;
+  top: 48%;
+  width: 0.5em;
+  height: 0.4em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+}
+
+.hb-alohomora::after {
+  right: -0.73em;
+  top: 22%;
+  width: 0.35em;
+  height: 0.4em;
+  border: 1px solid currentColor;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  transform-origin: right bottom;
+  animation: hb-alohomora-abrir 8s ease-in-out infinite;
+}
+
+@keyframes hb-alohomora-abrir {
+  0%, 15%, 90%, 100% { transform: rotate(0); }
+  38%, 65% { transform: rotate(35deg) translateY(-0.08em); }
+}
+
+/* 6. ALSET — COMPONENTES QUE SE SEPARAN */
+
+.hb-alset { --hb-color: #a9a0bd; }
+
+.hb-alset::after {
+  left: 15%;
+  bottom: -0.3em;
+  width: 3px;
+  height: 3px;
+  background: #51475e;
+  box-shadow:
+    0.8em 0 #898093,
+    1.6em 0 #51475e,
+    2.4em 0 #898093;
+  animation: hb-separar 8s ease-out infinite;
+}
+
+/* 7. AMICA PLANTAE — BROTES Y ENREDADERA */
+
+.hb-amica { --hb-color: #a2ba87; }
+
+.hb-amica::before {
+  left: 0;
+  right: 0;
+  bottom: -0.25em;
+  height: 0.5em;
+  border-bottom: 1px solid #829d6b;
+  border-radius: 50%;
+  animation: hb-trazar 8s ease-in-out infinite;
+}
+
+.hb-amica::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.25em;
+  height: 0.65em;
+  background:
+    radial-gradient(ellipse, #a9bf88 48%, transparent 55%)
+      15% 0 / 0.5em 0.25em no-repeat,
+    radial-gradient(ellipse, #809f6d 48%, transparent 55%)
+      50% 90% / 0.5em 0.25em no-repeat,
+    radial-gradient(ellipse, #a9bf88 48%, transparent 55%)
+      85% 0 / 0.5em 0.25em no-repeat;
+  transform-origin: bottom;
+  animation: hb-crecer 8s ease-out infinite;
+}
+
+/* 8. APARECIUM — REVELACIÓN DEL TEXTO */
+
+.hb-aparecium {
+  --hb-color: #d0c3dd;
+  animation: hb-aparecium-revelar 8s ease-in-out infinite;
+}
+
+@keyframes hb-aparecium-revelar {
+  0%, 100% {
+    opacity: 0.55;
+    filter: blur(0.5px);
+  }
+  35%, 75% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 6px #c5acd16b;
+  }
+}
+
+/* 9. AQUAERUCTO — CHORRO A PRESIÓN */
+
+.hb-aquaeructo { --hb-color: #87c7df; }
+
+.hb-aquaeructo::after {
+  left: 0;
+  bottom: -0.2em;
+  width: 100%;
+  height: 3px;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    90deg, #bfeeff 0 8px, #529cbf 9px 14px
+  );
+  background-size: 28px 100%;
+  animation: hb-aquaeructo-chorro 8s linear infinite;
+}
+
+@keyframes hb-aquaeructo-chorro {
+  0%, 10% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    background-position: 0 0;
+  }
+  30%, 65% {
+    opacity: 0.8;
+    clip-path: inset(0);
+  }
+  90%, 100% {
+    opacity: 0;
+    clip-path: inset(0);
+    background-position: 140px 0;
+  }
+}
+
+/* 10. ATABRAQUIUM — LAZOS QUE SE CIERRAN */
+
+.hb-atabraquium { --hb-color: #b9aecb; }
+
+.hb-atabraquium::after {
+  inset: -0.08em -0.15em;
+  border-left: 2px solid #aa9bbc;
+  border-right: 2px solid #aa9bbc;
+  border-radius: 40%;
+  animation: hb-reunir 8s ease-in-out infinite;
+}
+
+/* 11. AVIS — PEQUEÑA BANDADA */
+
+.hb-avis { --hb-color: #d8c58b; }
+
+.hb-avis::after {
+  content: "⌁ ⌁ ⌁";
+  left: 0;
+  top: -0.5em;
+  white-space: nowrap;
+  font-style: normal;
+  font-size: 0.8em;
+  animation: hb-avis-volar 8s ease-in-out infinite;
+}
+
+@keyframes hb-avis-volar {
+  0%, 8% {
+    opacity: 0;
+    transform: translate(-0.3em, 0.2em);
+  }
+  25% { opacity: 0.9; }
+  65%, 100% {
+    opacity: 0;
+    transform: translate(1.8em, -0.4em);
+  }
+}
+
+/* 12. BOMBARDA — DETONACIÓN */
+
+.hb-bombarda { --hb-color: #d8ad88; }
+
+.hb-bombarda::before {
+  inset: -0.25em -0.3em;
+  border: 1px solid #dfb68a;
+  border-radius: 50%;
+  animation: hb-expandir 8s ease-out infinite;
+}
+
+.hb-bombarda::after {
+  inset: -0.15em;
+  z-index: -1;
+  background: radial-gradient(ellipse, #f0c89466, transparent 70%);
+  animation: hb-destello 8s ease-out infinite;
+}
+
+/* 13. CARPE RETRACTUM — LAZO QUE SE RECOGE */
+
+.hb-carpe { --hb-color: #cbb391; }
+
+.hb-carpe::after {
+  left: 0;
+  right: 0;
+  bottom: -0.25em;
+  height: 0.35em;
+  border: 1px solid #cbb391;
+  border-top: none;
+  border-radius: 0 0 70% 50%;
+  animation: hb-carpe-lazo 8s ease-in-out infinite;
+}
+
+@keyframes hb-carpe-lazo {
+  0%, 10% {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  35% {
+    opacity: 0.85;
+    transform: scaleX(1.1);
+  }
+  65% {
+    opacity: 0.8;
+    transform: scaleX(0.6);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: scaleX(0.6);
+  }
+}
+
+/* 14. CLAUSTRA TERRAE — MURO DE TIERRA */
+
+.hb-claustra { --hb-color: #b7a58c; }
+
+.hb-claustra::after {
+  left: 0;
+  right: 0;
+  bottom: -0.25em;
+  height: 0.65em;
+  z-index: -1;
+  background: linear-gradient(#a6997a, #665c4b);
+  clip-path: polygon(
+    0 100%, 0 50%, 12% 50%, 12% 20%,
+    30% 20%, 30% 35%, 48% 35%, 48% 0,
+    65% 0, 65% 25%, 83% 25%, 83% 45%,
+    100% 45%, 100% 100%
+  );
+  transform-origin: bottom;
+  animation: hb-crecer 8s ease-out infinite;
+}
+
+/* 15. CALVORIO — HEBRAS QUE CAEN */
+
+.hb-calvorio { --hb-color: #c3ac97; }
+
+.hb-calvorio::after {
+  left: 20%;
+  top: 0;
+  width: 1px;
+  height: 0.4em;
+  background: #b5987d;
+  box-shadow: 0.9em 0 #b5987d, 1.8em -0.1em #b5987d;
+  animation: hb-calvorio-caer 8s ease-in infinite;
+}
+
+@keyframes hb-calvorio-caer {
+  0%, 15% {
+    opacity: 0;
+    transform: translateY(0) rotate(-10deg);
+  }
+  28% { opacity: 0.8; }
+  65%, 100% {
+    opacity: 0;
+    transform: translate(0.4em, 1em) rotate(35deg);
+  }
+}
+
+/* 16. DEFODIO — TIERRA EXCAVADA */
+
+.hb-defodio { --hb-color: #baa183; }
+
+.hb-defodio::before {
+  left: 0;
+  right: 0;
+  bottom: -0.2em;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg, #9a8567 0 5px, transparent 5px 8px
+  );
+  animation: hb-trazar 8s ease-out infinite;
+}
+
+.hb-defodio::after {
+  left: 40%;
+  bottom: -0.2em;
+  width: 2px;
+  height: 2px;
+  background: #c5af86;
+  box-shadow: -12px 2px #8e785b, 15px -1px #b6a07c;
+  animation: hb-subir 8s ease-out infinite;
+}
+
+/* 17. DIFFINDO — CORTE DIAGONAL */
+
+.hb-diffindo { --hb-color: #cf9a9d; }
+
+.hb-diffindo::after {
+  left: -5%;
+  top: 50%;
+  width: 110%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f0c3c3, transparent);
+  rotate: -8deg;
+  animation: hb-trazar 8s ease-out infinite;
+}
+
+/* 18. DISSENDIUM — APERTURA DE PASADIZO */
+
+.hb-dissendium { --hb-color: #b9afcf; }
+
+.hb-dissendium::after {
+  inset: -0.1em -0.2em;
+  border-left: 1px solid #b9afcf;
+  border-right: 1px solid #b9afcf;
+  border-radius: 40% 40% 0 0;
+  animation: hb-separar 8s ease-in-out infinite;
+}
+
+/* 19. ENNERVATE — PULSO DE DESPERTAR */
+
+.hb-ennervate {
+  --hb-color: #dfb9a3;
+  animation: hb-brillar 8s ease-in-out infinite;
+}
+
+.hb-ennervate::after {
+  inset: -0.1em -0.2em;
+  border: 1px solid #dcb89e;
+  border-radius: 50%;
+  animation: hb-expandir 8s ease-out infinite;
+}
+
+/* 20. EPISKEY — LUCES CURATIVAS */
+
+.hb-episkey {
+  --hb-color: #a8cdb4;
+  animation: hb-brillar 8s ease-in-out infinite;
+}
+
+.hb-episkey::after {
+  content: "+";
+  right: -0.65em;
+  top: 25%;
+  color: #d1eed9;
+  font-style: normal;
+  font-size: 0.8em;
+  animation: hb-subir 8s ease-out infinite;
+}
+
+/* 21. EXPULSO — EMPUJÓN */
+
+.hb-expulso {
+  --hb-color: #c3a8d3;
+  animation: hb-expulso-empujon 8s ease-out infinite;
+}
+
+@keyframes hb-expulso-empujon {
+  0%, 15%, 78%, 100% { transform: translateX(0); }
+  28%, 45% { transform: translateX(0.25em) rotate(1deg); }
+}
+
+/* 22. FERULA — VENDA QUE SE ENROLLA */
+
+.hb-ferula { --hb-color: #d3d8c5; }
+
+.hb-ferula::after {
+  inset: -0.08em -0.12em;
+  z-index: -1;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    110deg,
+    transparent 0 6px,
+    #e1e2ca44 6px 9px
+  );
+  animation: hb-trazar 8s ease-in-out infinite;
+}
+
+/* 23. FETT — SUSTANCIA VISCOSA */
+
+.hb-fett { --hb-color: #b5bf82; }
+
+.hb-fett::after {
+  left: 0;
+  right: 0;
+  bottom: -0.15em;
+  height: 0.4em;
+  border-radius: 45% 60% 35% 50%;
+  background: #899a5d66;
+  transform-origin: top;
+  animation: hb-fett-viscosidad 8s ease-in-out infinite;
+}
+
+@keyframes hb-fett-viscosidad {
+  0%, 100% { opacity: 0; transform: scaleY(0.3); }
+  35%, 65% { opacity: 0.8; transform: scaleY(1); }
+}
+
+/* 24. FIENDLOCK — BRASA QUE SE EXTINGUE */
+
+.hb-fiendlock { --hb-color: #adbcd0; }
+
+.hb-fiendlock::after {
+  right: -0.7em;
+  top: 30%;
+  width: 0.3em;
+  height: 0.5em;
+  border-radius: 75% 20% 65% 45%;
+  animation: hb-fiendlock-apagar 8s ease-in-out infinite;
+}
+
+@keyframes hb-fiendlock-apagar {
+  0%, 10% {
+    opacity: 0;
+    background: #e7a06b;
+    transform: scale(1);
+  }
+  25% { opacity: 0.9; background: #e7a06b; }
+  48% { opacity: 0.5; background: #aabed3; }
+  65%, 100% {
+    opacity: 0;
+    background: #aabed3;
+    transform: scale(0.2);
+  }
+}
+
+/* 25. FINESTRA — VENTANA QUE APARECE */
+
+.hb-finestra { --hb-color: #b8d1ce; }
+
+.hb-finestra::after {
+  right: -0.9em;
+  top: 15%;
+  width: 0.6em;
+  height: 0.75em;
+  border: 1px solid #b8d1ce;
+  background:
+    linear-gradient(90deg, transparent 46%, #b8d1ce 47% 53%, transparent 54%),
+    linear-gradient(transparent 46%, #b8d1ce 47% 53%, transparent 54%);
+  animation: hb-destello 8s ease-in-out infinite;
+}
+
+/* 26. FLIPENDO — SACUDIDA DE RECHAZO */
+
+.hb-flipendo {
+  --hb-color: #c7adc9;
+  animation: hb-sacudir 8s ease-in-out infinite;
+}
+
+/* 27. FLUCTUS MÍNIMA — BARRERA Y RESTOS ARCANOS */
+
+.hb-fluctus { --hb-color: #a5c9dc; }
+
+.hb-fluctus::before {
+  inset: -0.15em -0.25em;
+  border: 1px solid #a5c9dc;
+  border-radius: 50%;
+  animation: hb-fluctus-barrera 8s ease-out infinite;
+}
+
+.hb-fluctus::after {
+  right: 0;
+  top: 45%;
+  width: 2px;
+  height: 2px;
+  background: #c5e4f3;
+  box-shadow: -6px -4px #a5c9dc, -10px 4px #a5c9dc;
+  animation: hb-fluctus-restos 8s ease-in infinite;
+}
+
+@keyframes hb-fluctus-barrera {
+  0%, 8% { opacity: 0; }
+  20%, 32% { opacity: 0.8; }
+  38%, 100% { opacity: 0; }
+}
+
+@keyframes hb-fluctus-restos {
+  0%, 33% { opacity: 0; transform: translateX(0); }
+  38% { opacity: 1; }
+  62%, 100% { opacity: 0; transform: translateX(1.5em); }
+}
+
+/* 28. FRIGUS — ESCARCHA */
+
+.hb-frigus { --hb-color: #b5dce8; }
+
+.hb-frigus::after {
+  left: 0;
+  right: 0;
+  bottom: -0.2em;
+  height: 0.3em;
+  background: repeating-linear-gradient(
+    60deg, transparent 0 5px, #ceeef1 5px 6px,
+    transparent 6px 10px
+  );
+  animation: hb-trazar 8s ease-in-out infinite;
+}
+
+/* 29. HOMORPHUS — CONTORNO QUE RECUPERA SU FORMA */
+
+.hb-homorphus { --hb-color: #c4b5d5; }
+
+.hb-homorphus::after {
+  inset: -0.15em -0.25em;
+  border: 1px solid #c4b5d5;
+  animation: hb-homorphus-forma 8s ease-in-out infinite;
+}
+
+@keyframes hb-homorphus-forma {
+  0%, 100% {
+    opacity: 0;
+    border-radius: 50% 20% 60% 30%;
+    transform: skewX(-8deg);
+  }
+  35%, 65% {
+    opacity: 0.7;
+    border-radius: 3px;
+    transform: skewX(0);
+  }
+}
+
+/* 30. JAULIO — BARROTES DORADOS */
+
+.hb-jaulio { --hb-color: #d2ba7e; }
+
+.hb-jaulio::after {
+  inset: -0.1em -0.2em;
+  z-index: -1;
+  border: 1px solid #c5a767;
+  border-radius: 40% 40% 0 0;
+  background: repeating-linear-gradient(
+    90deg, transparent 0 8px, #c5a76788 8px 9px
+  );
+  transform-origin: bottom;
+  animation: hb-crecer 8s ease-in-out infinite;
+}
+
+/* 31. LACARNUM INFLAMARAE — LLAMA */
+
+.hb-lacarnum { --hb-color: #dfa17d; }
+
+.hb-lacarnum::after {
+  right: -0.65em;
+  top: 15%;
+  width: 0.4em;
+  height: 0.7em;
+  border-radius: 80% 10% 65% 40%;
+  background: linear-gradient(#f2d295, #d17855);
+  box-shadow: 0 0 5px #d58b5555;
+  animation: hb-subir 8s ease-in-out infinite;
+}
+
+/* 32. LEGEREMENS MINORIS — OJO QUE SE ABRE */
+
+.hb-legeremens { --hb-color: #bba5ca; }
+
+.hb-legeremens::after {
+  right: -0.95em;
+  top: 40%;
+  width: 0.7em;
+  height: 0.35em;
+  border: 1px solid #bba5ca;
+  border-radius: 70% 20% 70% 20%;
+  background: radial-gradient(circle, #d7c4e8 0 18%, transparent 23%);
+  animation: hb-destello 8s ease-in-out infinite;
+}
+
+/* 33. LIBERACORPUS — RESTRICCIÓN QUE SE ABRE */
+
+.hb-liberacorpus { --hb-color: #b9d3cd; }
+
+.hb-liberacorpus::after {
+  inset: -0.05em -0.15em;
+  border-left: 2px solid #b9d3cd;
+  border-right: 2px solid #b9d3cd;
+  border-radius: 35%;
+  animation: hb-separar 8s ease-in-out infinite;
+}
+
+/* 34. LOCOMOTOR MORTIS — DOS TRAZOS SE UNEN */
+
+.hb-locomotor { --hb-color: #b6a8c6; }
+
+.hb-locomotor::after {
+  left: 35%;
+  bottom: -0.35em;
+  width: 30%;
+  height: 0.4em;
+  border-left: 2px solid #b6a8c6;
+  border-right: 2px solid #b6a8c6;
+  animation: hb-reunir 8s ease-in-out infinite;
+}
+
+/* 35. METEOLOEMBRUJO RECANTO — NUBE QUE SE DISIPA */
+
+.hb-meteolo { --hb-color: #b7ccd5; }
+
+.hb-meteolo::after {
+  left: 25%;
+  right: 25%;
+  top: -0.15em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: #b7ccd566;
+  filter: blur(3px);
+  animation: hb-expandir 8s ease-out infinite;
+}
+
+/* 36. MORSLAUTER — GOTA QUE CAMBIA DE COLOR */
+
+.hb-morslauter { --hb-color: #b9959c; }
+
+.hb-morslauter::after {
+  right: -0.65em;
+  top: 25%;
+  width: 0.35em;
+  height: 0.5em;
+  border-radius: 80% 10% 60% 45%;
+  rotate: -35deg;
+  animation: hb-morslauter-color 8s ease-in-out infinite;
+}
+
+@keyframes hb-morslauter-color {
+  0%, 100% { background: #a85d69; }
+  30% { background: #809e78; }
+  55% { background: #48434d; }
+  80% { background: #a4a2ad; }
+}
+
+/* 37. NUNTIUS MINORIS — MENSAJE MENTAL */
+
+.hb-nuntius { --hb-color: #c0b4db; }
+
+.hb-nuntius::after {
+  right: -0.3em;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d6c9ed;
+  box-shadow: -5px 0 0 -0.5px #b2a4cb;
+  animation: hb-lanzar 8s ease-in-out infinite;
+}
+
+/* 38. OBSCURO — VENDA OSCURA */
+
+.hb-obscuro { --hb-color: #b2a6bd; }
+
+.hb-obscuro::after {
+  left: -3%;
+  top: 38%;
+  width: 106%;
+  height: 0.35em;
+  border-radius: 2px;
+  background: #332b4688;
+  rotate: -3deg;
+  animation: hb-trazar 8s ease-in-out infinite;
+}
+
+/* 39. OCLUMENS MINORIS — CIERRE MENTAL */
+
+.hb-oclumens { --hb-color: #acb7d1; }
+
+.hb-oclumens::after {
+  inset: -0.18em -0.25em;
+  border: 1px solid #acb7d1;
+  border-radius: 45%;
+  animation: hb-reunir 8s ease-in-out infinite;
+}
+
+/* 40. OPPUGNO — OBJETOS LANZADOS */
+
+.hb-oppugno { --hb-color: #cbb29a; }
+
+.hb-oppugno::after {
+  right: 0;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  background: #d7c39e;
+  box-shadow: -8px -4px #b79a81, -13px 4px #c4b3a0;
+  animation: hb-lanzar 8s ease-in infinite;
+}
+
+/* 41. PARASITUS MÍNIMA — ENERGÍA ABSORBIDA */
+
+.hb-parasitus { --hb-color: #b49bc6; }
+
+.hb-parasitus::after {
+  right: -0.2em;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c2a0d8;
+  box-shadow: 6px -3px 4px #a57db6, 12px 3px 4px #a57db6;
+  animation: hb-atraer 8s ease-in-out infinite;
+}
+
+/* 42. PETRIFICUS TOTALUS — ENDURECIMIENTO */
+
+.hb-petrificus {
+  --hb-color: #b8bbc5;
+  animation: hb-petrificus-piedra 8s ease-in-out infinite;
+}
+
+@keyframes hb-petrificus-piedra {
+  0%, 100% { color: #b8bbc5; text-shadow: none; }
+  35%, 70% {
+    color: #a3a5ab;
+    text-shadow: 1px 1px 0 #62646e, -1px -1px 0 #d2d4dc;
+  }
+}
+
+/* 43. PRIOR INCANTATO — ECO DEL NOMBRE */
+
+.hb-prior { --hb-color: #c6b9db; }
+
+.hb-prior::after {
+  content: attr(data-eco);
+  inset: 0;
+  white-space: nowrap;
+  color: #c6b9db;
+  animation: hb-prior-eco 8s ease-out infinite;
+}
+
+@keyframes hb-prior-eco {
+  0%, 15% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 0.35; }
+  65%, 100% {
+    opacity: 0;
+    transform: translateY(-0.5em);
+    filter: blur(1px);
+  }
+}
+
+/* 44. PROTEGO — ESCUDO */
+
+.hb-protego { --hb-color: #b6d7e8; }
+
+.hb-protego::before {
+  inset: -0.3em -0.4em;
+  z-index: -1;
+  border: 1px solid #b6d7e8bb;
+  border-radius: 45% 45% 50% 50%;
+  background: radial-gradient(ellipse, transparent 35%, #9ac7e333);
+  box-shadow: inset 0 0 5px #b6d7e833;
+  animation: hb-destello 8s ease-in-out infinite;
+}
+
+/* 45. RAYO — DESCARGA ARCANA */
+
+.hb-rayo { --hb-color: #d2c3ec; }
+
+.hb-rayo::after {
+  left: -5%;
+  top: 45%;
+  width: 110%;
+  height: 0.45em;
+  background: #dfd2f5;
+  clip-path: polygon(
+    0 40%, 35% 40%, 45% 0, 48% 45%,
+    75% 45%, 70% 65%, 100% 65%,
+    65% 85%, 69% 60%, 42% 60%,
+    40% 35%, 33% 60%, 0 60%
+  );
+  animation: hb-destello 8s ease-out infinite;
+}
+
+/* 46. RELASHIO — ATADURA QUE SE ROMPE */
+
+.hb-relashio { --hb-color: #d2b397; }
+
+.hb-relashio::after {
+  inset: 0 -0.15em;
+  border-left: 2px dotted #d2b397;
+  border-right: 2px dotted #d2b397;
+  border-radius: 35%;
+  animation: hb-separar 8s ease-out infinite;
+}
+
+/* 47. REPARO MÍNIMA — PIEZAS REUNIDAS */
+
+.hb-reparo { --hb-color: #b6c9bc; }
+
+.hb-reparo::after {
+  left: 25%;
+  right: 25%;
+  bottom: -0.3em;
+  height: 0.25em;
+  border: 1px solid #b6c9bc;
+  background: linear-gradient(
+    90deg, transparent 46%, #b6c9bc 47% 53%, transparent 54%
+  );
+  animation: hb-reunir 8s ease-in-out infinite;
+}
+
+/* 48. REPELIUM MÍNIMA — PROYECTIL DEVUELTO */
+
+.hb-repelium { --hb-color: #bdafd6; }
+
+.hb-repelium::after {
+  right: -0.2em;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ded0f2;
+  box-shadow: 0 0 4px #bdafd6;
+  animation: hb-repelium-devolver 8s linear infinite;
+}
+
+@keyframes hb-repelium-devolver {
+  0%, 10% { opacity: 0; transform: translateX(1.5em); }
+  18% { opacity: 1; }
+  32% { opacity: 1; transform: translateX(0); }
+  50%, 100% { opacity: 0; transform: translateX(1.8em); }
+}
+
+/* 49. RICTUMSEMPRA — TEMBLOR DE COSQUILLAS */
+
+.hb-rictumsempra {
+  --hb-color: #d3b5cd;
+  animation: hb-sacudir 8s ease-in-out infinite;
+}
+
+.hb-rictumsempra::after {
+  content: "⌁";
+  right: -0.65em;
+  top: 0;
+  font-style: normal;
+  animation: hb-subir 8s ease-out infinite;
+}
+
+/* 50. RIDDIKULUS — CAMBIO JUGUETÓN */
+
+.hb-riddikulus {
+  --hb-color: #d4c18f;
+  animation: hb-riddikulus-giro 8s ease-in-out infinite;
+}
+
+.hb-riddikulus::after {
+  content: "✦";
+  right: -0.65em;
+  top: -0.15em;
+  font-size: 0.7em;
+  font-style: normal;
+  animation: hb-destello 8s ease-out infinite;
+}
+
+@keyframes hb-riddikulus-giro {
+  0%, 15%, 65%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-2deg); }
+  42% { transform: rotate(2deg); }
+}
+
+/* 51. SENSUS ANIMAL — HUELLA Y PULSO */
+
+.hb-sensus { --hb-color: #b8c69d; }
+
+.hb-sensus::before {
+  right: -0.8em;
+  top: 42%;
+  width: 0.35em;
+  height: 0.25em;
+  border-radius: 50% 50% 40% 40%;
+  background: #b8c69d;
+  animation: hb-destello 8s ease-in-out infinite;
+}
+
+.hb-sensus::after {
+  right: -0.57em;
+  top: 22%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #b8c69d;
+  box-shadow: -3px -1px #b8c69d, 3px 0 #b8c69d;
+  animation: hb-destello 8s ease-in-out infinite;
+}
+
+/* 52. SURGITO — CLARIDAD RECUPERADA */
+
+.hb-surgito {
+  --hb-color: #c8d5e1;
+  animation: hb-surgito-aclarar 8s ease-in-out infinite;
+}
+
+@keyframes hb-surgito-aclarar {
+  0%, 100% {
+    filter: blur(0.4px);
+    text-shadow: 1px 0 2px #a99dc688;
+  }
+  38%, 72% {
+    filter: blur(0);
+    text-shadow: 0 0 5px #c8d5e166;
+  }
+}
+
+/* 53. TRAGABABOSAS — PEQUEÑA BABOSA */
+
+.hb-tragababosas { --hb-color: #b3be8c; }
+
+.hb-tragababosas::after {
+  right: -0.8em;
+  bottom: 0;
+  width: 0.6em;
+  height: 0.23em;
+  border-radius: 65% 45% 25% 25%;
+  background: linear-gradient(#bcc596, #7d895c);
+  animation: hb-tragababosas-deslizar 8s ease-in-out infinite;
+}
+
+@keyframes hb-tragababosas-deslizar {
+  0%, 10% { opacity: 0; transform: translateX(0); }
+  25%, 45% { opacity: 0.9; }
+  75%, 100% { opacity: 0; transform: translateX(0.7em); }
+}
+
+/* 54. VENTUS — RÁFAGA DE VIENTO */
+
+.hb-ventus { --hb-color: #b4ced5; }
+
+.hb-ventus::before,
+.hb-ventus::after {
+  left: 0;
+  width: 100%;
+  height: 0.25em;
+  border-top: 1px solid #b4ced599;
+  border-radius: 50%;
+  animation: hb-ventus-rafaga 8s ease-out infinite;
+}
+
+.hb-ventus::before { top: 15%; }
+
+.hb-ventus::after {
+  bottom: 0;
+  animation-delay: -0.4s;
+}
+
+@keyframes hb-ventus-rafaga {
+  0%, 10% { opacity: 0; transform: translateX(-0.5em); }
+  25% { opacity: 0.7; }
+  60%, 100% { opacity: 0; transform: translateX(0.7em); }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  .hb,
+  .hb::before,
+  .hb::after {
+    animation: none !important;
+  }
+
+  .hb {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    text-shadow: none;
+  }
+
+  .hb::before,
+  .hb::after {
+    opacity: 0;
+  }
+}
