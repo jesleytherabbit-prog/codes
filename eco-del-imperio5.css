@@ -1,8 +1,3 @@
-/* =========================================================
-   EL ECO DEL IMPERIO — Tablilla de misión
-   Estepa mongola / imperio caído / runas / oro apagado
-   ========================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&display=swap');
 
 .imp-tablilla {
@@ -17,9 +12,10 @@
   --imp-img: url('');
 
   max-width: 560px;
+  overflow-anchor: none;
   margin: 20px auto;
   position: relative;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif !important;
   color: var(--imp-texto);
   background:
     linear-gradient(180deg, rgba(8,6,4,0.88) 0%, rgba(8,6,4,0.94) 100%),
@@ -204,71 +200,113 @@
   color: var(--imp-oro-op);
 }
 
-/* =========================================================
-   PESTAÑAS POR JUGADOR — Eco del Imperio (versión :target)
-   ========================================================= */
+/* ---------- Arreglos para el foro ---------- */
+.imp-tablilla *, .imp-tablilla *::before, .imp-tablilla *::after { box-sizing: border-box; }
 
+/* el foro le pone su letra a todo: se fuerza la propia */
+.imp-tablilla, .imp-tablilla div, .imp-tablilla span, .imp-tablilla p,
+.imp-tablilla b, .imp-tablilla i, .imp-tablilla strong, .imp-tablilla em,
+.imp-tablilla font, .imp-tablilla li {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+.imp-tablilla .imp-subtitulo, .imp-tablilla .imp-titulo, .imp-tablilla .imp-cita-autor,
+.imp-tablilla .imp-dato, .imp-tablilla .imp-dato b, .imp-tablilla .imp-firma,
+.imp-tablilla .imp-firma a, .imp-tablilla .imp-tab-label {
+  font-family: 'Cinzel', serif !important;
+}
+.imp-tablilla .imp-panel, .imp-tablilla .imp-panel * {
+  font-size: 13.5px !important;
+  line-height: 1.75 !important;
+}
+
+/* el foro convierte cada salto de línea en <br>: se ocultan,
+   salvo dentro del texto de cada pestaña y de la cita */
+.imp-tablilla br { display: none; }
+.imp-tablilla .imp-panel br,
+.imp-tablilla .imp-cita br { display: inline; }
+
+/* anclas fijas: la página NO baja al tocar una pestaña
+   (no poner transform / filter / backdrop-filter en .imp-tablilla) */
+.imp-ancla {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+/* =========================================================
+   PESTAÑAS POR PJ (anclas con prefijo por turno)
+   ========================================================= */
 .imp-tabs-nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 6px;
-  margin: 20px 0 16px;
+  margin: 4px 0 16px;
 }
-
-.imp-tab-label {
-  font-family: 'Cinzel', serif;
+.imp-tablilla .imp-tab-label {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--imp-linea);
   font-size: 10px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--imp-texto2);
-  border: 1px solid var(--imp-linea);
-  padding: 6px 12px;
+  color: var(--imp-texto2) !important;
+  text-decoration: none !important;
   cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: color .25s ease, border-color .25s ease, background .25s ease;
 }
+.imp-tablilla .imp-tab-label:hover { color: var(--imp-oro-op) !important; border-color: var(--imp-oro); }
 
-.imp-tab-label:hover {
-  color: var(--imp-oro-op);
+/* pestaña activa (PJ 1 por defecto) */
+.imp-tablilla .imp-l1,
+.imp-a1:target ~ .imp-tabs-nav .imp-l1,
+.imp-a2:target ~ .imp-tabs-nav .imp-l2,
+.imp-a3:target ~ .imp-tabs-nav .imp-l3,
+.imp-a4:target ~ .imp-tabs-nav .imp-l4,
+.imp-a5:target ~ .imp-tabs-nav .imp-l5,
+.imp-a6:target ~ .imp-tabs-nav .imp-l6 {
+  color: var(--imp-oro-op) !important;
   border-color: var(--imp-oro);
+  background: rgba(201, 162, 75, .10);
+  box-shadow: 0 0 10px rgba(201, 162, 75, .18);
+}
+.imp-ancla:target ~ .imp-tabs-nav .imp-l1 {
+  color: var(--imp-texto2) !important;
+  border-color: var(--imp-linea);
+  background: transparent;
+  box-shadow: none;
+}
+.imp-a1:target ~ .imp-tabs-nav .imp-l1 {
+  color: var(--imp-oro-op) !important;
+  border-color: var(--imp-oro);
+  background: rgba(201, 162, 75, .10);
+  box-shadow: 0 0 10px rgba(201, 162, 75, .18);
 }
 
-.imp-tabs-content {
-  position: relative;
-}
-
-.imp-tab-panel {
+/* paneles: todos a la misma altura, justo debajo de las pestañas */
+.imp-panel {
   display: none;
-  font-size: 13px;
-  line-height: 1.75;
   color: var(--imp-texto);
   text-align: justify;
-  scroll-margin-top: 40px;
+  animation: imp-aparecer .4s ease;
 }
+.imp-panel.imp-p1 { display: block; }
+.imp-a2:target ~ .imp-paneles .imp-p2,
+.imp-a3:target ~ .imp-paneles .imp-p3,
+.imp-a4:target ~ .imp-paneles .imp-p4,
+.imp-a5:target ~ .imp-paneles .imp-p5,
+.imp-a6:target ~ .imp-paneles .imp-p6 { display: block; }
+.imp-a2:target ~ .imp-paneles .imp-p1,
+.imp-a3:target ~ .imp-paneles .imp-p1,
+.imp-a4:target ~ .imp-paneles .imp-p1,
+.imp-a5:target ~ .imp-paneles .imp-p1,
+.imp-a6:target ~ .imp-paneles .imp-p1 { display: none; }
+.imp-panel b, .imp-panel strong { color: var(--imp-oro-op); font-weight: 600; }
 
-.imp-tab-panel p {
-  margin: 0 0 14px;
-}
-.imp-tab-panel p:last-child {
-  margin-bottom: 0;
-}
-
-/* Jugador 1 es la pestaña por defecto (por eso va último en el HTML) */
-#imp-j1 {
-  display: block;
-}
-
-.imp-tab-panel:target {
-  display: block;
-}
-
-/* Al activar cualquier otra pestaña, se oculta la de por defecto */
-#imp-j2:target ~ #imp-j1,
-#imp-j3:target ~ #imp-j1,
-#imp-j4:target ~ #imp-j1,
-#imp-j5:target ~ #imp-j1,
-#imp-j6:target ~ #imp-j1 {
-  display: none;
+@keyframes imp-aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
