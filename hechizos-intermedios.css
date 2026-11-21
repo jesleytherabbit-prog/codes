@@ -1,0 +1,1445 @@
+/* =========================================
+   HECHIZOS INTERMEDIOS
+   ========================================= */
+
+/* BASE */
+
+.hi {
+  --hi-color: #bdc8dc;
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  overflow: visible;
+  vertical-align: baseline;
+  color: var(--hi-color);
+  font-style: italic;
+}
+
+.hi::before,
+.hi::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* ANIMACIONES COMPARTIDAS */
+
+@keyframes hi-aparecer {
+  0%, 10%, 90%, 100% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  32%, 65% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+}
+
+@keyframes hi-onda {
+  0%, 10% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  28% { opacity: 0.8; }
+  70%, 100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes hi-trazar {
+  0%, 12% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  42%, 70% {
+    opacity: 0.85;
+    clip-path: inset(0);
+  }
+  94%, 100% {
+    opacity: 0;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes hi-brotar {
+  0%, 10% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  38%, 70% {
+    opacity: 0.85;
+    transform: scaleY(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes hi-ascender {
+  0%, 12% {
+    opacity: 0;
+    transform: translateY(0.25em);
+  }
+  30% { opacity: 0.85; }
+  70%, 100% {
+    opacity: 0;
+    transform: translateY(-0.8em);
+  }
+}
+
+@keyframes hi-proyectar {
+  0%, 15% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  22% { opacity: 1; }
+  48%, 100% {
+    opacity: 0;
+    transform: translateX(1.8em);
+  }
+}
+
+@keyframes hi-absorber {
+  0%, 10% {
+    opacity: 0;
+    transform: translateX(1.5em) scale(1);
+  }
+  22% { opacity: 0.9; }
+  52%, 100% {
+    opacity: 0;
+    transform: translateX(0) scale(0.15);
+  }
+}
+
+@keyframes hi-cerrar {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleX(1.5);
+  }
+  40%, 70% {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hi-abrir {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleX(0.75);
+  }
+  28% { opacity: 0.85; }
+  70%, 100% {
+    opacity: 0;
+    transform: scaleX(1.35);
+  }
+}
+
+@keyframes hi-brillo {
+  0%, 10%, 90%, 100% { text-shadow: none; }
+  38%, 62% {
+    text-shadow:
+      0 0 4px var(--hi-color),
+      0 0 12px var(--hi-color);
+  }
+}
+
+/* ABERTO — CANDADO Y SELLO QUE SE ABREN */
+
+.hi-aberto { --hi-color: #d8c28d; }
+
+.hi-aberto::before {
+  right: -0.85em;
+  top: 48%;
+  width: 0.55em;
+  height: 0.4em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  box-shadow: 0 0 5px #d8c28d44;
+}
+
+.hi-aberto::after {
+  right: -0.76em;
+  top: 20%;
+  width: 0.37em;
+  height: 0.42em;
+  border: 1px solid currentColor;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  transform-origin: right bottom;
+  animation: hi-aberto-abrir 8s ease-in-out infinite;
+}
+
+@keyframes hi-aberto-abrir {
+  0%, 15%, 92%, 100% { transform: rotate(0); }
+  40%, 68% {
+    transform: translateY(-0.1em) rotate(45deg);
+  }
+}
+
+/* ALCHIMIA INCANTATIO — ESENCIA QUE SE CONDENSA */
+
+.hi-alchimia { --hi-color: #b4caa3; }
+
+.hi-alchimia::before {
+  right: -0.7em;
+  bottom: 0.05em;
+  width: 0.35em;
+  height: 0.5em;
+  border: 1px solid #dce6b9;
+  border-radius: 45%;
+  background: linear-gradient(transparent 25%, #91ae73 26%);
+  animation: hi-alchimia-condensar 8s ease-in-out infinite;
+}
+
+.hi-alchimia::after {
+  right: -0.5em;
+  top: 15%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #e0e8bc;
+  box-shadow: 4px -4px 3px #b4caa3;
+  animation: hi-ascender 8s ease-out infinite;
+}
+
+@keyframes hi-alchimia-condensar {
+  0%, 10% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+  25% { opacity: 0.85; }
+  58%, 100% {
+    opacity: 0;
+    transform: translate(-0.25em, -0.6em) scale(0.1);
+  }
+}
+
+/* ANDACHT — CÍRCULO ÍGNEO */
+
+.hi-andacht { --hi-color: #dda477; }
+
+.hi-andacht::before {
+  inset: -0.2em -0.35em;
+  border: 1px solid #dfa572;
+  border-radius: 50%;
+  box-shadow:
+    0 0 6px #d98a5044,
+    inset 0 0 5px #e4ad7233;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+.hi-andacht::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.2em;
+  height: 0.65em;
+  z-index: -1;
+  background: linear-gradient(transparent, #d98a5055);
+  border-radius: 50%;
+  transform-origin: bottom;
+  animation: hi-brotar 8s ease-out infinite;
+}
+
+/* ANTUS — TEMBLOR Y FRAGMENTACIÓN */
+
+.hi-antus { --hi-color: #baaabd; }
+
+.hi-antus::after {
+  left: 10%;
+  right: 10%;
+  bottom: -0.25em;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg, #aa94ae 0 4px, transparent 4px 9px
+  );
+  animation: hi-antus-romper 8s ease-in-out infinite;
+}
+
+@keyframes hi-antus-romper {
+  0%, 12% { opacity: 0; transform: translateX(0); }
+  25%, 35% { opacity: 0.9; transform: translateX(-1px); }
+  30%, 40% { opacity: 0.9; transform: translateX(1px); }
+  72%, 100% {
+    opacity: 0;
+    transform: translateY(0.4em) scaleX(1.5);
+  }
+}
+
+/* AQUACAUDALIS — TORRENTE */
+
+.hi-aquacaudalis { --hi-color: #8bc9de; }
+
+.hi-aquacaudalis::before {
+  left: 0;
+  right: 0;
+  bottom: -0.25em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    100deg, #77b8d2 0 9px, #c8f0f7 10px 13px
+  );
+  background-size: 26px 100%;
+  animation: hi-aquacaudalis-agua 8s linear infinite;
+}
+
+.hi-aquacaudalis::after {
+  right: -0.1em;
+  bottom: -0.2em;
+  width: 2px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c8f0f7;
+  box-shadow: 5px -4px #a4dbe9, 9px 2px #a4dbe9;
+  animation: hi-proyectar 8s ease-out infinite;
+}
+
+@keyframes hi-aquacaudalis-agua {
+  0%, 10% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    background-position: 0 0;
+  }
+  35%, 65% {
+    opacity: 0.9;
+    clip-path: inset(0);
+  }
+  92%, 100% {
+    opacity: 0;
+    clip-path: inset(0);
+    background-position: 156px 0;
+  }
+}
+
+/* AQUA VOLATEM — BURBUJA ENVOLVENTE */
+
+.hi-aquavolatem { --hi-color: #a2d6e2; }
+
+.hi-aquavolatem::before {
+  inset: -0.35em -0.45em;
+  z-index: -1;
+  border: 1px solid #b9e4edbb;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, transparent 40%, #a2d6e233);
+  box-shadow: inset 2px 2px 6px #d4f4f544;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+.hi-aquavolatem::after {
+  left: 5%;
+  top: -0.15em;
+  width: 0.6em;
+  height: 0.3em;
+  border-top: 1px solid #e1f9f6;
+  border-radius: 50%;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* ARANIA EXUMAI — REPULSIÓN DE TELARAÑA */
+
+.hi-arania { --hi-color: #c5c5df; }
+
+.hi-arania::before {
+  right: -0.85em;
+  top: 20%;
+  width: 0.65em;
+  height: 0.65em;
+  border: 1px solid #c5c5df88;
+  border-radius: 50%;
+  background:
+    linear-gradient(45deg, transparent 47%, #c5c5df 48% 52%, transparent 53%),
+    linear-gradient(-45deg, transparent 47%, #c5c5df 48% 52%, transparent 53%);
+  animation: hi-proyectar 8s ease-out infinite;
+}
+
+/* AUDIRE PLANTAE — HOJA Y ONDAS */
+
+.hi-audire {
+  --hi-color: #a9bd8e;
+  padding-left: 1.25em;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-audire::before {
+  left: 0;
+  top: 20%;
+  width: 0.5em;
+  height: 0.7em;
+  border-radius: 85% 0 85% 0;
+  background: linear-gradient(135deg, #becf9e, #63825b);
+  transform-origin: bottom left;
+  animation: hi-audire-hoja 8s ease-in-out infinite;
+}
+
+.hi-audire::after {
+  left: 0.65em;
+  top: 25%;
+  width: 0.25em;
+  height: 0.6em;
+  border-right: 1px solid #b5c99a;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-out infinite;
+}
+
+@keyframes hi-audire-hoja {
+  0%, 65%, 100% { transform: rotate(-15deg); }
+  30% { transform: rotate(10deg); }
+}
+
+/* AVIUM GREX — BANDADA */
+
+.hi-avium { --hi-color: #d4c38e; }
+
+.hi-avium::after {
+  content: "⌁ ⌁ ⌁ ⌁";
+  left: 0;
+  top: -0.4em;
+  white-space: nowrap;
+  font-style: normal;
+  font-size: 0.8em;
+  animation: hi-avium-bandada 8s ease-in-out infinite;
+}
+
+@keyframes hi-avium-bandada {
+  0%, 10% {
+    opacity: 0;
+    transform: translate(-0.3em, 0.2em) rotate(-3deg);
+  }
+  28% { opacity: 0.8; }
+  72%, 100% {
+    opacity: 0;
+    transform: translate(1.8em, -0.4em) rotate(3deg);
+  }
+}
+
+/* COHORTIS — VENDAS ENVOLVENTES */
+
+.hi-cohortis { --hi-color: #c8c4d3; }
+
+.hi-cohortis::after {
+  inset: -0.1em -0.15em;
+  z-index: -1;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    115deg, transparent 0 5px, #cdc8db77 5px 8px
+  );
+  animation: hi-trazar 8s ease-in-out infinite;
+}
+
+/* CONFRINGO — EXPLOSIÓN */
+
+.hi-confringo { --hi-color: #dfa782; }
+
+.hi-confringo::before {
+  inset: -0.3em -0.4em;
+  border: 1px solid #e4b48b;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-out infinite;
+}
+
+.hi-confringo::after {
+  inset: -0.25em;
+  z-index: -1;
+  background: radial-gradient(ellipse, #f0cd9a88, transparent 70%);
+  animation: hi-aparecer 8s ease-out infinite;
+}
+
+/* DELICTUM — HUELLA EMOCIONAL */
+
+.hi-delictum { --hi-color: #c8aecb; }
+
+.hi-delictum::before,
+.hi-delictum::after {
+  inset: -0.12em -0.2em;
+  border: 1px solid #c8aecb99;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-out infinite;
+}
+
+.hi-delictum::after {
+  animation-delay: -0.8s;
+}
+
+/* DENSAUGEO — DOS DIENTES CRECIENTES */
+
+.hi-densaugeo { --hi-color: #d7d0bd; }
+
+.hi-densaugeo::before,
+.hi-densaugeo::after {
+  bottom: -0.45em;
+  width: 0.25em;
+  height: 0.55em;
+  border-radius: 2px 2px 40% 40%;
+  background: linear-gradient(#e7e2cf, #bcb9a6);
+  transform-origin: top;
+  animation: hi-brotar 8s ease-in-out infinite;
+}
+
+.hi-densaugeo::before { left: 43%; }
+.hi-densaugeo::after { left: 53%; }
+
+/* DILUCULUM — RÁFAGA DE LUZ BLANCA */
+
+.hi-diluculum {
+  --hi-color: #e8e9e3;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-diluculum::after {
+  left: -5%;
+  right: -5%;
+  top: 40%;
+  height: 0.3em;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, #ffffff99, transparent);
+  filter: blur(2px);
+  animation: hi-trazar 8s ease-out infinite;
+}
+
+/* DEPRIMO — EROSIÓN */
+
+.hi-deprimo { --hi-color: #b9a387; }
+
+.hi-deprimo::before {
+  left: 0;
+  right: 0;
+  bottom: -0.2em;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg, #a28a6c 0 6px, transparent 6px 9px
+  );
+  animation: hi-deprimo-erosion 8s ease-in infinite;
+}
+
+.hi-deprimo::after {
+  left: 40%;
+  bottom: -0.2em;
+  width: 2px;
+  height: 2px;
+  background: #c8b28c;
+  box-shadow: -14px 1px #967e61, 16px -2px #bca47e;
+  animation: hi-ascender 8s ease-out infinite;
+}
+
+@keyframes hi-deprimo-erosion {
+  0%, 10% { opacity: 0; transform: scaleX(1); }
+  25% { opacity: 0.9; }
+  70%, 100% {
+    opacity: 0;
+    transform: translateY(0.3em) scaleX(1.2);
+  }
+}
+
+/* DISPERGAM — DESPLAZAMIENTOS */
+
+.hi-dispergam {
+  --hi-color: #c3adcf;
+  animation: hi-dispergam-mover 8s ease-in-out infinite;
+}
+
+@keyframes hi-dispergam-mover {
+  0%, 15%, 75%, 100% { transform: translate(0); }
+  28% { transform: translate(0.22em, -0.08em); }
+  42% { transform: translate(-0.15em, 0.1em); }
+  58% { transform: translate(0.12em, 0); }
+}
+
+/* DUAL POTENS — DOBLE HALO PLATEADO */
+
+.hi-dual {
+  --hi-color: #d6e0e9;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-dual::before,
+.hi-dual::after {
+  inset: -0.15em -0.25em;
+  z-index: -1;
+  border: 1px solid #d6e0e966;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-in-out infinite;
+}
+
+.hi-dual::after {
+  inset: -0.3em -0.4em;
+  animation-delay: -0.5s;
+}
+
+/* EVERTE STATUM — DESEQUILIBRIO */
+
+.hi-everte {
+  --hi-color: #c7b2d3;
+  animation: hi-everte-empujon 8s ease-out infinite;
+}
+
+@keyframes hi-everte-empujon {
+  0%, 15%, 78%, 100% { transform: translateX(0) rotate(0); }
+  30% { transform: translateX(0.25em) rotate(3deg); }
+  48% { transform: translateX(0.12em) rotate(-1deg); }
+}
+
+/* EXPELLIARMUS — VARITA DESPEDIDA */
+
+.hi-expelliarmus {
+  --hi-color: #d39b99;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-expelliarmus::before {
+  right: -0.3em;
+  top: 45%;
+  width: 1em;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #78543d, #c6a280, #f3ded1);
+  animation: hi-expelliarmus-varita 8s ease-out infinite;
+}
+
+.hi-expelliarmus::after {
+  right: 0;
+  top: 40%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #ffe4d9;
+  box-shadow: 5px -5px 3px #dba09a, -4px 4px 2px #ce7f7f;
+  animation: hi-aparecer 8s ease-out infinite;
+}
+
+@keyframes hi-expelliarmus-varita {
+  0%, 15% {
+    opacity: 0;
+    transform: translate(0) rotate(-25deg);
+  }
+  22% { opacity: 1; }
+  52%, 100% {
+    opacity: 0;
+    transform: translate(1.8em, -0.8em) rotate(200deg);
+  }
+}
+
+/* FIANTO DURI — PLACAS PROTECTORAS */
+
+.hi-fianto { --hi-color: #b4bfc6; }
+
+.hi-fianto::after {
+  inset: -0.15em -0.2em;
+  z-index: -1;
+  border: 1px solid #b4bfc6;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    90deg, #a3b0bc22 0 12px, #c4ceda55 12px 13px
+  );
+  transform-origin: bottom;
+  animation: hi-brotar 8s ease-out infinite;
+}
+
+/* FINITE — ENCANTAMIENTO QUE SE DESVANECE */
+
+.hi-finite { --hi-color: #c3c5d6; }
+
+.hi-finite::after {
+  inset: -0.15em -0.25em;
+  border: 1px dashed #c3c5d6;
+  border-radius: 50%;
+  animation: hi-finite-disipar 8s ease-out infinite;
+}
+
+@keyframes hi-finite-disipar {
+  0%, 10% {
+    opacity: 0;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  25% { opacity: 0.85; }
+  70%, 100% {
+    opacity: 0;
+    transform: scale(1.3);
+    filter: blur(2px);
+  }
+}
+
+/* FLUCTUS — BARRERA CONVERTIDA EN FRAGMENTOS */
+
+.hi-fluctus { --hi-color: #a5cada; }
+
+.hi-fluctus::before {
+  inset: -0.2em -0.3em;
+  border: 1px solid #a5cada;
+  border-radius: 50%;
+  animation: hi-fluctus-barrera 8s ease-out infinite;
+}
+
+.hi-fluctus::after {
+  right: 0;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  background: #c6e4ef;
+  box-shadow: -7px -5px #a5cada, -14px 4px #a5cada;
+  animation: hi-fluctus-restos 8s ease-in infinite;
+}
+
+@keyframes hi-fluctus-barrera {
+  0%, 10%, 40%, 100% { opacity: 0; }
+  22%, 32% { opacity: 0.85; }
+}
+
+@keyframes hi-fluctus-restos {
+  0%, 34% { opacity: 0; transform: translateX(0); }
+  40% { opacity: 1; }
+  65%, 100% { opacity: 0; transform: translateX(1.8em); }
+}
+
+/* FURUNCULUS — PEQUEÑAS ERUPCIONES */
+
+.hi-furunculus { --hi-color: #c59d9e; }
+
+.hi-furunculus::after {
+  left: 15%;
+  bottom: -0.15em;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c88b91;
+  box-shadow:
+    0.9em -2px #bb7f8c,
+    1.7em 1px #d2a1a4,
+    2.6em -1px #bb7f8c;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* GLACIUS — HIELO Y ESCARCHA */
+
+.hi-glacius { --hi-color: #b4deea; }
+
+.hi-glacius::before {
+  left: 0;
+  right: 0;
+  bottom: -0.2em;
+  height: 0.4em;
+  background: linear-gradient(transparent, #a1d5e355);
+  clip-path: polygon(
+    0 100%, 8% 40%, 15% 80%, 26% 0,
+    35% 70%, 48% 25%, 60% 85%, 72% 5%,
+    83% 65%, 94% 30%, 100% 100%
+  );
+  transform-origin: bottom;
+  animation: hi-brotar 8s ease-in-out infinite;
+}
+
+.hi-glacius::after {
+  content: "✧";
+  right: -0.65em;
+  top: -0.1em;
+  font-style: normal;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* IMPEDIMENTA — MOVIMIENTO DETENIDO */
+
+.hi-impedimenta { --hi-color: #bfb1d1; }
+
+.hi-impedimenta::after {
+  right: -0.7em;
+  top: 45%;
+  width: 4px;
+  height: 4px;
+  border: 1px solid #d8c9e7;
+  border-radius: 50%;
+  animation: hi-impedimenta-detener 8s linear infinite;
+}
+
+@keyframes hi-impedimenta-detener {
+  0%, 10% {
+    opacity: 0;
+    transform: translateX(1em);
+  }
+  15% { opacity: 1; }
+  28%, 72% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  92%, 100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+/* IMPETUS PLANTAE — RAÍCES QUE EMERGEN */
+
+.hi-impetus { --hi-color: #a7b98b; }
+
+.hi-impetus::before {
+  left: 0;
+  right: 0;
+  bottom: -0.5em;
+  height: 0.9em;
+  z-index: -1;
+  background: linear-gradient(#a9b786, #766449);
+  clip-path: polygon(
+    0 100%, 8% 75%, 12% 30%, 15% 75%,
+    24% 60%, 29% 0, 32% 65%, 40% 80%,
+    48% 55%, 51% 15%, 54% 65%, 64% 80%,
+    72% 50%, 76% 0, 79% 65%, 88% 75%,
+    93% 35%, 95% 85%, 100% 100%,
+    85% 92%, 73% 73%, 63% 95%, 51% 75%,
+    40% 95%, 28% 75%, 15% 95%
+  );
+  transform-origin: bottom;
+  animation: hi-brotar 8s ease-out infinite;
+}
+
+.hi-impetus::after {
+  left: 45%;
+  bottom: -0.45em;
+  width: 2px;
+  height: 2px;
+  background: #b6a17a;
+  box-shadow: -20px 0 #8b785c, 23px -2px #a18d6c;
+  animation: hi-ascender 8s ease-out infinite;
+}
+
+/* INCARCEROUS — CUERDAS */
+
+.hi-incarcerous { --hi-color: #c9b28e; }
+
+.hi-incarcerous::after {
+  inset: -0.1em -0.2em;
+  border: 1px solid #bda078;
+  border-radius: 35%;
+  background: repeating-linear-gradient(
+    115deg, transparent 0 10px, #c9b28e66 10px 12px
+  );
+  animation: hi-cerrar 8s ease-in-out infinite;
+}
+
+/* INCENDIO — LLAMAS */
+
+.hi-incendio {
+  --hi-color: #dfa17d;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-incendio::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.15em;
+  height: 0.7em;
+  z-index: -1;
+  background: linear-gradient(#edc18477, #cb765877);
+  clip-path: polygon(
+    0 100%, 8% 50%, 16% 80%, 25% 0,
+    35% 70%, 47% 25%, 57% 80%, 68% 0,
+    78% 65%, 90% 30%, 100% 100%
+  );
+  transform-origin: bottom;
+  animation: hi-brotar 8s ease-in-out infinite;
+}
+
+/* INFULGURUM — RAYO VERTICAL */
+
+.hi-infulgurum { --hi-color: #cec3eb; }
+
+.hi-infulgurum::after {
+  left: 48%;
+  top: -0.5em;
+  width: 0.45em;
+  height: 1.5em;
+  background: #e5dcfc;
+  clip-path: polygon(
+    55% 0, 15% 50%, 45% 50%,
+    25% 100%, 90% 35%, 55% 35%, 85% 0
+  );
+  animation: hi-infulgurum-rayo 8s linear infinite;
+}
+
+@keyframes hi-infulgurum-rayo {
+  0%, 18%, 24%, 32%, 100% { opacity: 0; }
+  20%, 27% { opacity: 0.9; }
+}
+
+/* LEGEREMENS MEDIA — OJO Y RESONANCIA */
+
+.hi-legeremens { --hi-color: #bda6cd; }
+
+.hi-legeremens::before {
+  right: -0.95em;
+  top: 30%;
+  width: 0.7em;
+  height: 0.4em;
+  border: 1px solid #bda6cd;
+  border-radius: 70% 20% 70% 20%;
+  background: radial-gradient(circle, #dac9e9 0 18%, transparent 23%);
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+.hi-legeremens::after {
+  right: -1.1em;
+  top: 15%;
+  width: 1em;
+  height: 0.7em;
+  border: 1px solid #bda6cd66;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-out infinite;
+}
+
+/* LEVICORPUS — ELEVACIÓN CON BALANCEO */
+
+.hi-levicorpus {
+  --hi-color: #bfb3d9;
+  animation: hi-levicorpus-elevar 8s ease-in-out infinite;
+}
+
+.hi-levicorpus::before {
+  right: 15%;
+  top: -0.4em;
+  width: 1px;
+  height: 0.45em;
+  background: #bfb3d9aa;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+@keyframes hi-levicorpus-elevar {
+  0%, 12%, 90%, 100% { transform: translateY(0) rotate(0); }
+  35%, 65% { transform: translateY(-0.25em) rotate(-3deg); }
+  50% { transform: translateY(-0.25em) rotate(2deg); }
+}
+
+/* LOCOMOTOR TERMINUS — CIERRE Y PESO */
+
+.hi-locomotor { --hi-color: #b1a7c4; }
+
+.hi-locomotor::before {
+  left: 38%;
+  bottom: -0.35em;
+  width: 24%;
+  height: 0.4em;
+  border-left: 3px solid #b1a7c4;
+  border-right: 3px solid #b1a7c4;
+  animation: hi-cerrar 8s ease-in-out infinite;
+}
+
+.hi-locomotor::after {
+  left: 30%;
+  right: 30%;
+  bottom: -0.4em;
+  height: 2px;
+  background: #8e839f;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* LOQUI ANIMAL — HUELLA Y COMUNICACIÓN */
+
+.hi-loqui { --hi-color: #b4c69d; }
+
+.hi-loqui::before {
+  right: -0.75em;
+  top: 45%;
+  width: 0.35em;
+  height: 0.25em;
+  border-radius: 50%;
+  background: #b4c69d;
+  box-shadow:
+    -2px -4px 0 -1px #b4c69d,
+    2px -5px 0 -1px #b4c69d,
+    5px -3px 0 -1px #b4c69d;
+}
+
+.hi-loqui::after {
+  right: -1.05em;
+  top: 25%;
+  width: 0.2em;
+  height: 0.6em;
+  border-right: 1px solid #c9d8b0;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-in-out infinite;
+}
+
+/* MOBILICORPUS — HILOS DE MARIONETA */
+
+.hi-mobilicorpus {
+  --hi-color: #c0afce;
+  animation: hi-mobilicorpus-hilos 8s ease-in-out infinite;
+}
+
+.hi-mobilicorpus::after {
+  left: 20%;
+  right: 20%;
+  top: -0.4em;
+  height: 0.45em;
+  border-left: 1px solid #c0afce99;
+  border-right: 1px solid #c0afce99;
+}
+
+@keyframes hi-mobilicorpus-hilos {
+  0%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-2deg) translateY(-0.08em); }
+  60% { transform: rotate(2deg) translateY(0.05em); }
+}
+
+/* MORSEQUOR — RASTROS DIVERGENTES */
+
+.hi-morsequor { --hi-color: #aaa0bd; }
+
+.hi-morsequor::before,
+.hi-morsequor::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.2em;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg, #aaa0bd 0 3px, transparent 3px 8px
+  );
+  animation: hi-abrir 8s ease-out infinite;
+}
+
+.hi-morsequor::before { rotate: 6deg; }
+.hi-morsequor::after { rotate: -6deg; animation-delay: -0.6s; }
+
+/* NUNTIUS MEDIA — MENSAJES MÚLTIPLES */
+
+.hi-nuntius { --hi-color: #c1b5db; }
+
+.hi-nuntius::after {
+  right: 0;
+  top: 45%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #dfd1ef;
+  box-shadow: 5px -6px #c1b5db, 5px 6px #c1b5db;
+  animation: hi-proyectar 8s ease-in-out infinite;
+}
+
+/* OBLIVIATE — RECUERDO QUE SE DIFUMINA */
+
+.hi-obliviate {
+  --hi-color: #c8bdd6;
+  animation: hi-obliviate-recuerdo 8s ease-in-out infinite;
+}
+
+.hi-obliviate::after {
+  inset: -0.15em -0.2em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #c8bdd644, transparent 70%);
+  animation: hi-onda 8s ease-out infinite;
+}
+
+@keyframes hi-obliviate-recuerdo {
+  0%, 100% { opacity: 1; filter: blur(0); }
+  45%, 65% { opacity: 0.55; filter: blur(0.6px); }
+}
+
+/* OCLUMENS MEDIA — DOBLE BARRERA MENTAL */
+
+.hi-oclumens { --hi-color: #b0bad5; }
+
+.hi-oclumens::before,
+.hi-oclumens::after {
+  inset: -0.13em -0.22em;
+  border: 1px solid #b0bad5aa;
+  border-radius: 35%;
+  animation: hi-cerrar 8s ease-in-out infinite;
+}
+
+.hi-oclumens::after {
+  inset: -0.28em -0.38em;
+  animation-delay: -0.4s;
+}
+
+/* ONERARIOS — LUZ INTERIOR */
+
+.hi-onerarios {
+  --hi-color: #d6cead;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-onerarios::after {
+  inset: -0.3em -0.4em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #e5debd55, transparent 70%);
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* PARASITUS — CORRIENTE VERDE ABSORBIDA */
+
+.hi-parasitus { --hi-color: #9eba88; }
+
+.hi-parasitus::before {
+  right: -1.2em;
+  top: 55%;
+  width: 1.5em;
+  height: 2px;
+  background: linear-gradient(90deg, #b7d397, transparent);
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+.hi-parasitus::after {
+  right: -0.1em;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c5dfa4;
+  box-shadow: 0 0 5px #a8c88a;
+  animation: hi-absorber 8s ease-in-out infinite;
+}
+
+/* PROTEGO MÁXIMA — GRAN ESCUDO */
+
+.hi-protego { --hi-color: #b1d6e8; }
+
+.hi-protego::before {
+  inset: -0.35em -0.5em;
+  z-index: -1;
+  border: 1px solid #c5e7f3bb;
+  border-radius: 45% 45% 50% 50%;
+  background: radial-gradient(ellipse, transparent 35%, #91bfdc44);
+  box-shadow:
+    inset 0 0 8px #afd7ec44,
+    0 0 7px #afd7ec33;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+.hi-protego::after {
+  inset: -0.18em -0.3em;
+  border-top: 1px solid #e2f5fa;
+  border-radius: 50%;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* REDUCTO — FRAGMENTOS QUE ESTALLAN */
+
+.hi-reducto { --hi-color: #c9b39c; }
+
+.hi-reducto::after {
+  left: 35%;
+  top: 55%;
+  width: 3px;
+  height: 3px;
+  background: #d7c3a6;
+  box-shadow:
+    -10px -5px #bba487,
+    12px -7px #cbb99c,
+    -17px 5px #bba487,
+    19px 4px #cbb99c;
+  animation: hi-onda 8s ease-out infinite;
+}
+
+/* REMEDIUM — HERIDA QUE SE CIERRA */
+
+.hi-remedium {
+  --hi-color: #afd1b7;
+  animation: hi-brillo 8s ease-in-out infinite;
+}
+
+.hi-remedium::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.2em;
+  height: 2px;
+  background: linear-gradient(
+    90deg, #a3c9ae 0 45%, transparent 45% 55%, #a3c9ae 55%
+  );
+  animation: hi-remedium-sellar 8s ease-in-out infinite;
+}
+
+@keyframes hi-remedium-sellar {
+  0%, 10% { opacity: 0; transform: scaleX(1.15); }
+  25% { opacity: 0.8; }
+  50%, 70% {
+    opacity: 0.9;
+    transform: scaleX(1);
+    box-shadow: 0 0 5px #b8dec4;
+    background: #b8dec4;
+  }
+  95%, 100% { opacity: 0; transform: scaleX(1); }
+}
+
+/* REPARIFORS — SOPORTE Y LUCES CURATIVAS */
+
+.hi-reparifors { --hi-color: #b5d2be; }
+
+.hi-reparifors::before {
+  left: 5%;
+  right: 5%;
+  bottom: -0.2em;
+  height: 0.2em;
+  border: 1px solid #b5d2be;
+  border-radius: 3px;
+  animation: hi-cerrar 8s ease-in-out infinite;
+}
+
+.hi-reparifors::after {
+  content: "+";
+  right: -0.65em;
+  top: 20%;
+  font-style: normal;
+  font-size: 0.8em;
+  color: #d7efde;
+  animation: hi-ascender 8s ease-out infinite;
+}
+
+/* REPARO — FRAGMENTOS REUNIDOS */
+
+.hi-reparo { --hi-color: #bbcec2; }
+
+.hi-reparo::before {
+  left: 25%;
+  right: 25%;
+  bottom: -0.3em;
+  height: 0.3em;
+  border: 1px solid #bbcec2;
+  background: linear-gradient(
+    90deg, transparent 47%, #bbcec2 48% 52%, transparent 53%
+  );
+  animation: hi-cerrar 8s ease-in-out infinite;
+}
+
+.hi-reparo::after {
+  content: "✦";
+  left: 45%;
+  bottom: -0.35em;
+  font-size: 0.65em;
+  font-style: normal;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* REPELIUM — IMPACTO DEVUELTO */
+
+.hi-repelium { --hi-color: #c3b3dc; }
+
+.hi-repelium::before {
+  right: -0.2em;
+  top: 15%;
+  width: 0.25em;
+  height: 0.8em;
+  border-right: 1px solid #c3b3dc;
+  border-radius: 50%;
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+.hi-repelium::after {
+  right: -0.2em;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #e3d5f4;
+  animation: hi-repelium-devolver 8s linear infinite;
+}
+
+@keyframes hi-repelium-devolver {
+  0%, 10% { opacity: 0; transform: translateX(1.5em); }
+  18% { opacity: 1; }
+  32% { opacity: 1; transform: translateX(0); }
+  55%, 100% { opacity: 0; transform: translateX(1.8em); }
+}
+
+/* REVELIO — BARRIDO DE DETECCIÓN */
+
+.hi-revelio { --hi-color: #d4c597; }
+
+.hi-revelio::before {
+  left: -5%;
+  top: 0;
+  width: 0.3em;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #e4d4a477, transparent);
+  animation: hi-revelio-barrido 8s ease-in-out infinite;
+}
+
+.hi-revelio::after {
+  inset: -0.15em -0.25em;
+  border: 1px solid #d4c59766;
+  border-radius: 50%;
+  animation: hi-onda 8s ease-out infinite;
+}
+
+@keyframes hi-revelio-barrido {
+  0%, 10% { opacity: 0; left: -5%; }
+  20% { opacity: 0.9; }
+  70%, 100% { opacity: 0; left: 100%; }
+}
+
+/* RUPTIS — VIENTO RACHEADO */
+
+.hi-ruptis { --hi-color: #adc5ce; }
+
+.hi-ruptis::before,
+.hi-ruptis::after {
+  left: 0;
+  right: 0;
+  height: 0.25em;
+  border-top: 1px solid #adc5ceaa;
+  border-radius: 50%;
+  animation: hi-ruptis-viento 8s ease-out infinite;
+}
+
+.hi-ruptis::before { top: 10%; rotate: -5deg; }
+.hi-ruptis::after { bottom: 0; rotate: 5deg; animation-delay: -0.4s; }
+
+@keyframes hi-ruptis-viento {
+  0%, 10% { opacity: 0; transform: translateX(-0.5em); }
+  25% { opacity: 0.8; }
+  65%, 100% { opacity: 0; transform: translateX(0.8em); }
+}
+
+/* SECTUM — CORTE PROFUNDO */
+
+.hi-sectum { --hi-color: #cd949e; }
+
+.hi-sectum::after {
+  left: -5%;
+  top: 50%;
+  width: 110%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d39aa5, transparent);
+  rotate: -9deg;
+  animation: hi-trazar 8s ease-out infinite;
+}
+
+/* TARANTALLEGRA — PASOS DE BAILE */
+
+.hi-tarantallegra {
+  --hi-color: #cbb4d5;
+  animation: hi-tarantallegra-bailar 8s ease-in-out infinite;
+}
+
+@keyframes hi-tarantallegra-bailar {
+  0%, 15%, 75%, 100% { transform: translateY(0) rotate(0); }
+  25%, 45% { transform: translateY(-0.1em) rotate(-2deg); }
+  35%, 55% { transform: translateY(0.05em) rotate(2deg); }
+  65% { transform: translateY(-0.05em) rotate(-1deg); }
+}
+
+/* TIRMELO PLANTAE — RECUERDOS VEGETALES */
+
+.hi-tirmelo {
+  --hi-color: #a9be9c;
+  padding-left: 0.9em;
+}
+
+.hi-tirmelo::before {
+  left: 0;
+  top: 20%;
+  width: 0.5em;
+  height: 0.7em;
+  border-radius: 85% 0 85% 0;
+  background: linear-gradient(135deg, #bdcea1, #678663);
+}
+
+.hi-tirmelo::after {
+  left: 1em;
+  top: -0.1em;
+  width: 0.32em;
+  height: 0.24em;
+  border: 1px solid #c9d6b1;
+  box-shadow:
+    1em -0.2em 0 -1px #b0c39c,
+    2em 0.1em 0 -1px #c4ceaa,
+    3em -0.15em 0 -1px #9eb78f;
+  animation: hi-tirmelo-recuerdos 8s ease-in-out infinite;
+}
+
+@keyframes hi-tirmelo-recuerdos {
+  0%, 12% {
+    opacity: 0;
+    transform: translateY(0.2em);
+    filter: blur(1px);
+  }
+  35%, 55% {
+    opacity: 0.8;
+    filter: blur(0);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: translateY(-0.4em);
+    filter: blur(1px);
+  }
+}
+
+/* VESPERTILLIOMUCI — MURCIÉLAGO VERDOSO */
+
+.hi-vespertilliomuci { --hi-color: #aabd8e; }
+
+.hi-vespertilliomuci::after {
+  right: -0.95em;
+  top: 25%;
+  width: 0.75em;
+  height: 0.4em;
+  background: #aabd8e;
+  clip-path: polygon(
+    0 5%, 25% 25%, 40% 10%, 45% 35%,
+    50% 20%, 55% 35%, 60% 10%, 75% 25%,
+    100% 5%, 85% 80%, 65% 65%, 50% 100%,
+    35% 65%, 15% 80%
+  );
+  animation: hi-vespertilliomuci-volar 8s ease-in-out infinite;
+}
+
+@keyframes hi-vespertilliomuci-volar {
+  0%, 10% { opacity: 0; transform: translate(0) scaleY(1); }
+  25% { opacity: 0.9; transform: translate(0.1em, -0.1em) scaleY(0.6); }
+  40% { opacity: 0.9; transform: translate(0.3em, -0.2em) scaleY(1); }
+  70%, 100% { opacity: 0; transform: translate(0.8em, -0.5em) scaleY(0.6); }
+}
+
+/* VULNERUCTUM — VÍNCULO ENTRE DOS PUNTOS */
+
+.hi-vulneructum { --hi-color: #b6cdbf; }
+
+.hi-vulneructum::before {
+  left: 10%;
+  right: 10%;
+  bottom: -0.25em;
+  height: 0.3em;
+  border-bottom: 1px solid #b6cdbf;
+  border-radius: 50%;
+  animation: hi-trazar 8s ease-in-out infinite;
+}
+
+.hi-vulneructum::after {
+  left: 10%;
+  right: 10%;
+  bottom: -0.32em;
+  height: 4px;
+  background:
+    radial-gradient(circle, #d2e7d8 55%, transparent 65%)
+      left center / 4px 4px no-repeat,
+    radial-gradient(circle, #d2e7d8 55%, transparent 65%)
+      right center / 4px 4px no-repeat;
+  filter: drop-shadow(0 0 3px #b6cdbf);
+  animation: hi-aparecer 8s ease-in-out infinite;
+}
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+  .hi,
+  .hi::before,
+  .hi::after {
+    animation: none !important;
+  }
+
+  .hi {
+    transform: none;
+    filter: none;
+    opacity: 1;
+    text-shadow: none;
+  }
+
+  .hi::before,
+  .hi::after {
+    opacity: 0;
+  }
+}
