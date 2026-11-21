@@ -1,0 +1,601 @@
+/* ==========================================
+   POCIONES BÁSICAS — VIAL + NOMBRE
+   ========================================== */
+
+.pb {
+  --pb-claro: #d0dfae;
+  --pb-medio: #91ad77;
+  --pb-oscuro: #4c7053;
+  --pb-velocidad: 5s;
+  --pb-burbuja: 4s;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* Nombre pequeño junto al vial */
+.pb-nombre {
+  color: var(--pb-claro);
+  font-family: inherit;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* Silueta completa */
+.pb-vial {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 39px;
+  pointer-events: none;
+}
+
+/* Corcho */
+.pb-vial::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  left: 9px;
+  top: 0;
+  width: 10px;
+  height: 6px;
+  box-sizing: border-box;
+  border: 1px solid #aa8b60;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg, #76583c, #b79a6d, #806246
+  );
+}
+
+/* Cuello */
+.pb-vial::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 9px;
+  top: 6px;
+  width: 10px;
+  height: 9px;
+  box-sizing: border-box;
+  border: 1px solid rgba(220, 233, 227, 0.65);
+  border-bottom: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.13)
+  );
+}
+
+/* Cuerpo de cristal */
+.pb-cristal {
+  position: absolute;
+  z-index: 2;
+  left: 1px;
+  bottom: 0;
+  width: 26px;
+  height: 27px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(215, 231, 225, 0.7);
+  border-radius: 8px 8px 9px 9px;
+  background: rgba(207, 225, 216, 0.06);
+  box-shadow:
+    inset -3px 0 4px rgba(239, 249, 244, 0.12),
+    0 0 4px rgba(205, 225, 213, 0.1);
+}
+
+/* Reflejos sobre el vidrio */
+.pb-cristal::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 4px 3px 5px;
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* Contenido */
+.pb-liquido {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  height: 23px;
+  border-radius: 45% 45% 0 0 / 4px 4px 0 0;
+  transform-origin: bottom center;
+  background: linear-gradient(
+    var(--pb-claro),
+    var(--pb-medio) 28%,
+    var(--pb-oscuro)
+  );
+  box-shadow: inset 0 2px 2px rgba(255, 255, 235, 0.35);
+  animation: pb-oleaje var(--pb-velocidad) ease-in-out infinite;
+}
+
+/* Burbujas */
+.pb-liquido::before,
+.pb-liquido::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  width: 3px;
+  height: 3px;
+  box-sizing: border-box;
+  border: 1px solid var(--pb-claro);
+  border-radius: 50%;
+  opacity: 0;
+  animation: pb-burbujas var(--pb-burbuja) ease-in infinite;
+}
+
+.pb-liquido::before {
+  left: 11px;
+}
+
+.pb-liquido::after {
+  left: 22px;
+  width: 2px;
+  height: 2px;
+  animation-delay: -1.8s;
+}
+
+@keyframes pb-oleaje {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg) translateY(1px); }
+}
+
+@keyframes pb-burbujas {
+  0%, 12% {
+    opacity: 0;
+    transform: translateY(0) scale(0.7);
+  }
+  30% { opacity: 0.75; }
+  75% { opacity: 0.45; }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px) scale(1.1);
+  }
+}
+
+/* FORMAS DE FRASCO */
+
+/* Redondo */
+.pb-redondo .pb-cristal {
+  border-radius: 45% 45% 42% 42%;
+}
+
+/* Alto y estrecho */
+.pb-alto .pb-vial {
+  flex-basis: 24px;
+  width: 24px;
+  height: 43px;
+}
+
+.pb-alto .pb-vial::before,
+.pb-alto .pb-vial::after {
+  left: 7px;
+}
+
+.pb-alto .pb-cristal {
+  width: 22px;
+  height: 31px;
+  border-radius: 6px 6px 5px 5px;
+}
+
+.pb-alto .pb-liquido {
+  height: 26px;
+}
+
+.pb-alto .pb-liquido::after {
+  left: 18px;
+}
+
+/* Botella baja de boticario */
+.pb-bajo .pb-vial {
+  flex-basis: 31px;
+  width: 31px;
+  height: 35px;
+}
+
+.pb-bajo .pb-vial::before,
+.pb-bajo .pb-vial::after {
+  left: 10px;
+}
+
+.pb-bajo .pb-cristal {
+  width: 29px;
+  height: 23px;
+  border-radius: 5px;
+}
+
+.pb-bajo .pb-liquido {
+  height: 19px;
+}
+
+/* Frasco de hombros inclinados */
+.pb-angular .pb-cristal {
+  border-radius: 10px 10px 4px 4px;
+}
+
+/* ==========================================
+   COLORES Y EFECTOS DE CADA PREPARADO
+   ========================================== */
+
+/* Antídoto contra Veritaserum — azul perlado */
+.pb-veritaserum {
+  --pb-claro: #d2e4e8;
+  --pb-medio: #8eb8c4;
+  --pb-oscuro: #507482;
+  --pb-velocidad: 7s;
+  --pb-burbuja: 6s;
+}
+
+/* Chuchería — piezas sólidas en un frasco */
+.pb-mascotas {
+  --pb-claro: #d8c19a;
+  --pb-medio: #b58b5e;
+  --pb-oscuro: #765d44;
+}
+
+.pb-mascotas .pb-liquido {
+  left: 2px;
+  right: 2px;
+  bottom: 3px;
+  height: 16px;
+  border-radius: 0;
+  box-shadow: none;
+  background:
+    radial-gradient(ellipse, #c8a477 55%, transparent 62%)
+      1px 7px / 8px 5px no-repeat,
+    radial-gradient(ellipse, #a77e53 55%, transparent 62%)
+      10px 8px / 8px 5px no-repeat,
+    radial-gradient(ellipse, #d4b58b 55%, transparent 62%)
+      5px 1px / 8px 5px no-repeat;
+  animation: pb-chucherias 7s ease-in-out infinite;
+}
+
+.pb-mascotas .pb-liquido::before,
+.pb-mascotas .pb-liquido::after {
+  content: none;
+}
+
+@keyframes pb-chucherias {
+  0%, 35%, 65%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-2px) rotate(-3deg); }
+  55% { transform: translateY(0) rotate(2deg); }
+}
+
+/* Brugmansia — violeta oscuro, contenido lento */
+.pb-brugmansia {
+  --pb-claro: #c0a4cb;
+  --pb-medio: #88628e;
+  --pb-oscuro: #4b3656;
+  --pb-velocidad: 8s;
+  --pb-burbuja: 7s;
+}
+
+/* Upsala — gas que gira dentro del vial */
+.pb-upsala {
+  --pb-claro: #c9c5e3;
+  --pb-medio: #9a92c0;
+  --pb-oscuro: #655b88;
+}
+
+.pb-upsala .pb-liquido {
+  inset: 2px;
+  height: auto;
+  border-radius: 45%;
+  background:
+    radial-gradient(ellipse at 30% 65%, #bcb3dc88, transparent 65%),
+    radial-gradient(ellipse at 70% 35%, #d8d3ed77, transparent 60%);
+  box-shadow: none;
+  filter: blur(2px);
+  animation: pb-gas 7s ease-in-out infinite;
+}
+
+.pb-upsala .pb-liquido::before,
+.pb-upsala .pb-liquido::after {
+  content: none;
+}
+
+@keyframes pb-gas {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(2px) rotate(-12deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px) rotate(15deg);
+  }
+}
+
+/* Fluido explosivo — ámbar, reacción intermitente */
+.pb-explosivo {
+  --pb-claro: #ecd09b;
+  --pb-medio: #cc955d;
+  --pb-oscuro: #975b42;
+  --pb-velocidad: 2.8s;
+  --pb-burbuja: 2s;
+}
+
+.pb-explosivo .pb-cristal {
+  animation: pb-reaccion 6s ease-in-out infinite;
+}
+
+@keyframes pb-reaccion {
+  0%, 60%, 100% {
+    box-shadow: inset -3px 0 4px #fff2;
+  }
+  72% {
+    box-shadow: inset 0 0 8px #f3d39a77, 0 0 5px #d49b5933;
+  }
+}
+
+/* Ingenio — azul turquesa */
+.pb-ingenio {
+  --pb-claro: #bae0df;
+  --pb-medio: #77b4b9;
+  --pb-oscuro: #426e80;
+  --pb-burbuja: 3.5s;
+}
+
+/* Calmante — lavanda, movimiento pausado */
+.pb-calmante {
+  --pb-claro: #d4c8e1;
+  --pb-medio: #aa98c1;
+  --pb-oscuro: #75658e;
+  --pb-velocidad: 10s;
+  --pb-burbuja: 9s;
+}
+
+/* Actividad — naranja luminoso */
+.pb-actividad {
+  --pb-claro: #e8c394;
+  --pb-medio: #cc965c;
+  --pb-oscuro: #8c623c;
+  --pb-velocidad: 3s;
+  --pb-burbuja: 2.5s;
+}
+
+/* Aliento de perro — verde mostaza */
+.pb-aliento {
+  --pb-claro: #c5ca8e;
+  --pb-medio: #99a05d;
+  --pb-oscuro: #616e43;
+  --pb-burbuja: 3s;
+}
+
+/* Fuerza — rojo cobrizo, líquido denso */
+.pb-fuerza {
+  --pb-claro: #dbad91;
+  --pb-medio: #b17657;
+  --pb-oscuro: #774b3d;
+  --pb-velocidad: 8s;
+  --pb-burbuja: 7s;
+}
+
+/* Memoria — azul violáceo */
+.pb-memoria {
+  --pb-claro: #c1cbe8;
+  --pb-medio: #929cc7;
+  --pb-oscuro: #5c668f;
+  --pb-velocidad: 6s;
+}
+
+/* Reanimación — coral cálido */
+.pb-reanimacion {
+  --pb-claro: #e4b6a3;
+  --pb-medio: #c28b79;
+  --pb-oscuro: #885851;
+  --pb-burbuja: 3s;
+}
+
+/* Quasimodo — oliva y marrón */
+.pb-quasimodo {
+  --pb-claro: #c2b98e;
+  --pb-medio: #96925b;
+  --pb-oscuro: #686346;
+  --pb-velocidad: 7s;
+  --pb-burbuja: 6s;
+}
+
+.pb-quasimodo .pb-cristal {
+  border-radius: 11px 6px 8px 5px;
+}
+
+/* Embellecedora — rosa nacarado */
+.pb-embellecedora {
+  --pb-claro: #ead0d7;
+  --pb-medio: #c8a0b6;
+  --pb-oscuro: #926b89;
+  --pb-velocidad: 7s;
+}
+
+.pb-embellecedora .pb-cristal {
+  animation: pb-nacar 7s ease-in-out infinite;
+}
+
+@keyframes pb-nacar {
+  0%, 100% { box-shadow: inset -3px 0 5px #ead0d733; }
+  50% { box-shadow: inset 3px 0 8px #f8e3e477, 0 0 4px #c8a0b633; }
+}
+
+/* Herbicida — verde botánico */
+.pb-herbicida {
+  --pb-claro: #bacc94;
+  --pb-medio: #8aa264;
+  --pb-oscuro: #506745;
+  --pb-velocidad: 6s;
+}
+
+/* Incorpórea — contenido translúcido */
+.pb-incorporea {
+  --pb-claro: #d2e1e7;
+  --pb-medio: #9dbac988;
+  --pb-oscuro: #6e8c9c55;
+  --pb-velocidad: 9s;
+}
+
+.pb-incorporea .pb-cristal {
+  animation: pb-translucida 8s ease-in-out infinite;
+}
+
+@keyframes pb-translucida {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.5; }
+}
+
+/* Olvidadiza — gris malva */
+.pb-olvidadiza {
+  --pb-claro: #cdc5d7;
+  --pb-medio: #a59ab7;
+  --pb-oscuro: #746b8b;
+  --pb-velocidad: 9s;
+  --pb-burbuja: 8s;
+}
+
+.pb-olvidadiza .pb-liquido {
+  animation:
+    pb-oleaje 9s ease-in-out infinite,
+    pb-olvido 8s ease-in-out infinite;
+}
+
+@keyframes pb-olvido {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.45; }
+}
+
+/* Pimentónica — rojo especiado y vapor interior */
+.pb-pimentonica {
+  --pb-claro: #e5b18e;
+  --pb-medio: #c37b54;
+  --pb-oscuro: #8b4e3d;
+  --pb-velocidad: 4s;
+  --pb-burbuja: 3s;
+}
+
+.pb-pimentonica .pb-liquido {
+  height: 19px;
+}
+
+.pb-pimentonica .pb-cristal::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 2px;
+  left: 9px;
+  width: 5px;
+  height: 10px;
+  border-left: 1px solid #e5d3bc88;
+  border-radius: 50%;
+  animation: pb-vapor 4s ease-out infinite;
+}
+
+@keyframes pb-vapor {
+  0%, 15% { opacity: 0; transform: translateY(3px); }
+  40% { opacity: 0.65; }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+/* Vigorizante — miel y calor */
+.pb-vigorizante {
+  --pb-claro: #e1cd99;
+  --pb-medio: #b8a166;
+  --pb-oscuro: #807348;
+  --pb-velocidad: 5s;
+  --pb-burbuja: 3.5s;
+}
+
+/* Wiggenweld — verde esmeralda */
+.pb-wiggenweld {
+  --pb-claro: #b1d6a0;
+  --pb-medio: #76a77b;
+  --pb-oscuro: #3c725c;
+  --pb-velocidad: 5s;
+  --pb-burbuja: 3s;
+}
+
+/* Mandrágora — verde raíz y ámbar */
+.pb-mandragora {
+  --pb-claro: #d2cb9b;
+  --pb-medio: #a9ad71;
+  --pb-oscuro: #6d784f;
+  --pb-velocidad: 7s;
+  --pb-burbuja: 5s;
+}
+
+/* Descurainia sophia — amarillo intenso */
+.pb-descurainia {
+  --pb-claro: #e2d394;
+  --pb-medio: #bdb05e;
+  --pb-oscuro: #888044;
+  --pb-velocidad: 2.8s;
+  --pb-burbuja: 2.2s;
+}
+
+/* Retardante — líquido denso, burbujas lentas */
+.pb-retardante {
+  --pb-claro: #c7c5df;
+  --pb-medio: #9b99b9;
+  --pb-oscuro: #6c6a88;
+  --pb-velocidad: 12s;
+  --pb-burbuja: 11s;
+}
+
+/* Solución animadora — azul y reflejos */
+.pb-animadora {
+  --pb-claro: #b7d8e4;
+  --pb-medio: #7eacc3;
+  --pb-oscuro: #536d99;
+  --pb-velocidad: 4s;
+  --pb-burbuja: 3s;
+}
+
+.pb-animadora .pb-cristal {
+  animation: pb-reflejo-azul 6s ease-in-out infinite;
+}
+
+@keyframes pb-reflejo-azul {
+  0%, 100% { box-shadow: inset -3px 0 5px #b7d8e433; }
+  50% { box-shadow: inset 3px 0 7px #d1e8f077; }
+}
+
+/* Saberhagen — reacción de color */
+.pb-saberhagen {
+  --pb-claro: #d5bed5;
+  --pb-medio: #ad8eae;
+  --pb-oscuro: #765b83;
+}
+
+.pb-saberhagen .pb-liquido {
+  animation:
+    pb-oleaje 6s ease-in-out infinite,
+    pb-saberhagen-reaccion 10s ease-in-out infinite;
+}
+
+@keyframes pb-saberhagen-reaccion {
+  0%, 100% { filter: hue-rotate(0deg); }
+  40% { filter: hue-rotate(45deg); }
+  70% { filter: hue-rotate(-35deg); }
+}
+
+/* ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+  .pb .pb-vial,
+  .pb .pb-vial::before,
+  .pb .pb-vial::after,
+  .pb .pb-cristal,
+  .pb .pb-cristal::before,
+  .pb .pb-cristal::after,
+  .pb .pb-liquido,
+  .pb .pb-liquido::before,
+  .pb .pb-liquido::after {
+    animation: none !important;
+  }
+}
