@@ -1,0 +1,1229 @@
+/* =========================================
+   HECHIZOS AVANZADOS
+   ========================================= */
+
+/* BASE COMPARTIDA */
+
+.ha {
+  --ha-color: #c3bed5;
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  overflow: visible;
+  vertical-align: baseline;
+  color: var(--ha-color);
+  font-style: italic;
+}
+
+.ha::before,
+.ha::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* ANIMACIONES COMPARTIDAS */
+
+@keyframes ha-aparecer {
+  0%, 10%, 94%, 100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  35%, 68% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+}
+
+@keyframes ha-expandir {
+  0%, 12% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  28% { opacity: 0.85; }
+  75%, 100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes ha-crecer {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  42%, 72% {
+    opacity: 0.85;
+    transform: scaleY(1);
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes ha-trazar {
+  0%, 12% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  42%, 72% {
+    opacity: 0.85;
+    clip-path: inset(0);
+  }
+  95%, 100% {
+    opacity: 0;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes ha-subir {
+  0%, 12% {
+    opacity: 0;
+    transform: translateY(0.25em);
+  }
+  30% { opacity: 0.85; }
+  75%, 100% {
+    opacity: 0;
+    transform: translateY(-0.75em);
+  }
+}
+
+@keyframes ha-proyectar {
+  0%, 15% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  22% { opacity: 0.95; }
+  55%, 100% {
+    opacity: 0;
+    transform: translateX(1.8em);
+  }
+}
+
+@keyframes ha-absorber {
+  0%, 12% {
+    opacity: 0;
+    transform: translateX(1.5em) scale(1);
+  }
+  25% { opacity: 0.9; }
+  58%, 100% {
+    opacity: 0;
+    transform: translateX(0) scale(0.15);
+  }
+}
+
+@keyframes ha-reunir {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleX(1.5);
+  }
+  42%, 72% {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ha-brillar {
+  0%, 12%, 94%, 100% { text-shadow: none; }
+  40%, 65% {
+    text-shadow:
+      0 0 4px var(--ha-color),
+      0 0 12px var(--ha-color);
+  }
+}
+
+/* ALCHIMIA INCANTATIO MÁXIMA — CONDENSACIÓN */
+
+.ha-alchimia { --ha-color: #bbcda4; }
+
+.ha-alchimia::before {
+  right: -0.7em;
+  bottom: 0;
+  width: 0.4em;
+  height: 0.55em;
+  border: 1px solid #dce7b9;
+  border-radius: 45%;
+  background: linear-gradient(transparent 25%, #91b17c 26%);
+  animation: ha-alchimia-esencia 9s ease-in-out infinite;
+}
+
+.ha-alchimia::after {
+  right: -0.5em;
+  top: 20%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #e3edc8;
+  box-shadow: 5px -4px 3px #bbcda4, -4px -7px 3px #bbcda4;
+  animation: ha-subir 9s ease-out infinite;
+}
+
+@keyframes ha-alchimia-esencia {
+  0%, 12% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+  28% { opacity: 0.9; }
+  60%, 100% {
+    opacity: 0;
+    transform: translate(-0.3em, -0.7em) scale(0.1);
+  }
+}
+
+/* ANTEOCULATIA — DOS OJOS QUE SE PROYECTAN */
+
+.ha-anteoculatia { --ha-color: #cbb7ca; }
+
+.ha-anteoculatia::before,
+.ha-anteoculatia::after {
+  top: 35%;
+  width: 0.3em;
+  height: 0.3em;
+  border: 1px solid #d9cbdc;
+  border-radius: 50%;
+  background: radial-gradient(circle, #80718d 25%, #e4dce5 30%);
+  animation: ha-anteoculatia-ojos 9s ease-in-out infinite;
+}
+
+.ha-anteoculatia::before { right: -0.5em; }
+.ha-anteoculatia::after { right: -0.95em; animation-delay: -0.15s; }
+
+@keyframes ha-anteoculatia-ojos {
+  0%, 12%, 90%, 100% {
+    opacity: 0;
+    transform: translateX(-0.2em) scale(0.6);
+  }
+  35%, 60% {
+    opacity: 0.9;
+    transform: translateX(0.15em) scale(1);
+  }
+}
+
+/* ARDORIBUS SEMPITERNIS — TIFÓN ÍGNEO */
+
+.ha-ardoribus { --ha-color: #dda27b; }
+
+.ha-ardoribus::before {
+  inset: -0.2em -0.35em;
+  border: 1px solid #dba16f;
+  border-left-color: transparent;
+  border-radius: 50%;
+  animation: ha-ardoribus-tifon 9s ease-in-out infinite;
+}
+
+.ha-ardoribus::after {
+  inset: -0.05em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #e8b67855, transparent 70%);
+  animation: ha-expandir 9s ease-out infinite;
+}
+
+@keyframes ha-ardoribus-tifon {
+  0%, 12% { opacity: 0; transform: rotate(-10deg) scale(0.7); }
+  35% { opacity: 0.85; }
+  78%, 100% { opacity: 0; transform: rotate(190deg) scale(1.25); }
+}
+
+/* ARCTIS — TORMENTA DE HIELO */
+
+.ha-arctis { --ha-color: #b5dce9; }
+
+.ha-arctis::before {
+  left: 0;
+  right: 0;
+  bottom: -0.2em;
+  height: 0.55em;
+  background: linear-gradient(#ddf3f666, #8dbbcf88);
+  clip-path: polygon(
+    0 100%, 8% 40%, 18% 80%, 28% 0,
+    38% 70%, 48% 20%, 60% 85%, 72% 0,
+    83% 65%, 94% 25%, 100% 100%
+  );
+  transform-origin: bottom;
+  animation: ha-crecer 9s ease-in-out infinite;
+}
+
+.ha-arctis::after {
+  content: "✧";
+  right: -0.65em;
+  top: -0.2em;
+  font-style: normal;
+  animation: ha-subir 9s ease-out infinite;
+}
+
+/* AROVLOP — FRAGMENTACIÓN INESTABLE */
+
+.ha-arovlop { --ha-color: #bcaacb; }
+
+.ha-arovlop::after {
+  left: 40%;
+  top: 55%;
+  width: 3px;
+  height: 3px;
+  background: #c9b5dc;
+  box-shadow:
+    -14px -5px #aa92bc,
+    16px -8px #c9b5dc,
+    -20px 5px #aa92bc,
+    23px 4px #c9b5dc;
+  animation: ha-expandir 9s ease-out infinite;
+}
+
+/* ARTIVESTRINGO — AIRE EXTRAÍDO */
+
+.ha-artivestringo { --ha-color: #b7c9cf; }
+
+.ha-artivestringo::after {
+  right: -0.15em;
+  top: 20%;
+  width: 0.5em;
+  height: 0.6em;
+  border-top: 1px solid #b7c9cf;
+  border-bottom: 1px solid #b7c9cf;
+  border-radius: 50%;
+  animation: ha-proyectar 9s ease-out infinite;
+}
+
+/* AVADA KEDAVRA — RAYO VERDE */
+
+.ha-avada { --ha-color: #9ecb88; }
+
+.ha-avada::after {
+  left: -5%;
+  right: -5%;
+  top: 45%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #bce99a, transparent);
+  box-shadow: 0 0 5px #91ca6c;
+  animation: ha-trazar 9s ease-out infinite;
+}
+
+/* AVIUM LEGIO — LEGIÓN ALADA */
+
+.ha-avium { --ha-color: #d4c590; }
+
+.ha-avium::after {
+  content: "⌁ ⌁ ⌁ ⌁ ⌁";
+  left: 0;
+  top: -0.4em;
+  white-space: nowrap;
+  font-size: 0.8em;
+  font-style: normal;
+  animation: ha-avium-vuelo 9s ease-in-out infinite;
+}
+
+@keyframes ha-avium-vuelo {
+  0%, 12% { opacity: 0; transform: translate(-0.3em, 0.2em); }
+  30% { opacity: 0.85; }
+  75%, 100% { opacity: 0; transform: translate(1.8em, -0.4em); }
+}
+
+/* BOMBARDA MÁXIMA — DOBLE ONDA EXPLOSIVA */
+
+.ha-bombarda { --ha-color: #dcb28c; }
+
+.ha-bombarda::before,
+.ha-bombarda::after {
+  inset: -0.25em -0.4em;
+  border: 1px solid #dfb68b;
+  border-radius: 50%;
+  animation: ha-expandir 9s ease-out infinite;
+}
+
+.ha-bombarda::after {
+  inset: -0.4em -0.55em;
+  animation-delay: -0.45s;
+}
+
+/* BRACKIUM EMENDO — HUESO QUE SE RECONSTRUYE */
+
+.ha-brackium { --ha-color: #c8d6be; }
+
+.ha-brackium::before {
+  right: -1em;
+  top: 42%;
+  width: 0.7em;
+  height: 0.18em;
+  border-radius: 3px;
+  background: #dfe6ce;
+  box-shadow:
+    -2px -1px 0 1px #dfe6ce,
+    2px 1px 0 1px #dfe6ce;
+  animation: ha-reunir 9s ease-in-out infinite;
+}
+
+.ha-brackium::after {
+  content: "+";
+  right: -1.1em;
+  top: 10%;
+  font-style: normal;
+  font-size: 0.7em;
+  animation: ha-subir 9s ease-out infinite;
+}
+
+/* CONFUNDO — PERCEPCIÓN DESDOBLADA */
+
+.ha-confundo {
+  --ha-color: #c1afd0;
+  animation: ha-confundo-confusion 9s ease-in-out infinite;
+}
+
+@keyframes ha-confundo-confusion {
+  0%, 15%, 85%, 100% { text-shadow: none; filter: blur(0); }
+  35%, 60% {
+    text-shadow: -1px 0 #9caecd88, 1px 0 #c5a0c188;
+    filter: blur(0.25px);
+  }
+  47% {
+    text-shadow: 1px 0 #9caecd88, -1px 0 #c5a0c188;
+  }
+}
+
+/* CONSUMO DIABOLICA — ESTALLIDO OSCURO */
+
+.ha-consumo { --ha-color: #a5b9d7; }
+
+.ha-consumo::before {
+  inset: -0.3em -0.4em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #83a9dc66, #4a4d7822 55%, transparent 75%);
+  animation: ha-expandir 9s ease-out infinite;
+}
+
+.ha-consumo::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.15em;
+  height: 0.75em;
+  z-index: -1;
+  background: linear-gradient(#a8c7e566, #53588188);
+  clip-path: polygon(
+    0 100%, 10% 40%, 22% 80%, 34% 0,
+    45% 70%, 57% 15%, 67% 80%, 80% 0,
+    92% 60%, 100% 100%
+  );
+  transform-origin: bottom;
+  animation: ha-crecer 9s ease-out infinite;
+}
+
+/* CRUCIO — BREVE TEMBLOR */
+
+.ha-crucio {
+  --ha-color: #cb96a0;
+  animation: ha-crucio-temblor 9s ease-in-out infinite;
+}
+
+@keyframes ha-crucio-temblor {
+  0%, 25%, 46%, 100% { transform: translateX(0); text-shadow: none; }
+  29%, 37% {
+    transform: translateX(-1px);
+    text-shadow: 0 0 5px #bb71816b;
+  }
+  33%, 41% { transform: translateX(1px); }
+}
+
+/* DESMAIUS — DESTELLO ROJO */
+
+.ha-desmaius { --ha-color: #d19b9e; }
+
+.ha-desmaius::after {
+  right: 0;
+  top: 45%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #efc2c0;
+  box-shadow: -6px 0 5px #c77c82;
+  animation: ha-proyectar 9s ease-out infinite;
+}
+
+/* EXPECTO PATRONUM — NIEBLA PLATEADA */
+
+.ha-patronum {
+  --ha-color: #d6e6ef;
+  animation: ha-brillar 9s ease-in-out infinite;
+}
+
+.ha-patronum::before,
+.ha-patronum::after {
+  inset: -0.25em -0.4em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #d7edf055, transparent 70%);
+  filter: blur(3px);
+  animation: ha-patronum-niebla 9s ease-in-out infinite;
+}
+
+.ha-patronum::after {
+  inset: -0.4em -0.6em;
+  animation-delay: -0.8s;
+}
+
+@keyframes ha-patronum-niebla {
+  0%, 10% { opacity: 0; transform: translateX(-0.2em) scale(0.8); }
+  40%, 60% { opacity: 0.9; }
+  90%, 100% { opacity: 0; transform: translateX(0.35em) scale(1.3); }
+}
+
+/* EXORCISMO — PRESENCIA QUE SE ELEVA */
+
+.ha-exorcismo { --ha-color: #c4c8df; }
+
+.ha-exorcismo::after {
+  right: -0.75em;
+  top: 20%;
+  width: 0.45em;
+  height: 0.7em;
+  border-radius: 50% 50% 30% 30%;
+  background: linear-gradient(#d6dced88, transparent);
+  filter: blur(1px);
+  animation: ha-subir 9s ease-out infinite;
+}
+
+/* FIENDFYRE — LLAMA CAMBIANTE */
+
+.ha-fiendfyre { --ha-color: #d5a080; }
+
+.ha-fiendfyre::after {
+  right: -0.8em;
+  top: 0;
+  width: 0.55em;
+  height: 0.9em;
+  background: linear-gradient(#eed098, #c77456);
+  animation: ha-fiendfyre-forma 9s ease-in-out infinite;
+}
+
+@keyframes ha-fiendfyre-forma {
+  0%, 100% { opacity: 0; border-radius: 80% 10% 60% 40%; }
+  30% { opacity: 0.85; border-radius: 20% 80% 40% 60%; }
+  55% { opacity: 0.9; border-radius: 80% 20% 70% 30%; }
+  75% { opacity: 0.3; border-radius: 35% 65% 30% 70%; }
+}
+
+/* FINITE INCANTATEM — DISIPACIÓN */
+
+.ha-finite { --ha-color: #c4c5d8; }
+
+.ha-finite::before,
+.ha-finite::after {
+  inset: -0.2em -0.3em;
+  border: 1px dashed #c4c5d8;
+  border-radius: 50%;
+  animation: ha-finite-disipar 9s ease-out infinite;
+}
+
+.ha-finite::after {
+  inset: -0.35em -0.45em;
+  animation-delay: -0.5s;
+}
+
+@keyframes ha-finite-disipar {
+  0%, 12% { opacity: 0; transform: scale(1); filter: blur(0); }
+  30% { opacity: 0.8; }
+  78%, 100% { opacity: 0; transform: scale(1.3); filter: blur(2px); }
+}
+
+/* FLUCTUS MÁXIMA — ESCUDO Y FRAGMENTOS */
+
+.ha-fluctus { --ha-color: #b1d3e3; }
+
+.ha-fluctus::before {
+  inset: -0.25em -0.35em;
+  border: 1px solid #b1d3e3;
+  border-radius: 50%;
+  animation: ha-fluctus-escudo 9s ease-out infinite;
+}
+
+.ha-fluctus::after {
+  right: 0;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  background: #d8eef5;
+  box-shadow: -8px -5px #b1d3e3, -15px 4px #b1d3e3, -21px -2px #b1d3e3;
+  animation: ha-fluctus-restos 9s ease-in infinite;
+}
+
+@keyframes ha-fluctus-escudo {
+  0%, 10%, 40%, 100% { opacity: 0; }
+  23%, 33% { opacity: 0.85; }
+}
+
+@keyframes ha-fluctus-restos {
+  0%, 35% { opacity: 0; transform: translateX(0); }
+  42% { opacity: 1; }
+  70%, 100% { opacity: 0; transform: translateX(1.8em); }
+}
+
+/* FULGARI — CUERDAS OSCURAS */
+
+.ha-fulgari { --ha-color: #b0a4c0; }
+
+.ha-fulgari::after {
+  inset: -0.1em -0.2em;
+  border: 1px solid #71617f;
+  border-radius: 35%;
+  background: repeating-linear-gradient(
+    115deg, transparent 0 9px, #51445f88 9px 12px
+  );
+  animation: ha-reunir 9s ease-in-out infinite;
+}
+
+/* FURIA PLANTAE — RAÍCES ENVOLVENTES */
+
+.ha-furia { --ha-color: #a8bd8b; }
+
+.ha-furia::before {
+  left: -3%;
+  right: -3%;
+  bottom: -0.35em;
+  height: 0.9em;
+  z-index: -1;
+  background: linear-gradient(#a7bb85, #77654a);
+  clip-path: polygon(
+    0 100%, 7% 55%, 12% 10%, 15% 70%,
+    25% 40%, 30% 0, 33% 65%, 43% 80%,
+    50% 20%, 54% 65%, 64% 80%, 73% 30%,
+    78% 0, 82% 65%, 92% 30%, 100% 100%,
+    84% 90%, 74% 65%, 64% 95%, 52% 75%,
+    42% 95%, 30% 70%, 16% 95%
+  );
+  transform-origin: bottom;
+  animation: ha-crecer 9s ease-out infinite;
+}
+
+.ha-furia::after {
+  inset: -0.1em -0.25em;
+  border-left: 2px solid #839d68;
+  border-right: 2px solid #839d68;
+  border-radius: 40%;
+  animation: ha-reunir 9s ease-in-out infinite;
+}
+
+/* GUBRAITH — LLAMA ETERNA */
+
+.ha-gubraith { --ha-color: #dfbd86; }
+
+.ha-gubraith::after {
+  right: -0.65em;
+  top: 5%;
+  width: 0.4em;
+  height: 0.75em;
+  border-radius: 80% 10% 65% 40%;
+  background: linear-gradient(#f2dba4, #c88b55);
+  box-shadow: 0 0 6px #dfbd8644;
+  transform-origin: bottom;
+  animation: ha-gubraith-llama 4s ease-in-out infinite;
+}
+
+@keyframes ha-gubraith-llama {
+  0%, 100% { transform: scaleX(0.9) rotate(-3deg); }
+  50% { transform: scaleX(1.05) rotate(3deg); }
+}
+
+/* HARMONIA NECTERE PASSUS — RECONSTRUCCIÓN */
+
+.ha-harmonia {
+  --ha-color: #b9cfbf;
+  animation: ha-brillar 9s ease-in-out infinite;
+}
+
+.ha-harmonia::before {
+  left: 20%;
+  right: 20%;
+  bottom: -0.25em;
+  height: 0.25em;
+  border: 1px solid #b9cfbf;
+  background: repeating-linear-gradient(
+    90deg, transparent 0 10px, #b9cfbf88 10px 11px
+  );
+  animation: ha-reunir 9s ease-in-out infinite;
+}
+
+.ha-harmonia::after {
+  content: "✦";
+  right: -0.6em;
+  top: -0.15em;
+  font-size: 0.7em;
+  font-style: normal;
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+/* ILLUMINAS PLUVIAM — LLUVIA ELÉCTRICA */
+
+.ha-illuminas { --ha-color: #cbc6e8; }
+
+.ha-illuminas::before,
+.ha-illuminas::after {
+  top: -0.35em;
+  width: 0.3em;
+  height: 1em;
+  background: #e2dcf6;
+  clip-path: polygon(55% 0, 10% 55%, 45% 55%, 30% 100%, 95% 35%, 60% 35%);
+  animation: ha-illuminas-rayos 9s ease-out infinite;
+}
+
+.ha-illuminas::before { left: 20%; }
+.ha-illuminas::after { left: 75%; animation-delay: -0.6s; }
+
+@keyframes ha-illuminas-rayos {
+  0%, 18%, 34%, 100% { opacity: 0; }
+  23%, 28% { opacity: 0.85; }
+}
+
+/* IMPERIO — HILOS DE CONTROL */
+
+.ha-imperio { --ha-color: #c5bbd8; }
+
+.ha-imperio::before {
+  left: 20%;
+  right: 20%;
+  top: -0.4em;
+  height: 0.5em;
+  border-left: 1px solid #c5bbd8;
+  border-right: 1px solid #c5bbd8;
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+.ha-imperio::after {
+  inset: -0.1em -0.2em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #c5bbd833, transparent 70%);
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+/* IMPULSO FRACTUS — GIRO DESORIENTADOR */
+
+.ha-impulso {
+  --ha-color: #bfb0d0;
+  animation: ha-impulso-girar 9s ease-in-out infinite;
+}
+
+@keyframes ha-impulso-girar {
+  0%, 15%, 85%, 100% { transform: rotate(0); }
+  35% { transform: rotate(4deg); }
+  48% { transform: rotate(-3deg); }
+  62% { transform: rotate(1deg); }
+}
+
+/* INCENDIO DIABOLICA — LENGUA DE FUEGO */
+
+.ha-incendio { --ha-color: #a8bfdc; }
+
+.ha-incendio::after {
+  left: 0;
+  right: -0.3em;
+  bottom: -0.15em;
+  height: 0.4em;
+  border-radius: 70% 10% 50% 20%;
+  background: linear-gradient(90deg, #687bab88, #b4d8ecaa, transparent);
+  animation: ha-trazar 9s ease-out infinite;
+}
+
+/* LEGEREMENS — OJO Y FRAGMENTOS MENTALES */
+
+.ha-legeremens { --ha-color: #bca7d1; }
+
+.ha-legeremens::before {
+  right: -0.9em;
+  top: 35%;
+  width: 0.65em;
+  height: 0.35em;
+  border: 1px solid #bca7d1;
+  border-radius: 70% 20% 70% 20%;
+  background: radial-gradient(circle, #dfcdef 20%, transparent 25%);
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+.ha-legeremens::after {
+  right: -0.4em;
+  top: 15%;
+  width: 2px;
+  height: 2px;
+  background: #d8c7e7;
+  box-shadow: 7px -4px #bca7d1, -5px -6px #bca7d1;
+  animation: ha-absorber 9s ease-in-out infinite;
+}
+
+/* LEVINSANA — LEVITACIÓN INESTABLE */
+
+.ha-levinsana {
+  --ha-color: #bdb0d4;
+  animation: ha-levinsana-flotar 9s ease-in-out infinite;
+}
+
+@keyframes ha-levinsana-flotar {
+  0%, 12%, 90%, 100% { transform: translateY(0) rotate(0); }
+  30% { transform: translateY(-0.3em) rotate(-3deg); }
+  48% { transform: translateY(-0.2em) rotate(3deg); }
+  65% { transform: translateY(-0.35em) rotate(-1deg); }
+}
+
+/* LINGUALOOPSIA — BUCLES ENREDADOS */
+
+.ha-lingualoopsia { --ha-color: #c9aec8; }
+
+.ha-lingualoopsia::after {
+  left: 5%;
+  right: 5%;
+  bottom: -0.25em;
+  height: 0.35em;
+  border-top: 1px solid #c9aec8;
+  border-bottom: 1px solid #c9aec8;
+  border-radius: 60% 30% 70% 40%;
+  animation: ha-lingualoopsia-lazos 9s ease-in-out infinite;
+}
+
+@keyframes ha-lingualoopsia-lazos {
+  0%, 100% { opacity: 0; transform: skewX(-15deg); }
+  35% { opacity: 0.8; transform: skewX(15deg); }
+  65% { opacity: 0.8; transform: skewX(-10deg); }
+}
+
+/* LOCOMOTOR FINALIS — INMOVILIZACIÓN */
+
+.ha-locomotor { --ha-color: #b4a7c7; }
+
+.ha-locomotor::after {
+  inset: -0.08em -0.2em;
+  border-left: 3px solid #a293b7;
+  border-right: 3px solid #a293b7;
+  border-bottom: 2px solid #a293b7;
+  border-radius: 3px;
+  animation: ha-reunir 9s ease-in-out infinite;
+}
+
+/* MACROCRANIO — CONTORNO QUE SE HINCHA */
+
+.ha-macrocranio { --ha-color: #c7b2cf; }
+
+.ha-macrocranio::after {
+  right: -0.85em;
+  top: 15%;
+  width: 0.55em;
+  height: 0.65em;
+  border: 1px solid #c7b2cf;
+  border-radius: 50%;
+  background: #c7b2cf22;
+  animation: ha-expandir 9s ease-in-out infinite;
+}
+
+/* MORSWUNDE — TRAZO OSCURO PERSISTENTE */
+
+.ha-morswunde { --ha-color: #b08eaa; }
+
+.ha-morswunde::after {
+  left: 0;
+  right: 0;
+  top: 65%;
+  height: 1px;
+  background: #7f587f;
+  rotate: -5deg;
+  box-shadow: 0 0 4px #7f587f66;
+  animation: ha-trazar 9s ease-in-out infinite;
+}
+
+/* NEBULA ALCHIMIA — NUBE ALQUÍMICA */
+
+.ha-nebula {
+  --ha-color: #b8c7aa;
+  --ha-niebla: rgba(170, 193, 148, 0.35);
+}
+
+.ha-nebula::before,
+.ha-nebula::after {
+  inset: -0.25em -0.35em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--ha-niebla), transparent 70%);
+  filter: blur(3px);
+  animation: ha-nebula-expandir 9s ease-in-out infinite;
+}
+
+.ha-nebula::after {
+  inset: -0.4em -0.6em;
+  animation-delay: -0.8s;
+}
+
+@keyframes ha-nebula-expandir {
+  0%, 12% { opacity: 0; transform: scale(0.5); }
+  42%, 60% { opacity: 0.9; }
+  90%, 100% { opacity: 0; transform: scale(1.35) translateY(-0.2em); }
+}
+
+/* NUNTIUS — COMUNICACIÓN EXPANDIDA */
+
+.ha-nuntius { --ha-color: #c5b7dc; }
+
+.ha-nuntius::before,
+.ha-nuntius::after {
+  inset: -0.15em -0.25em;
+  border: 1px solid #c5b7dc99;
+  border-radius: 50%;
+  animation: ha-expandir 9s ease-out infinite;
+}
+
+.ha-nuntius::after {
+  animation-delay: -0.65s;
+}
+
+/* OCLUMENS — PROTECCIÓN MENTAL */
+
+.ha-oclumens { --ha-color: #b3bfd9; }
+
+.ha-oclumens::before,
+.ha-oclumens::after {
+  inset: -0.15em -0.25em;
+  border: 1px solid #b3bfd9;
+  border-radius: 35%;
+  animation: ha-reunir 9s ease-in-out infinite;
+}
+
+.ha-oclumens::after {
+  inset: -0.3em -0.4em;
+  border-color: #b3bfd977;
+  animation-delay: -0.4s;
+}
+
+/* PARASITUS MAXIMA — ABSORCIÓN VITAL */
+
+.ha-parasitus { --ha-color: #a4bf8d; }
+
+.ha-parasitus::before {
+  right: -1.3em;
+  top: 50%;
+  width: 1.5em;
+  height: 2px;
+  background: linear-gradient(90deg, #b5d295, transparent);
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+.ha-parasitus::after {
+  right: 0;
+  top: 45%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c7dfa7;
+  box-shadow: 6px -4px 4px #a4bf8d, 12px 3px 4px #a4bf8d;
+  animation: ha-absorber 9s ease-in-out infinite;
+}
+
+/* PARIES IGNIS — CÚPULA DE FUEGO */
+
+.ha-paries { --ha-color: #d5a276; }
+
+.ha-paries::before {
+  inset: -0.35em -0.4em -0.2em;
+  z-index: -1;
+  border: 1px solid #d5a276;
+  border-radius: 60% 60% 10% 10%;
+  background: radial-gradient(ellipse at bottom, transparent 40%, #d5a27644);
+  transform-origin: bottom;
+  animation: ha-crecer 9s ease-out infinite;
+}
+
+.ha-paries::after {
+  left: -5%;
+  right: -5%;
+  bottom: -0.2em;
+  height: 2px;
+  background: #e0b588;
+  animation: ha-trazar 9s ease-in-out infinite;
+}
+
+/* PARTIS TEMPORUS — PROTECCIÓN CAMBIANTE */
+
+.ha-partis { --ha-color: #bcced3; }
+
+.ha-partis::after {
+  inset: -0.25em -0.4em;
+  z-index: -1;
+  border: 1px solid #bcced3;
+  background: #bcced322;
+  animation: ha-partis-forma 9s ease-in-out infinite;
+}
+
+@keyframes ha-partis-forma {
+  0%, 100% { opacity: 0; border-radius: 4px; }
+  30% { opacity: 0.8; border-radius: 40% 40% 10% 10%; }
+  65% { opacity: 0.8; border-radius: 50%; }
+}
+
+/* PORTABERTO — PUERTA QUE SE ABRE */
+
+.ha-portaberto { --ha-color: #d6c18f; }
+
+.ha-portaberto::before {
+  right: -0.85em;
+  top: 5%;
+  width: 0.6em;
+  height: 0.85em;
+  border: 1px solid #d6c18f;
+  border-radius: 2px 2px 0 0;
+}
+
+.ha-portaberto::after {
+  right: -0.85em;
+  top: 5%;
+  width: 0.6em;
+  height: 0.85em;
+  border: 1px solid #d6c18f;
+  background: linear-gradient(90deg, #d6c18f22, #d6c18f55);
+  transform-origin: left center;
+  animation: ha-portaberto-puerta 9s ease-in-out infinite;
+}
+
+@keyframes ha-portaberto-puerta {
+  0%, 12%, 92%, 100% { transform: perspective(80px) rotateY(0); }
+  42%, 70% { transform: perspective(80px) rotateY(-65deg); }
+}
+
+/* POTENTIAE ACTUS — LUZ DORADA */
+
+.ha-potentiae {
+  --ha-color: #dfca91;
+  animation: ha-brillar 9s ease-in-out infinite;
+}
+
+.ha-potentiae::before {
+  inset: -0.25em -0.4em;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #ead39a66, transparent 70%);
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+.ha-potentiae::after {
+  right: -0.3em;
+  top: 25%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #f5e6b5;
+  box-shadow: -18px -5px 2px #e4cd92, 6px 7px 2px #e4cd92;
+  animation: ha-subir 9s ease-out infinite;
+}
+
+/* REPELIUM MÁXIMA — PROYECTIL DEVUELTO */
+
+.ha-repelium { --ha-color: #c6b8df; }
+
+.ha-repelium::before {
+  right: -0.25em;
+  top: 10%;
+  width: 0.25em;
+  height: 0.85em;
+  border-right: 2px solid #c6b8df;
+  border-radius: 50%;
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+.ha-repelium::after {
+  right: -0.2em;
+  top: 45%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e2d6f2;
+  box-shadow: 0 0 5px #c6b8df;
+  animation: ha-repelium-retorno 9s linear infinite;
+}
+
+@keyframes ha-repelium-retorno {
+  0%, 12% { opacity: 0; transform: translateX(1.6em); }
+  20% { opacity: 1; }
+  35% { opacity: 1; transform: translateX(0); }
+  60%, 100% { opacity: 0; transform: translateX(2em); }
+}
+
+/* RUPTURUM — ESTALLIDO CARMESÍ */
+
+.ha-rupturum { --ha-color: #c38e9e; }
+
+.ha-rupturum::after {
+  inset: -0.2em -0.3em;
+  z-index: -1;
+  border: 1px solid #b97d92;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #ac647a55, transparent 70%);
+  animation: ha-expandir 9s ease-out infinite;
+}
+
+/* SALVIO HEXIA — AURA PROTECTORA */
+
+.ha-salvio { --ha-color: #c4dce5; }
+
+.ha-salvio::before,
+.ha-salvio::after {
+  inset: -0.3em -0.45em;
+  z-index: -1;
+  border: 1px solid #d4e9efaa;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, transparent 40%, #abcddf33);
+  box-shadow: 0 0 6px #b8d8e433;
+  animation: ha-aparecer 9s ease-in-out infinite;
+}
+
+.ha-salvio::after {
+  inset: -0.45em -0.6em;
+  background: none;
+  border-color: #d4e9ef55;
+  animation-delay: -0.4s;
+}
+
+/* SECTUMSEMPRA — TRES CORTES */
+
+.ha-sectumsempra { --ha-color: #cb969f; }
+
+.ha-sectumsempra::before,
+.ha-sectumsempra::after {
+  left: -3%;
+  right: -3%;
+  top: 45%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #cf93a0, transparent);
+  rotate: -8deg;
+  box-shadow: 0 4px 0 #b9758744;
+  animation: ha-trazar 9s ease-out infinite;
+}
+
+.ha-sectumsempra::after {
+  top: 65%;
+  rotate: 5deg;
+  box-shadow: none;
+  animation-delay: -0.35s;
+}
+
+/* SPECIALIS REVELIO — BARRIDO Y RASTROS */
+
+.ha-specialis { --ha-color: #d7c99b; }
+
+.ha-specialis::before {
+  left: -5%;
+  top: -0.1em;
+  width: 0.35em;
+  height: 1.2em;
+  background: linear-gradient(90deg, transparent, #e5d8ae88, transparent);
+  animation: ha-specialis-barrido 9s ease-in-out infinite;
+}
+
+.ha-specialis::after {
+  left: 10%;
+  right: 10%;
+  bottom: -0.25em;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg, #d7c99b 0 3px, transparent 3px 8px
+  );
+  animation: ha-trazar 9s ease-in-out infinite;
+}
+
+@keyframes ha-specialis-barrido {
+  0%, 12% { opacity: 0; left: -5%; }
+  25% { opacity: 0.85; }
+  75%, 100% { opacity: 0; left: 100%; }
+}
+
+/* TURBINIS — TEMPESTAD */
+
+.ha-turbinis { --ha-color: #b6cbd3; }
+
+.ha-turbinis::before,
+.ha-turbinis::after {
+  inset: -0.15em -0.2em;
+  border-top: 1px solid #b6cbd3bb;
+  border-bottom: 1px solid #b6cbd377;
+  border-radius: 50%;
+  animation: ha-turbinis-viento 9s ease-out infinite;
+}
+
+.ha-turbinis::after {
+  inset: 0 -0.35em;
+  animation-delay: -0.5s;
+}
+
+@keyframes ha-turbinis-viento {
+  0%, 12% { opacity: 0; transform: translateX(-0.5em) skewX(-12deg); }
+  30% { opacity: 0.8; }
+  75%, 100% { opacity: 0; transform: translateX(0.8em) skewX(12deg); }
+}
+
+/* VULNERA SANENTUR — CIERRE Y LUZ CURATIVA */
+
+.ha-vulnera {
+  --ha-color: #b7d5c1;
+  animation: ha-brillar 9s ease-in-out infinite;
+}
+
+.ha-vulnera::before {
+  left: 5%;
+  right: 5%;
+  bottom: -0.2em;
+  height: 2px;
+  background: linear-gradient(
+    90deg, #c6939c 0 43%, transparent 43% 57%, #c6939c 57%
+  );
+  animation: ha-vulnera-sellar 9s ease-in-out infinite;
+}
+
+.ha-vulnera::after {
+  left: 50%;
+  bottom: -0.25em;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #d9eddd;
+  box-shadow: -18px -2px 2px #b7d5c1, 20px 1px 2px #b7d5c1;
+  animation: ha-subir 9s ease-out infinite;
+}
+
+@keyframes ha-vulnera-sellar {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleX(1.1);
+  }
+  28% { opacity: 0.85; }
+  50%, 72% {
+    opacity: 0.9;
+    transform: scaleX(1);
+    background: #b7d5c1;
+    box-shadow: 0 0 5px #b7d5c188;
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: scaleX(1);
+    background: #b7d5c1;
+  }
+}
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+  .ha,
+  .ha::before,
+  .ha::after {
+    animation: none !important;
+  }
+
+  .ha {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    text-shadow: none;
+  }
+
+  .ha::before,
+  .ha::after {
+    opacity: 0;
+  }
+}
