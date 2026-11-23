@@ -968,3 +968,382 @@
     opacity: 0;
   }
 }
+/* BOMBARDA — DERRUMBE DE LA BÓVEDA */
+
+.bd-derrumbe {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 165px;
+  max-width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  vertical-align: middle;
+}
+
+.bd-nombre {
+  position: absolute;
+  z-index: 6;
+  top: 3px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #d5b293;
+  font-family: inherit;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Escalera */
+.bd-escalera {
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  bottom: 10px;
+  height: 54px;
+  background:
+    repeating-linear-gradient(
+      to top,
+      #534b43 0 2px,
+      #938573 2px 10px,
+      #b5a38a 10px 11px
+    );
+  clip-path: polygon(
+    0 100%, 0 80%, 20% 80%, 20% 60%,
+    40% 60%, 40% 40%, 60% 40%, 60% 20%,
+    80% 20%, 80% 0, 100% 0, 100% 100%
+  );
+}
+
+/* Zona de la bóveda */
+.bd-boveda {
+  position: absolute;
+  z-index: 2;
+  top: 43px;
+  left: 50%;
+  width: 200px;
+  height: 40px;
+  margin-left: -100px;
+  animation: bd-temblor 10s linear infinite;
+}
+
+.bd-ladrillo {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 38px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 1px solid #554537;
+  border-top-color: #bba083;
+  border-radius: 2px;
+  background:
+    linear-gradient(120deg, #ffffff12, transparent 60%),
+    linear-gradient(#987c60, #715a46);
+  box-shadow:
+    inset 0 -3px 2px #36281d44,
+    0 1px 2px #231b1744;
+  animation: bd-caida 10s linear infinite;
+}
+
+/*
+  Cada pieza tiene su momento de desprendimiento,
+  desplazamiento y giro.
+*/
+.bd-ladrillo:nth-child(1) {
+  --x: 0px;
+  --y: 14px;
+  --dx: 12px;
+  --dy: 82px;
+  --giro: -28deg;
+  animation-delay: 0.18s;
+}
+
+.bd-ladrillo:nth-child(2) {
+  --x: 40px;
+  --y: 5px;
+  --dx: -8px;
+  --dy: 88px;
+  --giro: 35deg;
+  animation-delay: 0.08s;
+}
+
+.bd-ladrillo:nth-child(3) {
+  --x: 80px;
+  --y: 0px;
+  --dx: 5px;
+  --dy: 94px;
+  --giro: -18deg;
+}
+
+.bd-ladrillo:nth-child(4) {
+  --x: 120px;
+  --y: 5px;
+  --dx: 10px;
+  --dy: 80px;
+  --giro: 42deg;
+  animation-delay: 0.12s;
+}
+
+.bd-ladrillo:nth-child(5) {
+  --x: 160px;
+  --y: 14px;
+  --dx: -10px;
+  --dy: 75px;
+  --giro: -35deg;
+  animation-delay: 0.25s;
+}
+
+.bd-ladrillo:nth-child(6) {
+  --x: 20px;
+  --y: 33px;
+  --dx: -10px;
+  --dy: 55px;
+  --giro: 24deg;
+  animation-delay: 0.35s;
+}
+
+.bd-ladrillo:nth-child(7) {
+  --x: 60px;
+  --y: 24px;
+  --dx: 6px;
+  --dy: 58px;
+  --giro: -40deg;
+  animation-delay: 0.28s;
+}
+
+.bd-ladrillo:nth-child(8) {
+  --x: 100px;
+  --y: 24px;
+  --dx: -3px;
+  --dy: 69px;
+  --giro: 16deg;
+  animation-delay: 0.42s;
+}
+
+.bd-ladrillo:nth-child(9) {
+  --x: 140px;
+  --y: 33px;
+  --dx: 8px;
+  --dy: 53px;
+  --giro: -25deg;
+  animation-delay: 0.48s;
+}
+
+/* Fisuras antes del desplome */
+.bd-grietas {
+  position: absolute;
+  z-index: 3;
+  left: 80px;
+  top: 43px;
+  width: 90px;
+  height: 45px;
+  background: #2c241e;
+  clip-path: polygon(
+    49% 0, 53% 0, 48% 24%, 61% 39%,
+    52% 58%, 70% 80%, 67% 84%, 48% 62%,
+    34% 78%, 31% 75%, 45% 55%, 55% 40%,
+    43% 27%
+  );
+  opacity: 0;
+  animation: bd-agrietar 10s linear infinite;
+}
+
+/* Destello de la detonación */
+.bd-explosion {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 58px;
+  width: 75px;
+  height: 60px;
+  margin-left: -37.5px;
+  margin-top: -30px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    #fff4dc 0,
+    #edc99899 25%,
+    #bf8d5b44 50%,
+    transparent 72%
+  );
+  opacity: 0;
+  animation: bd-detonar 10s ease-out infinite;
+}
+
+/* Nube de polvo */
+.bd-polvo {
+  position: absolute;
+  z-index: 5;
+  left: 20px;
+  right: 20px;
+  bottom: 12px;
+  height: 70px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 25% 70%, #d4c8b6aa, transparent 55%),
+    radial-gradient(ellipse at 65% 50%, #e0d5c3aa, transparent 60%),
+    radial-gradient(ellipse at 85% 80%, #bcad9899, transparent 50%);
+  filter: blur(4px);
+  transform-origin: bottom;
+  opacity: 0;
+  animation: bd-polvar eda 10s ease-out infinite;
+}
+
+/* Nombre completo de la animación del polvo */
+.bd-polvo {
+  animation-name: bd-polvareda;
+}
+
+/* Partículas de argamasa */
+.bd-motas {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 75px;
+  width: 3px;
+  height: 3px;
+  border-radius: 1px;
+  background: #e0d4bf;
+  box-shadow:
+    -65px 4px #c6b79f,
+    -42px -12px #e0d4bf,
+    -20px 9px #a7957d,
+     22px -8px #d6c7b0,
+     46px 12px #e0d4bf,
+     66px -3px #c6b79f;
+  opacity: 0;
+  animation: bd-argamasa 10s ease-in infinite;
+}
+
+@keyframes bd-temblor {
+  0%, 21%, 30%, 100% { transform: translateX(0); }
+  23%, 27% { transform: translateX(-2px); }
+  25%, 29% { transform: translateX(2px); }
+}
+
+@keyframes bd-agrietar {
+  0%, 20% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  25%, 30% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+  35%, 100% {
+    opacity: 0;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes bd-detonar {
+  0%, 19% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  22% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  31%, 100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes bd-caida {
+  0%, 29% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  34% {
+    opacity: 1;
+    transform:
+      translate(
+        calc(var(--dx) * 0.25),
+        calc(var(--dy) * 0.12)
+      )
+      rotate(calc(var(--giro) * 0.2));
+  }
+  43% {
+    opacity: 1;
+    transform:
+      translate(var(--dx), var(--dy))
+      rotate(var(--giro));
+  }
+  46% {
+    opacity: 1;
+    transform:
+      translate(var(--dx), calc(var(--dy) - 4px))
+      rotate(var(--giro));
+  }
+  49%, 80% {
+    opacity: 1;
+    transform:
+      translate(var(--dx), var(--dy))
+      rotate(var(--giro));
+  }
+  89%, 100% {
+    opacity: 0;
+    transform:
+      translate(var(--dx), var(--dy))
+      rotate(var(--giro));
+  }
+}
+
+@keyframes bd-polvareda {
+  0%, 35% {
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+  }
+  47% {
+    opacity: 0.9;
+    transform: scale(1) translateY(0);
+  }
+  72% {
+    opacity: 0.3;
+    transform: scale(1.15) translateY(-12px);
+  }
+  87%, 100% {
+    opacity: 0;
+    transform: scale(1.25) translateY(-20px);
+  }
+}
+
+@keyframes bd-argamasa {
+  0%, 29% {
+    opacity: 0;
+    transform: translateY(0) scale(0.7);
+  }
+  35% { opacity: 0.9; }
+  54%, 100% {
+    opacity: 0;
+    transform: translateY(55px) scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bd-derrumbe .bd-boveda,
+  .bd-derrumbe .bd-ladrillo,
+  .bd-derrumbe .bd-grietas,
+  .bd-derrumbe .bd-explosion,
+  .bd-derrumbe .bd-polvo,
+  .bd-derrumbe .bd-motas {
+    animation: none;
+  }
+
+  .bd-derrumbe .bd-ladrillo {
+    opacity: 1;
+    transform:
+      translate(var(--dx), var(--dy))
+      rotate(var(--giro));
+  }
+
+  .bd-derrumbe .bd-grietas,
+  .bd-derrumbe .bd-explosion,
+  .bd-derrumbe .bd-polvo,
+  .bd-derrumbe .bd-motas {
+    opacity: 0;
+  }
+}
