@@ -5,8 +5,8 @@
 /* ---------- Contenedor y encabezado ---------- */
 .fmc-page {
   max-width: 680px;
-  margin: 0 auto;
-  padding: 22px 18px 26px;
+  margin: 0 auto !important;
+  padding: 22px 18px 26px !important;
   background: linear-gradient(135deg,#6E6A80,#7C6C88 55%,#8C6886);
   border-radius: 6px;
   box-sizing: border-box;
@@ -18,7 +18,7 @@
 
 .fmc-head {
   text-align: center;
-  margin: 0 0 14px;
+  margin: 0 0 14px !important;
 }
 
 .fmc-kick {
@@ -34,7 +34,7 @@
   font-size: 46px !important;
   line-height: 1.1 !important;
   color: #DCD3DF !important;
-  margin: 2px 0;
+  margin: 2px 0 !important;
 }
 
 .fmc-sub {
@@ -50,7 +50,7 @@
   width: 100%;
   max-width: 640px;
   aspect-ratio: 1/1;
-  margin: 0 auto;
+  margin: 0 auto !important;
   container-type: inline-size;
 }
 
@@ -116,6 +116,18 @@
 .fmc-moon:focus {
   transform: translate(-50%,-50%) scale(1.22);
   filter: drop-shadow(0 0 7px #8FC78B) drop-shadow(0 0 14px rgba(205,180,106,.55));
+}
+
+.fmc-page br {
+  display: none !important;
+}
+
+.fmc-page p,
+.fmc-page div,
+.fmc-page span {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 /* ---------- Panel central ---------- */
@@ -194,7 +206,7 @@
 /* ---------- Contenido de cada fase ---------- */
 .fmc-mini {
   width: 15cqw;
-  margin: 0 auto 1cqw;
+  margin: 0 auto 1cqw !important;
 }
 
 .fmc-mini svg {
@@ -204,6 +216,7 @@
 
 .fmc-name {
   font-family: 'UnifrakturMaguntia',serif !important;
+  font-size: 28px !important;
   font-size: 4.4cqw !important;
   line-height: 1.05 !important;
   color: #2A2430 !important;
@@ -212,12 +225,13 @@
 .fmc-vine {
   width: 16cqw;
   height: 2.3cqw;
-  margin: .6cqw auto .9cqw;
+  margin: .6cqw auto .9cqw !important;
   background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14'><path d='M2 7 q12-7 24 0 t24 0 t24 0 t24 0' fill='none' stroke='%233F7A47' stroke-width='1'/><ellipse cx='14' cy='3' rx='4' ry='1.8' fill='%238FC78B' transform='rotate(-25 14 3)'/><ellipse cx='38' cy='11' rx='4' ry='1.8' fill='%238FC78B' transform='rotate(25 38 11)'/><ellipse cx='62' cy='3' rx='4' ry='1.8' fill='%238FC78B' transform='rotate(-25 62 3)'/><ellipse cx='86' cy='11' rx='4' ry='1.8' fill='%238FC78B' transform='rotate(25 86 11)'/></svg>") center/contain no-repeat;
 }
 
 .fmc-txt {
   font-family: 'IM Fell English',Georgia,serif !important;
+  font-size: 13px !important;
   font-size: 2.05cqw !important;
   line-height: 1.3 !important;
   margin: 0 0 1.3cqw !important;
@@ -225,14 +239,16 @@
 }
 
 .fmc-lst {
-  margin: .5cqw 0;
-  line-height: 1.2;
+  margin: .5cqw 0 !important;
+  line-height: 1.2 !important;
 }
 
 .fmc-k {
   display: block;
+  line-height: 1.3 !important;
   font-family: 'Oswald','Arial Narrow',sans-serif !important;
   font-weight: 500;
+  font-size: 10px !important;
   font-size: 1.6cqw !important;
   letter-spacing: .35cqw;
   color: #3F7A47 !important;
@@ -240,8 +256,10 @@
 
 .fmc-v {
   display: block;
+  line-height: 1.3 !important;
   font-family: 'IM Fell English',Georgia,serif !important;
   font-style: italic;
+  font-size: 13px !important;
   font-size: 2.05cqw !important;
   color: #2A2430 !important;
 }
@@ -260,7 +278,7 @@
   font-size: 1.7cqw !important;
   letter-spacing: .4cqw;
   color: #3F7A47 !important;
-  margin-top: 1cqw;
+  margin-top: 1cqw !important;
 }
 
 .fmc-dh {
@@ -268,13 +286,13 @@
   font-style: italic;
   font-size: 2.2cqw !important;
   color: #4A3A5E !important;
-  margin-top: 1.4cqw;
+  margin-top: 1.4cqw !important;
 }
 
 /* ---------- Pie ---------- */
 .fmc-foot {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 12px !important;
   font-family: 'Oswald','Arial Narrow',sans-serif !important;
   font-weight: 500;
   font-size: 10px !important;
