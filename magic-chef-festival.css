@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Caveat:wght@600;700&display=swap');
+
+/* ===== Magic Chef · Festival de Invierno · Roleo libre de los Food Trucks ===== */
+.mcf{--n1:#0c1530;--n2:#1b2b56;--n3:#2f4478;--oro:#f3c86a;--oro2:#ffe7a8;--crema:#f5eedf;--hielo:#cfe3f5;--rojo:#c8423c;--verde:#3f8f63;
+  position:relative;max-width:780px;margin:10px auto;border-radius:18px;overflow:hidden;
+  background:linear-gradient(180deg,var(--n1) 0%,var(--n2) 38%,var(--n3) 100%);
+  box-shadow:0 0 0 3px #0a1126,0 0 0 6px rgba(243,200,106,.55),0 18px 40px rgba(6,10,25,.55);
+  color:var(--crema)!important;font-family:'Cormorant Garamond',Georgia,serif!important;text-align:left}
+.mcf *{box-sizing:border-box;font-family:'Cormorant Garamond',Georgia,serif!important}
+.mcf br{display:none}
+
+/* nieve que cae */
+.mcf-snow,.mcf-snow2{position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:radial-gradient(2px 2px at 20px 30px,#fff 50%,transparent 51%),radial-gradient(2px 2px at 120px 80px,#fff 50%,transparent 51%),radial-gradient(3px 3px at 60px 150px,rgba(255,255,255,.9) 50%,transparent 51%),radial-gradient(2px 2px at 170px 200px,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 90px 240px,#fff 50%,transparent 51%),radial-gradient(2.5px 2.5px at 200px 120px,rgba(255,255,255,.85) 50%,transparent 51%);
+  background-size:220px 260px;animation:mcfNieve 14s linear infinite;opacity:.75}
+.mcf-snow2{background-size:300px 340px;animation-duration:22s;opacity:.45;filter:blur(.6px)}
+@keyframes mcfNieve{from{background-position:0 0}to{background-position:40px 260px}}
+
+/* guirnalda de luces */
+.mcf-lights{position:relative;z-index:3;height:58px;margin:0 -10px;display:flex;justify-content:space-between;padding:0 18px}
+.mcf-lights:before{content:"";position:absolute;left:-2%;right:-2%;top:-150px;height:180px;border-bottom:2px solid #6b7595;border-radius:0 0 50% 50%}
+.mcf-lights span{position:relative;width:12px;height:17px;border-radius:50% 50% 45% 45%;margin-top:14px;
+  background:var(--c,#f3c86a);box-shadow:0 0 10px 3px var(--c,#f3c86a),0 0 22px 6px color-mix(in srgb,var(--c,#f3c86a) 45%,transparent);animation:mcfLuz 2.4s ease-in-out infinite}
+.mcf-lights span:before{content:"";position:absolute;top:-5px;left:3px;width:6px;height:6px;background:#3a3f52;border-radius:2px}
+.mcf-lights span:nth-child(4n+1){--c:#ffcf66}
+.mcf-lights span:nth-child(4n+2){--c:#ff6f61;animation-delay:.6s}
+.mcf-lights span:nth-child(4n+3){--c:#7fd6a5;animation-delay:1.2s}
+.mcf-lights span:nth-child(4n+4){--c:#8fc4ff;animation-delay:1.8s}
+.mcf-lights span:nth-child(1),.mcf-lights span:nth-child(13){margin-top:2px}
+.mcf-lights span:nth-child(2),.mcf-lights span:nth-child(12){margin-top:10px}
+.mcf-lights span:nth-child(3),.mcf-lights span:nth-child(11){margin-top:17px}
+.mcf-lights span:nth-child(4),.mcf-lights span:nth-child(10){margin-top:22px}
+.mcf-lights span:nth-child(5),.mcf-lights span:nth-child(9){margin-top:26px}
+.mcf-lights span:nth-child(6),.mcf-lights span:nth-child(8){margin-top:28px}
+.mcf-lights span:nth-child(7){margin-top:29px}
+@keyframes mcfLuz{0%,100%{opacity:1}50%{opacity:.45;box-shadow:0 0 4px 1px var(--c,#f3c86a)}}
+
+/* cabecera */
+.mcf-head{position:relative;z-index:2;text-align:center;padding:6px 24px 0}
+.mcf-eye{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:14px;letter-spacing:6px;text-transform:uppercase;color:var(--hielo)!important;opacity:.9}
+.mcf-moon{position:absolute;right:46px;top:-6px;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fffbe8,#f1e3b0 60%,#d8c487);box-shadow:0 0 30px 8px rgba(255,240,190,.35);opacity:.9}
+.mcf-title{margin:8px 0 0;font-family:'Cinzel Decorative',Georgia,serif!important;font-weight:900;font-size:46px;line-height:1.05;letter-spacing:1px;
+  background:linear-gradient(180deg,#fff7d6 0%,var(--oro) 55%,#c98d2c 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important;
+  filter:drop-shadow(0 2px 0 #0a1126) drop-shadow(0 0 14px rgba(243,200,106,.35))}
+.mcf-title small{display:block;font-family:'Cinzel Decorative',Georgia,serif!important;font-size:20px;font-weight:700;letter-spacing:5px;margin-bottom:2px}
+
+/* cinta */
+.mcf-ribbon{position:relative;display:inline-block;margin:14px auto 0;padding:7px 46px 8px;background:linear-gradient(180deg,#d6544c,#a8302c);
+  clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.mcf-ribbon span{font-family:'Caveat',cursive!important;font-weight:700;font-size:30px;line-height:1;color:#fff4e2!important;letter-spacing:1px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.mcf-tag{margin:10px 0 0;font-style:italic;font-size:18px;color:var(--hielo)!important}
+
+/* pueblo nevado */
+.mcf-town{position:relative;z-index:2;height:92px;margin-top:10px}
+.mcf-town:before{content:"";position:absolute;inset:0;background:#0a1228;
+  clip-path:polygon(0 100%,0 62%,5% 62%,5% 45%,9% 30%,13% 45%,13% 58%,18% 58%,18% 40%,22% 40%,22% 30%,24% 30%,24% 40%,27% 40%,27% 60%,33% 60%,33% 38%,38% 22%,43% 38%,43% 55%,49% 55%,49% 44%,53% 34%,57% 44%,57% 62%,63% 62%,63% 36%,66% 36%,66% 24%,68% 24%,68% 36%,72% 36%,72% 50%,77% 50%,77% 32%,82% 18%,87% 32%,87% 56%,92% 56%,92% 42%,96% 34%,100% 42%,100% 100%)}
+.mcf-town:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:26px;background:#eef5fc;border-radius:60% 60% 0 0/100% 100% 0 0;box-shadow:0 -4px 12px rgba(255,255,255,.25)}
+.mcf-win{position:absolute;z-index:3;width:7px;height:9px;background:#ffd77a;box-shadow:0 0 8px 2px rgba(255,200,90,.7);border-radius:1px}
+
+/* cuerpo */
+.mcf-body{position:relative;z-index:2;background:linear-gradient(180deg,#eef5fc 0%,#f8f3e8 60px,#f6efe0 100%);color:#2a2a3d!important;padding:10px 26px 26px}
+.mcf-sec{font-family:'Cinzel Decorative',Georgia,serif!important;font-weight:700;font-size:19px;letter-spacing:2px;text-align:center;color:#1b2b56!important;margin:20px 0 10px}
+.mcf-sec:before,.mcf-sec:after{content:"";display:inline-block;width:60px;height:1px;background:linear-gradient(90deg,transparent,#c98d2c);vertical-align:middle;margin:0 12px}
+.mcf-sec:after{background:linear-gradient(90deg,#c98d2c,transparent)}
+.mcf-text{font-size:18px;line-height:1.6;text-align:justify;color:#2a2a3d!important}
+.mcf-text p{margin:0 0 10px}
+.mcf-text b{color:#a8302c!important}
+
+/* los trucks */
+.mcf-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:6px 0 4px}
+.mcf-truck{position:relative;flex:0 1 214px;background:linear-gradient(180deg,#fffdf7,#f3ead6);border:1px solid #e2d3b2;border-radius:12px;padding:16px 10px 10px;text-align:center;
+  box-shadow:0 3px 0 #dccaa3,0 6px 12px rgba(27,43,86,.12);transition:transform .2s}
+.mcf-truck:hover{transform:translateY(-3px)}
+.mcf-truck:before{content:"";position:absolute;left:8px;right:8px;top:-5px;height:11px;border-radius:8px;background:#fff;
+  box-shadow:0 2px 3px rgba(27,43,86,.15);background:radial-gradient(circle at 10px 4px,#fff 6px,transparent 7px) 0 0/22px 11px repeat-x,#fff}
+.mcf-truck img{display:block;width:100%;max-width:150px;height:96px;object-fit:contain;margin:0 auto 6px;image-rendering:pixelated;filter:drop-shadow(0 4px 2px rgba(27,43,86,.25))}
+.mcf-num{position:absolute;left:8px;top:10px;width:26px;height:26px;border-radius:50%;background:#1b2b56;color:var(--oro2)!important;font-family:'Cinzel Decorative',Georgia,serif!important;font-weight:700;font-size:12px;line-height:26px;text-align:center}
+.mcf-name{display:block;font-weight:700;font-size:18px;line-height:1.15;color:#1b2b56!important}
+.mcf-kind{display:block;font-family:'Caveat',cursive!important;font-size:19px;color:#a8302c!important;margin-top:2px}
+
+/* reglas */
+.mcf-rules{list-style:none;margin:0;padding:0}
+.mcf-rules li{position:relative;padding:8px 10px 8px 34px;margin:0 0 8px;font-size:17.5px;line-height:1.5;background:rgba(207,227,245,.35);border-left:3px solid #8fc4ff;border-radius:0 10px 10px 0;color:#2a2a3d!important}
+.mcf-rules li:before{content:"";position:absolute;left:11px;top:15px;width:11px;height:11px;background:#1b2b56;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+.mcf-rules b{color:#1b2b56!important}
+
+.mcf-btn{display:block;width:max-content;margin:16px auto 0;padding:9px 22px;border-radius:30px;background:#1b2b56;color:var(--oro2)!important;text-decoration:none!important;
+  font-family:'Cinzel Decorative',Georgia,serif!important;font-weight:700;font-size:14px;letter-spacing:1px;box-shadow:0 3px 0 #0a1126}
+.mcf-btn:hover{background:#2f4478}
+.mcf-sign{margin-top:18px;text-align:right;font-family:'Caveat',cursive!important;font-size:28px;color:#a8302c!important}
+
+@media (max-width:600px){.mcf-title{font-size:32px}.mcf-title small{font-size:15px}.mcf-moon{display:none}.mcf-body{padding:10px 14px 20px}.mcf-truck{flex-basis:46%}.mcf-lights span:nth-child(n+10){display:none}}
+@media (prefers-reduced-motion:reduce){.mcf-snow,.mcf-snow2,.mcf-lights span{animation:none}}
