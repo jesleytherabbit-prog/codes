@@ -1,62 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Caveat:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 
-/* ===== Magic Chef · El Invernadero de Vael (versión con imágenes) ===== */
-.mcv{--em:#0F7A5A;--em2:#0a5a42;--rose:#c9566f;--ink:#23382f;
-  position:relative;max-width:760px;margin:10px auto;border-radius:18px;overflow:hidden;background:#fbf7f0;
-  box-shadow:0 0 0 3px #2f5a47,0 12px 28px rgba(20,50,38,.28);color:var(--ink)!important;
+/* ===== Magic Chef · El Invernadero de Vael ===== */
+/* Paleta sacada de las imágenes: crema #fff3e0 (el fondo de todos los assets), bosque, salvia y rosa viejo */
+.mcv{--bg:#fff3e0;--forest:#2b3a2e;--sage:#53755a;--rose:#b56f6a;--blush:#f2d8d0;--brown:#6c463a;--ink:#33302a;
+  position:relative;max-width:760px;margin:10px auto;border-radius:16px;overflow:hidden;background:var(--bg);
+  box-shadow:0 0 0 3px var(--forest),0 0 0 6px #c9a77c,0 12px 28px rgba(30,40,30,.3);color:var(--ink)!important;
   font-family:'Cormorant Garamond',Georgia,serif!important;text-align:left}
 .mcv *{box-sizing:border-box;font-family:'Cormorant Garamond',Georgia,serif!important}
 .mcv br{display:none}
 .mcv img{max-width:100%;border:0}
 
-/* cabecera: la imagen del invernadero con el título encima */
-.mcv-head{position:relative}
-.mcv-head img.mcv-banner{display:block;width:100%;height:auto}
-.mcv-head-t{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;padding:10px 26px;border-radius:16px;background:rgba(251,247,240,.86)}
-.mcv-eye{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--em2)!important;font-weight:700}
-.mcv-title{font-family:'Cinzel Decorative',Georgia,serif!important;font-weight:700;font-size:34px;line-height:1.05;margin:4px 0 2px;color:var(--em)!important}
-.mcv-sub{font-family:'Caveat',cursive!important;font-size:23px;color:var(--rose)!important;line-height:1}
+/* cabecera: el invernadero va de fondo (así el foro no lo achica) */
+.mcv-head{position:relative;height:270px;background:url(https://i.imgur.com/Qh8EAh7.jpeg) center 40%/cover no-repeat}
+.mcv-head-t{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content;max-width:88%;text-align:center;padding:10px 34px 14px;border-radius:20px;background:rgba(255,243,224,.88);box-shadow:0 0 22px 10px rgba(255,243,224,.6)}
+.mcv-eye{font-size:13px;letter-spacing:4px;text-transform:uppercase;font-style:italic;font-weight:600;color:var(--sage)!important}
+.mcv-title{font-family:'Great Vibes',cursive!important;font-weight:400;font-size:62px;line-height:1;margin:2px 0;color:var(--forest)!important}
+.mcv-sub{font-style:italic;font-size:19px;color:var(--rose)!important}
 
-/* enredaderas a los costados (la imagen se repite hacia abajo) */
-.mcv-main{position:relative;padding:18px 58px 22px;background:url(https://i.imgur.com/PTM1NHx.png) left top/40px auto repeat-y,url(https://i.imgur.com/PTM1NHx.png) right top/40px auto repeat-y}
+/* enredaderas a los costados */
+.mcv-main{position:relative;padding:20px 60px 22px;background:url(https://i.imgur.com/PTM1NHx.png) left top/40px auto repeat-y,url(https://i.imgur.com/PTM1NHx.png) right top/40px auto repeat-y,var(--bg)}
 
-/* Vael y la presentación */
+/* Vael */
 .mcv-intro{display:flex;gap:18px;align-items:center}
-.mcv-intro img{flex:0 0 170px;width:170px;border-radius:14px;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--em)}
-.mcv-intro p{font-style:italic}
-.mcv p{margin:0 0 9px;font-size:17.5px;line-height:1.55;color:var(--ink)!important}
-.mcv b{color:var(--em2)!important}
-.mcv-sec{font-family:'Cinzel Decorative',Georgia,serif!important;font-weight:700;font-size:18px;text-align:center;color:var(--em)!important;margin:24px 0 12px}
+.mcv-intro img{flex:0 0 170px;width:170px;border-radius:12px;border:3px solid var(--sage);box-shadow:0 0 0 3px var(--bg),0 0 0 4px var(--rose)}
+.mcv-intro p{font-style:italic;font-size:18.5px}
+.mcv p{margin:0 0 9px;font-size:18px;line-height:1.55;color:var(--ink)!important}
+.mcv b{color:var(--forest)!important}
 
-/* caminos */
+/* títulos de sección con adorno */
+.mcv-sec{font-family:'Great Vibes',cursive!important;font-size:36px;font-weight:400;text-align:center;color:var(--rose)!important;margin:22px 0 8px;line-height:1}
+.mcv-sec:after{content:"";display:block;width:140px;height:1px;margin:8px auto 0;background:linear-gradient(90deg,transparent,var(--sage),transparent)}
+
+/* caminos (mismo fondo crema que los íconos) */
 .mcv-paths{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-.mcv-path{flex:1 1 230px;border-radius:14px;padding:12px 14px;text-align:center;background:#fff;border:2px solid #9ccbb2}
-.mcv-path.ro{border-color:#e4a9b6;background:#fdf2f4}
-.mcv-path img{width:64px;height:64px;object-fit:contain;image-rendering:pixelated}
-.mcv-path-n{font-family:'Caveat',cursive!important;font-size:30px;line-height:1;font-weight:700;color:var(--em)!important}
+.mcv-path{flex:1 1 230px;border-radius:14px;padding:12px 14px;text-align:center;background:var(--bg);border:2px solid var(--sage)}
+.mcv-path.ro{border-color:var(--rose)}
+.mcv-path img{width:72px;height:72px;object-fit:contain;image-rendering:pixelated}
+.mcv-path-n{font-family:'Great Vibes',cursive!important;font-size:42px;line-height:1;color:var(--sage)!important}
 .mcv-path.ro .mcv-path-n{color:var(--rose)!important}
-.mcv-path p{font-size:16.5px;margin:6px 0}
-.mcv-tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:14px;font-weight:700;color:var(--em)!important;background:#e7f4ec}
-.mcv-path.ro .mcv-tag{color:var(--rose)!important;background:#f7dfe4}
+.mcv-path p{font-size:17px;margin:4px 0 8px}
+.mcv-tag{display:inline-block;padding:2px 12px;border-radius:12px;font-size:14.5px;font-weight:700;font-style:italic;color:var(--bg)!important;background:var(--sage)}
+.mcv-path.ro .mcv-tag{background:var(--rose)}
 
 /* medidor */
 .mcv-meter{display:block;margin:0 auto 6px;width:100%;max-width:520px;image-rendering:pixelated}
 
 /* tablas */
-.mcv-table{border-radius:12px;overflow:hidden;border:1.5px solid #b9d9c8;margin:8px 0;background:#fff}
-.mcv-row{display:grid;grid-template-columns:30% 42% 28%;border-top:1px solid #e1efe7}
+.mcv-table{border-radius:12px;overflow:hidden;border:1.5px solid #d9c3a4;margin:8px 0;background:#fffaf2}
+.mcv-row{display:grid;grid-template-columns:30% 42% 28%;border-top:1px solid #efe0c9}
 .mcv-row.c3e{grid-template-columns:24% 38% 38%}
 .mcv-row:first-child{border-top:0}
-.mcv-row.h{background:var(--em)}
-.mcv-row.h .mcv-c{color:#f2fbf6!important;font-size:12px;letter-spacing:1px;font-weight:700;text-transform:uppercase}
-.mcv-c{padding:9px 12px;font-size:16px;line-height:1.4;color:var(--ink)!important}
-.mcv-c small{display:block;font-size:14px;font-style:italic;color:#5b6f65!important}
-.mcv-plus{color:var(--em)!important;font-weight:700}
+.mcv-row.h{background:var(--forest)}
+.mcv-row.h .mcv-c{color:var(--bg)!important;font-size:13px;letter-spacing:2px;font-weight:600;font-style:italic;text-transform:uppercase}
+.mcv-c{padding:9px 12px;font-size:16.5px;line-height:1.4;color:var(--ink)!important}
+.mcv-c small{display:block;font-size:15px;font-style:italic;color:var(--rose)!important}
+.mcv-plus{color:var(--sage)!important;font-weight:700}
 .mcv-minus{color:var(--rose)!important;font-weight:700}
 
 /* reglas y cierre */
-.mcv-note{margin:18px 0 0;padding:14px 18px;border-radius:12px;background:#fff;border:1.5px dashed #9ccbb2}
-.mcv-quote{font-family:'Caveat',cursive!important;font-size:24px;color:var(--em)!important;text-align:center;margin:16px 0 0;line-height:1.2}
-.mcv-sign{text-align:right;font-family:'Caveat',cursive!important;font-size:26px;color:var(--rose)!important}
+.mcv-note{margin:18px 0 0;padding:14px 18px;border-radius:12px;background:#fffaf2;border:1.5px dashed var(--rose)}
+.mcv-quote{font-style:italic;font-size:20px;color:var(--sage)!important;text-align:center;margin:16px 0 0;line-height:1.3}
+.mcv-sign{text-align:right;font-family:'Great Vibes',cursive!important;font-size:36px;color:var(--rose)!important}
 
-@media (max-width:600px){.mcv-title{font-size:24px}.mcv-main{padding:14px 30px 18px;background-size:22px auto}.mcv-intro{flex-direction:column}.mcv-row,.mcv-row.c3e{grid-template-columns:1fr}.mcv-row.h{display:none}}
+@media (max-width:600px){.mcv-head{height:200px}.mcv-title{font-size:40px}.mcv-main{padding:14px 30px 18px;background-size:22px auto,22px auto,auto}.mcv-intro{flex-direction:column}.mcv-row,.mcv-row.c3e{grid-template-columns:1fr}.mcv-row.h{display:none}}
